@@ -1,0 +1,520 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635621A1CCDB77D00308264 /* AppDelegate.swift */; };
+		F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F635621B1CCDB77D00308264 /* Assets.xcassets */; };
+		F635624C1CCDB77D00308264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F635621C1CCDB77D00308264 /* LaunchScreen.storyboard */; };
+		F635624D1CCDB77D00308264 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F635621E1CCDB77D00308264 /* Info.plist */; };
+		F635624E1CCDB77D00308264 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562201CCDB77D00308264 /* WelcomeController.swift */; };
+		F635624F1CCDB77D00308264 /* TCMoreFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562231CCDB77D00308264 /* TCMoreFunctionController.swift */; };
+		F63562501CCDB77D00308264 /* TCMoreFunctionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562241CCDB77D00308264 /* TCMoreFunctionController.xib */; };
+		F63562511CCDB77D00308264 /* TCPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562291CCDB77D00308264 /* TCPaymentViewController.swift */; };
+		F63562521CCDB77D00308264 /* TCPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F635622A1CCDB77D00308264 /* TCPaymentViewController.xib */; };
+		F63562531CCDB77D00308264 /* TCCarStopInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635622C1CCDB77D00308264 /* TCCarStopInfo.swift */; };
+		F63562541CCDB77D00308264 /* TCPaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635622E1CCDB77D00308264 /* TCPaymentCell.swift */; };
+		F63562551CCDB77D00308264 /* TCPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F635622F1CCDB77D00308264 /* TCPaymentCell.xib */; };
+		F63562561CCDB77D00308264 /* TCCarInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562321CCDB77D00308264 /* TCCarInfoController.swift */; };
+		F63562571CCDB77D00308264 /* TCCarInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562331CCDB77D00308264 /* TCCarInfoController.xib */; };
+		F63562581CCDB77D00308264 /* CarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562361CCDB77D00308264 /* CarInfoCell.swift */; };
+		F63562591CCDB77D00308264 /* CarInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562371CCDB77D00308264 /* CarInfoCell.xib */; };
+		F635625A1CCDB77D00308264 /* TCChangeWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635623A1CCDB77D00308264 /* TCChangeWord.swift */; };
+		F635625B1CCDB77D00308264 /* TCHomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635623B1CCDB77D00308264 /* TCHomePageController.swift */; };
+		F635625C1CCDB77D00308264 /* TCHomePageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F635623C1CCDB77D00308264 /* TCHomePageController.xib */; };
+		F635625D1CCDB77D00308264 /* TCInvitationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635623D1CCDB77D00308264 /* TCInvitationController.swift */; };
+		F635625E1CCDB77D00308264 /* TCInvitationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F635623E1CCDB77D00308264 /* TCInvitationController.xib */; };
+		F635625F1CCDB77D00308264 /* TCCarInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562401CCDB77D00308264 /* TCCarInfoModel.swift */; };
+		F63562601CCDB77D00308264 /* TCContactorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562411CCDB77D00308264 /* TCContactorInfo.swift */; };
+		F63562611CCDB77D00308264 /* NeedToPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562431CCDB77D00308264 /* NeedToPayCell.swift */; };
+		F63562621CCDB77D00308264 /* NeedToPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562441CCDB77D00308264 /* NeedToPayCell.xib */; };
+		F63562631CCDB77D00308264 /* TCAlertSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562451CCDB77D00308264 /* TCAlertSelectView.swift */; };
+		F63562641CCDB77D00308264 /* TCHomeAlertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562461CCDB77D00308264 /* TCHomeAlertTableCell.swift */; };
+		F63562651CCDB77D00308264 /* TCHomeAlertTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562471CCDB77D00308264 /* TCHomeAlertTableCell.xib */; };
+		F63562661CCDB77D00308264 /* TCInvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562481CCDB77D00308264 /* TCInvitationAlertView.swift */; };
+		F63562671CCDB77D00308264 /* TCInvitationAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562491CCDB77D00308264 /* TCInvitationAlertView.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F619A42C1CC081CC00BF6E52 /* Parking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F635621A1CCDB77D00308264 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F635621B1CCDB77D00308264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F635621D1CCDB77D00308264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F635621E1CCDB77D00308264 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F63562201CCDB77D00308264 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		F63562231CCDB77D00308264 /* TCMoreFunctionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMoreFunctionController.swift; sourceTree = "<group>"; };
+		F63562241CCDB77D00308264 /* TCMoreFunctionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMoreFunctionController.xib; sourceTree = "<group>"; };
+		F63562291CCDB77D00308264 /* TCPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPaymentViewController.swift; sourceTree = "<group>"; };
+		F635622A1CCDB77D00308264 /* TCPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPaymentViewController.xib; sourceTree = "<group>"; };
+		F635622C1CCDB77D00308264 /* TCCarStopInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarStopInfo.swift; sourceTree = "<group>"; };
+		F635622E1CCDB77D00308264 /* TCPaymentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPaymentCell.swift; sourceTree = "<group>"; };
+		F635622F1CCDB77D00308264 /* TCPaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPaymentCell.xib; sourceTree = "<group>"; };
+		F63562321CCDB77D00308264 /* TCCarInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarInfoController.swift; sourceTree = "<group>"; };
+		F63562331CCDB77D00308264 /* TCCarInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarInfoController.xib; sourceTree = "<group>"; };
+		F63562361CCDB77D00308264 /* CarInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarInfoCell.swift; sourceTree = "<group>"; };
+		F63562371CCDB77D00308264 /* CarInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarInfoCell.xib; sourceTree = "<group>"; };
+		F635623A1CCDB77D00308264 /* TCChangeWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCChangeWord.swift; sourceTree = "<group>"; };
+		F635623B1CCDB77D00308264 /* TCHomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHomePageController.swift; sourceTree = "<group>"; };
+		F635623C1CCDB77D00308264 /* TCHomePageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHomePageController.xib; sourceTree = "<group>"; };
+		F635623D1CCDB77D00308264 /* TCInvitationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCInvitationController.swift; sourceTree = "<group>"; };
+		F635623E1CCDB77D00308264 /* TCInvitationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCInvitationController.xib; sourceTree = "<group>"; };
+		F63562401CCDB77D00308264 /* TCCarInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarInfoModel.swift; sourceTree = "<group>"; };
+		F63562411CCDB77D00308264 /* TCContactorInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCContactorInfo.swift; sourceTree = "<group>"; };
+		F63562431CCDB77D00308264 /* NeedToPayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedToPayCell.swift; sourceTree = "<group>"; };
+		F63562441CCDB77D00308264 /* NeedToPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeedToPayCell.xib; sourceTree = "<group>"; };
+		F63562451CCDB77D00308264 /* TCAlertSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCAlertSelectView.swift; sourceTree = "<group>"; };
+		F63562461CCDB77D00308264 /* TCHomeAlertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHomeAlertTableCell.swift; sourceTree = "<group>"; };
+		F63562471CCDB77D00308264 /* TCHomeAlertTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHomeAlertTableCell.xib; sourceTree = "<group>"; };
+		F63562481CCDB77D00308264 /* TCInvitationAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCInvitationAlertView.swift; sourceTree = "<group>"; };
+		F63562491CCDB77D00308264 /* TCInvitationAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCInvitationAlertView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F619A4291CC081CC00BF6E52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F619A4231CC081CC00BF6E52 = {
+			isa = PBXGroup;
+			children = (
+				F63562191CCDB77D00308264 /* Parking */,
+				F619A42D1CC081CC00BF6E52 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F619A42D1CC081CC00BF6E52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F619A42C1CC081CC00BF6E52 /* Parking.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F63562191CCDB77D00308264 /* Parking */ = {
+			isa = PBXGroup;
+			children = (
+				F63562211CCDB77D00308264 /* 更多 */,
+				F63562271CCDB77D00308264 /* 缴费信息 */,
+				F63562301CCDB77D00308264 /* 车辆信息 */,
+				F63562381CCDB77D00308264 /* 首页 */,
+				F635621A1CCDB77D00308264 /* AppDelegate.swift */,
+				F63562201CCDB77D00308264 /* WelcomeController.swift */,
+				F635621C1CCDB77D00308264 /* LaunchScreen.storyboard */,
+				F635621E1CCDB77D00308264 /* Info.plist */,
+				F635621B1CCDB77D00308264 /* Assets.xcassets */,
+				F635621F1CCDB77D00308264 /* ios */,
+			);
+			path = Parking;
+			sourceTree = "<group>";
+		};
+		F635621F1CCDB77D00308264 /* ios */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ios;
+			sourceTree = "<group>";
+		};
+		F63562211CCDB77D00308264 /* 更多 */ = {
+			isa = PBXGroup;
+			children = (
+				F63562221CCDB77D00308264 /* controller */,
+				F63562251CCDB77D00308264 /* model */,
+				F63562261CCDB77D00308264 /* view */,
+			);
+			path = "更多";
+			sourceTree = "<group>";
+		};
+		F63562221CCDB77D00308264 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F63562231CCDB77D00308264 /* TCMoreFunctionController.swift */,
+				F63562241CCDB77D00308264 /* TCMoreFunctionController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F63562251CCDB77D00308264 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F63562261CCDB77D00308264 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F63562271CCDB77D00308264 /* 缴费信息 */ = {
+			isa = PBXGroup;
+			children = (
+				F63562281CCDB77D00308264 /* controller */,
+				F635622B1CCDB77D00308264 /* model */,
+				F635622D1CCDB77D00308264 /* view */,
+			);
+			path = "缴费信息";
+			sourceTree = "<group>";
+		};
+		F63562281CCDB77D00308264 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F63562291CCDB77D00308264 /* TCPaymentViewController.swift */,
+				F635622A1CCDB77D00308264 /* TCPaymentViewController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F635622B1CCDB77D00308264 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F635622C1CCDB77D00308264 /* TCCarStopInfo.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F635622D1CCDB77D00308264 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F635622E1CCDB77D00308264 /* TCPaymentCell.swift */,
+				F635622F1CCDB77D00308264 /* TCPaymentCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F63562301CCDB77D00308264 /* 车辆信息 */ = {
+			isa = PBXGroup;
+			children = (
+				F63562311CCDB77D00308264 /* controller */,
+				F63562341CCDB77D00308264 /* model */,
+				F63562351CCDB77D00308264 /* view */,
+			);
+			path = "车辆信息";
+			sourceTree = "<group>";
+		};
+		F63562311CCDB77D00308264 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F63562321CCDB77D00308264 /* TCCarInfoController.swift */,
+				F63562331CCDB77D00308264 /* TCCarInfoController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F63562341CCDB77D00308264 /* model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F63562351CCDB77D00308264 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F63562361CCDB77D00308264 /* CarInfoCell.swift */,
+				F63562371CCDB77D00308264 /* CarInfoCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F63562381CCDB77D00308264 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				F63562391CCDB77D00308264 /* controller */,
+				F635623F1CCDB77D00308264 /* model */,
+				F63562421CCDB77D00308264 /* view */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		F63562391CCDB77D00308264 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F635623A1CCDB77D00308264 /* TCChangeWord.swift */,
+				F635623B1CCDB77D00308264 /* TCHomePageController.swift */,
+				F635623C1CCDB77D00308264 /* TCHomePageController.xib */,
+				F635623D1CCDB77D00308264 /* TCInvitationController.swift */,
+				F635623E1CCDB77D00308264 /* TCInvitationController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F635623F1CCDB77D00308264 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F63562401CCDB77D00308264 /* TCCarInfoModel.swift */,
+				F63562411CCDB77D00308264 /* TCContactorInfo.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F63562421CCDB77D00308264 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F63562431CCDB77D00308264 /* NeedToPayCell.swift */,
+				F63562441CCDB77D00308264 /* NeedToPayCell.xib */,
+				F63562451CCDB77D00308264 /* TCAlertSelectView.swift */,
+				F63562461CCDB77D00308264 /* TCHomeAlertTableCell.swift */,
+				F63562471CCDB77D00308264 /* TCHomeAlertTableCell.xib */,
+				F63562481CCDB77D00308264 /* TCInvitationAlertView.swift */,
+				F63562491CCDB77D00308264 /* TCInvitationAlertView.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F619A42B1CC081CC00BF6E52 /* Parking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F619A43E1CC081CC00BF6E52 /* Build configuration list for PBXNativeTarget "Parking" */;
+			buildPhases = (
+				F619A4281CC081CC00BF6E52 /* Sources */,
+				F619A4291CC081CC00BF6E52 /* Frameworks */,
+				F619A42A1CC081CC00BF6E52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Parking;
+			productName = ASwiftProduct;
+			productReference = F619A42C1CC081CC00BF6E52 /* Parking.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F619A4241CC081CC00BF6E52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "北京校酷网络科技有限公司";
+				TargetAttributes = {
+					F619A42B1CC081CC00BF6E52 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+				};
+			};
+			buildConfigurationList = F619A4271CC081CC00BF6E52 /* Build configuration list for PBXProject "Parking" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F619A4231CC081CC00BF6E52;
+			productRefGroup = F619A42D1CC081CC00BF6E52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F619A42B1CC081CC00BF6E52 /* Parking */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F619A42A1CC081CC00BF6E52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F63562671CCDB77D00308264 /* TCInvitationAlertView.xib in Resources */,
+				F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */,
+				F63562621CCDB77D00308264 /* NeedToPayCell.xib in Resources */,
+				F63562521CCDB77D00308264 /* TCPaymentViewController.xib in Resources */,
+				F63562591CCDB77D00308264 /* CarInfoCell.xib in Resources */,
+				F63562501CCDB77D00308264 /* TCMoreFunctionController.xib in Resources */,
+				F63562651CCDB77D00308264 /* TCHomeAlertTableCell.xib in Resources */,
+				F635625C1CCDB77D00308264 /* TCHomePageController.xib in Resources */,
+				F635625E1CCDB77D00308264 /* TCInvitationController.xib in Resources */,
+				F63562571CCDB77D00308264 /* TCCarInfoController.xib in Resources */,
+				F635624C1CCDB77D00308264 /* LaunchScreen.storyboard in Resources */,
+				F635624D1CCDB77D00308264 /* Info.plist in Resources */,
+				F63562551CCDB77D00308264 /* TCPaymentCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F619A4281CC081CC00BF6E52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F63562511CCDB77D00308264 /* TCPaymentViewController.swift in Sources */,
+				F635625F1CCDB77D00308264 /* TCCarInfoModel.swift in Sources */,
+				F63562531CCDB77D00308264 /* TCCarStopInfo.swift in Sources */,
+				F635625B1CCDB77D00308264 /* TCHomePageController.swift in Sources */,
+				F635624E1CCDB77D00308264 /* WelcomeController.swift in Sources */,
+				F63562641CCDB77D00308264 /* TCHomeAlertTableCell.swift in Sources */,
+				F63562601CCDB77D00308264 /* TCContactorInfo.swift in Sources */,
+				F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */,
+				F635625D1CCDB77D00308264 /* TCInvitationController.swift in Sources */,
+				F63562661CCDB77D00308264 /* TCInvitationAlertView.swift in Sources */,
+				F635624F1CCDB77D00308264 /* TCMoreFunctionController.swift in Sources */,
+				F63562611CCDB77D00308264 /* NeedToPayCell.swift in Sources */,
+				F635625A1CCDB77D00308264 /* TCChangeWord.swift in Sources */,
+				F63562541CCDB77D00308264 /* TCPaymentCell.swift in Sources */,
+				F63562581CCDB77D00308264 /* CarInfoCell.swift in Sources */,
+				F63562561CCDB77D00308264 /* TCCarInfoController.swift in Sources */,
+				F63562631CCDB77D00308264 /* TCAlertSelectView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F635621C1CCDB77D00308264 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F635621D1CCDB77D00308264 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F619A43C1CC081CC00BF6E52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F619A43D1CC081CC00BF6E52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F619A43F1CC081CC00BF6E52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Parking/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.Parking;
+				PRODUCT_NAME = Parking;
+			};
+			name = Debug;
+		};
+		F619A4401CC081CC00BF6E52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Parking/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.Parking;
+				PRODUCT_NAME = Parking;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F619A4271CC081CC00BF6E52 /* Build configuration list for PBXProject "Parking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F619A43C1CC081CC00BF6E52 /* Debug */,
+				F619A43D1CC081CC00BF6E52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F619A43E1CC081CC00BF6E52 /* Build configuration list for PBXNativeTarget "Parking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F619A43F1CC081CC00BF6E52 /* Debug */,
+				F619A4401CC081CC00BF6E52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F619A4241CC081CC00BF6E52 /* Project object */;
+}
