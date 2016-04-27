@@ -29,6 +29,6 @@ class NeedToPayCell: UITableViewCell {
     }
     
     @IBAction func payment(sender: AnyObject) {
-        
+        print("支付")
     }
 }

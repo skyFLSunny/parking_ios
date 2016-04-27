@@ -5,13 +5,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCInvitationAlertView" customModule="ASwiftProduct" customModuleProvider="target">
-            <connections>
-                <outlet property="sendTo" destination="6u7-8v-WzM" id="Wt6-W0-rsi"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TCInvitationAlertView" customModule="Parking" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -19,31 +15,31 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发送到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuB-n1-0oi">
-                            <rect key="frame" x="8" y="4" width="48" height="20"/>
+                            <rect key="frame" x="8" y="8" width="48" height="20"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阿姨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6u7-8v-WzM">
-                            <rect key="frame" x="64" y="4" width="32" height="20"/>
+                            <rect key="frame" x="64" y="8" width="32" height="20"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="6u7-8v-WzM" firstAttribute="top" secondItem="5tf-Ga-OMf" secondAttribute="top" constant="4" id="8q5-7i-4D1"/>
+                        <constraint firstItem="6u7-8v-WzM" firstAttribute="top" secondItem="5tf-Ga-OMf" secondAttribute="top" constant="8" id="8q5-7i-4D1"/>
                         <constraint firstItem="6u7-8v-WzM" firstAttribute="leading" secondItem="IuB-n1-0oi" secondAttribute="trailing" constant="8" id="Gnu-WZ-7lH"/>
                         <constraint firstItem="IuB-n1-0oi" firstAttribute="leading" secondItem="5tf-Ga-OMf" secondAttribute="leading" constant="8" id="IDF-un-QLi"/>
                         <constraint firstAttribute="height" constant="30" id="bz7-i7-bqv"/>
-                        <constraint firstItem="IuB-n1-0oi" firstAttribute="top" secondItem="5tf-Ga-OMf" secondAttribute="top" constant="4" id="mfD-T0-E9L"/>
+                        <constraint firstItem="IuB-n1-0oi" firstAttribute="top" secondItem="5tf-Ga-OMf" secondAttribute="top" constant="8" id="mfD-T0-E9L"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SHm-Vu-gOd">
-                    <rect key="frame" x="0.0" y="30" width="320" height="60"/>
+                    <rect key="frame" x="0.0" y="30" width="320" height="75"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="停车缴费App真的很好用\n我邀请您下载" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQx-vB-UuU">
-                            <rect key="frame" x="8" y="8" width="304" height="21"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="停车缴费App真的很好用 我邀请您下载" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQx-vB-UuU">
+                            <rect key="frame" x="8" y="8" width="304" height="41"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" red="0.023529411764705882" green="0.6705882352941176" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -57,40 +53,40 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sD1-Jj-eCY">
-                    <rect key="frame" x="0.0" y="90" width="320" height="50"/>
+                    <rect key="frame" x="0.0" y="105" width="320" height="35"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53m-23-lwP">
-                            <rect key="frame" x="0.0" y="0.0" width="161" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="161" height="35"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="取消">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
-                                <action selector="cancelButtonClicked:" destination="-1" eventType="touchUpInside" id="FWE-tC-u1V"/>
+                                <action selector="cancelButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="sqq-us-VOs"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gch-0Q-f7d">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="3dY-bh-M6u"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aot-bh-PXA">
-                            <rect key="frame" x="160" y="0.0" width="1" height="50"/>
-                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                            <rect key="frame" x="160" y="0.0" width="1" height="35"/>
+                            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="1" id="HQb-xE-qhN"/>
                             </constraints>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ScA-9A-QOz">
-                            <rect key="frame" x="160" y="0.0" width="160" height="50"/>
+                            <rect key="frame" x="160" y="0.0" width="160" height="35"/>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>
                             <state key="normal" title="确认">
                                 <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </state>
                             <connections>
-                                <action selector="confirmButtonClicked:" destination="-1" eventType="touchUpInside" id="4BT-7z-DSR"/>
+                                <action selector="confirmButtonClicked:" destination="iN0-l3-epB" eventType="touchUpInside" id="ZMG-cz-Qy8"/>
                             </connections>
                         </button>
                     </subviews>
@@ -98,7 +94,7 @@
                         <constraint firstItem="ScA-9A-QOz" firstAttribute="width" secondItem="53m-23-lwP" secondAttribute="width" id="2u1-ne-7kw"/>
                         <constraint firstItem="ScA-9A-QOz" firstAttribute="leading" secondItem="Aot-bh-PXA" secondAttribute="trailing" constant="-1" id="4eL-Ct-rMM"/>
                         <constraint firstItem="Gch-0Q-f7d" firstAttribute="leading" secondItem="sD1-Jj-eCY" secondAttribute="leading" id="7ay-oZ-eXp"/>
-                        <constraint firstAttribute="height" constant="50" id="9CU-RT-mld"/>
+                        <constraint firstAttribute="height" constant="35" id="9CU-RT-mld"/>
                         <constraint firstAttribute="bottom" secondItem="53m-23-lwP" secondAttribute="bottom" id="Akh-JN-16x"/>
                         <constraint firstItem="53m-23-lwP" firstAttribute="top" secondItem="sD1-Jj-eCY" secondAttribute="top" id="Dbq-YW-Nog"/>
                         <constraint firstAttribute="trailing" secondItem="Gch-0Q-f7d" secondAttribute="trailing" id="Irh-Ao-ogh"/>
@@ -128,6 +124,9 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="sendTo" destination="6u7-8v-WzM" id="wFl-0f-gl1"/>
+            </connections>
             <point key="canvasLocation" x="330" y="316"/>
         </view>
     </objects>

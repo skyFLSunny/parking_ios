@@ -9,10 +9,17 @@
 import UIKit
 
 class TCMessageCell: UITableViewCell {
-
+    @IBOutlet weak var messageIcon: UIImageView!
+    @IBOutlet weak var messageContent: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    func showForMessageModel(model:AnyObject){
+    
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

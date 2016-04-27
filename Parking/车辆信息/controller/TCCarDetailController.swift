@@ -12,24 +12,27 @@ class TCCarDetailController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.edgesForExtendedLayout = UIRectEdge.None
+        self.automaticallyAdjustsScrollViewInsets = false
+        //nav
+        self.title = "邀请好友"
+        let navBtn = UIButton(type: .Custom)
+        navBtn.frame = CGRectMake(0, 0, 30, 30)
+        navBtn.setImage(UIImage(named: "ic_fanhui-left"), forState: .Normal)
+        navBtn.addTarget(self, action: #selector(backToHome), forControlEvents: .TouchUpInside)
+        let navItem = UIBarButtonItem(customView: navBtn)
+        self.navigationItem.leftBarButtonItem = navItem
+        let rightButton = UIButton(type: .Custom)
+        rightButton.frame = CGRectMake(0, 0, 30, 30)
+        rightButton.setImage(UIImage(named: "ic_gengduoyoushang"), forState: .Normal)
+        rightButton.addTarget(self, action: #selector(rightNavBtnClicked), forControlEvents: .TouchUpInside)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func rightNavBtnClicked(){
+        print("下拉")
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func backToHome(){
+        self.navigationController?.popViewControllerAnimated(true)
     }
-    */
-
 }

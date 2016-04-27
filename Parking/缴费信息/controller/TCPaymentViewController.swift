@@ -34,13 +34,21 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     func addNavItem(){
         let leftButton = UIButton(type: .Custom)
-        let rightButton = UIButton(type: .System)
+        let rightButton = UIButton(type: .Custom)
         leftButton.frame = CGRectMake(0, 0, 30, 30)
         rightButton.frame = CGRectMake(0, 0, 30, 30)
-        leftButton.setImage(UIImage(named:"ic_xiaoxi"), forState: .Normal)
-        rightButton.setImage(UIImage(named:"ic_qiehuan"), forState: .Normal)
+        leftButton.setImage(UIImage(named:"ic_daijiaofei"), forState: .Normal)
+        rightButton.setImage(UIImage(named:"ic_chazhao"), forState: .Normal)
+        leftButton.addTarget(self, action: #selector(leftBarButtonClicked), forControlEvents: .TouchUpInside)
+        rightButton.addTarget(self, action: #selector(rightBarButtonClicked), forControlEvents: .TouchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+    }
+    func leftBarButtonClicked(){
+        print("左导航按钮")
+    }
+    func rightBarButtonClicked(){
+        print("右导航按钮")
     }
 
     override func viewDidAppear(animated: Bool) {

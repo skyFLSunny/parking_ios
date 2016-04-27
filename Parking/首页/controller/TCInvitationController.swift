@@ -10,13 +10,15 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
-class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate {
+class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,TCInvitationAlertViewDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var personTableView: UITableView!
     var addbook : ABAddressBookRef?
     var dataSource : Dictionary<String,Array<TCContactorInfo>>?
     var keyChars:Array<String>?
+    var alertBackGroundView:UIButton?
+    var alertView:TCInvitationAlertView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +40,7 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         let textFieldInsideSearchBarLabel=textFieldInsideSearchBar!.valueForKey("placeholderLabel")as?UILabel
         
         textFieldInsideSearchBarLabel?.textColor=UIColor(red: 61/255.0, green: 186/255.0, blue: 124/255.0, alpha: 1)
-        
+        //nav
         self.title = "邀请好友"
         let navBtn = UIButton(type: .Custom)
         navBtn.frame = CGRectMake(0, 0, 30, 30)
@@ -46,6 +48,30 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         navBtn.addTarget(self, action: #selector(backToHome), forControlEvents: .TouchUpInside)
         let navItem = UIBarButtonItem(customView: navBtn)
         self.navigationItem.leftBarButtonItem = navItem
+    }
+    func addAlertViewForModel(model:TCContactorInfo){
+        //alert
+        let keywin = UIApplication.sharedApplication().keyWindow
+        alertBackGroundView = UIButton(type: UIButtonType.Custom)
+        alertBackGroundView!.backgroundColor = UIColor.blackColor()
+        alertBackGroundView!.alpha = 0.4
+        alertBackGroundView!.frame = keywin!.bounds
+        alertBackGroundView!.addTarget(self, action:#selector(BackgroundBtnClicked), forControlEvents: UIControlEvents.TouchUpInside)
+        keywin?.addSubview(alertBackGroundView!)
+        let viewWidth = keywin!.bounds.width*0.6
+        let viewHeight = keywin!.bounds.height*0.2
+        let viewX = keywin!.bounds.width*0.2
+        let viewY = keywin!.bounds.height*0.4
+        alertView = NSBundle.mainBundle().loadNibNamed("TCInvitationAlertView", owner: nil, options: nil).first as? TCInvitationAlertView
+        alertView?.showAlertForModel(model)
+        alertView!.frame = CGRectMake(viewX,viewY,viewWidth,viewHeight)
+        alertView?.layer.cornerRadius = 4
+        alertView?.delegate = self
+        keywin?.addSubview(alertView!)
+    }
+    func BackgroundBtnClicked(){
+        alertBackGroundView?.removeFromSuperview()
+        alertView?.removeFromSuperview()
     }
     func makeDataSource(){
         //处理通讯录信息
@@ -153,6 +179,7 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        addAlertViewForModel(dataSource![keyChars![indexPath.section]]![indexPath.row])
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
@@ -169,5 +196,16 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
     }
     func scrollViewDidScroll(scrollView: UIScrollView){
         self.view.endEditing(true)
+    }
+    // MARK:--TCInvitationAlertViewDelegate---
+    func invitationAlertSelectedButtonAtIndex(index:Int,_ model:TCContactorInfo?){
+        //cancel
+        if index == 0 {
+            print("取消")
+            BackgroundBtnClicked()
+        }else{ //confirm
+            print("确认,发送短信给"+String(model!.phoneNumber!))
+            BackgroundBtnClicked()
+        }
     }
 }

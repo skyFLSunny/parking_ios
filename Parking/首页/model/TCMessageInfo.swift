@@ -9,5 +9,8 @@
 import UIKit
 
 class TCMessageInfo: NSObject {
-
+    var date:String?
+    var carInfo:TCCarInfoModel?
+    var carStopInfo:TCCarStopInfo?
+    var messageCentent:String?
 }

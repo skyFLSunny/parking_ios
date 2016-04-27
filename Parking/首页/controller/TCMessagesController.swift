@@ -8,28 +8,49 @@
 
 import UIKit
 
-class TCMessagesController: UIViewController {
-
+class TCMessagesController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+    @IBOutlet weak var msgTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureUI()
+       
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func configureUI(){
+        self.edgesForExtendedLayout = UIRectEdge.None
+        self.automaticallyAdjustsScrollViewInsets = false
+        //tableview
+        msgTableView.registerNib(UINib(nibName: "TCMessageCell",bundle: nil), forCellReuseIdentifier: "cell")
+        msgTableView.tableFooterView = UIView()
+        //nav
+        self.title = "消息"
+        let navBtn = UIButton(type: .Custom)
+        navBtn.frame = CGRectMake(0, 0, 30, 30)
+        navBtn.setImage(UIImage(named: "ic_fanhui-left"), forState: .Normal)
+        navBtn.addTarget(self, action: #selector(backToHome), forControlEvents: .TouchUpInside)
+        let navItem = UIBarButtonItem(customView: navBtn)
+        self.navigationItem.leftBarButtonItem = navItem
+    }
+    func backToHome(){
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    // MARK: ---datasoure-----
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return 6
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell")
+        
+        return cell!
     }
-    */
+    //MARK:---tableViewDelegate--------
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
+        return 50
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        let msgDetailVC = TCMessageDetailController(nibName: "TCMessageDetailController",bundle: nil)
+        navigationController?.pushViewController(msgDetailVC, animated: true)
+    }
 
 }

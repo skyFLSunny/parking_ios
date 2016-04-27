@@ -37,6 +37,19 @@
 		F63562651CCDB77D00308264 /* TCHomeAlertTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562471CCDB77D00308264 /* TCHomeAlertTableCell.xib */; };
 		F63562661CCDB77D00308264 /* TCInvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562481CCDB77D00308264 /* TCInvitationAlertView.swift */; };
 		F63562671CCDB77D00308264 /* TCInvitationAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562491CCDB77D00308264 /* TCInvitationAlertView.xib */; };
+		F635626A1CCDFC6000308264 /* TCSingleClickedPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562681CCDFC6000308264 /* TCSingleClickedPayment.swift */; };
+		F635626B1CCDFC6000308264 /* TCSingleClickedPayment.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562691CCDFC6000308264 /* TCSingleClickedPayment.xib */; };
+		F635626E1CCE08E700308264 /* TCSingleClickPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635626C1CCE08E700308264 /* TCSingleClickPayCell.swift */; };
+		F635626F1CCE08E700308264 /* TCSingleClickPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F635626D1CCE08E700308264 /* TCSingleClickPayCell.xib */; };
+		F68C97821CCF0249001616CF /* TCMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C97801CCF0249001616CF /* TCMessagesController.swift */; };
+		F68C97831CCF0249001616CF /* TCMessagesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68C97811CCF0249001616CF /* TCMessagesController.xib */; };
+		F68C97861CCF0735001616CF /* TCMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C97841CCF0735001616CF /* TCMessageCell.swift */; };
+		F68C97871CCF0735001616CF /* TCMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68C97851CCF0735001616CF /* TCMessageCell.xib */; };
+		F68C978A1CCF48F5001616CF /* TCMessageDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C97881CCF48F5001616CF /* TCMessageDetailController.swift */; };
+		F68C978B1CCF48F5001616CF /* TCMessageDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68C97891CCF48F5001616CF /* TCMessageDetailController.xib */; };
+		F68C978D1CCF5558001616CF /* TCMessageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C978C1CCF5558001616CF /* TCMessageInfo.swift */; };
+		F68C97901CCF5E97001616CF /* TCCarDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */; };
+		F68C97911CCF5E97001616CF /* TCCarDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +84,19 @@
 		F63562471CCDB77D00308264 /* TCHomeAlertTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHomeAlertTableCell.xib; sourceTree = "<group>"; };
 		F63562481CCDB77D00308264 /* TCInvitationAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCInvitationAlertView.swift; sourceTree = "<group>"; };
 		F63562491CCDB77D00308264 /* TCInvitationAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCInvitationAlertView.xib; sourceTree = "<group>"; };
+		F63562681CCDFC6000308264 /* TCSingleClickedPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSingleClickedPayment.swift; sourceTree = "<group>"; };
+		F63562691CCDFC6000308264 /* TCSingleClickedPayment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCSingleClickedPayment.xib; sourceTree = "<group>"; };
+		F635626C1CCE08E700308264 /* TCSingleClickPayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSingleClickPayCell.swift; sourceTree = "<group>"; };
+		F635626D1CCE08E700308264 /* TCSingleClickPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCSingleClickPayCell.xib; sourceTree = "<group>"; };
+		F68C97801CCF0249001616CF /* TCMessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessagesController.swift; sourceTree = "<group>"; };
+		F68C97811CCF0249001616CF /* TCMessagesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMessagesController.xib; sourceTree = "<group>"; };
+		F68C97841CCF0735001616CF /* TCMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessageCell.swift; sourceTree = "<group>"; };
+		F68C97851CCF0735001616CF /* TCMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMessageCell.xib; sourceTree = "<group>"; };
+		F68C97881CCF48F5001616CF /* TCMessageDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessageDetailController.swift; sourceTree = "<group>"; };
+		F68C97891CCF48F5001616CF /* TCMessageDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMessageDetailController.xib; sourceTree = "<group>"; };
+		F68C978C1CCF5558001616CF /* TCMessageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessageInfo.swift; sourceTree = "<group>"; };
+		F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailController.swift; sourceTree = "<group>"; };
+		F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,16 +138,8 @@
 				F635621C1CCDB77D00308264 /* LaunchScreen.storyboard */,
 				F635621E1CCDB77D00308264 /* Info.plist */,
 				F635621B1CCDB77D00308264 /* Assets.xcassets */,
-				F635621F1CCDB77D00308264 /* ios */,
 			);
 			path = Parking;
-			sourceTree = "<group>";
-		};
-		F635621F1CCDB77D00308264 /* ios */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ios;
 			sourceTree = "<group>";
 		};
 		F63562211CCDB77D00308264 /* 更多 */ = {
@@ -208,6 +226,8 @@
 			children = (
 				F63562321CCDB77D00308264 /* TCCarInfoController.swift */,
 				F63562331CCDB77D00308264 /* TCCarInfoController.xib */,
+				F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */,
+				F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -246,6 +266,12 @@
 				F635623C1CCDB77D00308264 /* TCHomePageController.xib */,
 				F635623D1CCDB77D00308264 /* TCInvitationController.swift */,
 				F635623E1CCDB77D00308264 /* TCInvitationController.xib */,
+				F63562681CCDFC6000308264 /* TCSingleClickedPayment.swift */,
+				F63562691CCDFC6000308264 /* TCSingleClickedPayment.xib */,
+				F68C97801CCF0249001616CF /* TCMessagesController.swift */,
+				F68C97811CCF0249001616CF /* TCMessagesController.xib */,
+				F68C97881CCF48F5001616CF /* TCMessageDetailController.swift */,
+				F68C97891CCF48F5001616CF /* TCMessageDetailController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -255,6 +281,7 @@
 			children = (
 				F63562401CCDB77D00308264 /* TCCarInfoModel.swift */,
 				F63562411CCDB77D00308264 /* TCContactorInfo.swift */,
+				F68C978C1CCF5558001616CF /* TCMessageInfo.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -269,6 +296,10 @@
 				F63562471CCDB77D00308264 /* TCHomeAlertTableCell.xib */,
 				F63562481CCDB77D00308264 /* TCInvitationAlertView.swift */,
 				F63562491CCDB77D00308264 /* TCInvitationAlertView.xib */,
+				F635626C1CCE08E700308264 /* TCSingleClickPayCell.swift */,
+				F635626D1CCE08E700308264 /* TCSingleClickPayCell.xib */,
+				F68C97841CCF0735001616CF /* TCMessageCell.swift */,
+				F68C97851CCF0735001616CF /* TCMessageCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -331,17 +362,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F68C97911CCF5E97001616CF /* TCCarDetailController.xib in Resources */,
 				F63562671CCDB77D00308264 /* TCInvitationAlertView.xib in Resources */,
 				F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */,
 				F63562621CCDB77D00308264 /* NeedToPayCell.xib in Resources */,
 				F63562521CCDB77D00308264 /* TCPaymentViewController.xib in Resources */,
 				F63562591CCDB77D00308264 /* CarInfoCell.xib in Resources */,
+				F68C978B1CCF48F5001616CF /* TCMessageDetailController.xib in Resources */,
+				F635626B1CCDFC6000308264 /* TCSingleClickedPayment.xib in Resources */,
 				F63562501CCDB77D00308264 /* TCMoreFunctionController.xib in Resources */,
 				F63562651CCDB77D00308264 /* TCHomeAlertTableCell.xib in Resources */,
+				F68C97871CCF0735001616CF /* TCMessageCell.xib in Resources */,
 				F635625C1CCDB77D00308264 /* TCHomePageController.xib in Resources */,
 				F635625E1CCDB77D00308264 /* TCInvitationController.xib in Resources */,
 				F63562571CCDB77D00308264 /* TCCarInfoController.xib in Resources */,
 				F635624C1CCDB77D00308264 /* LaunchScreen.storyboard in Resources */,
+				F68C97831CCF0249001616CF /* TCMessagesController.xib in Resources */,
+				F635626F1CCE08E700308264 /* TCSingleClickPayCell.xib in Resources */,
 				F635624D1CCDB77D00308264 /* Info.plist in Resources */,
 				F63562551CCDB77D00308264 /* TCPaymentCell.xib in Resources */,
 			);
@@ -354,7 +391,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F68C97821CCF0249001616CF /* TCMessagesController.swift in Sources */,
+				F635626E1CCE08E700308264 /* TCSingleClickPayCell.swift in Sources */,
+				F68C97901CCF5E97001616CF /* TCCarDetailController.swift in Sources */,
 				F63562511CCDB77D00308264 /* TCPaymentViewController.swift in Sources */,
+				F68C978A1CCF48F5001616CF /* TCMessageDetailController.swift in Sources */,
 				F635625F1CCDB77D00308264 /* TCCarInfoModel.swift in Sources */,
 				F63562531CCDB77D00308264 /* TCCarStopInfo.swift in Sources */,
 				F635625B1CCDB77D00308264 /* TCHomePageController.swift in Sources */,
@@ -365,8 +406,11 @@
 				F635625D1CCDB77D00308264 /* TCInvitationController.swift in Sources */,
 				F63562661CCDB77D00308264 /* TCInvitationAlertView.swift in Sources */,
 				F635624F1CCDB77D00308264 /* TCMoreFunctionController.swift in Sources */,
+				F68C97861CCF0735001616CF /* TCMessageCell.swift in Sources */,
+				F68C978D1CCF5558001616CF /* TCMessageInfo.swift in Sources */,
 				F63562611CCDB77D00308264 /* NeedToPayCell.swift in Sources */,
 				F635625A1CCDB77D00308264 /* TCChangeWord.swift in Sources */,
+				F635626A1CCDFC6000308264 /* TCSingleClickedPayment.swift in Sources */,
 				F63562541CCDB77D00308264 /* TCPaymentCell.swift in Sources */,
 				F63562581CCDB77D00308264 /* CarInfoCell.swift in Sources */,
 				F63562561CCDB77D00308264 /* TCCarInfoController.swift in Sources */,

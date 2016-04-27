@@ -12,6 +12,7 @@ class TCCarInfoController: UITableViewController {
     var dataSource:Array<Array<TCCarInfoModel>>?
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hidesBottomBarWhenPushed = false
         makeDataSource()
         self.tableView.registerNib(UINib.init(nibName: "CarInfoCell", bundle: nil), forCellReuseIdentifier: "CarInfoCell")
         self.tableView.tableFooterView = UIView()
@@ -29,7 +30,7 @@ class TCCarInfoController: UITableViewController {
             }
         }
     }
-
+    //MARK:------dataSource----
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
@@ -43,11 +44,15 @@ class TCCarInfoController: UITableViewController {
             return dataSource![1].count
         }
     }
+    //MARK:-----delegate--------
     override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let carDetailVC = TCCarDetailController(nibName: "TCCarDetailController",bundle: nil)
+        carDetailVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(carDetailVC, animated: true)
     }
 
     override func  tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView{

@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCHomePageController" customModule="ASwiftProduct" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCHomePageController" customModule="Parking" customModuleProvider="target">
             <connections>
                 <outlet property="needPayTableView" destination="wBX-SZ-uAw" id="BTg-ch-LYd"/>
                 <outlet property="pagmentButton" destination="emw-En-SPg" id="roo-io-NcU"/>

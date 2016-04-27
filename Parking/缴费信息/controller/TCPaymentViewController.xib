@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCPaymentViewController" customModule="ASwiftProduct" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCPaymentViewController" customModule="Parking" customModuleProvider="target">
             <connections>
                 <outlet property="bottomScrollView" destination="VUf-QY-PLP" id="YKd-cP-Bmf"/>
                 <outlet property="leftPayButton" destination="obU-Ux-fwu" id="IS4-Zr-kq3"/>
@@ -25,7 +25,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="obU-Ux-fwu">
                             <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="未缴费">
+                            <state key="normal" title="未缴费" image="ic_weijiaofei">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -42,7 +42,7 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvA-A4-uIX">
                             <rect key="frame" x="160" y="0.0" width="160" height="40"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <state key="normal" title="已缴费">
+                            <state key="normal" title="已缴费" image="ic_yiijiaofei">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
@@ -86,4 +86,8 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_weijiaofei" width="17" height="17"/>
+        <image name="ic_yiijiaofei" width="18" height="18"/>
+    </resources>
 </document>

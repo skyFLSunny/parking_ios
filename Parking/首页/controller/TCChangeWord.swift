@@ -13,7 +13,6 @@ class TCChangeWord: NSObject {
     func charactorType(textString:String) -> Int{
         
         let char = textString.substringToIndex(textString.startIndex.advancedBy(1))
-        
         let eRegex: String = "^[a-zA-z]+$"
         let eTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", eRegex)
         if eTest.evaluateWithObject(char){

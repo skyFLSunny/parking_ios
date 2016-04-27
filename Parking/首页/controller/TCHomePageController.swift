@@ -21,6 +21,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         self.automaticallyAdjustsScrollViewInsets = false
         self.needPayTableView.tableFooterView = UIView()
         self.pagmentButton.layer.cornerRadius = 8
+        self.hidesBottomBarWhenPushed = false
         addNavigationItem()
     }
     func addNavigationItem(){
@@ -35,7 +36,6 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
-        
     }
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return 100
@@ -43,20 +43,19 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 2
     }
-//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-//        tableView.deselectRowAtIndexPath(indexPath, animated: false)
-//    }
     // 加好友
     func leftNavBtnClicked(){
         print("加好友")
         let invitationVC = TCInvitationController(nibName: "TCInvitationController",bundle: nil)
         invitationVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(invitationVC, animated: true)
-        self.hidesBottomBarWhenPushed = false
     }
     // 消息
     func rightNavBtnClicked(){
         print("消息")
+        let messageVC = TCMessagesController(nibName:"TCMessagesController",bundle: nil )
+        messageVC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(messageVC, animated: true)
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = NSBundle.mainBundle().loadNibNamed("NeedToPayCell", owner: self, options: nil).first as? NeedToPayCell
@@ -69,7 +68,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         let keywin = UIApplication.sharedApplication().keyWindow
         backgroundBtn = UIButton(type: UIButtonType.Custom)
         backgroundBtn!.backgroundColor = UIColor.blackColor()
-        backgroundBtn!.alpha = 0.7
+        backgroundBtn!.alpha = 0.4
         backgroundBtn!.frame = keywin!.bounds
         backgroundBtn!.addTarget(self, action:#selector(homeBackgroundBtnClicked), forControlEvents: UIControlEvents.TouchUpInside)
         keywin?.addSubview(backgroundBtn!)
@@ -96,5 +95,8 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         for carInfo in carinfos! {
             print(carInfo.carNumber!)
         }
+        let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
+        vc.showVCWithPayCars(carinfos!)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
