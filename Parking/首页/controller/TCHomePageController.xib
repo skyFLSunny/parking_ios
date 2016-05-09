@@ -56,7 +56,7 @@
                             <color key="textColor" red="0.21176470589999999" green="0.74509803919999995" blue="0.3921568627" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Afq-Hk-A6T">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_qiche-1" translatesAutoresizingMaskIntoConstraints="NO" id="Afq-Hk-A6T">
                             <rect key="frame" x="115" y="8" width="90" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="90" id="Hu1-Zd-y6b"/>
@@ -155,6 +155,7 @@
         </view>
     </objects>
     <resources>
+        <image name="ic_qiche-1" width="78" height="49"/>
         <image name="ic_weijiaofei" width="17" height="17"/>
     </resources>
 </document>

@@ -9,9 +9,12 @@
 import UIKit
 
 class TCCarDetailController: UIViewController {
+    var showPopMenu:Bool?
+    var popMenu:TCCarDetailPopView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        showPopMenu = false
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
         //nav
@@ -29,7 +32,19 @@ class TCCarDetailController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
     }
     func rightNavBtnClicked(){
-        print("下拉")
+        if showPopMenu == false {
+            popMenu = NSBundle.mainBundle().loadNibNamed("TCCarDetailPopView", owner: nil, options: nil).first as? TCCarDetailPopView
+            let popX = self.view.frame.width-130
+            popMenu!.frame = CGRectMake(popX, 0, 125, 100)
+            popMenu?.backgroundColor = UIColor.clearColor()
+            self.view.addSubview(popMenu!)
+            showPopMenu = true
+        }else{
+            popMenu?.removeFromSuperview()
+            popMenu = nil
+            showPopMenu = false
+        }
+        
     }
     
     func backToHome(){

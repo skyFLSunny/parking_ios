@@ -5,7 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCMoreFunctionController" customModule="ASwiftProduct" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCMoreFunctionController" customModule="Parking" customModuleProvider="target">
             <connections>
                 <outlet property="addressLabel" destination="gBp-oA-5II" id="LDV-zq-fi7"/>
                 <outlet property="avatarButton" destination="ean-QF-49X" id="7Xd-lu-C4J"/>

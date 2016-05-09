@@ -50,6 +50,14 @@
 		F68C978D1CCF5558001616CF /* TCMessageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C978C1CCF5558001616CF /* TCMessageInfo.swift */; };
 		F68C97901CCF5E97001616CF /* TCCarDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */; };
 		F68C97911CCF5E97001616CF /* TCCarDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */; };
+		F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */; };
+		F6D7FE4B1CE0360B0032AEE8 /* TCCarDetailPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */; };
+		F6D7FE4F1CE066590032AEE8 /* TCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FE4D1CE066590032AEE8 /* TCLoginViewController.swift */; };
+		F6D7FE501CE066590032AEE8 /* TCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D7FE4E1CE066590032AEE8 /* TCLoginViewController.xib */; };
+		F6D7FE531CE066840032AEE8 /* TCRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FE511CE066840032AEE8 /* TCRegisterViewController.swift */; };
+		F6D7FE541CE066840032AEE8 /* TCRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D7FE521CE066840032AEE8 /* TCRegisterViewController.xib */; };
+		F6D7FE571CE06A240032AEE8 /* TCForgetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FE551CE06A240032AEE8 /* TCForgetPasswordController.swift */; };
+		F6D7FE581CE06A240032AEE8 /* TCForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D7FE561CE06A240032AEE8 /* TCForgetPasswordController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,7 +66,7 @@
 		F635621B1CCDB77D00308264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F635621D1CCDB77D00308264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F635621E1CCDB77D00308264 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F63562201CCDB77D00308264 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		F63562201CCDB77D00308264 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WelcomeController.swift; path = Parking/WelcomeController.swift; sourceTree = SOURCE_ROOT; };
 		F63562231CCDB77D00308264 /* TCMoreFunctionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMoreFunctionController.swift; sourceTree = "<group>"; };
 		F63562241CCDB77D00308264 /* TCMoreFunctionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMoreFunctionController.xib; sourceTree = "<group>"; };
 		F63562291CCDB77D00308264 /* TCPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPaymentViewController.swift; sourceTree = "<group>"; };
@@ -97,6 +105,14 @@
 		F68C978C1CCF5558001616CF /* TCMessageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessageInfo.swift; sourceTree = "<group>"; };
 		F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailController.swift; sourceTree = "<group>"; };
 		F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailController.xib; sourceTree = "<group>"; };
+		F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailPopView.swift; sourceTree = "<group>"; };
+		F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailPopView.xib; sourceTree = "<group>"; };
+		F6D7FE4D1CE066590032AEE8 /* TCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCLoginViewController.swift; sourceTree = "<group>"; };
+		F6D7FE4E1CE066590032AEE8 /* TCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCLoginViewController.xib; sourceTree = "<group>"; };
+		F6D7FE511CE066840032AEE8 /* TCRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCRegisterViewController.swift; sourceTree = "<group>"; };
+		F6D7FE521CE066840032AEE8 /* TCRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCRegisterViewController.xib; sourceTree = "<group>"; };
+		F6D7FE551CE06A240032AEE8 /* TCForgetPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCForgetPasswordController.swift; sourceTree = "<group>"; };
+		F6D7FE561CE06A240032AEE8 /* TCForgetPasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCForgetPasswordController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,12 +145,12 @@
 		F63562191CCDB77D00308264 /* Parking */ = {
 			isa = PBXGroup;
 			children = (
+				F6D7FE4C1CE066320032AEE8 /* Welcome */,
 				F63562211CCDB77D00308264 /* 更多 */,
 				F63562271CCDB77D00308264 /* 缴费信息 */,
 				F63562301CCDB77D00308264 /* 车辆信息 */,
 				F63562381CCDB77D00308264 /* 首页 */,
 				F635621A1CCDB77D00308264 /* AppDelegate.swift */,
-				F63562201CCDB77D00308264 /* WelcomeController.swift */,
 				F635621C1CCDB77D00308264 /* LaunchScreen.storyboard */,
 				F635621E1CCDB77D00308264 /* Info.plist */,
 				F635621B1CCDB77D00308264 /* Assets.xcassets */,
@@ -244,6 +260,8 @@
 			children = (
 				F63562361CCDB77D00308264 /* CarInfoCell.swift */,
 				F63562371CCDB77D00308264 /* CarInfoCell.xib */,
+				F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */,
+				F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -302,6 +320,20 @@
 				F68C97851CCF0735001616CF /* TCMessageCell.xib */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		F6D7FE4C1CE066320032AEE8 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				F63562201CCDB77D00308264 /* WelcomeController.swift */,
+				F6D7FE4D1CE066590032AEE8 /* TCLoginViewController.swift */,
+				F6D7FE4E1CE066590032AEE8 /* TCLoginViewController.xib */,
+				F6D7FE511CE066840032AEE8 /* TCRegisterViewController.swift */,
+				F6D7FE521CE066840032AEE8 /* TCRegisterViewController.xib */,
+				F6D7FE551CE06A240032AEE8 /* TCForgetPasswordController.swift */,
+				F6D7FE561CE06A240032AEE8 /* TCForgetPasswordController.xib */,
+			);
+			path = Welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -367,6 +399,8 @@
 				F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */,
 				F63562621CCDB77D00308264 /* NeedToPayCell.xib in Resources */,
 				F63562521CCDB77D00308264 /* TCPaymentViewController.xib in Resources */,
+				F6D7FE581CE06A240032AEE8 /* TCForgetPasswordController.xib in Resources */,
+				F6D7FE4B1CE0360B0032AEE8 /* TCCarDetailPopView.xib in Resources */,
 				F63562591CCDB77D00308264 /* CarInfoCell.xib in Resources */,
 				F68C978B1CCF48F5001616CF /* TCMessageDetailController.xib in Resources */,
 				F635626B1CCDFC6000308264 /* TCSingleClickedPayment.xib in Resources */,
@@ -377,9 +411,11 @@
 				F635625E1CCDB77D00308264 /* TCInvitationController.xib in Resources */,
 				F63562571CCDB77D00308264 /* TCCarInfoController.xib in Resources */,
 				F635624C1CCDB77D00308264 /* LaunchScreen.storyboard in Resources */,
+				F6D7FE501CE066590032AEE8 /* TCLoginViewController.xib in Resources */,
 				F68C97831CCF0249001616CF /* TCMessagesController.xib in Resources */,
 				F635626F1CCE08E700308264 /* TCSingleClickPayCell.xib in Resources */,
 				F635624D1CCDB77D00308264 /* Info.plist in Resources */,
+				F6D7FE541CE066840032AEE8 /* TCRegisterViewController.xib in Resources */,
 				F63562551CCDB77D00308264 /* TCPaymentCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,17 +439,21 @@
 				F63562641CCDB77D00308264 /* TCHomeAlertTableCell.swift in Sources */,
 				F63562601CCDB77D00308264 /* TCContactorInfo.swift in Sources */,
 				F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */,
+				F6D7FE571CE06A240032AEE8 /* TCForgetPasswordController.swift in Sources */,
 				F635625D1CCDB77D00308264 /* TCInvitationController.swift in Sources */,
+				F6D7FE4F1CE066590032AEE8 /* TCLoginViewController.swift in Sources */,
 				F63562661CCDB77D00308264 /* TCInvitationAlertView.swift in Sources */,
 				F635624F1CCDB77D00308264 /* TCMoreFunctionController.swift in Sources */,
 				F68C97861CCF0735001616CF /* TCMessageCell.swift in Sources */,
 				F68C978D1CCF5558001616CF /* TCMessageInfo.swift in Sources */,
 				F63562611CCDB77D00308264 /* NeedToPayCell.swift in Sources */,
 				F635625A1CCDB77D00308264 /* TCChangeWord.swift in Sources */,
+				F6D7FE531CE066840032AEE8 /* TCRegisterViewController.swift in Sources */,
 				F635626A1CCDFC6000308264 /* TCSingleClickedPayment.swift in Sources */,
 				F63562541CCDB77D00308264 /* TCPaymentCell.swift in Sources */,
 				F63562581CCDB77D00308264 /* CarInfoCell.swift in Sources */,
 				F63562561CCDB77D00308264 /* TCCarInfoController.swift in Sources */,
+				F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */,
 				F63562631CCDB77D00308264 /* TCAlertSelectView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
