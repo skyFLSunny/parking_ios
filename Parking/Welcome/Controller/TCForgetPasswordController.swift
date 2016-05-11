@@ -18,10 +18,12 @@ class TCForgetPasswordController: UIViewController {
     @IBOutlet weak var secretBtn: UIButton!
     @IBOutlet weak var confirmScrtBtn: UIButton!
     @IBOutlet weak var completeBtn: UIButton!
+    var logVM:TCVMLogModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        logVM = TCVMLogModel()
     }
     
     func configureUI(){
@@ -57,6 +59,11 @@ class TCForgetPasswordController: UIViewController {
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func getIdentifyNumberBtn(sender: AnyObject) {
+        if phoneNumber.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入手机号！")
+            return
+        }
+        logVM?.sendMobileCodeWithPhoneNumber(phoneNumber.text!)
         print("获取验证码")
     }
     
@@ -69,7 +76,36 @@ class TCForgetPasswordController: UIViewController {
     }
     
     @IBAction func completeButtonAction(sender: AnyObject) {
-        print("complete")
+        if phoneNumber.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入手机号")
+            return
+        }
+        if identifyNumber.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入验证码")
+            return
+        }
+        if passWordNum.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入密码")
+            return
+        }
+        if confirm.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请确认密码")
+            return
+        }
+        if passWordNum.text != confirm.text {
+            SVProgressHUD.showErrorWithStatus("两次输入密码不一致")
+            return
+        }
+        logVM?.forgetPassword(phoneNumber.text!, code: identifyNumber.text!, password: passWordNum.text!, handle: { [unowned self] (success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
+                    SVProgressHUD.showSuccessWithStatus("修改成功")
+                    self.navigationController?.popViewControllerAnimated(true)
+                }else{
+                    SVProgressHUD.showErrorWithStatus(response as! String)
+                }
+            })
+        })
     }
     
 }

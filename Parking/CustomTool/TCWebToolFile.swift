@@ -8,4 +8,7 @@
 
 import Foundation
 
+let WIDTH = UIScreen.mainScreen().bounds.size.width
+let HEIGHT = UIScreen.mainScreen().bounds.size.height
+
 var PARK_URL_Header = "http://parking.xiaocool.net/index.php?g=apps&m=index"

@@ -44,6 +44,13 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     }
     @IBAction func cancelBtnClicked(sender: AnyObject) {
         print("点退出")
+        let loginVC = TCLoginViewController(nibName: "TCLoginViewController",bundle: nil)
+        loginVC.title = "停车缴费"
+        let loginNav = UINavigationController(rootViewController:loginVC)
+        loginNav.navigationBar.barTintColor = UIColor(red: 54/255, green: 190/255, blue: 100/255, alpha: 1)
+        loginNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        let myWindow  = UIApplication.sharedApplication().keyWindow
+        myWindow?.rootViewController = loginNav
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 5

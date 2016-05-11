@@ -16,10 +16,12 @@ class TCRegisterViewController: UIViewController {
     @IBOutlet weak var passwordNumber: UITextField!
     @IBOutlet weak var secretBtn: UIButton!
     @IBOutlet weak var completeBtn: UIButton!
+    var logVM:TCVMLogModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        logVM = TCVMLogModel()
     }
     
     func configureUI(){
@@ -46,21 +48,43 @@ class TCRegisterViewController: UIViewController {
         let navItem = UIBarButtonItem(customView: navBtn)
         self.navigationItem.leftBarButtonItem = navItem
     }
-    
     func tapBackView(){
         self.view.endEditing(true)
     }
-    
     func backToHome(){
         self.navigationController?.popViewControllerAnimated(true)
     }
-    
     @IBAction func getIdentifyingAction(sender: AnyObject) {
+        if phoneNumber.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入手机号！")
+            return
+        }
+        logVM?.sendMobileCodeWithPhoneNumber(phoneNumber.text!)
         print("get identify")
     }
-    
     @IBAction func completeButtonAction(sender: AnyObject) {
-        print("complete")
+        if phoneNumber.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入手机号！")
+            return
+        }
+        if identifyNumber.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入验证码!")
+            return
+        }
+        if passwordNumber.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入密码!")
+            return
+        }
+        logVM?.register(phoneNumber.text!, password: passwordNumber.text!, code: identifyNumber.text!, avatar: "", name: "", devicestate: "", handle: { [unowned self] (success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
+                    SVProgressHUD.showSuccessWithStatus("注册成功")
+                    self.navigationController?.popViewControllerAnimated(true)
+                }else{
+                    SVProgressHUD.showErrorWithStatus(response as! String)
+                }
+            })
+        })
     }
     @IBAction func passwordSecretBtnAction(sender: AnyObject) {
     }

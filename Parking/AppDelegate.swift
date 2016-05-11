@@ -15,9 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        SVProgressHUD.setMinimumDismissTimeInterval(0.1)
+        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.Dark)
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.backgroundColor = UIColor.blueColor()
-        self.window?.rootViewController = WelcomeColler()
+        let loginVC = TCLoginViewController(nibName: "TCLoginViewController",bundle: nil)
+        loginVC.title = "停车缴费"
+        let loginNav = UINavigationController(rootViewController:loginVC)
+        loginNav.navigationBar.barTintColor = UIColor(red: 54/255, green: 190/255, blue: 100/255, alpha: 1)
+        loginNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        self.window?.rootViewController = loginNav
         self.window?.makeKeyAndVisible()
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         return true

@@ -43,10 +43,26 @@ class TCLoginViewController: UIViewController {
     }
     @IBAction func loginAction(sender: AnyObject) {
         print("login")
-        logVM?.login("123", password: "123", handle: { (success, response) in
-            
+        if (phoneNumber.text!.isEmpty) {
+            SVProgressHUD.showErrorWithStatus("请输入手机号！")
+            return
+        }
+        if (password.text!.isEmpty) {
+            SVProgressHUD.showErrorWithStatus("请输入密码！")
+            return
+        }
+        SVProgressHUD.show()
+        logVM?.login(phoneNumber.text!, password: password.text!, handle: { [unowned self] (success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success == false {
+                    SVProgressHUD.showErrorWithStatus(response as! String)
+                    return
+                }else{
+                    SVProgressHUD.showSuccessWithStatus("登录成功")
+                    self.loginSuccess()
+                }
+            })
         })
-//        loginSuccess()
     }
     @IBAction func forgetPwdAction(sender: AnyObject) {
         print("forget")
