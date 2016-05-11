@@ -22,8 +22,10 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         configurUI()
+        phoneNumLabel.text = TCUserInfo.currentInfo.phoneNumber
     }
     func configurUI(){
+        hidesBottomBarWhenPushed = false
         avatarButton.layer.cornerRadius = 35
         avatarButton.clipsToBounds = true
         cancelBtn.layer.cornerRadius = 8
@@ -41,6 +43,9 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     }
     @IBAction func editBtnClicked(sender: AnyObject) {
         print("点编辑")
+        let VC = TCEditUserInfoController(nibName: "TCEditUserInfoController",bundle: nil)
+        VC.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(VC, animated: true)
     }
     @IBAction func cancelBtnClicked(sender: AnyObject) {
         print("点退出")

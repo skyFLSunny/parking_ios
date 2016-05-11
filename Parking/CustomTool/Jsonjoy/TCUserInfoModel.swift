@@ -11,7 +11,7 @@ class TCUserInfoModel: JSONJoy{
     var data:UserInfo?
     var errorData:String?
     var datastring:String?
-    //var uid:String?
+
     init(){
     }
     required init(_ decoder:JSONDecoder){

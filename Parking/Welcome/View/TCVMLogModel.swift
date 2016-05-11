@@ -11,20 +11,23 @@ import UIKit
 typealias ResponseBlock = (success:Bool,response:AnyObject?)->Void
 
 class TCVMLogModel: NSObject {
-    var webManager:AFHTTPSessionManager?
+    var requestManager:AFHTTPSessionManager?
     
     override init() {
         super.init()
-        webManager = AFHTTPSessionManager()
-        webManager?.responseSerializer = AFHTTPResponseSerializer()
+        requestManager = AFHTTPSessionManager()
+        requestManager?.responseSerializer = AFHTTPResponseSerializer()
     }
     //登录
     func login(phoneNum:String,password:String,handle:ResponseBlock){
         
         let paramDic = ["a":"applogin","phone":phoneNum,"password":password]
         
-        webManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
             let result = TCUserInfoModel(JSONDecoder(response!))
+            TCUserInfo.currentInfo.phoneNumber = result.data?.user_phone
+            TCUserInfo.currentInfo.userid = String(result.data?.id)
+            
             let responseStr = result.status == "success" ? nil : result.errorData
                 handle(success: result.status == "success",response: responseStr)
             }, failure: { (task, error) in
@@ -34,7 +37,7 @@ class TCVMLogModel: NSObject {
     //发送验证码
     func sendMobileCodeWithPhoneNumber(phoneNumber:String){
         let paramDic = ["a":"SendMobileCode","phone":phoneNumber]
-        webManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, obj) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, obj) in
             }, failure: { (task, error) in})
     }
     //注册
@@ -43,7 +46,7 @@ class TCVMLogModel: NSObject {
                   devicestate:String,handle:ResponseBlock){
         let paramDic = ["a":"AppRegister","phone":phone,"password":password,
                         "code":code,"avatar":avatar,"name":name,"devicestate":devicestate]
-        webManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData
             handle(success: result.status == "success",response: responseStr)
@@ -54,7 +57,7 @@ class TCVMLogModel: NSObject {
     //忘记密码
     func forgetPassword(phone:String,code:String,password:String,handle:ResponseBlock){
         let paramDic = ["a":"forgetpwd","phone":phone,"code":code,"password":password]
-        webManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData
             handle(success: result.status == "success",response: responseStr)

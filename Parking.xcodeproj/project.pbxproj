@@ -52,6 +52,9 @@
 		F67C15D71CE2BD69004E1C9E /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D31CE2BD69004E1C9E /* Http.swift */; };
 		F67C15D81CE2BD69004E1C9E /* TCUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D41CE2BD69004E1C9E /* TCUserInfoModel.swift */; };
 		F67C15D91CE2BD69004E1C9E /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D51CE2BD69004E1C9E /* JSONJoy.swift */; };
+		F67C15DD1CE30A5D004E1C9E /* TCEditUserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15DB1CE30A5D004E1C9E /* TCEditUserInfoController.swift */; };
+		F67C15DE1CE30A5D004E1C9E /* TCEditUserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F67C15DC1CE30A5D004E1C9E /* TCEditUserInfoController.xib */; };
+		F67C15E01CE322AA004E1C9E /* TCUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15DF1CE322AA004E1C9E /* TCUserInfo.swift */; };
 		F68C97821CCF0249001616CF /* TCMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C97801CCF0249001616CF /* TCMessagesController.swift */; };
 		F68C97831CCF0249001616CF /* TCMessagesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68C97811CCF0249001616CF /* TCMessagesController.xib */; };
 		F68C97861CCF0735001616CF /* TCMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C97841CCF0735001616CF /* TCMessageCell.swift */; };
@@ -117,6 +120,9 @@
 		F67C15D31CE2BD69004E1C9E /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		F67C15D41CE2BD69004E1C9E /* TCUserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCUserInfoModel.swift; path = ../../CustomTool/Jsonjoy/TCUserInfoModel.swift; sourceTree = "<group>"; };
 		F67C15D51CE2BD69004E1C9E /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
+		F67C15DB1CE30A5D004E1C9E /* TCEditUserInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCEditUserInfoController.swift; sourceTree = "<group>"; };
+		F67C15DC1CE30A5D004E1C9E /* TCEditUserInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCEditUserInfoController.xib; sourceTree = "<group>"; };
+		F67C15DF1CE322AA004E1C9E /* TCUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCUserInfo.swift; path = Parking/Welcome/model/TCUserInfo.swift; sourceTree = SOURCE_ROOT; };
 		F68C97801CCF0249001616CF /* TCMessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessagesController.swift; sourceTree = "<group>"; };
 		F68C97811CCF0249001616CF /* TCMessagesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMessagesController.xib; sourceTree = "<group>"; };
 		F68C97841CCF0735001616CF /* TCMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessageCell.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				F67C15D41CE2BD69004E1C9E /* TCUserInfoModel.swift */,
+				F67C15DF1CE322AA004E1C9E /* TCUserInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -250,6 +257,8 @@
 			children = (
 				F63562231CCDB77D00308264 /* TCMoreFunctionController.swift */,
 				F63562241CCDB77D00308264 /* TCMoreFunctionController.xib */,
+				F67C15DB1CE30A5D004E1C9E /* TCEditUserInfoController.swift */,
+				F67C15DC1CE30A5D004E1C9E /* TCEditUserInfoController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -496,6 +505,7 @@
 				F635625C1CCDB77D00308264 /* TCHomePageController.xib in Resources */,
 				F635625E1CCDB77D00308264 /* TCInvitationController.xib in Resources */,
 				F63562571CCDB77D00308264 /* TCCarInfoController.xib in Resources */,
+				F67C15DE1CE30A5D004E1C9E /* TCEditUserInfoController.xib in Resources */,
 				F635624C1CCDB77D00308264 /* LaunchScreen.storyboard in Resources */,
 				F68C97831CCF0249001616CF /* TCMessagesController.xib in Resources */,
 				F635626F1CCE08E700308264 /* TCSingleClickPayCell.xib in Resources */,
@@ -565,6 +575,7 @@
 				F635626E1CCE08E700308264 /* TCSingleClickPayCell.swift in Sources */,
 				F68C97901CCF5E97001616CF /* TCCarDetailController.swift in Sources */,
 				F63562511CCDB77D00308264 /* TCPaymentViewController.swift in Sources */,
+				F67C15DD1CE30A5D004E1C9E /* TCEditUserInfoController.swift in Sources */,
 				F67C15D71CE2BD69004E1C9E /* Http.swift in Sources */,
 				F68C978A1CCF48F5001616CF /* TCMessageDetailController.swift in Sources */,
 				F635625F1CCDB77D00308264 /* TCCarInfoModel.swift in Sources */,
@@ -593,6 +604,7 @@
 				F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */,
 				F67C15D91CE2BD69004E1C9E /* JSONJoy.swift in Sources */,
 				F63562631CCDB77D00308264 /* TCAlertSelectView.swift in Sources */,
+				F67C15E01CE322AA004E1C9E /* TCUserInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCHomePageController" customModule="Parking" customModuleProvider="target">
@@ -74,11 +75,11 @@
                         <constraint firstItem="Wqv-sq-DI0" firstAttribute="top" secondItem="XTG-ZI-9xD" secondAttribute="bottom" constant="15" id="XNJ-c3-9Jk"/>
                         <constraint firstItem="PaH-r3-L7r" firstAttribute="leading" secondItem="Afq-Hk-A6T" secondAttribute="trailing" constant="15" id="YmF-oa-8eL"/>
                         <constraint firstItem="yn4-oQ-evx" firstAttribute="top" secondItem="EsL-iY-wOE" secondAttribute="bottom" constant="8" id="dLr-bD-bjo"/>
+                        <constraint firstAttribute="width" secondItem="cYc-ae-evf" secondAttribute="height" multiplier="16:11" id="eRa-hS-ckR"/>
                         <constraint firstItem="Wqv-sq-DI0" firstAttribute="top" secondItem="PaH-r3-L7r" secondAttribute="bottom" constant="15" id="ikZ-Hl-yMB"/>
                         <constraint firstItem="Wqv-sq-DI0" firstAttribute="top" secondItem="Afq-Hk-A6T" secondAttribute="bottom" constant="15" id="jEh-4O-ftc"/>
                         <constraint firstItem="Afq-Hk-A6T" firstAttribute="centerX" secondItem="cYc-ae-evf" secondAttribute="centerX" id="lxw-0t-enD"/>
                         <constraint firstItem="Afq-Hk-A6T" firstAttribute="top" secondItem="cYc-ae-evf" secondAttribute="top" constant="8" id="pLa-1e-hJK"/>
-                        <constraint firstAttribute="height" constant="220" id="vAc-m3-8Mr"/>
                         <constraint firstItem="Afq-Hk-A6T" firstAttribute="leading" secondItem="XTG-ZI-9xD" secondAttribute="trailing" constant="8" id="vXL-4k-sGZ"/>
                     </constraints>
                 </view>
@@ -110,9 +111,9 @@
                     </subviews>
                     <color key="backgroundColor" red="0.89411764705882357" green="0.89411764705882357" blue="0.89411764705882357" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="98" id="4l3-BU-qUk"/>
                         <constraint firstItem="emw-En-SPg" firstAttribute="centerY" secondItem="0iV-d3-DGa" secondAttribute="centerY" id="H4K-IX-x7c"/>
                         <constraint firstItem="emw-En-SPg" firstAttribute="centerX" secondItem="0iV-d3-DGa" secondAttribute="centerX" id="aCI-dR-5D4"/>
+                        <constraint firstAttribute="width" secondItem="0iV-d3-DGa" secondAttribute="height" multiplier="160:49" id="aRi-CL-oee"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Je2-OZ-5HQ">
@@ -130,7 +131,7 @@
                     </subviews>
                     <color key="backgroundColor" red="0.89411764709999997" green="0.89411764709999997" blue="0.89411764709999997" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="jbM-NO-kee"/>
+                        <constraint firstAttribute="width" secondItem="Je2-OZ-5HQ" secondAttribute="height" multiplier="32:5" id="wqq-Fz-GCL"/>
                     </constraints>
                 </view>
             </subviews>
