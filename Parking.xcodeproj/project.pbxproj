@@ -16,6 +16,10 @@
 		F6169F011CE1C58300609A11 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169EFA1CE1C58300609A11 /* WelcomeController.swift */; };
 		F6169F061CE1CF6300609A11 /* TCWebToolFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */; };
 		F6169F0A1CE1D11200609A11 /* TCVMLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169F091CE1D11200609A11 /* TCVMLogModel.swift */; };
+		F62593A61CE470BD000BC840 /* TCPayDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62593A41CE470BD000BC840 /* TCPayDetailController.swift */; };
+		F62593A71CE470BD000BC840 /* TCPayDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62593A51CE470BD000BC840 /* TCPayDetailController.xib */; };
+		F62593A91CE48155000BC840 /* TCSinglePayFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62593A81CE48155000BC840 /* TCSinglePayFootView.swift */; };
+		F62593AB1CE48162000BC840 /* TCSinglePayFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62593AA1CE48162000BC840 /* TCSinglePayFootView.xib */; };
 		F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635621A1CCDB77D00308264 /* AppDelegate.swift */; };
 		F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F635621B1CCDB77D00308264 /* Assets.xcassets */; };
 		F635624C1CCDB77D00308264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F635621C1CCDB77D00308264 /* LaunchScreen.storyboard */; };
@@ -84,6 +88,10 @@
 		F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCWebToolFile.swift; sourceTree = "<group>"; };
 		F6169F091CE1D11200609A11 /* TCVMLogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCVMLogModel.swift; sourceTree = "<group>"; };
 		F619A42C1CC081CC00BF6E52 /* Parking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F62593A41CE470BD000BC840 /* TCPayDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPayDetailController.swift; sourceTree = "<group>"; };
+		F62593A51CE470BD000BC840 /* TCPayDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPayDetailController.xib; sourceTree = "<group>"; };
+		F62593A81CE48155000BC840 /* TCSinglePayFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSinglePayFootView.swift; sourceTree = "<group>"; };
+		F62593AA1CE48162000BC840 /* TCSinglePayFootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCSinglePayFootView.xib; sourceTree = "<group>"; };
 		F635621A1CCDB77D00308264 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F635621B1CCDB77D00308264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F635621D1CCDB77D00308264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -292,6 +300,8 @@
 			children = (
 				F63562291CCDB77D00308264 /* TCPaymentViewController.swift */,
 				F635622A1CCDB77D00308264 /* TCPaymentViewController.xib */,
+				F62593A41CE470BD000BC840 /* TCPayDetailController.swift */,
+				F62593A51CE470BD000BC840 /* TCPayDetailController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -309,6 +319,8 @@
 			children = (
 				F635622E1CCDB77D00308264 /* TCPaymentCell.swift */,
 				F635622F1CCDB77D00308264 /* TCPaymentCell.xib */,
+				F62593A81CE48155000BC840 /* TCSinglePayFootView.swift */,
+				F62593AA1CE48162000BC840 /* TCSinglePayFootView.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -492,9 +504,11 @@
 				F63562671CCDB77D00308264 /* TCInvitationAlertView.xib in Resources */,
 				F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */,
 				F63562621CCDB77D00308264 /* NeedToPayCell.xib in Resources */,
+				F62593AB1CE48162000BC840 /* TCSinglePayFootView.xib in Resources */,
 				F63562521CCDB77D00308264 /* TCPaymentViewController.xib in Resources */,
 				F6D7FE4B1CE0360B0032AEE8 /* TCCarDetailPopView.xib in Resources */,
 				F63562591CCDB77D00308264 /* CarInfoCell.xib in Resources */,
+				F62593A71CE470BD000BC840 /* TCPayDetailController.xib in Resources */,
 				F68C978B1CCF48F5001616CF /* TCMessageDetailController.xib in Resources */,
 				F6169EFC1CE1C58300609A11 /* TCForgetPasswordController.xib in Resources */,
 				F6169F001CE1C58300609A11 /* TCRegisterViewController.xib in Resources */,
@@ -584,6 +598,7 @@
 				F635625B1CCDB77D00308264 /* TCHomePageController.swift in Sources */,
 				F63562641CCDB77D00308264 /* TCHomeAlertTableCell.swift in Sources */,
 				F63562601CCDB77D00308264 /* TCContactorInfo.swift in Sources */,
+				F62593A61CE470BD000BC840 /* TCPayDetailController.swift in Sources */,
 				F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */,
 				F635625D1CCDB77D00308264 /* TCInvitationController.swift in Sources */,
 				F6169EFD1CE1C58300609A11 /* TCLoginViewController.swift in Sources */,
@@ -600,6 +615,7 @@
 				F63562541CCDB77D00308264 /* TCPaymentCell.swift in Sources */,
 				F63562581CCDB77D00308264 /* CarInfoCell.swift in Sources */,
 				F67C15D81CE2BD69004E1C9E /* TCUserInfoModel.swift in Sources */,
+				F62593A91CE48155000BC840 /* TCSinglePayFootView.swift in Sources */,
 				F63562561CCDB77D00308264 /* TCCarInfoController.swift in Sources */,
 				F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */,
 				F67C15D91CE2BD69004E1C9E /* JSONJoy.swift in Sources */,
@@ -718,6 +734,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Xiaocool Network Technology Co., Ltd. (H58LYH4V4T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Xiaocool Network Technology Co., Ltd. (H58LYH4V4T)";
 				INFOPLIST_FILE = Parking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parking.xiaocool;
 				PRODUCT_NAME = Parking;
@@ -736,6 +753,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Beijing Xiaocool Network Technology Co., Ltd. (H58LYH4V4T)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Beijing Xiaocool Network Technology Co., Ltd. (H58LYH4V4T)";
 				INFOPLIST_FILE = Parking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.parking.xiaocool;
 				PRODUCT_NAME = Parking;

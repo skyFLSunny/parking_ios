@@ -8,10 +8,12 @@
 
 import UIKit
 
-class TCEditUserInfoController: UIViewController {
+class TCEditUserInfoController: UIViewController,UIScrollViewDelegate {
     @IBOutlet weak var avatarBtn: UIButton!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var addressLabel: UILabel!
+    
+    @IBOutlet weak var keyboardScrollView: TPKeyboardAvoidingScrollView!
     @IBOutlet weak var phoneNumber: UITextField!
     var nameStr:String?
     var phoneNumStr:String?
@@ -57,5 +59,8 @@ class TCEditUserInfoController: UIViewController {
     }
     @IBAction func selectMyAddress(sender: AnyObject) {
         print("address")
+    }
+    func scrollViewDidScroll(scrollView: UIScrollView){
+        view.endEditing(true)
     }
 }

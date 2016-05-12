@@ -63,7 +63,6 @@ class TCVMLogModel: NSObject {
             handle(success: result.status == "success",response: responseStr)
             }, failure: { (task, error) in
                 handle(success: false,response: "网络错误")
-                
         })
     }
 }

@@ -10,6 +10,7 @@ import UIKit
 
 class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewDataSource,TCAlertSelectViewDelegate {
 
+    @IBOutlet weak var keyboardScrollView: UIScrollView!
     @IBOutlet weak var needPayTableView: UITableView!
     @IBOutlet weak var pagmentButton: UIButton!
     var backgroundBtn:UIButton?
@@ -21,6 +22,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         self.automaticallyAdjustsScrollViewInsets = false
         self.needPayTableView.tableFooterView = UIView()
         self.pagmentButton.layer.cornerRadius = 8
+        keyboardScrollView.bounces = false
         self.hidesBottomBarWhenPushed = false
         addNavigationItem()
     }
@@ -41,7 +43,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         return 100
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 2
+        return 5
     }
     // 加好友
     func leftNavBtnClicked(){

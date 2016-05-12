@@ -10,6 +10,7 @@ import UIKit
 
 class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    @IBOutlet weak var backScrollView: UIScrollView!
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
@@ -25,6 +26,7 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
         phoneNumLabel.text = TCUserInfo.currentInfo.phoneNumber
     }
     func configurUI(){
+        backScrollView.bounces = false
         hidesBottomBarWhenPushed = false
         avatarButton.layer.cornerRadius = 35
         avatarButton.clipsToBounds = true

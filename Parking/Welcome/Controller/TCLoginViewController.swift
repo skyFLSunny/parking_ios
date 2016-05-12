@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TCLoginViewController: UIViewController {
+class TCLoginViewController: UIViewController,UIScrollViewDelegate {
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var areaCode: UIButton!
@@ -15,6 +15,8 @@ class TCLoginViewController: UIViewController {
     @IBOutlet weak var forgetPwdBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var cancelPwdBtn: UIButton!
+    
+    @IBOutlet weak var keyboardScrollView: TPKeyboardAvoidingScrollView!
     var logVM:TCVMLogModel?
     
     override func viewDidLoad() {
@@ -63,6 +65,7 @@ class TCLoginViewController: UIViewController {
             })
         })
     }
+    
     @IBAction func forgetPwdAction(sender: AnyObject) {
         print("forget")
         let VC = TCForgetPasswordController(nibName: "TCForgetPasswordController",bundle: nil)
@@ -79,6 +82,11 @@ class TCLoginViewController: UIViewController {
     func tapBackView(){
         self.view.endEditing(true)
     }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView){
+        view.endEditing(true)
+    }
+    
     func loginSuccess(){
         //controller
         let appGuideController = UITabBarController()

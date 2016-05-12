@@ -25,6 +25,12 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
+        self.hidesBottomBarWhenPushed = false
+        let foot = NSBundle.mainBundle().loadNibNamed("TCSinglePayFootView", owner: nil, options: nil).first as? TCSinglePayFootView
+        foot?.configureFootViewWithCost("100万") {
+            print("点了一键支付")
+        }
+        leftTableView?.tableFooterView = foot
         addNavItem()
     }
     
@@ -107,6 +113,9 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let VC = TCPayDetailController(nibName: "TCPayDetailController",bundle: nil)
+        VC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(VC, animated: true)
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
