@@ -15,8 +15,20 @@ class TCCarInfoController: UITableViewController {
         self.hidesBottomBarWhenPushed = false
         makeDataSource()
         self.tableView.registerNib(UINib.init(nibName: "CarInfoCell", bundle: nil), forCellReuseIdentifier: "CarInfoCell")
-        self.tableView.tableFooterView = UIView()
         self.tableView.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
+        let navBtn = UIButton(type: .Custom)
+        navBtn.frame = CGRectMake(0, 0, 30, 30)
+        navBtn.setImage(UIImage(named: "ic_tianjiacheliang"), forState: .Normal)
+        navBtn.addTarget(self, action: #selector(addCarInfo), forControlEvents: .TouchUpInside)
+        let navItem = UIBarButtonItem(customView: navBtn)
+        self.navigationItem.rightBarButtonItem = navItem
+    }
+    func addCarInfo(){
+        print("添加车辆")
+        let VC = AddCarViewController(nibName: "AddCarViewController",bundle: nil)
+        VC.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(VC, animated: true)
+        
     }
     func makeDataSource(){
         dataSource = [[],[]];

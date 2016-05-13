@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol TCCarDetailPopViewDelegate:NSObjectProtocol {
+    func selectPopView(popView:TCCarDetailPopView,index:Int)
+}
+
 class TCCarDetailPopView: UIView {
+    
+    weak var delegate :TCCarDetailPopViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,8 +46,10 @@ class TCCarDetailPopView: UIView {
     }
     @IBAction func deleteCarInfo(sender: AnyObject) {
         print("删除")
+        delegate?.selectPopView(self, index: 1)
     }
     @IBAction func editCarInfo(sender: AnyObject) {
         print("编辑")
+        delegate?.selectPopView(self, index: 0)
     }
 }

@@ -8,17 +8,22 @@
 
 import UIKit
 
-class TCCarDetailController: UIViewController {
+class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
     var showPopMenu:Bool?
     var popMenu:TCCarDetailPopView?
-
+    @IBOutlet weak var carBrand: UILabel!
+    @IBOutlet weak var carNumber: UILabel!
+    @IBOutlet weak var carType: UILabel!
+    @IBOutlet weak var engineNumber: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         showPopMenu = false
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
         //nav
-        self.title = "邀请好友"
+        self.title = "车辆信息"
         let navBtn = UIButton(type: .Custom)
         navBtn.frame = CGRectMake(0, 0, 30, 30)
         navBtn.setImage(UIImage(named: "ic_fanhui-left"), forState: .Normal)
@@ -36,7 +41,8 @@ class TCCarDetailController: UIViewController {
             popMenu = NSBundle.mainBundle().loadNibNamed("TCCarDetailPopView", owner: nil, options: nil).first as? TCCarDetailPopView
             let popX = self.view.frame.width-130
             popMenu!.frame = CGRectMake(popX, 0, 125, 100)
-            popMenu?.backgroundColor = UIColor.clearColor()
+            popMenu!.backgroundColor = UIColor.clearColor()
+            popMenu!.delegate = self
             self.view.addSubview(popMenu!)
             showPopMenu = true
         }else{
@@ -49,5 +55,17 @@ class TCCarDetailController: UIViewController {
     
     func backToHome(){
         self.navigationController?.popViewControllerAnimated(true)
+    }
+    // MARK:----popViewDelegate----
+    func selectPopView(popView: TCCarDetailPopView, index: Int) {
+        rightNavBtnClicked()
+        if index == 0 {
+            let editVC = AddCarViewController(nibName: "AddCarViewController",bundle: nil)
+            editVC.viewType = .edit
+            editVC.configureWithbrand(carBrand.text!, myCarNumber: carNumber.text!, myCarType:carType.text!, myEngineNum: engineNumber.text!)
+            navigationController?.pushViewController(editVC, animated: true)
+        }else{
+            print("车辆信息页面删除")
+        }
     }
 }

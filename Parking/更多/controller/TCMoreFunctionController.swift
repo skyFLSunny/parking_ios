@@ -24,6 +24,9 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
         super.viewDidLoad()
         configurUI()
         phoneNumLabel.text = TCUserInfo.currentInfo.phoneNumber
+        userNameLabel.text = TCUserInfo.currentInfo.userName
+        addressLabel.text = TCUserInfo.currentInfo.address == "" ?
+            "北京" : TCUserInfo.currentInfo.address
     }
     func configurUI(){
         backScrollView.bounces = false

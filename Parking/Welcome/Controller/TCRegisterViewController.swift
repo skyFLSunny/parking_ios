@@ -75,7 +75,7 @@ class TCRegisterViewController: UIViewController {
             SVProgressHUD.showErrorWithStatus("请输入密码!")
             return
         }
-        logVM?.register(phoneNumber.text!, password: passwordNumber.text!, code: identifyNumber.text!, avatar: "", name: "", devicestate: "", handle: { [unowned self] (success, response) in
+        logVM?.register(phoneNumber.text!, password: passwordNumber.text!, code: identifyNumber.text!, avatar: "", name: phoneNumber.text!, devicestate: "", handle: { [unowned self] (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success {
                     SVProgressHUD.showSuccessWithStatus("注册成功")

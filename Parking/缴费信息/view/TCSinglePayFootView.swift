@@ -12,12 +12,14 @@ typealias TouchSinglePay = () -> Void
 
 class TCSinglePayFootView: UIView {
     
-    @IBOutlet weak var singlePayBtn: UIButton?
+    @IBOutlet weak var singlePayBtn: UIButton!
     var myHandle:TouchSinglePay?
     var cost:String?
     
     func configureFootViewWithCost(cost:String,handle:TouchSinglePay){
         myHandle = handle
+        singlePayBtn.layer.cornerRadius = 8
+        singlePayBtn.clipsToBounds = true
         singlePayBtn!.setTitle("一键支付"+"("+cost+")", forState: .Normal)
     }
 

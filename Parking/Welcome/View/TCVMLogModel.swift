@@ -25,9 +25,14 @@ class TCVMLogModel: NSObject {
         
         requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
             let result = TCUserInfoModel(JSONDecoder(response!))
-            TCUserInfo.currentInfo.phoneNumber = result.data?.user_phone
-            TCUserInfo.currentInfo.userid = String(result.data?.id)
             
+            if result.status == "success"{
+                TCUserInfo.currentInfo.phoneNumber = (result.data?.user_phone)!
+                let userid = (result.data?.id)!
+                TCUserInfo.currentInfo.userid = String(userid)
+                TCUserInfo.currentInfo.userName = (result.data?.user_name)!
+                TCUserInfo.currentInfo.address = "北京"
+            }
             let responseStr = result.status == "success" ? nil : result.errorData
                 handle(success: result.status == "success",response: responseStr)
             }, failure: { (task, error) in
@@ -45,7 +50,7 @@ class TCVMLogModel: NSObject {
                   code:String,avatar:String,name:String,
                   devicestate:String,handle:ResponseBlock){
         let paramDic = ["a":"AppRegister","phone":phone,"password":password,
-                        "code":code,"avatar":avatar,"name":name,"devicestate":devicestate]
+                        "code":code,"avatar":avatar,"name":name,"devicestate":devicestate,"sex":"1"]
         requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData

@@ -23,14 +23,9 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     let scrollTag = 2333
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.edgesForExtendedLayout = UIRectEdge.None
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.hidesBottomBarWhenPushed = false
-        let foot = NSBundle.mainBundle().loadNibNamed("TCSinglePayFootView", owner: nil, options: nil).first as? TCSinglePayFootView
-        foot?.configureFootViewWithCost("100万") {
-            print("点了一键支付")
-        }
-        leftTableView?.tableFooterView = foot
+        edgesForExtendedLayout = UIRectEdge.None
+        automaticallyAdjustsScrollViewInsets = false
+        hidesBottomBarWhenPushed = false
         addNavItem()
     }
     
@@ -76,6 +71,14 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         rightTableView.dataSource = self
         rightTableView.delegate = self
         
+        let foot = NSBundle.mainBundle().loadNibNamed("TCSinglePayFootView", owner: nil, options: nil).first as! TCSinglePayFootView
+        foot.frame = CGRectMake(0,0,20,100)
+        foot.configureFootViewWithCost("100万") {
+            print("点了一键支付")
+        }
+
+        leftTableView.tableFooterView = foot
+        
         self.bottomScrollView.addSubview(leftTableView)
         self.bottomScrollView.addSubview(rightTableView)
     }
@@ -111,6 +114,7 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         let VC = TCPayDetailController(nibName: "TCPayDetailController",bundle: nil)
