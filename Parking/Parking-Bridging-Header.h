@@ -10,3 +10,4 @@
 #import "SVProgressHUD.h"
 #import "TPKeyboardAvoidingScrollView.h"
 #import "TPKeyboardAvoidingTableView.h"
+#import "ConnectModel.h"

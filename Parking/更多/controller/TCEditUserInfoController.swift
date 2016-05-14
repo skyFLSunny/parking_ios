@@ -34,6 +34,11 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
                 self.takePhoto()
             })
         }))
+        if TCUserInfo.currentInfo.avatar != "" {
+            let imageUrlStr = PARK_SHOW_IMAGE_HEADER + TCUserInfo.currentInfo.avatar
+            let url = NSURL(string: imageUrlStr)
+            avatarBtn.sd_setImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "temp_avatar"))
+        }
         myActionSheet?.addAction(UIAlertAction(title: "从相册获取", style: .Default, handler: { [unowned self] (UIAlertAction) in
             dispatch_async(dispatch_get_main_queue(), {
                 self.LocalPhoto()
@@ -124,11 +129,34 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
         let dateStr = dateFormatter.stringFromDate(NSDate())
         let imageName = "avatar" + dateStr + TCUserInfo.currentInfo.userid
-        
-        moreHelper?.sendImageWithImageName(imageName, imageData: data)
+        ConnectModel.uploadWithImageName(imageName, imageData: data, URL: PARK_SEND_IMAGE_HEADER) { [unowned self] (data) in
+            dispatch_async(dispatch_get_main_queue(), {
+            let result = Http(JSONDecoder(data))
+                if result.status != nil {
+                    if result.status! == "success"{
+                        let imageName = result.data?.string!
+                        TCUserInfo.currentInfo.avatar = imageName!
+                        self.changeAvatar()
+                    }else{
+                        SVProgressHUD.showErrorWithStatus("图片上传失败")
+                    }
+                }
+            })
+        }
+       
         
         picker.dismissViewControllerAnimated(true, completion: nil)
         
+    }
+    func changeAvatar(){
+        self.moreHelper?.changeAvatar({[unowned self] (success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success{
+                    SVProgressHUD.showSuccessWithStatus("头像修改成功")
+                }
+            })
+        })
+
     }
     @IBAction func editPhoneNumber(sender: AnyObject) {
         let VC = TCEditPhoneNumberController(nibName: "TCEditPhoneNumberController",bundle: nil)

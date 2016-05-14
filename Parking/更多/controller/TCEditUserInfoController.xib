@@ -184,7 +184,7 @@
                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="scv-7v-3pa"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwx-yy-mBa">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gwx-yy-mBa">
                             <rect key="frame" x="0.0" y="340" width="320" height="60"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ueg-gW-Q41">

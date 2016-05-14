@@ -23,10 +23,6 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         configurUI()
-        phoneNumLabel.text = TCUserInfo.currentInfo.phoneNumber
-        userNameLabel.text = TCUserInfo.currentInfo.userName
-        addressLabel.text = TCUserInfo.currentInfo.address == "" ?
-            "北京" : TCUserInfo.currentInfo.address
     }
     func configurUI(){
         backScrollView.bounces = false
@@ -42,6 +38,16 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        phoneNumLabel.text = TCUserInfo.currentInfo.phoneNumber
+        userNameLabel.text = TCUserInfo.currentInfo.userName
+        addressLabel.text = TCUserInfo.currentInfo.address == "" ?
+            "北京" : TCUserInfo.currentInfo.address
+        if TCUserInfo.currentInfo.avatar != "" {
+            let imageUrlStr = PARK_SHOW_IMAGE_HEADER + TCUserInfo.currentInfo.avatar
+            let url = NSURL(string: imageUrlStr)
+            avatarButton.sd_setImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "temp_avatar"))
+        }
+
     }
     @IBAction func avatarClicked(sender: AnyObject) {
         print("点头像")

@@ -16,22 +16,23 @@ class TCMoreInfoHelper: NSObject {
         requestManager = AFHTTPSessionManager()
         requestManager?.responseSerializer = AFHTTPResponseSerializer()
     }
-    func sendImageWithImageName(imageName:String,imageData:NSData){
-        let paraDic = ["a":"WriteMicroblog_upload"]
-        requestManager?.POST(PARK_IMAGE_HEADER, parameters: paraDic, constructingBodyWithBlock: { (formData) in
-            formData.appendPartWithFormData(imageData, name: imageName)
-            }, success: { (task, response) in
-//                let result = Http(JSONDecoder(response!))
-            }, failure: { (take, error) in
-//                let result = Http(JSONDecoder(error))
-        })
-    }
     func changePhoneNumber(phoneNum:String,code:String,handle:ResponseBlock){
         let paraDic = ["a":"updatephone","userid":TCUserInfo.currentInfo.userid,
                        "phone":phoneNum,"code":"1234"]
         requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData
+            handle(success: result.status == "success",response: responseStr)
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
+        })
+    }
+    func changeAvatar(handle:ResponseBlock){
+        let paraDic = ["a":"updateavatar","userid":TCUserInfo.currentInfo.userid,
+                       "avatar":TCUserInfo.currentInfo.avatar]
+        requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
+             let result = Http(JSONDecoder(response!))
+             let responseStr = result.status == "success" ? nil : result.errorData
             handle(success: result.status == "success",response: responseStr)
             }, failure: { (task, error) in
                 handle(success: false,response: "网络错误")

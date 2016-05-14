@@ -22,9 +22,9 @@ class CarInfoCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         // Configure the view for the selected state
     }
-    func setCellWithCarInfo(carInfo:TCCarInfoModel){
-        carNumber.text = carInfo.carNumber
-        carBrand.text = carInfo.carBrand
+    func setCellWithCarInfo(carInfo:CarCellInfoModel){
+        carNumber.text = carInfo.carnumber
+        carBrand.text = carInfo.brand
     }
     
 }

@@ -11,17 +11,26 @@ import UIKit
 class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
     var showPopMenu:Bool?
     var popMenu:TCCarDetailPopView?
+    var carid:String?
+    var carModel:CarCellInfoModel?
+    
     @IBOutlet weak var carBrand: UILabel!
     @IBOutlet weak var carNumber: UILabel!
     @IBOutlet weak var carType: UILabel!
     @IBOutlet weak var engineNumber: UILabel!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showPopMenu = false
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
+        if carModel != nil {            
+            carBrand.text = carModel!.brand
+            carNumber.text = carModel!.carnumber
+            carType.text = carModel!.cartype
+            engineNumber.text = carModel!.enginenumber
+            carid = String(carModel!.carid!)
+        }
         //nav
         self.title = "车辆信息"
         let navBtn = UIButton(type: .Custom)
@@ -50,7 +59,10 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
             popMenu = nil
             showPopMenu = false
         }
-        
+    }
+    
+    func configureCarDetailWithModel(Model:CarCellInfoModel){
+        carModel = Model
     }
     
     func backToHome(){
@@ -62,7 +74,7 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
         if index == 0 {
             let editVC = AddCarViewController(nibName: "AddCarViewController",bundle: nil)
             editVC.viewType = .edit
-            editVC.configureWithbrand(carBrand.text!, myCarNumber: carNumber.text!, myCarType:carType.text!, myEngineNum: engineNumber.text!)
+            editVC.configureWithbrand(carBrand.text, myCarNumber: carNumber.text, myCarType:carType.text, myEngineNum: engineNumber.text,myCarid:carid)
             navigationController?.pushViewController(editVC, animated: true)
         }else{
             print("车辆信息页面删除")

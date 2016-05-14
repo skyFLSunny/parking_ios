@@ -26,13 +26,68 @@ class TCCarInfoParser: JSONJoy{
         
     }
 }
+
+class CarInfoList: JSONJoy {
+    var status:String?
+    var objectlist: [CarCellInfoModel]
+    var count: Int{
+        return self.objectlist.count
+    }
+    var errorData:String?
+    init(){
+        objectlist = Array<CarCellInfoModel>()
+    }
+    
+    required init(_ decoder:JSONDecoder){
+        status = decoder["status"].string
+        objectlist = Array<CarCellInfoModel>()
+        if status == "success"{
+            for childs: JSONDecoder in decoder["data"].array!{
+                objectlist.append(CarCellInfoModel(childs))
+            }
+        }else{
+            errorData = decoder["data"].string
+        }
+    }
+    
+    func append(list: [CarCellInfoModel]){
+        self.objectlist = list + self.objectlist
+    }
+}
+
+class CarCellInfoModel:JSONJoy{
+    
+    var carnumber:String?
+    var brand:String?
+    var userid:Int?
+    var cartype:String?
+    var enginenumber:String?
+    var carid:Int?
+    var opt_time:Int?
+    var isCurrentCar:Int?
+    
+    
+    required init(_ decoder:JSONDecoder){
+        carnumber = decoder["car_number"].string
+        brand = decoder["brand"].string
+        userid = decoder["owner_id"].integer
+        cartype = decoder["car_type"].string
+        enginenumber = decoder["engine_number"].string
+        carid = decoder["id"].integer
+        opt_time = decoder["opt_time"].integer
+        isCurrentCar = decoder["is_current_car"].integer
+        
+    }
+    
+}
+
 class CarInfoModel: JSONJoy {
     var carnumber:String?
     var brand:String?
     var userid:String?
     var cartype:String?
     var enginenumber:String?
-
+    
     
     required init(_ decoder:JSONDecoder){
         carnumber = decoder["carnumber"].string
@@ -41,5 +96,5 @@ class CarInfoModel: JSONJoy {
         cartype = decoder["cartype"].string
         enginenumber = decoder["enginenumber"].string
     }
-
+    
 }

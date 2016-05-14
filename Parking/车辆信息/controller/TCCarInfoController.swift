@@ -9,13 +9,25 @@
 import UIKit
 
 class TCCarInfoController: UITableViewController {
-    var dataSource:Array<Array<TCCarInfoModel>>?
+    var dataSource:Array<Array<CarCellInfoModel>>?
+    var carInfoHelper:TCCarInfoHelper?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hidesBottomBarWhenPushed = false
+        carInfoHelper = TCCarInfoHelper()
         makeDataSource()
-        self.tableView.registerNib(UINib.init(nibName: "CarInfoCell", bundle: nil), forCellReuseIdentifier: "CarInfoCell")
-        self.tableView.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
+        configureUI()
+        tableView.mj_header = MJRefreshNormalHeader.init(refreshingBlock: {[unowned self] in
+            self.dataSource![0].removeAll()
+            self.dataSource![1].removeAll()
+            self.loadDataSource()
+        })
+    }
+    func configureUI(){
+        self.hidesBottomBarWhenPushed = false
+        
+        tableView.registerNib(UINib.init(nibName: "CarInfoCell", bundle: nil), forCellReuseIdentifier: "CarInfoCell")
+        tableView.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
+        tableView.tableFooterView = UIView()
         let navBtn = UIButton(type: .Custom)
         navBtn.frame = CGRectMake(0, 0, 30, 30)
         navBtn.setImage(UIImage(named: "ic_tianjiacheliang"), forState: .Normal)
@@ -32,22 +44,33 @@ class TCCarInfoController: UITableViewController {
     }
     func makeDataSource(){
         dataSource = [[],[]];
-        for index in 0...10 {
-            let carInfo = TCCarInfoModel()
-            carInfo.setCarInfoModel("鲁F"+String(88888+index), carBrand: "宝马", carOwner: "user"+String(index), carId: String(index), engineNumber: "666", driving: index%2 == 0, brandImageUrl: "wwww.baidu.com")
-            if carInfo.driving == true {
-                dataSource![0].append(carInfo)
-            }else{
-                dataSource![1].append(carInfo)
-            }
-        }
+        loadDataSource()
+    }
+    
+    func loadDataSource(){
+        carInfoHelper?.getCarInfoList({[unowned self] (success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
+                    let cars = response as! Array<CarCellInfoModel>
+                    for car in cars {
+                        if car.isCurrentCar == 0 {
+                            self.dataSource![1].append(car)
+                        }else{
+                            self.dataSource![0].append(car)
+                        }
+                    }
+                    self.tableView.mj_header.endRefreshing()
+                    self.tableView.reloadData()
+                }
+            })
+        })
     }
     //MARK:------dataSource----
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         if section == 0 {
@@ -62,11 +85,13 @@ class TCCarInfoController: UITableViewController {
     }
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let cellModel = dataSource![indexPath.section][indexPath.row]
         let carDetailVC = TCCarDetailController(nibName: "TCCarDetailController",bundle: nil)
+        carDetailVC.configureCarDetailWithModel(cellModel)
         carDetailVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(carDetailVC, animated: true)
     }
-
+    
     override func  tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView{
         let headerView = UIView()
         headerView.backgroundColor = UIColor(red: 242/255.0, green: 242/255.0, blue: 242/255.0, alpha: 1)
@@ -74,7 +99,6 @@ class TCCarInfoController: UITableViewController {
         carLabel.text = section == 0 ? "驾驶车辆" : "常用车库"
         let imageView = UIImageView(frame: CGRectMake(5, 10, 20, 20))
         imageView.image = section == 0 ? UIImage(named:"ic_fangxiangpan") : UIImage(named:"ic_cheku")
-        
         headerView.addSubview(carLabel)
         headerView.addSubview(imageView)
         

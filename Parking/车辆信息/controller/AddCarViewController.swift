@@ -28,6 +28,7 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
     var carNumStr:String?
     var carTypeStr:String?
     var engineNumStr:String?
+    var carid:String?
     
     var viewType:CarControllerType = .add
     
@@ -38,14 +39,15 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
         configureUI()
         carInfoHelper = TCCarInfoHelper()
     }
-    func configureWithbrand(mybrand:String,myCarNumber:String,myCarType:String,myEngineNum:String){
+    func configureWithbrand(mybrand:String?,myCarNumber:String?,myCarType:String?,myEngineNum:String?,myCarid:String?){
         brandStr = mybrand
         carNumStr = myCarNumber
         carTypeStr = myCarType
         engineNumStr = myEngineNum
+        carid = myCarid
     }
     func configureUI(){
-
+        
         let gesture = UITapGestureRecognizer(target: self, action: #selector(hiddenKeyBoard))
         self.view.addGestureRecognizer(gesture)
         
@@ -104,22 +106,29 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
             return
         }
         if viewType == .add {
-            
-            carInfoHelper?.addCarWithOnwerID(ownerName.text!, carNumber: carNumber.text!, carType: carType.text!, engineNum: engineNum.text!, handle: { (success, response) in
+            carInfoHelper?.addCarWithOnwerID(ownerName.text!, carNumber: carNumber.text!, carType: carType.text!, engineNum: engineNum.text!, handle: { [unowned self] (success, response) in
                 dispatch_async(dispatch_get_main_queue(), {
                     if success {
                         SVProgressHUD.showSuccessWithStatus("添加成功")
+                        self.navigationController?.popViewControllerAnimated(true)
                     }else{
                         SVProgressHUD.showErrorWithStatus(response as? String)
                     }
                 })
-            })
+                })
             
         }else{
-            print("修改完成")
+            carInfoHelper?.editCarInfoWithCarID(carid!, carNumber:carNumber.text!, brand:  ownerName.text!, userid:TCUserInfo.currentInfo.userid, cartype:carType.text!, engineNum: engineNum.text!, handle: { (success, response) in
+                if success {
+                    SVProgressHUD.showSuccessWithStatus("修改成功")
+                    self.navigationController?.popViewControllerAnimated(true)
+                }else {
+                    SVProgressHUD.showErrorWithStatus(response as? String)
+                }
+            })
         }
         
-//        navigationController?.popViewControllerAnimated(true)
+        //  navigationController?.popViewControllerAnimated(true)
     }
     func backToHome(){
         navigationController?.popViewControllerAnimated(true)
