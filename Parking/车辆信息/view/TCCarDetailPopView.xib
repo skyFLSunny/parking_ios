@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TCCarDetailPopView" customModule="Parking" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="80"/>
+            <rect key="frame" x="0.0" y="0.0" width="100" height="115"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yIG-dm-lMw">
@@ -21,7 +21,7 @@
                                 <constraint firstAttribute="height" constant="1" id="pLP-Gh-fST"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFT-ub-mUe">
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFT-ub-mUe">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -33,23 +33,26 @@
                     </subviews>
                     <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="vnj-qs-uHq" firstAttribute="top" secondItem="FFT-ub-mUe" secondAttribute="bottom" id="GKp-nJ-UOa"/>
-                        <constraint firstAttribute="trailing" secondItem="FFT-ub-mUe" secondAttribute="trailing" id="d67-tV-eu1"/>
-                        <constraint firstAttribute="bottom" secondItem="vnj-qs-uHq" secondAttribute="bottom" id="krA-dE-IcB"/>
-                        <constraint firstItem="FFT-ub-mUe" firstAttribute="top" secondItem="yIG-dm-lMw" secondAttribute="top" id="mc0-Nb-oR4"/>
-                        <constraint firstAttribute="trailing" secondItem="vnj-qs-uHq" secondAttribute="trailing" id="nuK-Ma-gfY"/>
-                        <constraint firstItem="vnj-qs-uHq" firstAttribute="leading" secondItem="yIG-dm-lMw" secondAttribute="leading" id="sNJ-yZ-gyO"/>
-                        <constraint firstItem="FFT-ub-mUe" firstAttribute="leading" secondItem="yIG-dm-lMw" secondAttribute="leading" id="toQ-SN-apu"/>
+                        <constraint firstItem="vnj-qs-uHq" firstAttribute="leading" secondItem="yIG-dm-lMw" secondAttribute="leading" id="6H5-oE-h5z"/>
+                        <constraint firstAttribute="trailing" secondItem="vnj-qs-uHq" secondAttribute="trailing" id="B6P-mU-TsH"/>
+                        <constraint firstAttribute="bottom" secondItem="vnj-qs-uHq" secondAttribute="bottom" id="h5b-cu-1jg"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCi-xp-ZUU">
                     <rect key="frame" x="0.0" y="45" width="100" height="35"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8I-WL-PeW">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLD-6P-dqE">
+                            <rect key="frame" x="0.0" y="34" width="100" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Fr7-tG-oln"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8I-WL-PeW">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="删除信息" image="ic_shanchu"/>
+                            <state key="normal" title="车辆解绑" image="ic_shanchu"/>
                             <connections>
                                 <action selector="deleteCarInfo:" destination="iN0-l3-epB" eventType="touchUpInside" id="eXE-ac-hlM"/>
                             </connections>
@@ -57,31 +60,51 @@
                     </subviews>
                     <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="j8I-WL-PeW" firstAttribute="top" secondItem="UCi-xp-ZUU" secondAttribute="top" id="Bb0-gI-S2h"/>
-                        <constraint firstAttribute="bottom" secondItem="j8I-WL-PeW" secondAttribute="bottom" id="LLp-3v-ZyH"/>
-                        <constraint firstItem="j8I-WL-PeW" firstAttribute="leading" secondItem="UCi-xp-ZUU" secondAttribute="leading" id="Zf7-l7-zE6"/>
-                        <constraint firstAttribute="trailing" secondItem="j8I-WL-PeW" secondAttribute="trailing" id="sWS-2M-FND"/>
+                        <constraint firstItem="aLD-6P-dqE" firstAttribute="leading" secondItem="UCi-xp-ZUU" secondAttribute="leading" id="H0X-IP-KUS"/>
+                        <constraint firstAttribute="trailing" secondItem="aLD-6P-dqE" secondAttribute="trailing" id="ge6-Id-Rbi"/>
+                        <constraint firstAttribute="bottom" secondItem="aLD-6P-dqE" secondAttribute="bottom" id="wGr-sb-2Md"/>
                     </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61I-9o-nuh">
+                    <rect key="frame" x="0.0" y="80" width="100" height="35"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xug-HO-hL2">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="设为当前" image="ic_tianjiacheliang"/>
+                            <connections>
+                                <action selector="deleteCarInfo:" destination="iN0-l3-epB" eventType="touchUpInside" id="uk1-hx-gvB"/>
+                                <action selector="setCarToPresent:" destination="iN0-l3-epB" eventType="touchUpInside" id="v6j-lC-rJT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="UCi-xp-ZUU" secondAttribute="trailing" id="8ns-B3-NyE"/>
-                <constraint firstAttribute="bottom" secondItem="UCi-xp-ZUU" secondAttribute="bottom" id="M0m-8L-FkA"/>
-                <constraint firstItem="UCi-xp-ZUU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cun-dE-ogK"/>
-                <constraint firstAttribute="trailing" secondItem="yIG-dm-lMw" secondAttribute="trailing" id="f77-nV-4Hf"/>
-                <constraint firstItem="yIG-dm-lMw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="jdg-G7-vGw"/>
-                <constraint firstItem="yIG-dm-lMw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="teq-6a-w5X"/>
-                <constraint firstItem="UCi-xp-ZUU" firstAttribute="top" secondItem="yIG-dm-lMw" secondAttribute="bottom" id="vKl-1b-XyJ"/>
-                <constraint firstItem="UCi-xp-ZUU" firstAttribute="height" secondItem="yIG-dm-lMw" secondAttribute="height" id="xKU-70-j4H"/>
+                <constraint firstItem="61I-9o-nuh" firstAttribute="top" secondItem="UCi-xp-ZUU" secondAttribute="bottom" id="Ctf-S5-VYx"/>
+                <constraint firstAttribute="trailing" secondItem="yIG-dm-lMw" secondAttribute="trailing" id="KGS-Il-vR8"/>
+                <constraint firstItem="yIG-dm-lMw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KW6-lR-B0y"/>
+                <constraint firstItem="yIG-dm-lMw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="P6g-yc-R82"/>
+                <constraint firstAttribute="bottom" secondItem="61I-9o-nuh" secondAttribute="bottom" id="PUh-h8-uKW"/>
+                <constraint firstAttribute="trailing" secondItem="UCi-xp-ZUU" secondAttribute="trailing" id="PvZ-th-6gV"/>
+                <constraint firstItem="61I-9o-nuh" firstAttribute="height" secondItem="yIG-dm-lMw" secondAttribute="height" id="aPB-B9-W7c"/>
+                <constraint firstItem="61I-9o-nuh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cEo-h3-JMe"/>
+                <constraint firstItem="UCi-xp-ZUU" firstAttribute="height" secondItem="yIG-dm-lMw" secondAttribute="height" id="mSO-DH-gfd"/>
+                <constraint firstAttribute="trailing" secondItem="61I-9o-nuh" secondAttribute="trailing" id="t3W-mw-F4o"/>
+                <constraint firstItem="UCi-xp-ZUU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yYK-VP-kb3"/>
+                <constraint firstItem="UCi-xp-ZUU" firstAttribute="top" secondItem="yIG-dm-lMw" secondAttribute="bottom" id="zTO-zo-Md0"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="279" y="602"/>
+            <point key="canvasLocation" x="343" y="272.5"/>
         </view>
     </objects>
     <resources>
         <image name="ic_shanchu" width="14" height="15"/>
+        <image name="ic_tianjiacheliang" width="23" height="19"/>
         <image name="ic_xiugai-1" width="15" height="15"/>
     </resources>
 </document>

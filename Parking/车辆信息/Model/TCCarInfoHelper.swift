@@ -67,7 +67,31 @@ class TCCarInfoHelper: NSObject {
             }, failure: { (task, error) in
                 handle(success: false,response: "网络错误")
         })
+    }
     
+    func upDateCurrentCarWithCarNumber(carNum:String,handle:ResponseBlock){
+        let paraDic = ["a":"updateMemberCurrentCar",
+                       "userid":TCUserInfo.currentInfo.userid,
+                       "carnumber":carNum]
+        requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
+            let result = Http(JSONDecoder(response!))
+            let responseStr = result.status == "success" ? nil : result.errorData
+            handle(success: result.status == "success",response: responseStr)
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
+        })
+    }
+    
+    func unBindCarWithCarNumber(carNum:String,handle:ResponseBlock){
+        let paraDic = ["a":"unBindCar","userid":TCUserInfo.currentInfo.userid,
+                       "carnumber":carNum]
+        requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
+            let result = Http(JSONDecoder(response!))
+            let responseStr = result.status == "success" ? nil : result.errorData
+            handle(success: result.status == "success",response: responseStr)
+            }, failure: { (task, error) in
+            
+        })
     }
     
 }

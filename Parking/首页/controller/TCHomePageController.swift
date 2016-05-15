@@ -10,6 +10,7 @@ import UIKit
 
 class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewDataSource,TCAlertSelectViewDelegate {
 
+    @IBOutlet weak var tableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var keyboardScrollView: UIScrollView!
     @IBOutlet weak var needPayTableView: UITableView!
     @IBOutlet weak var pagmentButton: UIButton!
@@ -25,6 +26,10 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         keyboardScrollView.bounces = false
         self.hidesBottomBarWhenPushed = false
         addNavigationItem()
+    }
+    override func viewDidAppear(animated: Bool) {
+        let tabHeight = view.frame.height - 368
+        tableHeightConstraint.constant = tabHeight >= 200 ? tabHeight :200
     }
     func addNavigationItem(){
         let leftButton = UIButton(type: .Custom)

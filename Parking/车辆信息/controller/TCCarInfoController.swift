@@ -11,6 +11,7 @@ import UIKit
 class TCCarInfoController: UITableViewController {
     var dataSource:Array<Array<CarCellInfoModel>>?
     var carInfoHelper:TCCarInfoHelper?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         carInfoHelper = TCCarInfoHelper()
@@ -22,6 +23,7 @@ class TCCarInfoController: UITableViewController {
             self.loadDataSource()
         })
     }
+    
     func configureUI(){
         self.hidesBottomBarWhenPushed = false
         
@@ -61,6 +63,8 @@ class TCCarInfoController: UITableViewController {
                     }
                     self.tableView.mj_header.endRefreshing()
                     self.tableView.reloadData()
+                } else {
+                    SVProgressHUD.showErrorWithStatus(response as! String)
                 }
             })
         })

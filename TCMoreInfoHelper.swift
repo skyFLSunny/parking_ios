@@ -10,12 +10,12 @@ import UIKit
 
 class TCMoreInfoHelper: NSObject {
     var requestManager:AFHTTPSessionManager?
-    
     override init() {
         super.init()
         requestManager = AFHTTPSessionManager()
         requestManager?.responseSerializer = AFHTTPResponseSerializer()
     }
+    
     func changePhoneNumber(phoneNum:String,code:String,handle:ResponseBlock){
         let paraDic = ["a":"updatephone","userid":TCUserInfo.currentInfo.userid,
                        "phone":phoneNum,"code":"1234"]
@@ -27,6 +27,7 @@ class TCMoreInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
+    
     func changeAvatar(handle:ResponseBlock){
         let paraDic = ["a":"updateavatar","userid":TCUserInfo.currentInfo.userid,
                        "avatar":TCUserInfo.currentInfo.avatar]

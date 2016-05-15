@@ -119,16 +119,16 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
             
         }else{
             carInfoHelper?.editCarInfoWithCarID(carid!, carNumber:carNumber.text!, brand:  ownerName.text!, userid:TCUserInfo.currentInfo.userid, cartype:carType.text!, engineNum: engineNum.text!, handle: { (success, response) in
-                if success {
-                    SVProgressHUD.showSuccessWithStatus("修改成功")
-                    self.navigationController?.popViewControllerAnimated(true)
-                }else {
-                    SVProgressHUD.showErrorWithStatus(response as? String)
-                }
+                dispatch_async(dispatch_get_main_queue(), {
+                    if success {
+                        SVProgressHUD.showSuccessWithStatus("修改成功")
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }else{
+                        SVProgressHUD.showErrorWithStatus(response as? String)
+                    }
+                })
             })
         }
-        
-        //  navigationController?.popViewControllerAnimated(true)
     }
     func backToHome(){
         navigationController?.popViewControllerAnimated(true)

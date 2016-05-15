@@ -19,6 +19,7 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var menuHeightCons: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,8 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        let menuHeight = view.frame.height - 228
+        menuHeightCons.constant = menuHeight >= 340 ? menuHeight : 340
         phoneNumLabel.text = TCUserInfo.currentInfo.phoneNumber
         userNameLabel.text = TCUserInfo.currentInfo.userName
         addressLabel.text = TCUserInfo.currentInfo.address == "" ?
@@ -47,6 +50,7 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
             let url = NSURL(string: imageUrlStr)
             avatarButton.sd_setImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "temp_avatar"))
         }
+        menuTableView.reloadData()
 
     }
     @IBAction func avatarClicked(sender: AnyObject) {

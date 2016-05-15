@@ -13,6 +13,7 @@
                 <outlet property="cancelBtn" destination="Xgf-kC-xqu" id="TBn-ex-3y1"/>
                 <outlet property="editButton" destination="PIH-7S-MoX" id="1w6-Rk-lj0"/>
                 <outlet property="levelImageView" destination="z9V-g0-Od6" id="GNi-V0-qux"/>
+                <outlet property="menuHeightCons" destination="yCX-jI-Ec5" id="igK-85-7xL"/>
                 <outlet property="menuTableView" destination="YmS-2C-y8j" id="hS9-H3-aEI"/>
                 <outlet property="phoneNumLabel" destination="SiX-9h-Vt2" id="h5b-cL-qYx"/>
                 <outlet property="userNameLabel" destination="tYJ-Bv-uXT" id="nj4-fM-cmW"/>
@@ -147,9 +148,6 @@
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YmS-2C-y8j">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="340" id="Chg-34-70b"/>
-                                    </constraints>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="mVE-ke-FMF"/>
                                         <outlet property="delegate" destination="-1" id="nbs-2I-BY7"/>

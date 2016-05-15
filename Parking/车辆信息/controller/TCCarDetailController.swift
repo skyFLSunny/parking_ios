@@ -13,6 +13,7 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
     var popMenu:TCCarDetailPopView?
     var carid:String?
     var carModel:CarCellInfoModel?
+    var carHelper:TCCarInfoHelper?
     
     @IBOutlet weak var carBrand: UILabel!
     @IBOutlet weak var carNumber: UILabel!
@@ -22,6 +23,7 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         showPopMenu = false
+        carHelper = TCCarInfoHelper()
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
         if carModel != nil {            
@@ -49,7 +51,7 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
         if showPopMenu == false {
             popMenu = NSBundle.mainBundle().loadNibNamed("TCCarDetailPopView", owner: nil, options: nil).first as? TCCarDetailPopView
             let popX = self.view.frame.width-130
-            popMenu!.frame = CGRectMake(popX, 0, 125, 100)
+            popMenu!.frame = CGRectMake(popX, 0, 125, 120)
             popMenu!.backgroundColor = UIColor.clearColor()
             popMenu!.delegate = self
             self.view.addSubview(popMenu!)
@@ -76,8 +78,30 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
             editVC.viewType = .edit
             editVC.configureWithbrand(carBrand.text, myCarNumber: carNumber.text, myCarType:carType.text, myEngineNum: engineNumber.text,myCarid:carid)
             navigationController?.pushViewController(editVC, animated: true)
-        }else{
+        }else if index == 1{
             print("车辆信息页面删除")
+            carHelper?.unBindCarWithCarNumber(carNumber.text!, handle: { (success, response) in
+                dispatch_async(dispatch_get_main_queue(), {
+                    if success {
+                        SVProgressHUD.showSuccessWithStatus("解绑成功")
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }else {
+                        SVProgressHUD.showErrorWithStatus(response as? String)
+                    }
+                })
+            })
+        } else{
+            print("设为当前车辆")
+            carHelper?.upDateCurrentCarWithCarNumber(carNumber.text!, handle: {[unowned self] (success, response) in
+                dispatch_async(dispatch_get_main_queue(), {
+                    if success {
+                        SVProgressHUD.showSuccessWithStatus("修改成功")
+                        self.navigationController?.popViewControllerAnimated(true)
+                    }else {
+                        SVProgressHUD.showErrorWithStatus(response as? String)
+                    }
+                })
+            })
         }
     }
 }

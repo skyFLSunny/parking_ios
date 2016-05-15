@@ -52,4 +52,8 @@ class TCCarDetailPopView: UIView {
         print("编辑")
         delegate?.selectPopView(self, index: 0)
     }
+    @IBAction func setCarToPresent(sender: AnyObject) {
+        print("当前")
+        delegate?.selectPopView(self, index: 2)
+    }
 }
