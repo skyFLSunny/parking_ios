@@ -14,6 +14,8 @@ class TCUserInfo {
     var phoneNumber:String
     var userid:String
     var userName:String
+    var sex:String
+    var currentCar:String
     
     static let currentInfo = TCUserInfo()
     private init() {
@@ -23,6 +25,7 @@ class TCUserInfo {
         phoneNumber = ""
         userid = ""
         userName = ""
+        sex = ""
+        currentCar = ""
     }
-
 }

@@ -15,7 +15,6 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
     @IBOutlet weak var forgetPwdBtn: UIButton!
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var cancelPwdBtn: UIButton!
-    
     @IBOutlet weak var keyboardScrollView: TPKeyboardAvoidingScrollView!
     var logVM:TCVMLogModel?
     
@@ -31,7 +30,6 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
         // Do any additional setup after loading the view.
         let gesture = UITapGestureRecognizer.init(target: self, action: #selector(tapBackView))
         self.view.addGestureRecognizer(gesture)
-        
         password.layer.borderColor = UIColor.whiteColor().CGColor
         password.layer.borderWidth = 1
         phoneNumber.layer.borderColor = UIColor.whiteColor().CGColor
@@ -56,7 +54,11 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
         logVM?.login(phoneNumber.text!, password: password.text!, handle: { [unowned self] (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success == false {
-                    SVProgressHUD.showErrorWithStatus(response as! String)
+                    if response != nil {
+                        SVProgressHUD.showErrorWithStatus(response as! String)
+                    }else{
+                        SVProgressHUD.showErrorWithStatus("登录失败")
+                    }
                     return
                 }else{
                     SVProgressHUD.showSuccessWithStatus("登录成功")
@@ -105,27 +107,26 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
         setTabbarItemAttribute(more, normalImageName: "ic_gengduo", selectedImageName: "ic_gengduo-0")
         //nav
         let homePageNav = UINavigationController(rootViewController: homePage)
-        homePageNav.navigationBar.barTintColor = UIColor(red: 54/255, green: 190/255, blue: 100/255, alpha: 1) //backgroundColor
+        homePageNav.navigationBar.barTintColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1) //backgroundColor
         homePageNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()] //titleColor
         let carInfoNav = UINavigationController(rootViewController: carInfo)
-        carInfoNav.navigationBar.barTintColor = UIColor(red: 54/255, green: 190/255, blue: 100/255, alpha: 1) //backgroundColor
+        carInfoNav.navigationBar.barTintColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1) //backgroundColor
         carInfoNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         let paymentNav = UINavigationController(rootViewController: payment)
-        paymentNav.navigationBar.barTintColor = UIColor(red: 54/255, green: 190/255, blue: 100/255, alpha: 1) //backgroundColor
+        paymentNav.navigationBar.barTintColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1) //backgroundColor
         paymentNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         let moreNav = UINavigationController(rootViewController: more)
-        moreNav.navigationBar.barTintColor = UIColor(red: 54/255, green: 190/255, blue: 100/255, alpha: 1) //backgroundColor
+        moreNav.navigationBar.barTintColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1) //backgroundColor
         moreNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         appGuideController.setViewControllers([homePageNav,carInfoNav,paymentNav,moreNav], animated: true)
         appGuideController.tabBar.barTintColor = .whiteColor()
         let window  = UIApplication.sharedApplication().keyWindow;
         window?.rootViewController = appGuideController;
     }
-    
     func setTabbarItemAttribute(controller:UIViewController,normalImageName:String,selectedImageName:String){
         controller.tabBarItem.image = UIImage(named: normalImageName)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
         controller.tabBarItem.selectedImage = UIImage(named: selectedImageName)?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-        controller.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor(red: 54/255, green: 190/255, blue: 100/255, alpha: 1)], forState: .Selected)
+        controller.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1)], forState: .Selected)
         controller.tabBarItem.setTitleTextAttributes([NSForegroundColorAttributeName:UIColor.blackColor()],forState: .Normal)
     }
 }

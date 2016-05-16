@@ -14,8 +14,15 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var keyboardScrollView: UIScrollView!
     @IBOutlet weak var needPayTableView: UITableView!
     @IBOutlet weak var pagmentButton: UIButton!
+    @IBOutlet weak var carBrandLabel: UILabel!
+    @IBOutlet weak var carNumLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var startTimeLabel: UILabel!
+    @IBOutlet weak var totalTimeLabel: UILabel!
+    
     var backgroundBtn:UIButton?
     var alertSheet:TCAlertSelectView?
+    var homeHelper:TCHomePageHelper?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,12 +32,28 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         self.pagmentButton.layer.cornerRadius = 8
         keyboardScrollView.bounces = false
         self.hidesBottomBarWhenPushed = false
+        carNumLabel.text = TCUserInfo.currentInfo.currentCar
+        homeHelper = TCHomePageHelper()
+        homeHelper?.getParkingInfo({ [unowned self](success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+                let res = response as! ParkingInfoModel
+                if success {
+                    self.locationLabel.text = res.position
+                    self.startTimeLabel.text = res.start_time
+                    self.totalTimeLabel.text = res.end_time
+                } else {
+                    
+                }
+            })
+        })
         addNavigationItem()
     }
+    
     override func viewDidAppear(animated: Bool) {
         let tabHeight = view.frame.height - 368
-        tableHeightConstraint.constant = tabHeight >= 200 ? tabHeight :200
+        tableHeightConstraint.constant = tabHeight >= 160 ? tabHeight :160
     }
+    
     func addNavigationItem(){
         let leftButton = UIButton(type: .Custom)
         leftButton.frame = CGRectMake(0, 0, 30, 30)
@@ -44,12 +67,15 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
     }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        return 100
+        return 85
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 5
     }
+    
     // 加好友
     func leftNavBtnClicked(){
         print("加好友")
@@ -57,6 +83,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         invitationVC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(invitationVC, animated: true)
     }
+    
     // 消息
     func rightNavBtnClicked(){
         print("消息")
@@ -64,34 +91,48 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         messageVC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(messageVC, animated: true)
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = NSBundle.mainBundle().loadNibNamed("NeedToPayCell", owner: self, options: nil).first as? NeedToPayCell
+        cell?.payButton.tag = indexPath.row
+        cell?.payButton.addTarget(self, action: #selector(selectedPayButton), forControlEvents: .TouchUpInside)
         //选中cell不改变颜色
         cell!.selectionStyle = UITableViewCellSelectionStyle.None;
         return cell!
     }
     
+    func selectedPayButton(sender:UIButton){
+        print(sender.tag)
+        pushToPaymentController()
+    }
+    
     @IBAction func paymentButtonClicked(sender: AnyObject) {
-        let keywin = UIApplication.sharedApplication().keyWindow
-        backgroundBtn = UIButton(type: UIButtonType.Custom)
-        backgroundBtn!.backgroundColor = UIColor.blackColor()
-        backgroundBtn!.alpha = 0.4
-        backgroundBtn!.frame = keywin!.bounds
-        backgroundBtn!.addTarget(self, action:#selector(homeBackgroundBtnClicked), forControlEvents: UIControlEvents.TouchUpInside)
-        keywin?.addSubview(backgroundBtn!)
-        let viewWidth = keywin!.bounds.width*0.6
-        let viewHeight = keywin!.bounds.height*0.3
-        let viewX = keywin!.bounds.width*0.2
-        let viewY = keywin!.bounds.height*0.35
-        alertSheet = TCAlertSelectView(frame: CGRectMake(viewX,viewY,viewWidth,viewHeight))
-        alertSheet?.delegate = self
-        keywin?.addSubview(alertSheet!)
+        pushToPaymentController()
+//        let keywin = UIApplication.sharedApplication().keyWindow
+//        backgroundBtn = UIButton(type: UIButtonType.Custom)
+//        backgroundBtn!.backgroundColor = UIColor.blackColor()
+//        backgroundBtn!.alpha = 0.4
+//        backgroundBtn!.frame = keywin!.bounds
+//        backgroundBtn!.addTarget(self, action:#selector(homeBackgroundBtnClicked), forControlEvents: UIControlEvents.TouchUpInside)
+//        keywin?.addSubview(backgroundBtn!)
+//        let viewWidth = keywin!.bounds.width*0.6
+//        let viewHeight = keywin!.bounds.height*0.3
+//        let viewX = keywin!.bounds.width*0.2
+//        let viewY = keywin!.bounds.height*0.35
+//        alertSheet = TCAlertSelectView(frame: CGRectMake(viewX,viewY,viewWidth,viewHeight))
+//        alertSheet?.delegate = self
+//        keywin?.addSubview(alertSheet!)
     }
     func homeBackgroundBtnClicked(){
         backgroundBtn!.removeFromSuperview()
         alertSheet!.removeFromSuperview()
     }
+    func pushToPaymentController(){
+        let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
+        navigationController?.pushViewController(vc, animated: true)
+    }
     //MARK:---TCAlertSelectViewDelegate----
+    
     func cancelButtonClicked(){
         print("取消")
         homeBackgroundBtnClicked()
@@ -102,8 +143,6 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         for carInfo in carinfos! {
             print(carInfo.carNumber!)
         }
-        let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
-        vc.showVCWithPayCars(carinfos!)
-        navigationController?.pushViewController(vc, animated: true)
+        
     }
 }

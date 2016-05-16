@@ -32,6 +32,7 @@ class TCVMLogModel: NSObject {
                 TCUserInfo.currentInfo.userid = String(userid)
                 TCUserInfo.currentInfo.userName = (result.data?.user_name)!
                 TCUserInfo.currentInfo.address = "北京"
+                TCUserInfo.currentInfo.currentCar = (result.data?.current_car)!
                 if result.data?.avatar != nil {
                     TCUserInfo.currentInfo.avatar = (result.data?.avatar)!
                 }

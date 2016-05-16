@@ -20,7 +20,6 @@ class TCChangeWord: NSObject {
         }
         let zRegex: String = "^[\\u4e00-\\u9fa5]"
         let zTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", zRegex)
-        
         if zTest.evaluateWithObject(char){
             return 2
         }
