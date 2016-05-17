@@ -23,12 +23,14 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     var backgroundBtn:UIButton?
     var alertSheet:TCAlertSelectView?
     var homeHelper:TCHomePageHelper?
+    var carUnPayments:Array<CarUnpayModel>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
         self.needPayTableView.tableFooterView = UIView()
+        carUnPayments = []
         self.pagmentButton.layer.cornerRadius = 8
         keyboardScrollView.bounces = false
         self.hidesBottomBarWhenPushed = false
@@ -42,7 +44,14 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
                     self.startTimeLabel.text = res.start_time
                     self.totalTimeLabel.text = res.end_time
                 } else {
-                    
+                }
+            })
+        })
+        homeHelper?.getUnpayedInfoList({[unowned self] (success, response) in
+            dispatch_async(dispatch_get_main_queue(), { 
+                if success && response != nil{
+                    self.carUnPayments = [response as! CarUnpayModel]
+                    self.needPayTableView.reloadData()
                 }
             })
         })
@@ -73,7 +82,10 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 5
+        if carUnPayments != nil {
+            return carUnPayments!.count
+        }
+        return 0
     }
     
     // 加好友
@@ -96,6 +108,8 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         let cell = NSBundle.mainBundle().loadNibNamed("NeedToPayCell", owner: self, options: nil).first as? NeedToPayCell
         cell?.payButton.tag = indexPath.row
         cell?.payButton.addTarget(self, action: #selector(selectedPayButton), forControlEvents: .TouchUpInside)
+        cell?.showForModel(carUnPayments![indexPath.row])
+        
         //选中cell不改变颜色
         cell!.selectionStyle = UITableViewCellSelectionStyle.None;
         return cell!
@@ -103,11 +117,11 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     
     func selectedPayButton(sender:UIButton){
         print(sender.tag)
-        pushToPaymentController()
+        pushToPaymentController("888888")
     }
     
     @IBAction func paymentButtonClicked(sender: AnyObject) {
-        pushToPaymentController()
+        pushToPaymentController("666666")
 //        let keywin = UIApplication.sharedApplication().keyWindow
 //        backgroundBtn = UIButton(type: UIButtonType.Custom)
 //        backgroundBtn!.backgroundColor = UIColor.blackColor()
@@ -127,8 +141,9 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         backgroundBtn!.removeFromSuperview()
         alertSheet!.removeFromSuperview()
     }
-    func pushToPaymentController(){
+    func pushToPaymentController(carNum:String){
         let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
+        vc.showVCWithPayCars(carNum)
         navigationController?.pushViewController(vc, animated: true)
     }
     //MARK:---TCAlertSelectViewDelegate----
@@ -143,6 +158,5 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         for carInfo in carinfos! {
             print(carInfo.carNumber!)
         }
-        
     }
 }

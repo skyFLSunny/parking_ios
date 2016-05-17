@@ -14,8 +14,9 @@ class NeedToPayCell: UITableViewCell {
     @IBOutlet weak var stopInfoLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
-
+    var myModel : CarUnpayModel?
     override func awakeFromNib() {
+        
         super.awakeFromNib()
         // Initialization code
         self.payButton.layer.cornerRadius = 4
@@ -27,8 +28,18 @@ class NeedToPayCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    func showForModel(model:CarUnpayModel){
+        myModel = model
+    }
     
     @IBAction func payment(sender: AnyObject) {
         print("支付")
+    }
+    override func layoutSubviews() {
+        if  myModel != nil {
+            moneyLabel.text = "$" + String((myModel?.money)!)+"元"
+            stopTimeLabel.text = myModel?.date
+            stopInfoLabel.text = "停车 " + myModel!.time! + "   " + myModel!.price!
+        }
     }
 }

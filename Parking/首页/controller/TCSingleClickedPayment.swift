@@ -13,26 +13,23 @@ class TCSingleClickedPayment: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var payCars: UILabel!
     @IBOutlet weak var paymentButton: UIButton!
     @IBOutlet weak var payMethod: UITableView!
-    var paycarString:NSMutableString?
+    var paycarString:String?
     var selectIndex:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "一键支付"
+        self.title = "支付"
         selectIndex = 0
         configurUI()
     }
-    func showVCWithPayCars(cars:Array<TCCarInfoModel>){
-        if cars.count == 0 {
-            return
+    func showVCWithPayCars(carNum:String){
+        if carNum == ""  {
+            paycarString = "无缴费车辆"
         }
-        paycarString = "缴费车辆："
-        for car in cars {
-            paycarString?.appendString(car.carNumber!+" ")
-        }
+        paycarString = "缴费车辆：" + carNum
     }
     private func configurUI(){
-        if paycarString != nil {
-            payCars.text = paycarString!.debugDescription
+        if paycarString != "" {
+            payCars.text = paycarString
         }else{
             payCars.text = "无缴费车辆"
         }
@@ -56,7 +53,7 @@ class TCSingleClickedPayment: UIViewController,UITableViewDelegate,UITableViewDa
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func paymentButtonClicked(sender: AnyObject) {
-        
+        SVProgressHUD.showInfoWithStatus("功能建设中")
     }
     //MARK:----UITableViewDataSource----
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -93,6 +90,7 @@ class TCSingleClickedPayment: UIViewController,UITableViewDelegate,UITableViewDa
         selectIndex = indexPath.row
         tableView.reloadData()
     }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return 60
     }

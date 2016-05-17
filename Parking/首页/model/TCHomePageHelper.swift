@@ -30,4 +30,21 @@ class TCHomePageHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
+    //获取未缴费帐单
+    func getUnpayedInfoList(handle:ResponseBlock){
+        let paramDic = ["a":"getExpenseInfo",
+                        "carnumber":TCUserInfo.currentInfo.currentCar,
+                        "userid":TCUserInfo.currentInfo.userid]
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+            let result = TCCarUnpayModel(JSONDecoder(response!))
+            if result.status == "success"{
+                //TODO:未缴费帐单返回数组
+                handle(success: true,response: result.data)
+            }else{
+                handle(success: false,response: result.errorData)
+            }
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
+        })
+    }
 }

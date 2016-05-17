@@ -1,2584 +1,855 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>5C860C6BFBC3EA2AB47836C8</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>7073B74C29140B7BC6A8619F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7ED9CC303AC4B4C02847EAE2</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>7073B74C29140B7BC6A8619F</string>
-				<string>E2C64636ADACC60F907214FF</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>92F8E60B7CA5078E810D1848</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F6C5FF941CE9C61A00AAEF0D</string>
-				<string>E0F572D2848CB7E85EFF02D2</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B3851AAE0A6C1EFFB48B10BC</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Embed Pods Frameworks</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>DDBC3C7B37BE239CA6DCB9B9</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>E0F572D2848CB7E85EFF02D2</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>E2C64636ADACC60F907214FF</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F60681031CE9996E00584A3B</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F60681041CE999DA00584A3B</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>helper</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F60681041CE999DA00584A3B</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCHomePageHelper.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F60681051CE999DA00584A3B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F60681041CE999DA00584A3B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F60681061CE9B21A00584A3B</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCParkingModel.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F60681071CE9B21A00584A3B</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F60681061CE9B21A00584A3B</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169EF11CE1C50900609A11</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F67C15D41CE2BD69004E1C9E</string>
-				<string>F67C15DF1CE322AA004E1C9E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Model</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EF21CE1C50900609A11</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F6169F091CE1D11200609A11</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>ViewModel</string>
-			<key>path</key>
-			<string>View</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EF31CE1C58300609A11</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F6169EF41CE1C58300609A11</string>
-				<string>F6169EF51CE1C58300609A11</string>
-				<string>F6169EF61CE1C58300609A11</string>
-				<string>F6169EF71CE1C58300609A11</string>
-				<string>F6169EF81CE1C58300609A11</string>
-				<string>F6169EF91CE1C58300609A11</string>
-				<string>F6169EFA1CE1C58300609A11</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Controller</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EF41CE1C58300609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCForgetPasswordController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EF51CE1C58300609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCForgetPasswordController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EF61CE1C58300609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCLoginViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EF71CE1C58300609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCLoginViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EF81CE1C58300609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCRegisterViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EF91CE1C58300609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCRegisterViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EFA1CE1C58300609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>WelcomeController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169EFB1CE1C58300609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169EF41CE1C58300609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169EFC1CE1C58300609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169EF51CE1C58300609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169EFD1CE1C58300609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169EF61CE1C58300609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169EFE1CE1C58300609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169EF71CE1C58300609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169EFF1CE1C58300609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169EF81CE1C58300609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169F001CE1C58300609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169EF91CE1C58300609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169F011CE1C58300609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169EFA1CE1C58300609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169F031CE1C65700609A11</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Parking-Bridging-Header.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169F041CE1CF2200609A11</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F67C15D21CE2BD69004E1C9E</string>
-				<string>F6169F051CE1CF6300609A11</string>
-				<string>F62580CC1CE6C44F00D13ABF</string>
-				<string>F62580CD1CE6C44F00D13ABF</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>CustomTool</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169F051CE1CF6300609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCWebToolFile.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169F061CE1CF6300609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169F051CE1CF6300609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6169F091CE1D11200609A11</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCVMLogModel.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6169F0A1CE1D11200609A11</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6169F091CE1D11200609A11</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F619A4231CC081CC00BF6E52</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F63562191CCDB77D00308264</string>
-				<string>F619A42D1CC081CC00BF6E52</string>
-				<string>7ED9CC303AC4B4C02847EAE2</string>
-				<string>92F8E60B7CA5078E810D1848</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F619A4241CC081CC00BF6E52</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastSwiftUpdateCheck</key>
-				<string>0730</string>
-				<key>LastUpgradeCheck</key>
-				<string>0730</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>&#21271;&#20140;&#26657;&#37239;&#32593;&#32476;&#31185;&#25216;&#26377;&#38480;&#20844;&#21496;</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>F619A42B1CC081CC00BF6E52</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>7.3</string>
-						<key>DevelopmentTeam</key>
-						<string>H58LYH4V4T</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>F619A4271CC081CC00BF6E52</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>F619A4231CC081CC00BF6E52</string>
-			<key>productRefGroup</key>
-			<string>F619A42D1CC081CC00BF6E52</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>F619A42B1CC081CC00BF6E52</string>
-			</array>
-		</dict>
-		<key>F619A4271CC081CC00BF6E52</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>F619A43C1CC081CC00BF6E52</string>
-				<string>F619A43D1CC081CC00BF6E52</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>F619A4281CC081CC00BF6E52</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F62C5AE71CE579F1001DAD1E</string>
-				<string>F6169EFB1CE1C58300609A11</string>
-				<string>F68C97901CCF5E97001616CF</string>
-				<string>F62C5B161CE5A4B8001DAD1E</string>
-				<string>F63562511CCDB77D00308264</string>
-				<string>F67C15DD1CE30A5D004E1C9E</string>
-				<string>F67C15D71CE2BD69004E1C9E</string>
-				<string>F62C5AE91CE57CCD001DAD1E</string>
-				<string>F63562531CCDB77D00308264</string>
-				<string>F62C5B181CE5A4B8001DAD1E</string>
-				<string>F62C5B131CE5A4B8001DAD1E</string>
-				<string>F62C5B1B1CE5A4B8001DAD1E</string>
-				<string>F6169F0A1CE1D11200609A11</string>
-				<string>F62593A61CE470BD000BC840</string>
-				<string>F62C5B211CE5A4B8001DAD1E</string>
-				<string>F635624A1CCDB77D00308264</string>
-				<string>F6169EFD1CE1C58300609A11</string>
-				<string>F6169F061CE1CF6300609A11</string>
-				<string>F60681051CE999DA00584A3B</string>
-				<string>F635624F1CCDB77D00308264</string>
-				<string>F6169EFF1CE1C58300609A11</string>
-				<string>F6169F011CE1C58300609A11</string>
-				<string>F63562541CCDB77D00308264</string>
-				<string>F63562581CCDB77D00308264</string>
-				<string>F62C5B251CE5DD93001DAD1E</string>
-				<string>F62C5B1F1CE5A4B8001DAD1E</string>
-				<string>F62C5B0A1CE5A4B8001DAD1E</string>
-				<string>F62C5B281CE6088B001DAD1E</string>
-				<string>F62C5B0B1CE5A4B8001DAD1E</string>
-				<string>F62C5B111CE5A4B8001DAD1E</string>
-				<string>F62C5B0F1CE5A4B8001DAD1E</string>
-				<string>F62C5B171CE5A4B8001DAD1E</string>
-				<string>F67C15D81CE2BD69004E1C9E</string>
-				<string>F62C5ADF1CE565F3001DAD1E</string>
-				<string>F62C5B151CE5A4B8001DAD1E</string>
-				<string>F62593A91CE48155000BC840</string>
-				<string>F63562561CCDB77D00308264</string>
-				<string>F6D7FE491CE0260F0032AEE8</string>
-				<string>F60681071CE9B21A00584A3B</string>
-				<string>F62580CE1CE6C44F00D13ABF</string>
-				<string>F62C5B1D1CE5A4B8001DAD1E</string>
-				<string>F62C5B1A1CE5A4B8001DAD1E</string>
-				<string>F67C15D91CE2BD69004E1C9E</string>
-				<string>F67C15E01CE322AA004E1C9E</string>
-				<string>F62C5B0D1CE5A4B8001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F619A4291CC081CC00BF6E52</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F6C5FF951CE9C61A00AAEF0D</string>
-				<string>FB4E6E62E518BC4FBB80BBD7</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F619A42A1CC081CC00BF6E52</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F62C5B221CE5A4B8001DAD1E</string>
-				<string>F68C97911CCF5E97001616CF</string>
-				<string>F62C5B121CE5A4B8001DAD1E</string>
-				<string>F635624B1CCDB77D00308264</string>
-				<string>F62593AB1CE48162000BC840</string>
-				<string>F63562521CCDB77D00308264</string>
-				<string>F62C5B0C1CE5A4B8001DAD1E</string>
-				<string>F62C5B101CE5A4B8001DAD1E</string>
-				<string>F6D7FE4B1CE0360B0032AEE8</string>
-				<string>F62C5B191CE5A4B8001DAD1E</string>
-				<string>F63562591CCDB77D00308264</string>
-				<string>F62593A71CE470BD000BC840</string>
-				<string>F6169EFC1CE1C58300609A11</string>
-				<string>F62C5B201CE5A4B8001DAD1E</string>
-				<string>F62C5B141CE5A4B8001DAD1E</string>
-				<string>F6169F001CE1C58300609A11</string>
-				<string>F62C5B291CE6088B001DAD1E</string>
-				<string>F63562501CCDB77D00308264</string>
-				<string>F63562571CCDB77D00308264</string>
-				<string>F67C15DE1CE30A5D004E1C9E</string>
-				<string>F62C5B1C1CE5A4B8001DAD1E</string>
-				<string>F62C5B1E1CE5A4B8001DAD1E</string>
-				<string>F635624D1CCDB77D00308264</string>
-				<string>F62C5B0E1CE5A4B8001DAD1E</string>
-				<string>F62C5AE01CE565F3001DAD1E</string>
-				<string>F63562551CCDB77D00308264</string>
-				<string>F6169EFE1CE1C58300609A11</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F619A42B1CC081CC00BF6E52</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>F619A43E1CC081CC00BF6E52</string>
-			<key>buildPhases</key>
-			<array>
-				<string>5C860C6BFBC3EA2AB47836C8</string>
-				<string>F619A4281CC081CC00BF6E52</string>
-				<string>F619A4291CC081CC00BF6E52</string>
-				<string>F619A42A1CC081CC00BF6E52</string>
-				<string>B3851AAE0A6C1EFFB48B10BC</string>
-				<string>DDBC3C7B37BE239CA6DCB9B9</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Parking</string>
-			<key>productName</key>
-			<string>ASwiftProduct</string>
-			<key>productReference</key>
-			<string>F619A42C1CC081CC00BF6E52</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>F619A42C1CC081CC00BF6E52</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Parking.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>F619A42D1CC081CC00BF6E52</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F619A42C1CC081CC00BF6E52</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F619A43C1CC081CC00BF6E52</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_ANALYZER_NONNULL</key>
-				<string>YES</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer: Chongqian Zhu (43SWZUC27M)</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer: Chongqian Zhu (43SWZUC27M)</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>ENABLE_TESTABILITY</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string>ffb7f32a-4d3a-4bb3-a99a-838ac974c41f</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>F619A43D1CC081CC00BF6E52</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_ANALYZER_NONNULL</key>
-				<string>YES</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer: Chongqian Zhu (43SWZUC27M)</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer: Chongqian Zhu (43SWZUC27M)</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string>ffb7f32a-4d3a-4bb3-a99a-838ac974c41f</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>F619A43E1CC081CC00BF6E52</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>F619A43F1CC081CC00BF6E52</string>
-				<string>F619A4401CC081CC00BF6E52</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>F619A43F1CC081CC00BF6E52</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>7073B74C29140B7BC6A8619F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer: Chongqian Zhu (43SWZUC27M)</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer: Chongqian Zhu (43SWZUC27M)</string>
-				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Parking/Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.parking.xiaocool</string>
-				<key>PRODUCT_NAME</key>
-				<string>Parking</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string>ffb7f32a-4d3a-4bb3-a99a-838ac974c41f</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
-				<string>/Users/xiaocool/parking_ios/Parking/Parking-Bridging-Header.h</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>F619A4401CC081CC00BF6E52</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>E2C64636ADACC60F907214FF</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer: Chongqian Zhu (43SWZUC27M)</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer: Chongqian Zhu (43SWZUC27M)</string>
-				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Parking/Info.plist</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>8.0</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.parking.xiaocool</string>
-				<key>PRODUCT_NAME</key>
-				<string>Parking</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string>ffb7f32a-4d3a-4bb3-a99a-838ac974c41f</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SWIFT_OBJC_BRIDGING_HEADER</key>
-				<string>/Users/xiaocool/parking_ios/Parking/Parking-Bridging-Header.h</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>1</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>F62580CC1CE6C44F00D13ABF</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>ConnectModel.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62580CD1CE6C44F00D13ABF</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>ConnectModel.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62580CE1CE6C44F00D13ABF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62580CD1CE6C44F00D13ABF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62593A41CE470BD000BC840</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCPayDetailController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62593A51CE470BD000BC840</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCPayDetailController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62593A61CE470BD000BC840</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62593A41CE470BD000BC840</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62593A71CE470BD000BC840</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62593A51CE470BD000BC840</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62593A81CE48155000BC840</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCSinglePayFootView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62593A91CE48155000BC840</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62593A81CE48155000BC840</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62593AA1CE48162000BC840</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCSinglePayFootView.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62593AB1CE48162000BC840</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62593AA1CE48162000BC840</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5ADD1CE565F3001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>AddCarViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5ADE1CE565F3001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>AddCarViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5ADF1CE565F3001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5ADD1CE565F3001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5AE01CE565F3001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5ADE1CE565F3001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5AE11CE57849001DAD1E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F62C5AE51CE579B2001DAD1E</string>
-				<string>F62C5AE81CE57CCD001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Model</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AE51CE579B2001DAD1E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F62C5AE61CE579F1001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Helper</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AE61CE579F1001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCCarInfoHelper.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AE71CE579F1001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AE61CE579F1001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5AE81CE57CCD001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>carInfoModel.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AE91CE57CCD001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AE81CE57CCD001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5AED1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F62C5AEE1CE5A4B8001DAD1E</string>
-				<string>F62C5AFA1CE5A4B8001DAD1E</string>
-				<string>F62C5AFE1CE5A4B8001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>&#39318;&#39029;</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AEE1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F62C5AEF1CE5A4B8001DAD1E</string>
-				<string>F62C5AF01CE5A4B8001DAD1E</string>
-				<string>F62C5AF11CE5A4B8001DAD1E</string>
-				<string>F62C5AF21CE5A4B8001DAD1E</string>
-				<string>F62C5AF31CE5A4B8001DAD1E</string>
-				<string>F62C5AF41CE5A4B8001DAD1E</string>
-				<string>F62C5AF51CE5A4B8001DAD1E</string>
-				<string>F62C5AF61CE5A4B8001DAD1E</string>
-				<string>F62C5AF71CE5A4B8001DAD1E</string>
-				<string>F62C5AF81CE5A4B8001DAD1E</string>
-				<string>F62C5AF91CE5A4B8001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>controller</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AEF1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCChangeWord.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF01CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCHomePageController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF11CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCHomePageController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF21CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCInvitationController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF31CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCInvitationController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF41CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCMessageDetailController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF51CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCMessageDetailController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF61CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCMessagesController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF71CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCMessagesController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF81CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCSingleClickedPayment.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AF91CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCSingleClickedPayment.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AFA1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F60681031CE9996E00584A3B</string>
-				<string>F62C5AFB1CE5A4B8001DAD1E</string>
-				<string>F60681061CE9B21A00584A3B</string>
-				<string>F62C5AFC1CE5A4B8001DAD1E</string>
-				<string>F62C5AFD1CE5A4B8001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>model</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AFB1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCCarInfoModel.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AFC1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCContactorInfo.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AFD1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCMessageInfo.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AFE1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F62C5AFF1CE5A4B8001DAD1E</string>
-				<string>F62C5B001CE5A4B8001DAD1E</string>
-				<string>F62C5B011CE5A4B8001DAD1E</string>
-				<string>F62C5B021CE5A4B8001DAD1E</string>
-				<string>F62C5B031CE5A4B8001DAD1E</string>
-				<string>F62C5B041CE5A4B8001DAD1E</string>
-				<string>F62C5B051CE5A4B8001DAD1E</string>
-				<string>F62C5B061CE5A4B8001DAD1E</string>
-				<string>F62C5B071CE5A4B8001DAD1E</string>
-				<string>F62C5B081CE5A4B8001DAD1E</string>
-				<string>F62C5B091CE5A4B8001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>view</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5AFF1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>NeedToPayCell.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B001CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>NeedToPayCell.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B011CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCAlertSelectView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B021CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCHomeAlertTableCell.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B031CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCHomeAlertTableCell.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B041CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCInvitationAlertView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B051CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCInvitationAlertView.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B061CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCMessageCell.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B071CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCMessageCell.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B081CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCSingleClickPayCell.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B091CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCSingleClickPayCell.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B0A1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AEF1CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B0B1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF01CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B0C1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF11CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B0D1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF21CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B0E1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF31CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B0F1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF41CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B101CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF51CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B111CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF61CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B121CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF71CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B131CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF81CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B141CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AF91CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B151CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AFB1CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B161CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AFC1CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B171CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AFD1CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B181CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5AFF1CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B191CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B001CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B1A1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B011CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B1B1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B021CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B1C1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B031CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B1D1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B041CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B1E1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B051CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B1F1CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B061CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B201CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B071CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B211CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B081CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B221CE5A4B8001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B091CE5A4B8001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B231CE5DD69001DAD1E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F62C5B241CE5DD93001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>helper</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B241CE5DD93001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCMoreInfoHelper.swift</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>F62C5B251CE5DD93001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B241CE5DD93001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B261CE6088B001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCEditPhoneNumberController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B271CE6088B001DAD1E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCEditPhoneNumberController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F62C5B281CE6088B001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B261CE6088B001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F62C5B291CE6088B001DAD1E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F62C5B271CE6088B001DAD1E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562191CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F6169F041CE1CF2200609A11</string>
-				<string>F6D7FE4C1CE066320032AEE8</string>
-				<string>F63562211CCDB77D00308264</string>
-				<string>F63562271CCDB77D00308264</string>
-				<string>F63562301CCDB77D00308264</string>
-				<string>F62C5AED1CE5A4B8001DAD1E</string>
-				<string>F635621A1CCDB77D00308264</string>
-				<string>F635621E1CCDB77D00308264</string>
-				<string>F6169F031CE1C65700609A11</string>
-				<string>F635621B1CCDB77D00308264</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Parking</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635621A1CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>AppDelegate.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635621B1CCDB77D00308264</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Assets.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635621E1CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562211CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F63562221CCDB77D00308264</string>
-				<string>F63562251CCDB77D00308264</string>
-				<string>F63562261CCDB77D00308264</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>&#26356;&#22810;</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562221CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F63562231CCDB77D00308264</string>
-				<string>F63562241CCDB77D00308264</string>
-				<string>F67C15DB1CE30A5D004E1C9E</string>
-				<string>F67C15DC1CE30A5D004E1C9E</string>
-				<string>F62C5B261CE6088B001DAD1E</string>
-				<string>F62C5B271CE6088B001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>controller</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562231CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCMoreFunctionController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562241CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCMoreFunctionController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562251CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F62C5B231CE5DD69001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>model</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562261CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>view</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562271CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F63562281CCDB77D00308264</string>
-				<string>F635622B1CCDB77D00308264</string>
-				<string>F635622D1CCDB77D00308264</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>&#32564;&#36153;&#20449;&#24687;</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562281CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F63562291CCDB77D00308264</string>
-				<string>F635622A1CCDB77D00308264</string>
-				<string>F62593A41CE470BD000BC840</string>
-				<string>F62593A51CE470BD000BC840</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>controller</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562291CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCPaymentViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635622A1CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCPaymentViewController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635622B1CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F635622C1CCDB77D00308264</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>model</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635622C1CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCCarStopInfo.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635622D1CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F635622E1CCDB77D00308264</string>
-				<string>F635622F1CCDB77D00308264</string>
-				<string>F62593A81CE48155000BC840</string>
-				<string>F62593AA1CE48162000BC840</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>view</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635622E1CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCPaymentCell.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635622F1CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCPaymentCell.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562301CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F63562311CCDB77D00308264</string>
-				<string>F63562351CCDB77D00308264</string>
-				<string>F62C5AE11CE57849001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>&#36710;&#36742;&#20449;&#24687;</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562311CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F63562321CCDB77D00308264</string>
-				<string>F63562331CCDB77D00308264</string>
-				<string>F68C978E1CCF5E97001616CF</string>
-				<string>F68C978F1CCF5E97001616CF</string>
-				<string>F62C5ADD1CE565F3001DAD1E</string>
-				<string>F62C5ADE1CE565F3001DAD1E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>controller</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562321CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCCarInfoController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562331CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCCarInfoController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562351CCDB77D00308264</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F63562361CCDB77D00308264</string>
-				<string>F63562371CCDB77D00308264</string>
-				<string>F6D7FE481CE0260F0032AEE8</string>
-				<string>F6D7FE4A1CE0360B0032AEE8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>view</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562361CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>CarInfoCell.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F63562371CCDB77D00308264</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>CarInfoCell.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F635624A1CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F635621A1CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F635624B1CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F635621B1CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F635624D1CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F635621E1CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F635624F1CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F63562231CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562501CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F63562241CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562511CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F63562291CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562521CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F635622A1CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562531CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F635622C1CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562541CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F635622E1CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562551CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F635622F1CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562561CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F63562321CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562571CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F63562331CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562581CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F63562361CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F63562591CCDB77D00308264</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F63562371CCDB77D00308264</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F67C15D21CE2BD69004E1C9E</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F67C15D31CE2BD69004E1C9E</string>
-				<string>F67C15D51CE2BD69004E1C9E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Jsonjoy</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F67C15D31CE2BD69004E1C9E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>Http.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F67C15D41CE2BD69004E1C9E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>TCUserInfoModel.swift</string>
-			<key>path</key>
-			<string>../../CustomTool/Jsonjoy/TCUserInfoModel.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F67C15D51CE2BD69004E1C9E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>JSONJoy.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F67C15D71CE2BD69004E1C9E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F67C15D31CE2BD69004E1C9E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F67C15D81CE2BD69004E1C9E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F67C15D41CE2BD69004E1C9E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F67C15D91CE2BD69004E1C9E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F67C15D51CE2BD69004E1C9E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F67C15DB1CE30A5D004E1C9E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCEditUserInfoController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F67C15DC1CE30A5D004E1C9E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCEditUserInfoController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F67C15DD1CE30A5D004E1C9E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F67C15DB1CE30A5D004E1C9E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F67C15DE1CE30A5D004E1C9E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F67C15DC1CE30A5D004E1C9E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F67C15DF1CE322AA004E1C9E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>TCUserInfo.swift</string>
-			<key>path</key>
-			<string>Parking/Welcome/model/TCUserInfo.swift</string>
-			<key>sourceTree</key>
-			<string>SOURCE_ROOT</string>
-		</dict>
-		<key>F67C15E01CE322AA004E1C9E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F67C15DF1CE322AA004E1C9E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F68C978E1CCF5E97001616CF</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCCarDetailController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F68C978F1CCF5E97001616CF</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCCarDetailController.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F68C97901CCF5E97001616CF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F68C978E1CCF5E97001616CF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F68C97911CCF5E97001616CF</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F68C978F1CCF5E97001616CF</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6C5FF941CE9C61A00AAEF0D</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreFoundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreFoundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>F6C5FF951CE9C61A00AAEF0D</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6C5FF941CE9C61A00AAEF0D</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Weak</string>
-				</array>
-			</dict>
-		</dict>
-		<key>F6D7FE481CE0260F0032AEE8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TCCarDetailPopView.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6D7FE491CE0260F0032AEE8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6D7FE481CE0260F0032AEE8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6D7FE4A1CE0360B0032AEE8</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>path</key>
-			<string>TCCarDetailPopView.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F6D7FE4B1CE0360B0032AEE8</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F6D7FE4A1CE0360B0032AEE8</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F6D7FE4C1CE066320032AEE8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F6169EF31CE1C58300609A11</string>
-				<string>F6169EF11CE1C50900609A11</string>
-				<string>F6169EF21CE1C50900609A11</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Welcome</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FB4E6E62E518BC4FBB80BBD7</key>
-		<dict>
-			<key>fileRef</key>
-			<string>E0F572D2848CB7E85EFF02D2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>F619A4241CC081CC00BF6E52</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F60681051CE999DA00584A3B /* TCHomePageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60681041CE999DA00584A3B /* TCHomePageHelper.swift */; };
+		F60681071CE9B21A00584A3B /* TCParkingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F60681061CE9B21A00584A3B /* TCParkingModel.swift */; };
+		F6169EFB1CE1C58300609A11 /* TCForgetPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169EF41CE1C58300609A11 /* TCForgetPasswordController.swift */; };
+		F6169EFC1CE1C58300609A11 /* TCForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6169EF51CE1C58300609A11 /* TCForgetPasswordController.xib */; };
+		F6169EFD1CE1C58300609A11 /* TCLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169EF61CE1C58300609A11 /* TCLoginViewController.swift */; };
+		F6169EFE1CE1C58300609A11 /* TCLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6169EF71CE1C58300609A11 /* TCLoginViewController.xib */; };
+		F6169EFF1CE1C58300609A11 /* TCRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169EF81CE1C58300609A11 /* TCRegisterViewController.swift */; };
+		F6169F001CE1C58300609A11 /* TCRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6169EF91CE1C58300609A11 /* TCRegisterViewController.xib */; };
+		F6169F011CE1C58300609A11 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169EFA1CE1C58300609A11 /* WelcomeController.swift */; };
+		F6169F061CE1CF6300609A11 /* TCWebToolFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */; };
+		F6169F0A1CE1D11200609A11 /* TCVMLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169F091CE1D11200609A11 /* TCVMLogModel.swift */; };
+		F62580CE1CE6C44F00D13ABF /* ConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F62580CD1CE6C44F00D13ABF /* ConnectModel.m */; };
+		F62593A61CE470BD000BC840 /* TCPayDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62593A41CE470BD000BC840 /* TCPayDetailController.swift */; };
+		F62593A71CE470BD000BC840 /* TCPayDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62593A51CE470BD000BC840 /* TCPayDetailController.xib */; };
+		F62593A91CE48155000BC840 /* TCSinglePayFootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62593A81CE48155000BC840 /* TCSinglePayFootView.swift */; };
+		F62593AB1CE48162000BC840 /* TCSinglePayFootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62593AA1CE48162000BC840 /* TCSinglePayFootView.xib */; };
+		F62C5ADF1CE565F3001DAD1E /* AddCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5ADD1CE565F3001DAD1E /* AddCarViewController.swift */; };
+		F62C5AE01CE565F3001DAD1E /* AddCarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5ADE1CE565F3001DAD1E /* AddCarViewController.xib */; };
+		F62C5AE71CE579F1001DAD1E /* TCCarInfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AE61CE579F1001DAD1E /* TCCarInfoHelper.swift */; };
+		F62C5AE91CE57CCD001DAD1E /* carInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AE81CE57CCD001DAD1E /* carInfoModel.swift */; };
+		F62C5B0A1CE5A4B8001DAD1E /* TCChangeWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AEF1CE5A4B8001DAD1E /* TCChangeWord.swift */; };
+		F62C5B0B1CE5A4B8001DAD1E /* TCHomePageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AF01CE5A4B8001DAD1E /* TCHomePageController.swift */; };
+		F62C5B0C1CE5A4B8001DAD1E /* TCHomePageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5AF11CE5A4B8001DAD1E /* TCHomePageController.xib */; };
+		F62C5B0D1CE5A4B8001DAD1E /* TCInvitationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AF21CE5A4B8001DAD1E /* TCInvitationController.swift */; };
+		F62C5B0E1CE5A4B8001DAD1E /* TCInvitationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5AF31CE5A4B8001DAD1E /* TCInvitationController.xib */; };
+		F62C5B0F1CE5A4B8001DAD1E /* TCMessageDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AF41CE5A4B8001DAD1E /* TCMessageDetailController.swift */; };
+		F62C5B101CE5A4B8001DAD1E /* TCMessageDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5AF51CE5A4B8001DAD1E /* TCMessageDetailController.xib */; };
+		F62C5B111CE5A4B8001DAD1E /* TCMessagesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AF61CE5A4B8001DAD1E /* TCMessagesController.swift */; };
+		F62C5B121CE5A4B8001DAD1E /* TCMessagesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5AF71CE5A4B8001DAD1E /* TCMessagesController.xib */; };
+		F62C5B131CE5A4B8001DAD1E /* TCSingleClickedPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AF81CE5A4B8001DAD1E /* TCSingleClickedPayment.swift */; };
+		F62C5B141CE5A4B8001DAD1E /* TCSingleClickedPayment.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5AF91CE5A4B8001DAD1E /* TCSingleClickedPayment.xib */; };
+		F62C5B151CE5A4B8001DAD1E /* TCCarInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AFB1CE5A4B8001DAD1E /* TCCarInfoModel.swift */; };
+		F62C5B161CE5A4B8001DAD1E /* TCContactorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AFC1CE5A4B8001DAD1E /* TCContactorInfo.swift */; };
+		F62C5B171CE5A4B8001DAD1E /* TCMessageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AFD1CE5A4B8001DAD1E /* TCMessageInfo.swift */; };
+		F62C5B181CE5A4B8001DAD1E /* NeedToPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5AFF1CE5A4B8001DAD1E /* NeedToPayCell.swift */; };
+		F62C5B191CE5A4B8001DAD1E /* NeedToPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5B001CE5A4B8001DAD1E /* NeedToPayCell.xib */; };
+		F62C5B1A1CE5A4B8001DAD1E /* TCAlertSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B011CE5A4B8001DAD1E /* TCAlertSelectView.swift */; };
+		F62C5B1B1CE5A4B8001DAD1E /* TCHomeAlertTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B021CE5A4B8001DAD1E /* TCHomeAlertTableCell.swift */; };
+		F62C5B1C1CE5A4B8001DAD1E /* TCHomeAlertTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5B031CE5A4B8001DAD1E /* TCHomeAlertTableCell.xib */; };
+		F62C5B1D1CE5A4B8001DAD1E /* TCInvitationAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B041CE5A4B8001DAD1E /* TCInvitationAlertView.swift */; };
+		F62C5B1E1CE5A4B8001DAD1E /* TCInvitationAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5B051CE5A4B8001DAD1E /* TCInvitationAlertView.xib */; };
+		F62C5B1F1CE5A4B8001DAD1E /* TCMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B061CE5A4B8001DAD1E /* TCMessageCell.swift */; };
+		F62C5B201CE5A4B8001DAD1E /* TCMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5B071CE5A4B8001DAD1E /* TCMessageCell.xib */; };
+		F62C5B211CE5A4B8001DAD1E /* TCSingleClickPayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B081CE5A4B8001DAD1E /* TCSingleClickPayCell.swift */; };
+		F62C5B221CE5A4B8001DAD1E /* TCSingleClickPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5B091CE5A4B8001DAD1E /* TCSingleClickPayCell.xib */; };
+		F62C5B251CE5DD93001DAD1E /* TCMoreInfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B241CE5DD93001DAD1E /* TCMoreInfoHelper.swift */; };
+		F62C5B281CE6088B001DAD1E /* TCEditPhoneNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B261CE6088B001DAD1E /* TCEditPhoneNumberController.swift */; };
+		F62C5B291CE6088B001DAD1E /* TCEditPhoneNumberController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5B271CE6088B001DAD1E /* TCEditPhoneNumberController.xib */; };
+		F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635621A1CCDB77D00308264 /* AppDelegate.swift */; };
+		F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F635621B1CCDB77D00308264 /* Assets.xcassets */; };
+		F635624D1CCDB77D00308264 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F635621E1CCDB77D00308264 /* Info.plist */; };
+		F635624F1CCDB77D00308264 /* TCMoreFunctionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562231CCDB77D00308264 /* TCMoreFunctionController.swift */; };
+		F63562501CCDB77D00308264 /* TCMoreFunctionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562241CCDB77D00308264 /* TCMoreFunctionController.xib */; };
+		F63562511CCDB77D00308264 /* TCPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562291CCDB77D00308264 /* TCPaymentViewController.swift */; };
+		F63562521CCDB77D00308264 /* TCPaymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F635622A1CCDB77D00308264 /* TCPaymentViewController.xib */; };
+		F63562531CCDB77D00308264 /* TCCarStopInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635622C1CCDB77D00308264 /* TCCarStopInfo.swift */; };
+		F63562541CCDB77D00308264 /* TCPaymentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635622E1CCDB77D00308264 /* TCPaymentCell.swift */; };
+		F63562551CCDB77D00308264 /* TCPaymentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F635622F1CCDB77D00308264 /* TCPaymentCell.xib */; };
+		F63562561CCDB77D00308264 /* TCCarInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562321CCDB77D00308264 /* TCCarInfoController.swift */; };
+		F63562571CCDB77D00308264 /* TCCarInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562331CCDB77D00308264 /* TCCarInfoController.xib */; };
+		F63562581CCDB77D00308264 /* CarInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63562361CCDB77D00308264 /* CarInfoCell.swift */; };
+		F63562591CCDB77D00308264 /* CarInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562371CCDB77D00308264 /* CarInfoCell.xib */; };
+		F64F7F421CEAB913005348D3 /* TCCarUnpayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F7F411CEAB913005348D3 /* TCCarUnpayModel.swift */; };
+		F67C15D71CE2BD69004E1C9E /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D31CE2BD69004E1C9E /* Http.swift */; };
+		F67C15D81CE2BD69004E1C9E /* TCUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D41CE2BD69004E1C9E /* TCUserInfoModel.swift */; };
+		F67C15D91CE2BD69004E1C9E /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D51CE2BD69004E1C9E /* JSONJoy.swift */; };
+		F67C15DD1CE30A5D004E1C9E /* TCEditUserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15DB1CE30A5D004E1C9E /* TCEditUserInfoController.swift */; };
+		F67C15DE1CE30A5D004E1C9E /* TCEditUserInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F67C15DC1CE30A5D004E1C9E /* TCEditUserInfoController.xib */; };
+		F67C15E01CE322AA004E1C9E /* TCUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15DF1CE322AA004E1C9E /* TCUserInfo.swift */; };
+		F68C97901CCF5E97001616CF /* TCCarDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */; };
+		F68C97911CCF5E97001616CF /* TCCarDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */; };
+		F6C5FF951CE9C61A00AAEF0D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5FF941CE9C61A00AAEF0D /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */; };
+		F6D7FE4B1CE0360B0032AEE8 /* TCCarDetailPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */; };
+		FB4E6E62E518BC4FBB80BBD7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F572D2848CB7E85EFF02D2 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7073B74C29140B7BC6A8619F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E0F572D2848CB7E85EFF02D2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2C64636ADACC60F907214FF /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F60681041CE999DA00584A3B /* TCHomePageHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHomePageHelper.swift; sourceTree = "<group>"; };
+		F60681061CE9B21A00584A3B /* TCParkingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCParkingModel.swift; sourceTree = "<group>"; };
+		F6169EF41CE1C58300609A11 /* TCForgetPasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCForgetPasswordController.swift; sourceTree = "<group>"; };
+		F6169EF51CE1C58300609A11 /* TCForgetPasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCForgetPasswordController.xib; sourceTree = "<group>"; };
+		F6169EF61CE1C58300609A11 /* TCLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCLoginViewController.swift; sourceTree = "<group>"; };
+		F6169EF71CE1C58300609A11 /* TCLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCLoginViewController.xib; sourceTree = "<group>"; };
+		F6169EF81CE1C58300609A11 /* TCRegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCRegisterViewController.swift; sourceTree = "<group>"; };
+		F6169EF91CE1C58300609A11 /* TCRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCRegisterViewController.xib; sourceTree = "<group>"; };
+		F6169EFA1CE1C58300609A11 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		F6169F031CE1C65700609A11 /* Parking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parking-Bridging-Header.h"; sourceTree = "<group>"; };
+		F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCWebToolFile.swift; sourceTree = "<group>"; };
+		F6169F091CE1D11200609A11 /* TCVMLogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCVMLogModel.swift; sourceTree = "<group>"; };
+		F619A42C1CC081CC00BF6E52 /* Parking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parking.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F62580CC1CE6C44F00D13ABF /* ConnectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectModel.h; sourceTree = "<group>"; };
+		F62580CD1CE6C44F00D13ABF /* ConnectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectModel.m; sourceTree = "<group>"; };
+		F62593A41CE470BD000BC840 /* TCPayDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPayDetailController.swift; sourceTree = "<group>"; };
+		F62593A51CE470BD000BC840 /* TCPayDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPayDetailController.xib; sourceTree = "<group>"; };
+		F62593A81CE48155000BC840 /* TCSinglePayFootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSinglePayFootView.swift; sourceTree = "<group>"; };
+		F62593AA1CE48162000BC840 /* TCSinglePayFootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCSinglePayFootView.xib; sourceTree = "<group>"; };
+		F62C5ADD1CE565F3001DAD1E /* AddCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCarViewController.swift; sourceTree = "<group>"; };
+		F62C5ADE1CE565F3001DAD1E /* AddCarViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddCarViewController.xib; sourceTree = "<group>"; };
+		F62C5AE61CE579F1001DAD1E /* TCCarInfoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarInfoHelper.swift; sourceTree = "<group>"; };
+		F62C5AE81CE57CCD001DAD1E /* carInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = carInfoModel.swift; sourceTree = "<group>"; };
+		F62C5AEF1CE5A4B8001DAD1E /* TCChangeWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCChangeWord.swift; sourceTree = "<group>"; };
+		F62C5AF01CE5A4B8001DAD1E /* TCHomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHomePageController.swift; sourceTree = "<group>"; };
+		F62C5AF11CE5A4B8001DAD1E /* TCHomePageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHomePageController.xib; sourceTree = "<group>"; };
+		F62C5AF21CE5A4B8001DAD1E /* TCInvitationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCInvitationController.swift; sourceTree = "<group>"; };
+		F62C5AF31CE5A4B8001DAD1E /* TCInvitationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCInvitationController.xib; sourceTree = "<group>"; };
+		F62C5AF41CE5A4B8001DAD1E /* TCMessageDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessageDetailController.swift; sourceTree = "<group>"; };
+		F62C5AF51CE5A4B8001DAD1E /* TCMessageDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMessageDetailController.xib; sourceTree = "<group>"; };
+		F62C5AF61CE5A4B8001DAD1E /* TCMessagesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessagesController.swift; sourceTree = "<group>"; };
+		F62C5AF71CE5A4B8001DAD1E /* TCMessagesController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMessagesController.xib; sourceTree = "<group>"; };
+		F62C5AF81CE5A4B8001DAD1E /* TCSingleClickedPayment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSingleClickedPayment.swift; sourceTree = "<group>"; };
+		F62C5AF91CE5A4B8001DAD1E /* TCSingleClickedPayment.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCSingleClickedPayment.xib; sourceTree = "<group>"; };
+		F62C5AFB1CE5A4B8001DAD1E /* TCCarInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarInfoModel.swift; sourceTree = "<group>"; };
+		F62C5AFC1CE5A4B8001DAD1E /* TCContactorInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCContactorInfo.swift; sourceTree = "<group>"; };
+		F62C5AFD1CE5A4B8001DAD1E /* TCMessageInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessageInfo.swift; sourceTree = "<group>"; };
+		F62C5AFF1CE5A4B8001DAD1E /* NeedToPayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NeedToPayCell.swift; sourceTree = "<group>"; };
+		F62C5B001CE5A4B8001DAD1E /* NeedToPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NeedToPayCell.xib; sourceTree = "<group>"; };
+		F62C5B011CE5A4B8001DAD1E /* TCAlertSelectView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCAlertSelectView.swift; sourceTree = "<group>"; };
+		F62C5B021CE5A4B8001DAD1E /* TCHomeAlertTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHomeAlertTableCell.swift; sourceTree = "<group>"; };
+		F62C5B031CE5A4B8001DAD1E /* TCHomeAlertTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHomeAlertTableCell.xib; sourceTree = "<group>"; };
+		F62C5B041CE5A4B8001DAD1E /* TCInvitationAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCInvitationAlertView.swift; sourceTree = "<group>"; };
+		F62C5B051CE5A4B8001DAD1E /* TCInvitationAlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCInvitationAlertView.xib; sourceTree = "<group>"; };
+		F62C5B061CE5A4B8001DAD1E /* TCMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMessageCell.swift; sourceTree = "<group>"; };
+		F62C5B071CE5A4B8001DAD1E /* TCMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMessageCell.xib; sourceTree = "<group>"; };
+		F62C5B081CE5A4B8001DAD1E /* TCSingleClickPayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCSingleClickPayCell.swift; sourceTree = "<group>"; };
+		F62C5B091CE5A4B8001DAD1E /* TCSingleClickPayCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCSingleClickPayCell.xib; sourceTree = "<group>"; };
+		F62C5B241CE5DD93001DAD1E /* TCMoreInfoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMoreInfoHelper.swift; sourceTree = SOURCE_ROOT; };
+		F62C5B261CE6088B001DAD1E /* TCEditPhoneNumberController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCEditPhoneNumberController.swift; sourceTree = "<group>"; };
+		F62C5B271CE6088B001DAD1E /* TCEditPhoneNumberController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCEditPhoneNumberController.xib; sourceTree = "<group>"; };
+		F635621A1CCDB77D00308264 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F635621B1CCDB77D00308264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F635621E1CCDB77D00308264 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F63562231CCDB77D00308264 /* TCMoreFunctionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMoreFunctionController.swift; sourceTree = "<group>"; };
+		F63562241CCDB77D00308264 /* TCMoreFunctionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCMoreFunctionController.xib; sourceTree = "<group>"; };
+		F63562291CCDB77D00308264 /* TCPaymentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPaymentViewController.swift; sourceTree = "<group>"; };
+		F635622A1CCDB77D00308264 /* TCPaymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPaymentViewController.xib; sourceTree = "<group>"; };
+		F635622C1CCDB77D00308264 /* TCCarStopInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarStopInfo.swift; sourceTree = "<group>"; };
+		F635622E1CCDB77D00308264 /* TCPaymentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPaymentCell.swift; sourceTree = "<group>"; };
+		F635622F1CCDB77D00308264 /* TCPaymentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPaymentCell.xib; sourceTree = "<group>"; };
+		F63562321CCDB77D00308264 /* TCCarInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarInfoController.swift; sourceTree = "<group>"; };
+		F63562331CCDB77D00308264 /* TCCarInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarInfoController.xib; sourceTree = "<group>"; };
+		F63562361CCDB77D00308264 /* CarInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarInfoCell.swift; sourceTree = "<group>"; };
+		F63562371CCDB77D00308264 /* CarInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarInfoCell.xib; sourceTree = "<group>"; };
+		F64F7F411CEAB913005348D3 /* TCCarUnpayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarUnpayModel.swift; sourceTree = "<group>"; };
+		F67C15D31CE2BD69004E1C9E /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
+		F67C15D41CE2BD69004E1C9E /* TCUserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCUserInfoModel.swift; path = ../../CustomTool/Jsonjoy/TCUserInfoModel.swift; sourceTree = "<group>"; };
+		F67C15D51CE2BD69004E1C9E /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
+		F67C15DB1CE30A5D004E1C9E /* TCEditUserInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCEditUserInfoController.swift; sourceTree = "<group>"; };
+		F67C15DC1CE30A5D004E1C9E /* TCEditUserInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCEditUserInfoController.xib; sourceTree = "<group>"; };
+		F67C15DF1CE322AA004E1C9E /* TCUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCUserInfo.swift; path = Parking/Welcome/model/TCUserInfo.swift; sourceTree = SOURCE_ROOT; };
+		F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailController.swift; sourceTree = "<group>"; };
+		F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailController.xib; sourceTree = "<group>"; };
+		F6C5FF941CE9C61A00AAEF0D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailPopView.swift; sourceTree = "<group>"; };
+		F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailPopView.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F619A4291CC081CC00BF6E52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6C5FF951CE9C61A00AAEF0D /* CoreFoundation.framework in Frameworks */,
+				FB4E6E62E518BC4FBB80BBD7 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7ED9CC303AC4B4C02847EAE2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7073B74C29140B7BC6A8619F /* Pods.debug.xcconfig */,
+				E2C64636ADACC60F907214FF /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		92F8E60B7CA5078E810D1848 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F6C5FF941CE9C61A00AAEF0D /* CoreFoundation.framework */,
+				E0F572D2848CB7E85EFF02D2 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F60681031CE9996E00584A3B /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				F60681041CE999DA00584A3B /* TCHomePageHelper.swift */,
+			);
+			name = helper;
+			sourceTree = "<group>";
+		};
+		F6169EF11CE1C50900609A11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F67C15D41CE2BD69004E1C9E /* TCUserInfoModel.swift */,
+				F67C15DF1CE322AA004E1C9E /* TCUserInfo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6169EF21CE1C50900609A11 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F6169F091CE1D11200609A11 /* TCVMLogModel.swift */,
+			);
+			name = ViewModel;
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6169EF31CE1C58300609A11 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F6169EF41CE1C58300609A11 /* TCForgetPasswordController.swift */,
+				F6169EF51CE1C58300609A11 /* TCForgetPasswordController.xib */,
+				F6169EF61CE1C58300609A11 /* TCLoginViewController.swift */,
+				F6169EF71CE1C58300609A11 /* TCLoginViewController.xib */,
+				F6169EF81CE1C58300609A11 /* TCRegisterViewController.swift */,
+				F6169EF91CE1C58300609A11 /* TCRegisterViewController.xib */,
+				F6169EFA1CE1C58300609A11 /* WelcomeController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F6169F041CE1CF2200609A11 /* CustomTool */ = {
+			isa = PBXGroup;
+			children = (
+				F67C15D21CE2BD69004E1C9E /* Jsonjoy */,
+				F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */,
+				F62580CC1CE6C44F00D13ABF /* ConnectModel.h */,
+				F62580CD1CE6C44F00D13ABF /* ConnectModel.m */,
+			);
+			path = CustomTool;
+			sourceTree = "<group>";
+		};
+		F619A4231CC081CC00BF6E52 = {
+			isa = PBXGroup;
+			children = (
+				F63562191CCDB77D00308264 /* Parking */,
+				F619A42D1CC081CC00BF6E52 /* Products */,
+				7ED9CC303AC4B4C02847EAE2 /* Pods */,
+				92F8E60B7CA5078E810D1848 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F619A42D1CC081CC00BF6E52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F619A42C1CC081CC00BF6E52 /* Parking.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F62C5AE11CE57849001DAD1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F62C5AE51CE579B2001DAD1E /* Helper */,
+				F62C5AE81CE57CCD001DAD1E /* carInfoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F62C5AE51CE579B2001DAD1E /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F62C5AE61CE579F1001DAD1E /* TCCarInfoHelper.swift */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		F62C5AED1CE5A4B8001DAD1E /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				F62C5AEE1CE5A4B8001DAD1E /* controller */,
+				F62C5AFA1CE5A4B8001DAD1E /* model */,
+				F62C5AFE1CE5A4B8001DAD1E /* view */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		F62C5AEE1CE5A4B8001DAD1E /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F62C5AEF1CE5A4B8001DAD1E /* TCChangeWord.swift */,
+				F62C5AF01CE5A4B8001DAD1E /* TCHomePageController.swift */,
+				F62C5AF11CE5A4B8001DAD1E /* TCHomePageController.xib */,
+				F62C5AF21CE5A4B8001DAD1E /* TCInvitationController.swift */,
+				F62C5AF31CE5A4B8001DAD1E /* TCInvitationController.xib */,
+				F62C5AF41CE5A4B8001DAD1E /* TCMessageDetailController.swift */,
+				F62C5AF51CE5A4B8001DAD1E /* TCMessageDetailController.xib */,
+				F62C5AF61CE5A4B8001DAD1E /* TCMessagesController.swift */,
+				F62C5AF71CE5A4B8001DAD1E /* TCMessagesController.xib */,
+				F62C5AF81CE5A4B8001DAD1E /* TCSingleClickedPayment.swift */,
+				F62C5AF91CE5A4B8001DAD1E /* TCSingleClickedPayment.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F62C5AFA1CE5A4B8001DAD1E /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F60681031CE9996E00584A3B /* helper */,
+				F62C5AFB1CE5A4B8001DAD1E /* TCCarInfoModel.swift */,
+				F60681061CE9B21A00584A3B /* TCParkingModel.swift */,
+				F62C5AFC1CE5A4B8001DAD1E /* TCContactorInfo.swift */,
+				F62C5AFD1CE5A4B8001DAD1E /* TCMessageInfo.swift */,
+				F64F7F411CEAB913005348D3 /* TCCarUnpayModel.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F62C5AFE1CE5A4B8001DAD1E /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F62C5AFF1CE5A4B8001DAD1E /* NeedToPayCell.swift */,
+				F62C5B001CE5A4B8001DAD1E /* NeedToPayCell.xib */,
+				F62C5B011CE5A4B8001DAD1E /* TCAlertSelectView.swift */,
+				F62C5B021CE5A4B8001DAD1E /* TCHomeAlertTableCell.swift */,
+				F62C5B031CE5A4B8001DAD1E /* TCHomeAlertTableCell.xib */,
+				F62C5B041CE5A4B8001DAD1E /* TCInvitationAlertView.swift */,
+				F62C5B051CE5A4B8001DAD1E /* TCInvitationAlertView.xib */,
+				F62C5B061CE5A4B8001DAD1E /* TCMessageCell.swift */,
+				F62C5B071CE5A4B8001DAD1E /* TCMessageCell.xib */,
+				F62C5B081CE5A4B8001DAD1E /* TCSingleClickPayCell.swift */,
+				F62C5B091CE5A4B8001DAD1E /* TCSingleClickPayCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F62C5B231CE5DD69001DAD1E /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				F62C5B241CE5DD93001DAD1E /* TCMoreInfoHelper.swift */,
+			);
+			name = helper;
+			sourceTree = "<group>";
+		};
+		F63562191CCDB77D00308264 /* Parking */ = {
+			isa = PBXGroup;
+			children = (
+				F6169F041CE1CF2200609A11 /* CustomTool */,
+				F6D7FE4C1CE066320032AEE8 /* Welcome */,
+				F63562211CCDB77D00308264 /* 更多 */,
+				F63562271CCDB77D00308264 /* 缴费信息 */,
+				F63562301CCDB77D00308264 /* 车辆信息 */,
+				F62C5AED1CE5A4B8001DAD1E /* 首页 */,
+				F635621A1CCDB77D00308264 /* AppDelegate.swift */,
+				F635621E1CCDB77D00308264 /* Info.plist */,
+				F6169F031CE1C65700609A11 /* Parking-Bridging-Header.h */,
+				F635621B1CCDB77D00308264 /* Assets.xcassets */,
+			);
+			path = Parking;
+			sourceTree = "<group>";
+		};
+		F63562211CCDB77D00308264 /* 更多 */ = {
+			isa = PBXGroup;
+			children = (
+				F63562221CCDB77D00308264 /* controller */,
+				F63562251CCDB77D00308264 /* model */,
+				F63562261CCDB77D00308264 /* view */,
+			);
+			path = "更多";
+			sourceTree = "<group>";
+		};
+		F63562221CCDB77D00308264 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F63562231CCDB77D00308264 /* TCMoreFunctionController.swift */,
+				F63562241CCDB77D00308264 /* TCMoreFunctionController.xib */,
+				F67C15DB1CE30A5D004E1C9E /* TCEditUserInfoController.swift */,
+				F67C15DC1CE30A5D004E1C9E /* TCEditUserInfoController.xib */,
+				F62C5B261CE6088B001DAD1E /* TCEditPhoneNumberController.swift */,
+				F62C5B271CE6088B001DAD1E /* TCEditPhoneNumberController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F63562251CCDB77D00308264 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F62C5B231CE5DD69001DAD1E /* helper */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F63562261CCDB77D00308264 /* view */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F63562271CCDB77D00308264 /* 缴费信息 */ = {
+			isa = PBXGroup;
+			children = (
+				F63562281CCDB77D00308264 /* controller */,
+				F635622B1CCDB77D00308264 /* model */,
+				F635622D1CCDB77D00308264 /* view */,
+			);
+			path = "缴费信息";
+			sourceTree = "<group>";
+		};
+		F63562281CCDB77D00308264 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F63562291CCDB77D00308264 /* TCPaymentViewController.swift */,
+				F635622A1CCDB77D00308264 /* TCPaymentViewController.xib */,
+				F62593A41CE470BD000BC840 /* TCPayDetailController.swift */,
+				F62593A51CE470BD000BC840 /* TCPayDetailController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F635622B1CCDB77D00308264 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F635622C1CCDB77D00308264 /* TCCarStopInfo.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		F635622D1CCDB77D00308264 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F635622E1CCDB77D00308264 /* TCPaymentCell.swift */,
+				F635622F1CCDB77D00308264 /* TCPaymentCell.xib */,
+				F62593A81CE48155000BC840 /* TCSinglePayFootView.swift */,
+				F62593AA1CE48162000BC840 /* TCSinglePayFootView.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F63562301CCDB77D00308264 /* 车辆信息 */ = {
+			isa = PBXGroup;
+			children = (
+				F63562311CCDB77D00308264 /* controller */,
+				F63562351CCDB77D00308264 /* view */,
+				F62C5AE11CE57849001DAD1E /* Model */,
+			);
+			path = "车辆信息";
+			sourceTree = "<group>";
+		};
+		F63562311CCDB77D00308264 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F63562321CCDB77D00308264 /* TCCarInfoController.swift */,
+				F63562331CCDB77D00308264 /* TCCarInfoController.xib */,
+				F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */,
+				F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */,
+				F62C5ADD1CE565F3001DAD1E /* AddCarViewController.swift */,
+				F62C5ADE1CE565F3001DAD1E /* AddCarViewController.xib */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
+		F63562351CCDB77D00308264 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				F63562361CCDB77D00308264 /* CarInfoCell.swift */,
+				F63562371CCDB77D00308264 /* CarInfoCell.xib */,
+				F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */,
+				F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		F67C15D21CE2BD69004E1C9E /* Jsonjoy */ = {
+			isa = PBXGroup;
+			children = (
+				F67C15D31CE2BD69004E1C9E /* Http.swift */,
+				F67C15D51CE2BD69004E1C9E /* JSONJoy.swift */,
+			);
+			path = Jsonjoy;
+			sourceTree = "<group>";
+		};
+		F6D7FE4C1CE066320032AEE8 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				F6169EF31CE1C58300609A11 /* Controller */,
+				F6169EF11CE1C50900609A11 /* Model */,
+				F6169EF21CE1C50900609A11 /* ViewModel */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F619A42B1CC081CC00BF6E52 /* Parking */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F619A43E1CC081CC00BF6E52 /* Build configuration list for PBXNativeTarget "Parking" */;
+			buildPhases = (
+				5C860C6BFBC3EA2AB47836C8 /* Check Pods Manifest.lock */,
+				F619A4281CC081CC00BF6E52 /* Sources */,
+				F619A4291CC081CC00BF6E52 /* Frameworks */,
+				F619A42A1CC081CC00BF6E52 /* Resources */,
+				B3851AAE0A6C1EFFB48B10BC /* Embed Pods Frameworks */,
+				DDBC3C7B37BE239CA6DCB9B9 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Parking;
+			productName = ASwiftProduct;
+			productReference = F619A42C1CC081CC00BF6E52 /* Parking.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F619A4241CC081CC00BF6E52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "北京校酷网络科技有限公司";
+				TargetAttributes = {
+					F619A42B1CC081CC00BF6E52 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = H58LYH4V4T;
+					};
+				};
+			};
+			buildConfigurationList = F619A4271CC081CC00BF6E52 /* Build configuration list for PBXProject "Parking" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F619A4231CC081CC00BF6E52;
+			productRefGroup = F619A42D1CC081CC00BF6E52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F619A42B1CC081CC00BF6E52 /* Parking */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F619A42A1CC081CC00BF6E52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F62C5B221CE5A4B8001DAD1E /* TCSingleClickPayCell.xib in Resources */,
+				F68C97911CCF5E97001616CF /* TCCarDetailController.xib in Resources */,
+				F62C5B121CE5A4B8001DAD1E /* TCMessagesController.xib in Resources */,
+				F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */,
+				F62593AB1CE48162000BC840 /* TCSinglePayFootView.xib in Resources */,
+				F63562521CCDB77D00308264 /* TCPaymentViewController.xib in Resources */,
+				F62C5B0C1CE5A4B8001DAD1E /* TCHomePageController.xib in Resources */,
+				F62C5B101CE5A4B8001DAD1E /* TCMessageDetailController.xib in Resources */,
+				F6D7FE4B1CE0360B0032AEE8 /* TCCarDetailPopView.xib in Resources */,
+				F62C5B191CE5A4B8001DAD1E /* NeedToPayCell.xib in Resources */,
+				F63562591CCDB77D00308264 /* CarInfoCell.xib in Resources */,
+				F62593A71CE470BD000BC840 /* TCPayDetailController.xib in Resources */,
+				F6169EFC1CE1C58300609A11 /* TCForgetPasswordController.xib in Resources */,
+				F62C5B201CE5A4B8001DAD1E /* TCMessageCell.xib in Resources */,
+				F62C5B141CE5A4B8001DAD1E /* TCSingleClickedPayment.xib in Resources */,
+				F6169F001CE1C58300609A11 /* TCRegisterViewController.xib in Resources */,
+				F62C5B291CE6088B001DAD1E /* TCEditPhoneNumberController.xib in Resources */,
+				F63562501CCDB77D00308264 /* TCMoreFunctionController.xib in Resources */,
+				F63562571CCDB77D00308264 /* TCCarInfoController.xib in Resources */,
+				F67C15DE1CE30A5D004E1C9E /* TCEditUserInfoController.xib in Resources */,
+				F62C5B1C1CE5A4B8001DAD1E /* TCHomeAlertTableCell.xib in Resources */,
+				F62C5B1E1CE5A4B8001DAD1E /* TCInvitationAlertView.xib in Resources */,
+				F635624D1CCDB77D00308264 /* Info.plist in Resources */,
+				F62C5B0E1CE5A4B8001DAD1E /* TCInvitationController.xib in Resources */,
+				F62C5AE01CE565F3001DAD1E /* AddCarViewController.xib in Resources */,
+				F63562551CCDB77D00308264 /* TCPaymentCell.xib in Resources */,
+				F6169EFE1CE1C58300609A11 /* TCLoginViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5C860C6BFBC3EA2AB47836C8 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B3851AAE0A6C1EFFB48B10BC /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DDBC3C7B37BE239CA6DCB9B9 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F619A4281CC081CC00BF6E52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F62C5AE71CE579F1001DAD1E /* TCCarInfoHelper.swift in Sources */,
+				F6169EFB1CE1C58300609A11 /* TCForgetPasswordController.swift in Sources */,
+				F68C97901CCF5E97001616CF /* TCCarDetailController.swift in Sources */,
+				F62C5B161CE5A4B8001DAD1E /* TCContactorInfo.swift in Sources */,
+				F63562511CCDB77D00308264 /* TCPaymentViewController.swift in Sources */,
+				F67C15DD1CE30A5D004E1C9E /* TCEditUserInfoController.swift in Sources */,
+				F67C15D71CE2BD69004E1C9E /* Http.swift in Sources */,
+				F62C5AE91CE57CCD001DAD1E /* carInfoModel.swift in Sources */,
+				F63562531CCDB77D00308264 /* TCCarStopInfo.swift in Sources */,
+				F64F7F421CEAB913005348D3 /* TCCarUnpayModel.swift in Sources */,
+				F62C5B181CE5A4B8001DAD1E /* NeedToPayCell.swift in Sources */,
+				F62C5B131CE5A4B8001DAD1E /* TCSingleClickedPayment.swift in Sources */,
+				F62C5B1B1CE5A4B8001DAD1E /* TCHomeAlertTableCell.swift in Sources */,
+				F6169F0A1CE1D11200609A11 /* TCVMLogModel.swift in Sources */,
+				F62593A61CE470BD000BC840 /* TCPayDetailController.swift in Sources */,
+				F62C5B211CE5A4B8001DAD1E /* TCSingleClickPayCell.swift in Sources */,
+				F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */,
+				F6169EFD1CE1C58300609A11 /* TCLoginViewController.swift in Sources */,
+				F6169F061CE1CF6300609A11 /* TCWebToolFile.swift in Sources */,
+				F60681051CE999DA00584A3B /* TCHomePageHelper.swift in Sources */,
+				F635624F1CCDB77D00308264 /* TCMoreFunctionController.swift in Sources */,
+				F6169EFF1CE1C58300609A11 /* TCRegisterViewController.swift in Sources */,
+				F6169F011CE1C58300609A11 /* WelcomeController.swift in Sources */,
+				F63562541CCDB77D00308264 /* TCPaymentCell.swift in Sources */,
+				F63562581CCDB77D00308264 /* CarInfoCell.swift in Sources */,
+				F62C5B251CE5DD93001DAD1E /* TCMoreInfoHelper.swift in Sources */,
+				F62C5B1F1CE5A4B8001DAD1E /* TCMessageCell.swift in Sources */,
+				F62C5B0A1CE5A4B8001DAD1E /* TCChangeWord.swift in Sources */,
+				F62C5B281CE6088B001DAD1E /* TCEditPhoneNumberController.swift in Sources */,
+				F62C5B0B1CE5A4B8001DAD1E /* TCHomePageController.swift in Sources */,
+				F62C5B111CE5A4B8001DAD1E /* TCMessagesController.swift in Sources */,
+				F62C5B0F1CE5A4B8001DAD1E /* TCMessageDetailController.swift in Sources */,
+				F62C5B171CE5A4B8001DAD1E /* TCMessageInfo.swift in Sources */,
+				F67C15D81CE2BD69004E1C9E /* TCUserInfoModel.swift in Sources */,
+				F62C5ADF1CE565F3001DAD1E /* AddCarViewController.swift in Sources */,
+				F62C5B151CE5A4B8001DAD1E /* TCCarInfoModel.swift in Sources */,
+				F62593A91CE48155000BC840 /* TCSinglePayFootView.swift in Sources */,
+				F63562561CCDB77D00308264 /* TCCarInfoController.swift in Sources */,
+				F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */,
+				F60681071CE9B21A00584A3B /* TCParkingModel.swift in Sources */,
+				F62580CE1CE6C44F00D13ABF /* ConnectModel.m in Sources */,
+				F62C5B1D1CE5A4B8001DAD1E /* TCInvitationAlertView.swift in Sources */,
+				F62C5B1A1CE5A4B8001DAD1E /* TCAlertSelectView.swift in Sources */,
+				F67C15D91CE2BD69004E1C9E /* JSONJoy.swift in Sources */,
+				F67C15E01CE322AA004E1C9E /* TCUserInfo.swift in Sources */,
+				F62C5B0D1CE5A4B8001DAD1E /* TCInvitationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		F619A43C1CC081CC00BF6E52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "ffb7f32a-4d3a-4bb3-a99a-838ac974c41f";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F619A43D1CC081CC00BF6E52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "ffb7f32a-4d3a-4bb3-a99a-838ac974c41f";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F619A43F1CC081CC00BF6E52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7073B74C29140B7BC6A8619F /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = Parking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.parking.xiaocool;
+				PRODUCT_NAME = Parking;
+				PROVISIONING_PROFILE = "ffb7f32a-4d3a-4bb3-a99a-838ac974c41f";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xiaocool/parking_ios/Parking/Parking-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F619A4401CC081CC00BF6E52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2C64636ADACC60F907214FF /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = Parking/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.parking.xiaocool;
+				PRODUCT_NAME = Parking;
+				PROVISIONING_PROFILE = "ffb7f32a-4d3a-4bb3-a99a-838ac974c41f";
+				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xiaocool/parking_ios/Parking/Parking-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F619A4271CC081CC00BF6E52 /* Build configuration list for PBXProject "Parking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F619A43C1CC081CC00BF6E52 /* Debug */,
+				F619A43D1CC081CC00BF6E52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F619A43E1CC081CC00BF6E52 /* Build configuration list for PBXNativeTarget "Parking" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F619A43F1CC081CC00BF6E52 /* Debug */,
+				F619A4401CC081CC00BF6E52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F619A4241CC081CC00BF6E52 /* Project object */;
+}

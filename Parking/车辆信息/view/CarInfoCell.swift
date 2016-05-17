@@ -10,7 +10,6 @@ import UIKit
 
 class CarInfoCell: UITableViewCell {
 
-    @IBOutlet weak var payInfo: UILabel!
     @IBOutlet weak var carBrand: UILabel!
     @IBOutlet weak var carNumber: UILabel!
     override func awakeFromNib() {
