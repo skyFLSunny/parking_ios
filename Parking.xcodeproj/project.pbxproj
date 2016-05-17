@@ -81,6 +81,7 @@
 		F6C5FF951CE9C61A00AAEF0D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5FF941CE9C61A00AAEF0D /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */; };
 		F6D7FE4B1CE0360B0032AEE8 /* TCCarDetailPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */; };
+		F6F1F0F81CEAF2A00036C04E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1F0F71CEAF2A00036C04E /* Util.swift */; };
 		FB4E6E62E518BC4FBB80BBD7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F572D2848CB7E85EFF02D2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -112,7 +113,7 @@
 		F62C5AE61CE579F1001DAD1E /* TCCarInfoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarInfoHelper.swift; sourceTree = "<group>"; };
 		F62C5AE81CE57CCD001DAD1E /* carInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = carInfoModel.swift; sourceTree = "<group>"; };
 		F62C5AEF1CE5A4B8001DAD1E /* TCChangeWord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCChangeWord.swift; sourceTree = "<group>"; };
-		F62C5AF01CE5A4B8001DAD1E /* TCHomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHomePageController.swift; sourceTree = "<group>"; };
+		F62C5AF01CE5A4B8001DAD1E /* TCHomePageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHomePageController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		F62C5AF11CE5A4B8001DAD1E /* TCHomePageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHomePageController.xib; sourceTree = "<group>"; };
 		F62C5AF21CE5A4B8001DAD1E /* TCInvitationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCInvitationController.swift; sourceTree = "<group>"; };
 		F62C5AF31CE5A4B8001DAD1E /* TCInvitationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCInvitationController.xib; sourceTree = "<group>"; };
@@ -165,6 +166,7 @@
 		F6C5FF941CE9C61A00AAEF0D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailPopView.swift; sourceTree = "<group>"; };
 		F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailPopView.xib; sourceTree = "<group>"; };
+		F6F1F0F71CEAF2A00036C04E /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +247,7 @@
 				F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */,
 				F62580CC1CE6C44F00D13ABF /* ConnectModel.h */,
 				F62580CD1CE6C44F00D13ABF /* ConnectModel.m */,
+				F6F1F0F71CEAF2A00036C04E /* Util.swift */,
 			);
 			path = CustomTool;
 			sourceTree = "<group>";
@@ -685,6 +688,7 @@
 				F62593A91CE48155000BC840 /* TCSinglePayFootView.swift in Sources */,
 				F63562561CCDB77D00308264 /* TCCarInfoController.swift in Sources */,
 				F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */,
+				F6F1F0F81CEAF2A00036C04E /* Util.swift in Sources */,
 				F60681071CE9B21A00584A3B /* TCParkingModel.swift in Sources */,
 				F62580CE1CE6C44F00D13ABF /* ConnectModel.m in Sources */,
 				F62C5B1D1CE5A4B8001DAD1E /* TCInvitationAlertView.swift in Sources */,

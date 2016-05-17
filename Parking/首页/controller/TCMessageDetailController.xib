@@ -53,7 +53,7 @@
                                 <constraint firstItem="j9d-xh-49b" firstAttribute="top" secondItem="uw1-T9-iph" secondAttribute="top" constant="14" id="opK-yk-Iqk"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的车牌为鲁F84783的大众POLO当前位于万达停车场地下2层K－12车位。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbK-JA-VpG">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的车牌为京B88888的大众POLO当前位于万达停车场地下2层K－12车位。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TbK-JA-VpG">
                             <rect key="frame" x="8" y="58" width="304" height="34"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>

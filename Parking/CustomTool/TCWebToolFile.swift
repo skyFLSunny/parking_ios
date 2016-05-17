@@ -11,6 +11,6 @@ import Foundation
 let WIDTH = UIScreen.mainScreen().bounds.size.width
 let HEIGHT = UIScreen.mainScreen().bounds.size.height
 
-var PARK_URL_Header = "http://parking.xiaocool.net/index.php?g=apps&m=index"
-var PARK_SEND_IMAGE_HEADER = "WriteMicroblog_upload"
-var PARK_SHOW_IMAGE_HEADER = "http://parking.xiaocool.net/uploads/microblog/"
+let PARK_URL_Header = "http://parking.xiaocool.net/index.php?g=apps&m=index"
+let PARK_SEND_IMAGE_HEADER = "WriteMicroblog_upload"
+let PARK_SHOW_IMAGE_HEADER = "http://parking.xiaocool.net/uploads/microblog/"

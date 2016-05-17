@@ -119,12 +119,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
          */
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
         avatarBtn.setImage(image, forState: .Normal)
-        var data:NSData
-        if UIImagePNGRepresentation(image) == nil {
-            data = UIImageJPEGRepresentation(image, 1.0)!
-        }else{
-            data = UIImagePNGRepresentation(image)!
-        }
+        let data = UIImageJPEGRepresentation(image, 0.1)!
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyyMMddHHmmss"
         let dateStr = dateFormatter.stringFromDate(NSDate())

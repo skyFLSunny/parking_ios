@@ -42,7 +42,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
                 if success {
                     self.locationLabel.text = res.position
                     self.startTimeLabel.text = res.start_time
-                    self.totalTimeLabel.text = res.end_time
+//                    self.totalTimeLabel.text = res.end_time
                 } else {
                 }
             })
@@ -87,7 +87,6 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         }
         return 0
     }
-    
     // 加好友
     func leftNavBtnClicked(){
         print("加好友")
@@ -117,11 +116,13 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     
     func selectedPayButton(sender:UIButton){
         print(sender.tag)
-        pushToPaymentController("888888")
+        let cost = "¥" + String((carUnPayments![sender.tag].money)!)
+        pushToPaymentController("888888",cost: cost)
     }
     
-    @IBAction func paymentButtonClicked(sender: AnyObject) {
-        pushToPaymentController("666666")
+    @IBAction func paymentButtonClicked(sender: UIButton) {
+        
+        pushToPaymentController("666666",cost:"¥12")
 //        let keywin = UIApplication.sharedApplication().keyWindow
 //        backgroundBtn = UIButton(type: UIButtonType.Custom)
 //        backgroundBtn!.backgroundColor = UIColor.blackColor()
@@ -141,9 +142,9 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         backgroundBtn!.removeFromSuperview()
         alertSheet!.removeFromSuperview()
     }
-    func pushToPaymentController(carNum:String){
+    func pushToPaymentController(carNum:String,cost:String){
         let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
-        vc.showVCWithPayCars(carNum)
+        vc.showVCWithPayCars(carNum,cost: cost)
         navigationController?.pushViewController(vc, animated: true)
     }
     //MARK:---TCAlertSelectViewDelegate----

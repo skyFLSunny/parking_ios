@@ -14,6 +14,7 @@ class TCSingleClickedPayment: UIViewController,UITableViewDelegate,UITableViewDa
     @IBOutlet weak var paymentButton: UIButton!
     @IBOutlet weak var payMethod: UITableView!
     var paycarString:String?
+    var myCost:String?
     var selectIndex:Int?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,15 @@ class TCSingleClickedPayment: UIViewController,UITableViewDelegate,UITableViewDa
         selectIndex = 0
         configurUI()
     }
-    func showVCWithPayCars(carNum:String){
+    func showVCWithPayCars(carNum:String,cost:String){
         if carNum == ""  {
             paycarString = "无缴费车辆"
         }
         paycarString = "缴费车辆：" + carNum
+        if cost.isEmpty{
+            return
+        }
+        myCost = cost
     }
     private func configurUI(){
         if paycarString != "" {
@@ -33,6 +38,7 @@ class TCSingleClickedPayment: UIViewController,UITableViewDelegate,UITableViewDa
         }else{
             payCars.text = "无缴费车辆"
         }
+        totalCost.text = myCost
         //tableView
         payMethod.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         payMethod.scrollEnabled = false

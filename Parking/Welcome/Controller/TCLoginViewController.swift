@@ -23,6 +23,21 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
         configureUI()
         logVM = TCVMLogModel()
     }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        autoLogin()
+    }
+    
+    func autoLogin(){
+        let logInfo = NSUserDefaults.standardUserDefaults().objectForKey(LOGINFO_KEY) as? Dictionary<String,String>
+        if logInfo != nil {
+            let usernameStr = logInfo![USER_NAME]!
+            let passwordStr = logInfo![USER_PWD]!
+            phoneNumber.text = usernameStr
+            password.text = passwordStr
+            loginWithNum(usernameStr , pwd: passwordStr )
+        }
+    }
     
     func configureUI(){
         self.edgesForExtendedLayout = UIRectEdge.None
@@ -35,6 +50,7 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
         phoneNumber.layer.borderColor = UIColor.whiteColor().CGColor
         phoneNumber.layer.borderWidth = 1
         loginBtn.layer.cornerRadius = 8
+        
     }
     //区号
     @IBAction func areaCodeAction(sender: AnyObject) {
@@ -50,8 +66,12 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
             SVProgressHUD.showErrorWithStatus("请输入密码！")
             return
         }
+        loginWithNum(phoneNumber.text!, pwd: password.text!)
+    }
+    
+    func loginWithNum(num:String,pwd:String){
         SVProgressHUD.show()
-        logVM?.login(phoneNumber.text!, password: password.text!, handle: { [unowned self] (success, response) in
+        logVM?.login(num, password: pwd, handle: { [unowned self] (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success == false {
                     if response != nil {
@@ -62,10 +82,13 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
                     return
                 }else{
                     SVProgressHUD.showSuccessWithStatus("登录成功")
+                    let ud = NSUserDefaults.standardUserDefaults()
+                    ud.setObject([USER_NAME:self.phoneNumber.text!,USER_PWD:self.password.text!], forKey: LOGINFO_KEY)
                     self.loginSuccess()
                 }
             })
-        })
+            })
+
     }
     
     @IBAction func forgetPwdAction(sender: AnyObject) {

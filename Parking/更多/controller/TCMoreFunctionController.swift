@@ -9,7 +9,7 @@
 import UIKit
 
 class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
     @IBOutlet weak var backScrollView: UIScrollView!
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -20,11 +20,12 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet weak var menuTableView: UITableView!
     @IBOutlet weak var cancelBtn: UIButton!
     @IBOutlet weak var menuHeightCons: NSLayoutConstraint!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configurUI()
     }
+    
     func configurUI(){
         backScrollView.bounces = false
         hidesBottomBarWhenPushed = false
@@ -37,6 +38,7 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
     }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let menuHeight = view.frame.height - 228
@@ -48,22 +50,26 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
         if TCUserInfo.currentInfo.avatar != "" {
             let imageUrlStr = PARK_SHOW_IMAGE_HEADER + TCUserInfo.currentInfo.avatar
             let url = NSURL(string: imageUrlStr)
-            avatarButton.sd_setImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "temp_avatar"))
+            avatarButton.sd_setImageWithURL(url, forState: .Normal)
         }
         menuTableView.reloadData()
 
     }
+    
     @IBAction func avatarClicked(sender: AnyObject) {
         print("点头像")
     }
+    
     @IBAction func editBtnClicked(sender: AnyObject) {
         print("点编辑")
         let VC = TCEditUserInfoController(nibName: "TCEditUserInfoController",bundle: nil)
         VC.hidesBottomBarWhenPushed = true
         self.navigationController?.pushViewController(VC, animated: true)
     }
+    
     @IBAction func cancelBtnClicked(sender: AnyObject) {
         print("点退出")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(LOGINFO_KEY)
         let loginVC = TCLoginViewController(nibName: "TCLoginViewController",bundle: nil)
         loginVC.title = "停车缴费"
         let loginNav = UINavigationController(rootViewController:loginVC)
@@ -72,12 +78,15 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
         let myWindow  = UIApplication.sharedApplication().keyWindow
         myWindow?.rootViewController = loginNav
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 5
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
     }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = UITableViewCell()
         switch indexPath.row {
@@ -101,6 +110,7 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
         }
         return cell
     }
+    
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
         return menuTableView.frame.height/5
     }
