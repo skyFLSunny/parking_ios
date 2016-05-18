@@ -82,6 +82,12 @@
 		F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */; };
 		F6D7FE4B1CE0360B0032AEE8 /* TCCarDetailPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */; };
 		F6F1F0F81CEAF2A00036C04E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1F0F71CEAF2A00036C04E /* Util.swift */; };
+		F6F49FE11CEC0F7500CA9AD9 /* TCSearchCarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F49FDF1CEC0F7500CA9AD9 /* TCSearchCarController.swift */; };
+		F6F49FE21CEC0F7500CA9AD9 /* TCSearchCarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F49FE01CEC0F7500CA9AD9 /* TCSearchCarController.xib */; };
+		F6F9C47A1CEC4874000AEC80 /* TCPayWithHodingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F9C4781CEC4874000AEC80 /* TCPayWithHodingController.swift */; };
+		F6F9C47B1CEC4874000AEC80 /* TCPayWithHodingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F9C4791CEC4874000AEC80 /* TCPayWithHodingController.xib */; };
+		F6F9C47E1CEC6A0E000AEC80 /* TCHasPaiedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F9C47C1CEC6A0E000AEC80 /* TCHasPaiedCell.swift */; };
+		F6F9C47F1CEC6A0E000AEC80 /* TCHasPaiedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6F9C47D1CEC6A0E000AEC80 /* TCHasPaiedCell.xib */; };
 		FB4E6E62E518BC4FBB80BBD7 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0F572D2848CB7E85EFF02D2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -167,6 +173,12 @@
 		F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailPopView.swift; sourceTree = "<group>"; };
 		F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailPopView.xib; sourceTree = "<group>"; };
 		F6F1F0F71CEAF2A00036C04E /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		F6F49FDF1CEC0F7500CA9AD9 /* TCSearchCarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCSearchCarController.swift; path = "../../车辆信息/controller/TCSearchCarController.swift"; sourceTree = "<group>"; };
+		F6F49FE01CEC0F7500CA9AD9 /* TCSearchCarController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TCSearchCarController.xib; path = "../../车辆信息/controller/TCSearchCarController.xib"; sourceTree = "<group>"; };
+		F6F9C4781CEC4874000AEC80 /* TCPayWithHodingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPayWithHodingController.swift; sourceTree = "<group>"; };
+		F6F9C4791CEC4874000AEC80 /* TCPayWithHodingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCPayWithHodingController.xib; sourceTree = "<group>"; };
+		F6F9C47C1CEC6A0E000AEC80 /* TCHasPaiedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCHasPaiedCell.swift; sourceTree = "<group>"; };
+		F6F9C47D1CEC6A0E000AEC80 /* TCHasPaiedCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCHasPaiedCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -422,10 +434,14 @@
 		F63562281CCDB77D00308264 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				F6F49FDF1CEC0F7500CA9AD9 /* TCSearchCarController.swift */,
+				F6F49FE01CEC0F7500CA9AD9 /* TCSearchCarController.xib */,
 				F63562291CCDB77D00308264 /* TCPaymentViewController.swift */,
 				F635622A1CCDB77D00308264 /* TCPaymentViewController.xib */,
 				F62593A41CE470BD000BC840 /* TCPayDetailController.swift */,
 				F62593A51CE470BD000BC840 /* TCPayDetailController.xib */,
+				F6F9C4781CEC4874000AEC80 /* TCPayWithHodingController.swift */,
+				F6F9C4791CEC4874000AEC80 /* TCPayWithHodingController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -445,6 +461,8 @@
 				F635622F1CCDB77D00308264 /* TCPaymentCell.xib */,
 				F62593A81CE48155000BC840 /* TCSinglePayFootView.swift */,
 				F62593AA1CE48162000BC840 /* TCSinglePayFootView.xib */,
+				F6F9C47C1CEC6A0E000AEC80 /* TCHasPaiedCell.swift */,
+				F6F9C47D1CEC6A0E000AEC80 /* TCHasPaiedCell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -569,6 +587,7 @@
 				F62C5B121CE5A4B8001DAD1E /* TCMessagesController.xib in Resources */,
 				F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */,
 				F62593AB1CE48162000BC840 /* TCSinglePayFootView.xib in Resources */,
+				F6F49FE21CEC0F7500CA9AD9 /* TCSearchCarController.xib in Resources */,
 				F63562521CCDB77D00308264 /* TCPaymentViewController.xib in Resources */,
 				F62C5B0C1CE5A4B8001DAD1E /* TCHomePageController.xib in Resources */,
 				F62C5B101CE5A4B8001DAD1E /* TCMessageDetailController.xib in Resources */,
@@ -581,8 +600,10 @@
 				F62C5B141CE5A4B8001DAD1E /* TCSingleClickedPayment.xib in Resources */,
 				F6169F001CE1C58300609A11 /* TCRegisterViewController.xib in Resources */,
 				F62C5B291CE6088B001DAD1E /* TCEditPhoneNumberController.xib in Resources */,
+				F6F9C47B1CEC4874000AEC80 /* TCPayWithHodingController.xib in Resources */,
 				F63562501CCDB77D00308264 /* TCMoreFunctionController.xib in Resources */,
 				F63562571CCDB77D00308264 /* TCCarInfoController.xib in Resources */,
+				F6F9C47F1CEC6A0E000AEC80 /* TCHasPaiedCell.xib in Resources */,
 				F67C15DE1CE30A5D004E1C9E /* TCEditUserInfoController.xib in Resources */,
 				F62C5B1C1CE5A4B8001DAD1E /* TCHomeAlertTableCell.xib in Resources */,
 				F62C5B1E1CE5A4B8001DAD1E /* TCInvitationAlertView.xib in Resources */,
@@ -659,6 +680,7 @@
 				F62C5AE91CE57CCD001DAD1E /* carInfoModel.swift in Sources */,
 				F63562531CCDB77D00308264 /* TCCarStopInfo.swift in Sources */,
 				F64F7F421CEAB913005348D3 /* TCCarUnpayModel.swift in Sources */,
+				F6F9C47A1CEC4874000AEC80 /* TCPayWithHodingController.swift in Sources */,
 				F62C5B181CE5A4B8001DAD1E /* NeedToPayCell.swift in Sources */,
 				F62C5B131CE5A4B8001DAD1E /* TCSingleClickedPayment.swift in Sources */,
 				F62C5B1B1CE5A4B8001DAD1E /* TCHomeAlertTableCell.swift in Sources */,
@@ -693,7 +715,9 @@
 				F62580CE1CE6C44F00D13ABF /* ConnectModel.m in Sources */,
 				F62C5B1D1CE5A4B8001DAD1E /* TCInvitationAlertView.swift in Sources */,
 				F62C5B1A1CE5A4B8001DAD1E /* TCAlertSelectView.swift in Sources */,
+				F6F9C47E1CEC6A0E000AEC80 /* TCHasPaiedCell.swift in Sources */,
 				F67C15D91CE2BD69004E1C9E /* JSONJoy.swift in Sources */,
+				F6F49FE11CEC0F7500CA9AD9 /* TCSearchCarController.swift in Sources */,
 				F67C15E01CE322AA004E1C9E /* TCUserInfo.swift in Sources */,
 				F62C5B0D1CE5A4B8001DAD1E /* TCInvitationController.swift in Sources */,
 			);

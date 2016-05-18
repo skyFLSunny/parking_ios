@@ -9,47 +9,71 @@
 import UIKit
 
 class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate{
+    
     @IBOutlet weak var bottomScrollView: UIScrollView!
     @IBOutlet weak var slideView: UIView!
     @IBOutlet weak var leftPayButton: UIButton!
     @IBOutlet weak var rightPayButton: UIButton!
+    
     var leftTableView:UITableView?
     var rightTableView:UITableView?
     var unpaidDataSource:Array<Dictionary<String,TCCarStopInfo>>?
     var paidDataSource:Array<Dictionary<String,TCCarStopInfo>>?
+    var hasNavBtn:Bool = true
     
     let leftTag = 666
     let rightTag = 888
     let scrollTag = 2333
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureUI()
+    }
+    
+    func configureUI(){
         edgesForExtendedLayout = UIRectEdge.None
         automaticallyAdjustsScrollViewInsets = false
-        hidesBottomBarWhenPushed = false
-        addNavItem()
+        if hasNavBtn {
+            hidesBottomBarWhenPushed = false
+            let rightButton = UIButton(type: .Custom)
+            rightButton.frame = CGRectMake(0, 0, 30, 30)
+            rightButton.setImage(UIImage(named:"ic_chazhao"), forState: .Normal)
+            rightButton.addTarget(self, action: #selector(rightBarButtonClicked), forControlEvents: .TouchUpInside)
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
+            let leftButton = UIButton(type: .Custom)
+            leftButton.frame = CGRectMake(0, 0, 30, 30)
+            leftButton.setImage(UIImage(named:"ic_daijiaofei"), forState: .Normal)
+            leftButton.addTarget(self, action: #selector(leftBarButtonClicked), forControlEvents: .TouchUpInside)
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
+        }else{
+            let navBtn = UIButton(type: .Custom)
+            navBtn.frame = CGRectMake(0, 0, 30, 30)
+            navBtn.setImage(UIImage(named: "ic_fanhui-left"), forState: .Normal)
+            navBtn.addTarget(self, action: #selector(backToHome), forControlEvents: .TouchUpInside)
+            let navItem = UIBarButtonItem(customView: navBtn)
+            self.navigationItem.leftBarButtonItem = navItem
+        }
+        
+    }
+    
+    func backToHome(){
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func makeDataSource(){
         
     }
     
-    func addNavItem(){
-        let leftButton = UIButton(type: .Custom)
-        let rightButton = UIButton(type: .Custom)
-        leftButton.frame = CGRectMake(0, 0, 30, 30)
-        rightButton.frame = CGRectMake(0, 0, 30, 30)
-        leftButton.setImage(UIImage(named:"ic_daijiaofei"), forState: .Normal)
-        rightButton.setImage(UIImage(named:"ic_chazhao"), forState: .Normal)
-        leftButton.addTarget(self, action: #selector(leftBarButtonClicked), forControlEvents: .TouchUpInside)
-        rightButton.addTarget(self, action: #selector(rightBarButtonClicked), forControlEvents: .TouchUpInside)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftButton)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightButton)
-    }
     func leftBarButtonClicked(){
-        print("左导航按钮")
+        let vc = TCPayWithHodingController(nibName: "TCPayWithHodingController",bundle: nil)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
     func rightBarButtonClicked(){
-        print("右导航按钮")
+        let vc = TCSearchCarController(nibName:"TCSearchCarController",bundle: nil)
+        vc.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -64,7 +88,7 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         leftTableView.registerNib(UINib.init(nibName: "TCPaymentCell", bundle: nil), forCellReuseIdentifier: "paycell")
         let rightTableView = UITableView(frame:CGRectMake(tableViewWidth, 0, tableViewWidth, tableViewHeight))
         rightTableView.tag = rightTag
-        rightTableView.registerNib(UINib.init(nibName: "TCPaymentCell", bundle: nil), forCellReuseIdentifier: "paycell")
+        rightTableView.registerNib(UINib.init(nibName: "TCHasPaiedCell", bundle: nil), forCellReuseIdentifier: "cell")
         
         leftTableView.dataSource = self
         leftTableView.delegate = self
@@ -73,10 +97,9 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         
         let foot = NSBundle.mainBundle().loadNibNamed("TCSinglePayFootView", owner: nil, options: nil).first as! TCSinglePayFootView
         foot.frame = CGRectMake(0,0,20,100)
-        foot.configureFootViewWithCost("100万") {
+        foot.configureFootViewWithCost("100元") {
             print("点了一键支付")
         }
-
         leftTableView.tableFooterView = foot
         
         self.bottomScrollView.addSubview(leftTableView)
@@ -90,6 +113,7 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
             self.bottomScrollView.contentOffset = CGPointMake(0, 0)
         }
     }
+    
     @IBAction func rightButtonClicked(sender: AnyObject) {
         print("右边")
         UIView.animateWithDuration(0.3) {
@@ -100,17 +124,19 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        return 100
+        return 85
     }
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
         headerView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
         let titleLabel = UILabel(frame: CGRectMake(10,5,300,20))
-        titleLabel.text = "当前车辆 鲁F85984"
+        titleLabel.text = "当前车辆 京B88888"
         titleLabel.font = UIFont.systemFontOfSize(15)
         headerView.addSubview(titleLabel)
         return headerView
     }
+    
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
@@ -125,14 +151,21 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 10
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = tableView.dequeueReusableCellWithIdentifier("paycell")
-        return cell!
+        var cell:UITableViewCell
+        if tableView.tag == leftTag {
+            cell = tableView.dequeueReusableCellWithIdentifier("paycell")!
+        }else{
+            cell = tableView.dequeueReusableCellWithIdentifier("cell")!
+        }
+        return cell
     }
+    
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){
         if scrollView.tag != scrollTag {
             return
@@ -144,5 +177,4 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
             rightButtonClicked(0)
         }
     }
-
 }

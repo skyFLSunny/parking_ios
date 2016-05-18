@@ -8,6 +8,7 @@
 import UIKit
 
 class TCLoginViewController: UIViewController,UIScrollViewDelegate {
+    
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var areaCode: UIButton!

@@ -54,7 +54,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pTv-6E-g8J">
-                    <rect key="frame" x="0.0" y="310" width="320" height="258"/>
+                    <rect key="frame" x="0.0" y="250" width="320" height="318"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y0L-N0-KlV">
                             <rect key="frame" x="10" y="29" width="300" height="45"/>
@@ -79,10 +79,10 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IM2-0q-aEW">
-                    <rect key="frame" x="0.0" y="130" width="320" height="180"/>
+                    <rect key="frame" x="0.0" y="130" width="320" height="120"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="180" id="qzq-qc-B5d"/>
+                        <constraint firstAttribute="height" constant="120" id="qzq-qc-B5d"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="GxE-zN-0Wo"/>

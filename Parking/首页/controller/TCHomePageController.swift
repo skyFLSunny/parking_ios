@@ -19,6 +19,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
+    @IBOutlet weak var empTipView: UIImageView!
     
     var backgroundBtn:UIButton?
     var alertSheet:TCAlertSelectView?
@@ -42,7 +43,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
                 if success {
                     self.locationLabel.text = res.position
                     self.startTimeLabel.text = res.start_time
-//                    self.totalTimeLabel.text = res.end_time
+                    //  self.totalTimeLabel.text = res.end_time
                 } else {
                 }
             })
