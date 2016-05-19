@@ -79,6 +79,7 @@
 		F68C97901CCF5E97001616CF /* TCCarDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */; };
 		F68C97911CCF5E97001616CF /* TCCarDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */; };
 		F6C5FF951CE9C61A00AAEF0D /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C5FF941CE9C61A00AAEF0D /* CoreFoundation.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F6C8B3441CED4C7E0063BF92 /* TCPaymentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C8B3431CED4C7E0063BF92 /* TCPaymentHelper.swift */; };
 		F6D7FE491CE0260F0032AEE8 /* TCCarDetailPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */; };
 		F6D7FE4B1CE0360B0032AEE8 /* TCCarDetailPopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */; };
 		F6F1F0F81CEAF2A00036C04E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F1F0F71CEAF2A00036C04E /* Util.swift */; };
@@ -170,6 +171,7 @@
 		F68C978E1CCF5E97001616CF /* TCCarDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailController.swift; sourceTree = "<group>"; };
 		F68C978F1CCF5E97001616CF /* TCCarDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailController.xib; sourceTree = "<group>"; };
 		F6C5FF941CE9C61A00AAEF0D /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		F6C8B3431CED4C7E0063BF92 /* TCPaymentHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCPaymentHelper.swift; sourceTree = "<group>"; };
 		F6D7FE481CE0260F0032AEE8 /* TCCarDetailPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarDetailPopView.swift; sourceTree = "<group>"; };
 		F6D7FE4A1CE0360B0032AEE8 /* TCCarDetailPopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCCarDetailPopView.xib; sourceTree = "<group>"; };
 		F6F1F0F71CEAF2A00036C04E /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 		F635622B1CCDB77D00308264 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				F6C8B3451CED4CA20063BF92 /* Helper */,
 				F635622C1CCDB77D00308264 /* TCCarStopInfo.swift */,
 			);
 			path = model;
@@ -508,6 +511,14 @@
 				F67C15D51CE2BD69004E1C9E /* JSONJoy.swift */,
 			);
 			path = Jsonjoy;
+			sourceTree = "<group>";
+		};
+		F6C8B3451CED4CA20063BF92 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				F6C8B3431CED4C7E0063BF92 /* TCPaymentHelper.swift */,
+			);
+			name = Helper;
 			sourceTree = "<group>";
 		};
 		F6D7FE4C1CE066320032AEE8 /* Welcome */ = {
@@ -686,6 +697,7 @@
 				F62C5B1B1CE5A4B8001DAD1E /* TCHomeAlertTableCell.swift in Sources */,
 				F6169F0A1CE1D11200609A11 /* TCVMLogModel.swift in Sources */,
 				F62593A61CE470BD000BC840 /* TCPayDetailController.swift in Sources */,
+				F6C8B3441CED4C7E0063BF92 /* TCPaymentHelper.swift in Sources */,
 				F62C5B211CE5A4B8001DAD1E /* TCSingleClickPayCell.swift in Sources */,
 				F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */,
 				F6169EFD1CE1C58300609A11 /* TCLoginViewController.swift in Sources */,

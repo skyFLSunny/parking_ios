@@ -20,6 +20,9 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     var unpaidDataSource:Array<Dictionary<String,TCCarStopInfo>>?
     var paidDataSource:Array<Dictionary<String,TCCarStopInfo>>?
     var hasNavBtn:Bool = true
+    var carNumber:String?
+    var payHelper:TCPaymentHelper = TCPaymentHelper()
+    var carUnPayments:Array<CarUnpayModel> = []
     
     let leftTag = 666
     let rightTag = 888
@@ -28,6 +31,18 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+        let getCarNum = carNumber == nil ?
+            TCUserInfo.currentInfo.currentCar : carNumber
+        payHelper.getUnpayInfoListWithCarNum(getCarNum!, handle: { [unowned self](success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success{
+                    self.carUnPayments = [response as! CarUnpayModel]
+                    self.leftTableView?.reloadData()
+                }else{
+                    SVProgressHUD.showErrorWithStatus("加载失败")
+                }
+            })
+        })
     }
     
     func configureUI(){
@@ -54,6 +69,11 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
             self.navigationItem.leftBarButtonItem = navItem
         }
         
+    }
+    
+    func pushConfigureWithHasNav(hasNav:Bool,carNum:String){
+        hasNavBtn = hasNav
+        carNumber = carNum
     }
     
     func backToHome(){
@@ -83,27 +103,34 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         self.bottomScrollView.pagingEnabled = true
         self.bottomScrollView.tag = scrollTag
         self.bottomScrollView.contentSize = CGSizeMake(tableViewWidth*2, tableViewHeight)
-        let leftTableView = UITableView(frame: CGRectMake(0, 0, tableViewWidth, tableViewHeight))
-        leftTableView.tag = leftTag
-        leftTableView.registerNib(UINib.init(nibName: "TCPaymentCell", bundle: nil), forCellReuseIdentifier: "paycell")
-        let rightTableView = UITableView(frame:CGRectMake(tableViewWidth, 0, tableViewWidth, tableViewHeight))
-        rightTableView.tag = rightTag
-        rightTableView.registerNib(UINib.init(nibName: "TCHasPaiedCell", bundle: nil), forCellReuseIdentifier: "cell")
-        
-        leftTableView.dataSource = self
-        leftTableView.delegate = self
-        rightTableView.dataSource = self
-        rightTableView.delegate = self
-        
-        let foot = NSBundle.mainBundle().loadNibNamed("TCSinglePayFootView", owner: nil, options: nil).first as! TCSinglePayFootView
-        foot.frame = CGRectMake(0,0,20,100)
-        foot.configureFootViewWithCost("100元") {
-            print("点了一键支付")
+        if leftTableView == nil {
+            leftTableView = UITableView(frame: CGRectMake(0, 0, tableViewWidth, tableViewHeight))
+            leftTableView!.tag = leftTag
+            leftTableView!.registerNib(UINib.init(nibName: "TCPaymentCell", bundle: nil), forCellReuseIdentifier: "paycell")
+            rightTableView = UITableView(frame:CGRectMake(tableViewWidth, 0, tableViewWidth, tableViewHeight))
+            rightTableView!.tag = rightTag
+            rightTableView!.registerNib(UINib.init(nibName: "TCHasPaiedCell", bundle: nil), forCellReuseIdentifier: "cell")
+            leftTableView?.tableFooterView = UIView()
+            rightTableView?.tableFooterView = UIView()
+            leftTableView?.backgroundColor = UIColor.clearColor()
+            rightTableView?.backgroundColor = UIColor.clearColor()
+            leftTableView!.dataSource = self
+            leftTableView!.delegate = self
+            rightTableView!.dataSource = self
+            rightTableView!.delegate = self
+            
+            //        let foot = NSBundle.mainBundle().loadNibNamed("TCSinglePayFootView", owner: nil, options: nil).first as! TCSinglePayFootView
+            //        foot.frame = CGRectMake(0,0,20,100)
+            //        foot.configureFootViewWithCost("100元") {
+            //            print("点了一键支付")
+            //        }
+            //        leftTableView.tableFooterView = foot
+            
+            self.bottomScrollView.addSubview(leftTableView!)
+            self.bottomScrollView.addSubview(rightTableView!)
         }
-        leftTableView.tableFooterView = foot
         
-        self.bottomScrollView.addSubview(leftTableView)
-        self.bottomScrollView.addSubview(rightTableView)
+        
     }
 
     @IBAction func leftButtonClicked(sender: AnyObject) {
@@ -131,7 +158,11 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         let headerView = UIView()
         headerView.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
         let titleLabel = UILabel(frame: CGRectMake(10,5,300,20))
-        titleLabel.text = "当前车辆 京B88888"
+        if carNumber == nil {
+            titleLabel.text = "当前车辆 " + TCUserInfo.currentInfo.currentCar
+        }else{
+            titleLabel.text = "当前车辆 " + carNumber!
+        }
         titleLabel.font = UIFont.systemFontOfSize(15)
         headerView.addSubview(titleLabel)
         return headerView
@@ -153,17 +184,23 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 10
+        if tableView.tag == leftTag {
+            return carUnPayments.count
+        }else{
+            return 10
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        var cell:UITableViewCell
         if tableView.tag == leftTag {
-            cell = tableView.dequeueReusableCellWithIdentifier("paycell")!
+            let cell = tableView.dequeueReusableCellWithIdentifier("paycell") as! TCPaymentCell
+            cell.showForModel(carUnPayments[indexPath.row])
+            return cell
+            
         }else{
-            cell = tableView.dequeueReusableCellWithIdentifier("cell")!
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TCHasPaiedCell
+            return cell
         }
-        return cell
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){

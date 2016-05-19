@@ -18,7 +18,7 @@ class TCCarInfoHelper: NSObject {
             requestManager?.responseSerializer = AFHTTPResponseSerializer()
         }
     }
-    
+    //添加车辆
     func addCarWithOnwerID(brand:String,carNumber:String,carType:String,engineNum:String,handle:ResponseBlock){
         let userid = TCUserInfo.currentInfo.userid
         print(userid)
@@ -36,7 +36,7 @@ class TCCarInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
-    
+    //获取车辆信息列表
     func getCarInfoList(handle:ResponseBlock){
         let paramDic = ["a":"getcarlist","userid":TCUserInfo.currentInfo.userid]
         requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
@@ -50,7 +50,7 @@ class TCCarInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
-    
+    // 修改车辆信息
     func editCarInfoWithCarID(carid:String,carNumber:String,brand:String,userid:String,
                               cartype:String,engineNum:String, handle:ResponseBlock){
         let paramDic = ["a":"updatecarinfo","carid":carid,
@@ -68,7 +68,7 @@ class TCCarInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
-    
+    //设为常用车辆
     func upDateCurrentCarWithCarNumber(carNum:String,handle:ResponseBlock){
         let paraDic = ["a":"updateMemberCurrentCar",
                        "userid":TCUserInfo.currentInfo.userid,
@@ -81,7 +81,7 @@ class TCCarInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
-    
+    //解绑车辆
     func unBindCarWithCarNumber(carNum:String,handle:ResponseBlock){
         let paraDic = ["a":"unBindCar","userid":TCUserInfo.currentInfo.userid,
                        "carnumber":carNum]

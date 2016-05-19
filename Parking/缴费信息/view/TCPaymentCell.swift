@@ -14,6 +14,8 @@ class TCPaymentCell: UITableViewCell {
     @IBOutlet weak var stopTime: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var payButton: UIButton!
+    var myModel:CarUnpayModel?
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +28,17 @@ class TCPaymentCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    func showForModel(model:CarUnpayModel){
+        myModel = model
+    }
     @IBAction func payButtonClicked(sender: AnyObject) {
         print("支付")
+    }
+    override func layoutSubviews() {
+        if  myModel != nil {
+            moneyLabel.text = "¥" + String((myModel?.money)!)
+            stopDataLabel.text = myModel?.date
+            stopTime.text = "停车 " + myModel!.time! + "   " + myModel!.price!
+        }
     }
 }

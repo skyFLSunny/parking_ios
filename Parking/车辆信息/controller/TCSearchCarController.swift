@@ -11,11 +11,23 @@ import UIKit
 class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var carHelper:TCCarInfoHelper = TCCarInfoHelper()
+    var dataSource:Array<CarCellInfoModel>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         configureUI()
+        carHelper.getCarInfoList {[unowned self] (success, response) in
+            dispatch_async(dispatch_get_main_queue(), { 
+                if success {
+                    self.dataSource = response as? Array<CarCellInfoModel>
+                    self.tableView.reloadData()
+                }
+            })
+        }
     }
     func configureUI(){
         self.edgesForExtendedLayout = UIRectEdge.None
@@ -30,13 +42,17 @@ class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDat
         tableView.tableFooterView = UIView()
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        if dataSource != nil {
+            return dataSource!.count
+        }else{
+            return 0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
-        cell.textLabel?.text = "京B88888"
+        cell.textLabel?.text = dataSource![indexPath.row].carnumber
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
         return cell
     }
@@ -48,7 +64,7 @@ class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let vc = TCPaymentViewController(nibName:"TCPaymentViewController",bundle: nil)
-        vc.hasNavBtn = false
+        vc.pushConfigureWithHasNav(false, carNum: dataSource![indexPath.row].carnumber!)
         navigationController?.pushViewController(vc, animated: true)
     }
     
