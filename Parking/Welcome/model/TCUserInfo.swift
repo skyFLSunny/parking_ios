@@ -9,23 +9,22 @@
 import UIKit
 
 class TCUserInfo {
-    var avatar:String
-    var address:String
-    var phoneNumber:String
-    var userid:String
-    var userName:String
-    var sex:String
-    var currentCar:String
+    var avatar:String = ""
+    var address:String = ""
+    var phoneNumber:String = ""
+    var userid:String = ""
+    var userName:String = ""
+    var sex:String = ""
+    var currentCar:String = ""
+    var cardid:String = ""
+    var banktype:String = ""
+    var bankBranch:String = ""
+    var bankNo:String = ""
+    var bankUserName:String = ""
+    var cardNumber:String = ""
     
     static let currentInfo = TCUserInfo()
     private init() {
-        "初始化userInfo"
-        avatar = ""
-        address = ""
-        phoneNumber = ""
-        userid = ""
-        userName = ""
-        sex = ""
-        currentCar = ""
+        
     }
 }

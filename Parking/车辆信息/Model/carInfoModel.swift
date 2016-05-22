@@ -23,7 +23,6 @@ class TCCarInfoParser: JSONJoy{
         }else{
             errorData = decoder["data"].string
         }
-        
     }
 }
 

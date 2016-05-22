@@ -32,12 +32,12 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TDV-d3-VVq">
                                     <rect key="frame" x="0.0" y="64" width="320" height="64"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iut-Mo-ChC">
-                                            <rect key="frame" x="10" y="21" width="48" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="密码" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iut-Mo-ChC">
+                                            <rect key="frame" x="10" y="23" width="48" height="18"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="48" id="utW-N9-n5r"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -87,16 +87,14 @@
                                                 <constraint firstAttribute="width" constant="1" id="iwh-Vt-mQl"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jxc-Hl-nnO">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jxc-Hl-nnO">
                                             <rect key="frame" x="8" y="21" width="50" height="22"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="50" id="0f1-kL-TeQ"/>
                                                 <constraint firstAttribute="height" constant="22" id="LAG-og-J1a"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <inset key="titleEdgeInsets" minX="-15" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            <inset key="imageEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                            <state key="normal" title="+86" image="ic_arrow_down">
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <state key="normal" title="+86">
                                                 <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <connections>
@@ -228,7 +226,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_arrow_down" width="14" height="8"/>
         <image name="ic_shanchumima" width="15" height="15"/>
     </resources>
 </document>

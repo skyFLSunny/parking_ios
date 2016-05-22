@@ -34,6 +34,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
                 self.takePhoto()
             })
         }))
+        
         if TCUserInfo.currentInfo.avatar != "" {
             let imageUrlStr = PARK_SHOW_IMAGE_HEADER + TCUserInfo.currentInfo.avatar
             let url = NSURL(string: imageUrlStr)
@@ -49,10 +50,10 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     
     func configureUI(){
         //set layer
-        name.layer.borderWidth = 1
+        name.layer.borderWidth = 2
         name.layer.borderColor = UIColor.whiteColor().CGColor
         address.layer.borderColor = UIColor.whiteColor().CGColor
-        address.layer.borderWidth = 1
+        address.layer.borderWidth = 2
         avatarBtn.layer.cornerRadius = 40
         avatarBtn.clipsToBounds = true
         // set nav
@@ -76,12 +77,15 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         let gesture = UITapGestureRecognizer.init(target: self, action: #selector(tapBackView))
         self.view.addGestureRecognizer(gesture)
     }
+    
     func submit(){
         
     }
+    
     func tapBackView(){
         self.view.endEditing(true)
     }
+    
     func takePhoto(){
         let sourceType = UIImagePickerControllerSourceType.Camera
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
@@ -94,6 +98,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
             print("无法打开相机")
         }
     }
+    
     func LocalPhoto(){
         let picker = UIImagePickerController()
         picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
@@ -108,15 +113,6 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
             return
         }
         //裁剪后图片
-        /* 此处info 有六个值
-                  * UIImagePickerControllerMediaType; // an NSString UTTypeImage)
-                  * UIImagePickerControllerOriginalImage;  // a UIImage 原始图片
-                  * UIImagePickerControllerEditedImage;    // a UIImage 裁剪后图片
-                  * UIImagePickerControllerCropRect;       // an NSValue (CGRect)
-                  * UIImagePickerControllerMediaURL;       // an NSURL
-                 * UIImagePickerControllerReferenceURL    // an NSURL that references an asset in the AssetsLibrary framework
-                  * UIImagePickerControllerMediaMetadata    // an NSDictionary containing metadata from a captured photo
-         */
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
         avatarBtn.setImage(image, forState: .Normal)
         let data = UIImageJPEGRepresentation(image, 0.1)!
@@ -138,11 +134,10 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
                 }
             })
         }
-       
         
         picker.dismissViewControllerAnimated(true, completion: nil)
-        
     }
+    
     func changeAvatar(){
         self.moreHelper?.changeAvatar({[unowned self] (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
@@ -151,8 +146,8 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
                 }
             })
         })
-
     }
+    
     @IBAction func editPhoneNumber(sender: AnyObject) {
         let VC = TCEditPhoneNumberController(nibName: "TCEditPhoneNumberController",bundle: nil)
         navigationController?.pushViewController(VC, animated: true)
@@ -161,9 +156,11 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     func backToHome(){
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     @IBAction func selectedEditPassword(sender: AnyObject) {
         print("pwd")
     }
+    
     @IBAction func selectAvatarAction(sender: AnyObject) {
         print("avatar")
         presentViewController(myActionSheet!, animated: true, completion:nil)

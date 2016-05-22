@@ -80,11 +80,33 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 5
+        return 4
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        switch indexPath.row {
+        case 0:
+//            cell.textLabel?.text = "银行卡信息"
+           print("银行卡信息")
+           let vc = TCBankCardController(nibName: "TCBankCardController", bundle: nil)
+           vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+        case 1:
+//            cell.textLabel?.text = "账户安全"
+            print("安全")
+        case 2:
+//            cell.textLabel?.text = "通知信息"
+            print("通知")
+        case 3:
+//            cell.textLabel?.text = "清理缓存"
+            print("清理")
+        case 4:
+//            cell.textLabel?.text = "检查升级"
+            print("升级")
+            
+        default:0
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
@@ -106,12 +128,11 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
             cell.textLabel?.text = "检查升级"
             cell.imageView?.image = UIImage(named: "ic_shengji")
         default:0
-            
         }
         return cell
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        return menuTableView.frame.height/5
+        return menuTableView.frame.height/4
     }
 }

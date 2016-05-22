@@ -52,13 +52,13 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
         self.view.addGestureRecognizer(gesture)
         
         ownerName.layer.borderColor = UIColor.whiteColor().CGColor
-        ownerName.layer.borderWidth = 1
+        ownerName.layer.borderWidth = 2
         carNumber.layer.borderColor = UIColor.whiteColor().CGColor
-        carNumber.layer.borderWidth = 1
+        carNumber.layer.borderWidth = 2
         carType.layer.borderColor = UIColor.whiteColor().CGColor
-        carType.layer.borderWidth = 1
+        carType.layer.borderWidth = 2
         engineNum.layer.borderColor = UIColor.whiteColor().CGColor
-        engineNum.layer.borderWidth = 1
+        engineNum.layer.borderWidth = 2
         
         if viewType == .edit {
             ownerName.text = brandStr

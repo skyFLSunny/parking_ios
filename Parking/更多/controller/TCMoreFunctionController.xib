@@ -123,6 +123,7 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="PIH-7S-MoX" firstAttribute="leading" secondItem="2oo-PU-bde" secondAttribute="trailing" constant="4" id="09q-jH-q4B"/>
                                 <constraint firstItem="PIH-7S-MoX" firstAttribute="centerY" secondItem="ean-QF-49X" secondAttribute="centerY" id="8bF-Fe-oTh"/>
@@ -146,7 +147,7 @@
                             <rect key="frame" x="0.0" y="130" width="320" height="340"/>
                             <subviews>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YmS-2C-y8j">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="280"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <connections>
                                         <outlet property="dataSource" destination="-1" id="mVE-ke-FMF"/>
@@ -154,9 +155,9 @@
                                     </connections>
                                 </tableView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="YmS-2C-y8j" secondAttribute="bottom" id="T7x-sp-RyL"/>
+                                <constraint firstAttribute="bottom" secondItem="YmS-2C-y8j" secondAttribute="bottom" constant="60" id="T7x-sp-RyL"/>
                                 <constraint firstAttribute="bottom" secondItem="YmS-2C-y8j" secondAttribute="bottom" id="avi-42-FJp"/>
                                 <constraint firstItem="YmS-2C-y8j" firstAttribute="leading" secondItem="L9H-Kc-Oyg" secondAttribute="leading" id="uKj-oj-cIN"/>
                                 <constraint firstItem="YmS-2C-y8j" firstAttribute="top" secondItem="L9H-Kc-Oyg" secondAttribute="top" id="xGw-nz-wer"/>
@@ -165,6 +166,11 @@
                                 <constraint firstAttribute="trailing" secondItem="YmS-2C-y8j" secondAttribute="trailing" id="ymN-CK-n3F"/>
                                 <constraint firstAttribute="trailing" secondItem="YmS-2C-y8j" secondAttribute="trailing" id="zQB-SE-8du"/>
                             </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="avi-42-FJp"/>
+                                </mask>
+                            </variation>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmE-x7-H3p">
                             <rect key="frame" x="0.0" y="470" width="320" height="98"/>
@@ -212,7 +218,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="cF0-ZA-t9a" secondAttribute="bottom" id="0j5-GB-yDZ"/>
                 <constraint firstAttribute="trailing" secondItem="cF0-ZA-t9a" secondAttribute="trailing" id="BvJ-lN-IEy"/>

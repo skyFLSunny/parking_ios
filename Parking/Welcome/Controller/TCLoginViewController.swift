@@ -36,7 +36,7 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
             let passwordStr = logInfo![USER_PWD]!
             phoneNumber.text = usernameStr
             password.text = passwordStr
-            loginWithNum(usernameStr , pwd: passwordStr )
+            loginWithNum(usernameStr , pwd: passwordStr)
         }
     }
     
@@ -47,9 +47,9 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
         let gesture = UITapGestureRecognizer.init(target: self, action: #selector(tapBackView))
         self.view.addGestureRecognizer(gesture)
         password.layer.borderColor = UIColor.whiteColor().CGColor
-        password.layer.borderWidth = 1
+        password.layer.borderWidth = 2
         phoneNumber.layer.borderColor = UIColor.whiteColor().CGColor
-        phoneNumber.layer.borderWidth = 1
+        phoneNumber.layer.borderWidth = 2
         loginBtn.layer.cornerRadius = 8
         
     }

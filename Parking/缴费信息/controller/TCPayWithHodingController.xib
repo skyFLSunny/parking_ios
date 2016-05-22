@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TCPayWithHodingController" customModule="Parking" customModuleProvider="target">
             <connections>
-                <outlet property="empTipView" destination="91B-Ns-h6K" id="Oxu-96-ZIP"/>
                 <outlet property="searchBar" destination="YBJ-9T-k0x" id="2h0-ZP-EI0"/>
                 <outlet property="searchBtn" destination="Baj-h9-Sto" id="AVJ-Na-aGf"/>
                 <outlet property="tableView" destination="DpG-mP-Se9" id="Qdi-yB-c7m"/>
@@ -36,6 +35,9 @@
                             <state key="normal" title="查询">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="searchBtnClicked:" destination="-1" eventType="touchUpInside" id="9lq-sY-yux"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -49,25 +51,20 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DpG-mP-Se9">
-                    <rect key="frame" x="0.0" y="60" width="320" height="508"/>
+                    <rect key="frame" x="0.0" y="70" width="320" height="498"/>
                     <color key="backgroundColor" white="0.93999999999999995" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="3pa-DX-NvG"/>
+                        <outlet property="delegate" destination="-1" id="qqd-ms-nGP"/>
+                    </connections>
                 </tableView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_empty" translatesAutoresizingMaskIntoConstraints="NO" id="91B-Ns-h6K">
-                    <rect key="frame" x="40" y="200" width="240" height="168"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="Dn4-j3-Rb1"/>
-                        <constraint firstAttribute="height" constant="168" id="W3A-d9-ar5"/>
-                    </constraints>
-                </imageView>
             </subviews>
             <color key="backgroundColor" white="0.93999999999999995" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="6kk-hx-52F" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0Ro-2o-aaT"/>
                 <constraint firstAttribute="trailing" secondItem="DpG-mP-Se9" secondAttribute="trailing" id="BQc-1g-hX6"/>
-                <constraint firstItem="DpG-mP-Se9" firstAttribute="top" secondItem="6kk-hx-52F" secondAttribute="bottom" id="GGG-ej-lDh"/>
+                <constraint firstItem="DpG-mP-Se9" firstAttribute="top" secondItem="6kk-hx-52F" secondAttribute="bottom" constant="10" id="GGG-ej-lDh"/>
                 <constraint firstItem="DpG-mP-Se9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Uus-Y1-1KA"/>
-                <constraint firstItem="91B-Ns-h6K" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Zj4-K3-8wR"/>
-                <constraint firstItem="91B-Ns-h6K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="e1z-2E-e9w"/>
                 <constraint firstAttribute="trailing" secondItem="6kk-hx-52F" secondAttribute="trailing" id="hBt-Vm-7Up"/>
                 <constraint firstAttribute="bottom" secondItem="DpG-mP-Se9" secondAttribute="bottom" id="kIj-6M-6BY"/>
                 <constraint firstItem="6kk-hx-52F" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="qNW-5Y-QGm"/>
@@ -76,7 +73,4 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
-    <resources>
-        <image name="home_empty" width="155" height="101"/>
-    </resources>
 </document>

@@ -29,17 +29,16 @@ class TCForgetPasswordController: UIViewController {
     func configureUI(){
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
-        
         let gesture = UITapGestureRecognizer.init(target: self, action: #selector(tapBackView))
         self.view.addGestureRecognizer(gesture)
         //layer
-        phoneNumber.layer.borderWidth = 1
+        phoneNumber.layer.borderWidth = 2
         phoneNumber.layer.borderColor = UIColor.whiteColor().CGColor
-        identifyNumber.layer.borderWidth = 1
+        identifyNumber.layer.borderWidth = 2
         identifyNumber.layer.borderColor = UIColor.whiteColor().CGColor
-        passWordNum.layer.borderWidth = 1
+        passWordNum.layer.borderWidth = 2
         passWordNum.layer.borderColor = UIColor.whiteColor().CGColor
-        confirm.layer.borderWidth = 1
+        confirm.layer.borderWidth = 2
         confirm.layer.borderColor = UIColor.whiteColor().CGColor
         getIDNumBtn.layer.cornerRadius = 2
         completeBtn.layer.cornerRadius = 8
@@ -52,12 +51,15 @@ class TCForgetPasswordController: UIViewController {
         let navItem = UIBarButtonItem(customView: navBtn)
         self.navigationItem.leftBarButtonItem = navItem
     }
+    
     func tapBackView(){
         self.view.endEditing(true)
     }
+    
     func backToHome(){
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
     @IBAction func getIdentifyNumberBtn(sender: AnyObject) {
         if phoneNumber.text!.isEmpty {
             SVProgressHUD.showErrorWithStatus("请输入手机号！")

@@ -31,8 +31,9 @@ class TCVMLogModel: NSObject {
                 let userid = (result.data?.id)!
                 TCUserInfo.currentInfo.userid = String(userid)
                 TCUserInfo.currentInfo.userName = (result.data?.user_name)!
-                TCUserInfo.currentInfo.address = "北京"
                 TCUserInfo.currentInfo.currentCar = (result.data?.current_car)!
+                TCUserInfo.currentInfo.address = (result.data?.addr)!
+                TCUserInfo.currentInfo.cardid = (result.data?.card_id)!
                 if result.data?.avatar != nil {
                     TCUserInfo.currentInfo.avatar = (result.data?.avatar)!
                 }
@@ -52,9 +53,11 @@ class TCVMLogModel: NSObject {
     //注册
     func register(phone:String,password:String,
                   code:String,avatar:String,name:String,
-                  devicestate:String,handle:ResponseBlock){
+                  devicestate:String,sex:String,cardid:String,addr:String, handle:ResponseBlock){
         let paramDic = ["a":"AppRegister","phone":phone,"password":password,
-                        "code":code,"avatar":avatar,"name":name,"devicestate":devicestate,"sex":"1"]
+                        "code":code,"avatar":avatar,"name":name,
+                        "devicestate":devicestate,"sex":sex,
+                        "addr":addr,"cardid":cardid]
         requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData

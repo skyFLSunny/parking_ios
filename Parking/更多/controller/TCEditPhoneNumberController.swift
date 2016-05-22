@@ -25,7 +25,7 @@ class TCEditPhoneNumberController: UIViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         
         phoneNumber.layer.borderColor = UIColor.whiteColor().CGColor
-        phoneNumber.layer.borderWidth = 1
+        phoneNumber.layer.borderWidth = 2
         
         let navBtn = UIButton(type: .Custom)
         navBtn.frame = CGRectMake(0, 0, 30, 30)
