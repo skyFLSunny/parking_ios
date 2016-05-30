@@ -12,6 +12,10 @@ enum CarControllerType {
     case edit
 }
 
+protocol AddCarViewControllerDelegate:NSObjectProtocol {
+    func changedModel(model:CarCellInfoModel)
+}
+
 class AddCarViewController: UIViewController,UIScrollViewDelegate {
     /// 车辆品牌
     @IBOutlet weak var ownerName: UITextField!
@@ -24,27 +28,44 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
     
     @IBOutlet weak var tpScrollView: TPKeyboardAvoidingScrollView!
     
-    var brandStr:String?
-    var carNumStr:String?
-    var carTypeStr:String?
-    var engineNumStr:String?
-    var carid:String?
+    weak var delegate:AddCarViewControllerDelegate?
+    
+    var carModel:CarCellInfoModel?
     
     var viewType:CarControllerType = .add
     
     var carInfoHelper:TCCarInfoHelper?
     
+    var alertControl:UIAlertController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         carInfoHelper = TCCarInfoHelper()
+        alertControl = UIAlertController(title: nil, message: "是否设置为当前驾驶车辆？", preferredStyle: .Alert)
+        carNumber.userInteractionEnabled = false
+        alertControl?.addAction(UIAlertAction(title: "是", style: .Default, handler: { (alertAction) in
+            self.carInfoHelper?.upDateCurrentCarWithCarNumber(self.carNumber.text!, handle: {[unowned self] (success, response) in
+                dispatch_async(dispatch_get_main_queue(), {
+                    if success {
+                        SVProgressHUD.showSuccessWithStatus("设置成功")
+                        self.backToHomeWithReload()
+                    }else {
+                        SVProgressHUD.showErrorWithStatus(response as? String)
+                        self.backToHomeWithReload()
+                    }
+                })
+                })
+
+        }))
+        alertControl?.addAction(UIAlertAction(title: "否", style: .Cancel, handler: { (alert) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.backToHomeWithReload()
+            })
+        }))
     }
-    func configureWithbrand(mybrand:String?,myCarNumber:String?,myCarType:String?,myEngineNum:String?,myCarid:String?){
-        brandStr = mybrand
-        carNumStr = myCarNumber
-        carTypeStr = myCarType
-        engineNumStr = myEngineNum
-        carid = myCarid
+    func configureWithcarModel(model:CarCellInfoModel){
+        carModel = model
     }
     func configureUI(){
         
@@ -61,10 +82,10 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
         engineNum.layer.borderWidth = 2
         
         if viewType == .edit {
-            ownerName.text = brandStr
-            carNumber.text = carNumStr
-            carType.text = carTypeStr
-            engineNum.text = engineNumStr
+            ownerName.text = carModel?.brand
+            carNumber.text = carModel?.carnumber
+            carType.text = carModel?.cartype
+            engineNum.text = carModel?.enginenumber
         }
         
         self.edgesForExtendedLayout = UIRectEdge.None
@@ -109,8 +130,7 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
             carInfoHelper?.addCarWithOnwerID(ownerName.text!, carNumber: carNumber.text!, carType: carType.text!, engineNum: engineNum.text!, handle: { [unowned self] (success, response) in
                 dispatch_async(dispatch_get_main_queue(), {
                     if success {
-                        SVProgressHUD.showSuccessWithStatus("添加成功")
-                        self.navigationController?.popViewControllerAnimated(true)
+                        self.presentViewController(self.alertControl!, animated: true, completion: nil)
                     }else{
                         SVProgressHUD.showErrorWithStatus(response as? String)
                     }
@@ -118,11 +138,16 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
                 })
             
         }else{
-            carInfoHelper?.editCarInfoWithCarID(carid!, carNumber:carNumber.text!, brand:  ownerName.text!, userid:TCUserInfo.currentInfo.userid, cartype:carType.text!, engineNum: engineNum.text!, handle: { (success, response) in
+            carInfoHelper?.editCarInfoWithCarID(String((carModel?.carid)!), carNumber:carNumber.text!, brand:  ownerName.text!, userid:TCUserInfo.currentInfo.userid, cartype:carType.text!, engineNum: engineNum.text!, handle: { (success, response) in
                 dispatch_async(dispatch_get_main_queue(), {
                     if success {
+                        self.carModel?.brand = self.ownerName.text!
+                        self.carModel?.carnumber = self.carNumber.text!
+                        self.carModel?.cartype = self.carType.text!
+                        self.carModel?.enginenumber = self.engineNum.text!
                         SVProgressHUD.showSuccessWithStatus("修改成功")
-                        self.navigationController?.popViewControllerAnimated(true)
+                        self.backToHomeWithReload()
+                        self.delegate?.changedModel(self.carModel!)
                     }else{
                         SVProgressHUD.showErrorWithStatus(response as? String)
                     }
@@ -132,6 +157,14 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate {
     }
     func backToHome(){
         navigationController?.popViewControllerAnimated(true)
+    }
+    func backToHomeWithReload(){
+        navigationController?.popViewControllerAnimated(true)
+        NSNotificationCenter.defaultCenter().postNotificationName(LOAD_CARINFO, object: nil)
+    }
+    func backWithLoadModel(model:CarCellInfoModel){
+        navigationController?.popViewControllerAnimated(true)
+        NSNotificationCenter.defaultCenter().postNotificationName(LOAD_CARINFO, object: model)
     }
     func hiddenKeyBoard(){
         self.view.endEditing(true)

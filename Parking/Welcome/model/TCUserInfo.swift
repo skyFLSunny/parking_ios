@@ -22,6 +22,7 @@ class TCUserInfo {
     var bankNo:String = ""
     var bankUserName:String = ""
     var cardNumber:String = ""
+    var currentCarBrand = ""
     
     static let currentInfo = TCUserInfo()
     private init() {

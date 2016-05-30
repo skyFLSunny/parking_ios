@@ -126,8 +126,8 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
             //        }
             //        leftTableView.tableFooterView = foot
             
-            self.bottomScrollView.addSubview(leftTableView!)
-            self.bottomScrollView.addSubview(rightTableView!)
+            bottomScrollView.addSubview(leftTableView!)
+            bottomScrollView.addSubview(rightTableView!)
         }
         
         
@@ -187,7 +187,14 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         if tableView.tag == leftTag {
             return carUnPayments.count
         }else{
-            return 10
+            let height = tableView.frame.height
+            let lab = UILabel(frame: CGRectMake(WIDTH*1.2,height*0.45,WIDTH*0.6,height*0.1))
+            lab.text = "当前没有未缴费信息"
+            lab.font = UIFont.systemFontOfSize(22)
+            lab.adjustsFontSizeToFitWidth = true
+            lab.textColor = UIColor.lightGrayColor()
+            bottomScrollView.addSubview(lab)
+            return 0
         }
     }
     
@@ -207,7 +214,9 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         if scrollView.tag != scrollTag {
             return
         }
+        
         print(scrollView.contentOffset.x)
+        
         if scrollView.contentOffset.x == 0 {
             leftButtonClicked(0)
         }else{

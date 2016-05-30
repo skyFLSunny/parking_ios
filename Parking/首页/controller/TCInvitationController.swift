@@ -19,12 +19,21 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
     var keyChars:Array<String>?
     var alertBackGroundView:UIButton?
     var alertView:TCInvitationAlertView?
+    var hasRight:Bool = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         makeDataSource()
         configureUI()
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if !hasRight {
+            SVProgressHUD.showErrorWithStatus("请打开程序通讯录权限")
+        }
+    }
+    
     func configureUI(){
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
@@ -49,6 +58,7 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         let navItem = UIBarButtonItem(customView: navBtn)
         self.navigationItem.leftBarButtonItem = navItem
     }
+    
     func addAlertViewForModel(model:TCContactorInfo){
         //alert
         let keywin = UIApplication.sharedApplication().keyWindow
@@ -69,10 +79,12 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         alertView?.delegate = self
         keywin?.addSubview(alertView!)
     }
+    
     func BackgroundBtnClicked(){
         alertBackGroundView?.removeFromSuperview()
         alertView?.removeFromSuperview()
     }
+    
     func makeDataSource(){
         //处理通讯录信息
         let userInfoDics = getSysContacts()
@@ -112,22 +124,25 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
     func getSysContacts() -> [[String:String]] {
         var error:Unmanaged<CFError>?
         let addressBook: ABAddressBookRef? = ABAddressBookCreateWithOptions(nil, &error).takeRetainedValue()
-        
         let sysAddressBookStatus = ABAddressBookGetAuthorizationStatus()
         
-        if sysAddressBookStatus == .Denied || sysAddressBookStatus == .NotDetermined {
+        if sysAddressBookStatus == .NotDetermined {
             // Need to ask for authorization
             let authorizedSingal:dispatch_semaphore_t = dispatch_semaphore_create(0)
-            let askAuthorization:ABAddressBookRequestAccessCompletionHandler = { success, error in
+            let askAuthorization:ABAddressBookRequestAccessCompletionHandler = {[unowned self] success, error in
+                dispatch_semaphore_signal(authorizedSingal)
                 if success {
                     ABAddressBookCopyArrayOfAllPeople(addressBook).takeRetainedValue() as NSArray
-                    dispatch_semaphore_signal(authorizedSingal)
+                }else{
+                    self.hasRight = false
                 }
             }
             ABAddressBookRequestAccessWithCompletion(addressBook, askAuthorization)
             dispatch_semaphore_wait(authorizedSingal, DISPATCH_TIME_FOREVER)
         }
-        
+        if  !hasRight{
+            return [[:]]
+        }
         return analyzeSysContacts( ABAddressBookCopyArrayOfAllPeople(addressBook).takeRetainedValue() as NSArray )
     }
     func analyzeSysContacts(sysContacts:NSArray) -> [[String:String]] {

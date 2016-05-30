@@ -18,12 +18,34 @@ class TCForgetPasswordController: UIViewController {
     @IBOutlet weak var secretBtn: UIButton!
     @IBOutlet weak var confirmScrtBtn: UIButton!
     @IBOutlet weak var completeBtn: UIButton!
+    var processHandle:TimerHandle?
+    var finishHandle:TimerHandle?
     var logVM:TCVMLogModel?
+    var showMM:Bool = false
+    var showQRMM:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         logVM = TCVMLogModel()
+        
+        processHandle = {[unowned self] (timeInterVal) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.getIDNumBtn.backgroundColor = UIColor.lightGrayColor()
+                self.getIDNumBtn.userInteractionEnabled = false
+                let btnTitle = String(timeInterVal) + "秒后重新获取"
+                self.getIDNumBtn.setTitle(btnTitle, forState: .Normal)
+            })
+        }
+        finishHandle = {[unowned self] (timeInterVal) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.getIDNumBtn.userInteractionEnabled = true
+                self.getIDNumBtn.backgroundColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1)
+                self.getIDNumBtn.setTitle("获取验证码", forState: .Normal)
+            })
+        }
+        TimeManager.shareManager.taskDic["forget"]?.FHandle = finishHandle
+        TimeManager.shareManager.taskDic["forget"]?.PHandle = processHandle
     }
     
     func configureUI(){
@@ -65,15 +87,46 @@ class TCForgetPasswordController: UIViewController {
             SVProgressHUD.showErrorWithStatus("请输入手机号！")
             return
         }
-        logVM?.sendMobileCodeWithPhoneNumber(phoneNumber.text!)
+        logVM?.comfirmPhoneHasRegister(phoneNumber.text!, handle: { [unowned self](success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+            if success {
+                TimeManager.shareManager.begainTimerWithKey("forget", timeInterval: 30, process: self.processHandle!, finish: self.finishHandle!)
+                self.logVM?.sendMobileCodeWithPhoneNumber(self.phoneNumber.text!)
+            }else{
+                    SVProgressHUD.showErrorWithStatus("手机没有注册")
+            }
+            })
+        })
         print("获取验证码")
     }
-    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        TimeManager.shareManager.taskDic["forget"]?.FHandle = nil
+        TimeManager.shareManager.taskDic["forget"]?.PHandle = nil
+    }
     @IBAction func setSecretButtonAction(sender: AnyObject) {
+        if showMM == false {
+            showMM = true
+            secretBtn.setImage(UIImage(named: "ic_zhengyan"), forState: .Normal)
+            passWordNum.secureTextEntry = false
+        }else{
+            showMM = false
+            secretBtn.setImage(UIImage(named: "ic_biyan"), forState: .Normal)
+            passWordNum.secureTextEntry = true
+        }
         print("mima")
     }
     
     @IBAction func setConfirmPassWordButtonAction(sender: AnyObject) {
+        if showQRMM == false {
+            showQRMM = true
+            confirmScrtBtn.setImage(UIImage(named: "ic_zhengyan"), forState: .Normal)
+            confirm.secureTextEntry = false
+        }else{
+            showQRMM = false
+            confirmScrtBtn.setImage(UIImage(named: "ic_biyan"), forState: .Normal)
+            confirm.secureTextEntry = true
+        }
         print("qurenmima")
     }
     

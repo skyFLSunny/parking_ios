@@ -35,7 +35,7 @@ class TCPaymentCell: UITableViewCell {
         print("支付")
     }
     override func layoutSubviews() {
-        if  myModel != nil {
+        if  myModel?.money != nil {
             moneyLabel.text = "¥" + String((myModel?.money)!)
             stopDataLabel.text = myModel?.date
             stopTime.text = "停车 " + myModel!.time! + "   " + myModel!.price!

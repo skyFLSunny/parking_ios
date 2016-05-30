@@ -64,9 +64,11 @@ class CarCellInfoModel:JSONJoy{
     var carid:Int?
     var opt_time:Int?
     var isCurrentCar:Int?
+    var status:String?
     
     
     required init(_ decoder:JSONDecoder){
+        status = decoder["status"].string
         carnumber = decoder["car_number"].string
         brand = decoder["brand"].string
         userid = decoder["owner_id"].integer

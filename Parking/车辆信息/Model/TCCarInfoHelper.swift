@@ -18,6 +18,7 @@ class TCCarInfoHelper: NSObject {
             requestManager?.responseSerializer = AFHTTPResponseSerializer()
         }
     }
+    
     //添加车辆
     func addCarWithOnwerID(brand:String,carNumber:String,carType:String,engineNum:String,handle:ResponseBlock){
         let userid = TCUserInfo.currentInfo.userid
@@ -36,6 +37,7 @@ class TCCarInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
+    
     //获取车辆信息列表
     func getCarInfoList(handle:ResponseBlock){
         let paramDic = ["a":"getcarlist","userid":TCUserInfo.currentInfo.userid]
@@ -50,6 +52,7 @@ class TCCarInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
+    
     // 修改车辆信息
     func editCarInfoWithCarID(carid:String,carNumber:String,brand:String,userid:String,
                               cartype:String,engineNum:String, handle:ResponseBlock){
@@ -68,11 +71,12 @@ class TCCarInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
+    
     //设为常用车辆
     func upDateCurrentCarWithCarNumber(carNum:String,handle:ResponseBlock){
         let paraDic = ["a":"updateMemberCurrentCar",
                        "userid":TCUserInfo.currentInfo.userid,
-                       "carnumber":carNum]
+                       "carnumber":carNum.uppercaseString]
         requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData
@@ -81,6 +85,7 @@ class TCCarInfoHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
+    
     //解绑车辆
     func unBindCarWithCarNumber(carNum:String,handle:ResponseBlock){
         let paraDic = ["a":"unBindCar","userid":TCUserInfo.currentInfo.userid,
@@ -90,8 +95,20 @@ class TCCarInfoHelper: NSObject {
             let responseStr = result.status == "success" ? nil : result.errorData
             handle(success: result.status == "success",response: responseStr)
             }, failure: { (task, error) in
-            
+            handle(success: false,response: "网络错误")
         })
     }
     
+    //查询车辆是否是其他用户当前驾驶车辆
+    func getCurrentInfoWithCarNumber(carNum:String,handle:ResponseBlock){
+        let paraDic = ["a":"checkCurrentCar","userid":TCUserInfo.currentInfo.userid,
+                       "carnumber":carNum]
+        requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
+            let result = Http(JSONDecoder(response!))
+            let responseStr = result.status == "success" ? nil : result.errorData
+            handle(success: result.status == "success",response: responseStr)
+            }, failure: { (task, error) in
+            handle(success: false, response: "网络错误")
+        })
+    }
 }

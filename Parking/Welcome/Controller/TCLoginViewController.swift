@@ -103,6 +103,7 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
         self.navigationController?.pushViewController(registerVC, animated: true)
     }
     @IBAction func cancelPwdAction(sender: AnyObject) {
+        password.text = ""
         print("cancelPassword")
     }
     func tapBackView(){

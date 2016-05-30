@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="TCGuideView" customModule="Parking" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zeZ-cl-BOR">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wXJ-xG-Z9G">
+                    <rect key="frame" x="120" y="478" width="80" height="30"/>
+                    <color key="backgroundColor" red="0.92941176469999998" green="0.50588235290000005" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="Xzc-7X-IG9"/>
+                        <constraint firstAttribute="height" constant="30" id="kK9-6Q-U9i"/>
+                    </constraints>
+                    <state key="normal" title="进入应用"/>
+                    <connections>
+                        <action selector="enterAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="PMO-8g-yu5"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="zeZ-cl-BOR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HDo-0O-1Fl"/>
+                <constraint firstItem="wXJ-xG-Z9G" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="LPA-ho-4bd"/>
+                <constraint firstAttribute="bottom" secondItem="wXJ-xG-Z9G" secondAttribute="bottom" constant="60" id="NWo-6M-tle"/>
+                <constraint firstAttribute="trailing" secondItem="zeZ-cl-BOR" secondAttribute="trailing" id="SkD-cR-C3V"/>
+                <constraint firstAttribute="bottom" secondItem="zeZ-cl-BOR" secondAttribute="bottom" id="cpR-2f-haU"/>
+                <constraint firstItem="zeZ-cl-BOR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="gLk-6G-SBO"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="backImageView" destination="zeZ-cl-BOR" id="Fvz-E1-bex"/>
+                <outlet property="enterApp" destination="wXJ-xG-Z9G" id="D3s-ee-G2S"/>
+            </connections>
+            <point key="canvasLocation" x="427" y="333"/>
+        </view>
+    </objects>
+</document>

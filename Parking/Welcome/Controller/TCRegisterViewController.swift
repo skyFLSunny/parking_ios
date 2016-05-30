@@ -10,6 +10,8 @@ import UIKit
 
 class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
+    private let GET_ID_KEY = "register"
+
     @IBOutlet weak var areaCodeBtn: UIButton!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var getIDButton: UIButton!
@@ -29,14 +31,35 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
     var myActionSheet:UIAlertController?
     var logVM:TCVMLogModel?
     var sex:Int = 1
-    var avatarImageName:String?
-    var hasAvatar:Bool = false
+    var avatarImageName:String = "avatar_man.png"
+    var hasAvatar = false
+    var processHandle:TimerHandle?
+    var finishHandle:TimerHandle?
+    var showMM = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
         logVM = TCVMLogModel()
         backViewHeight.constant = HEIGHT>568 ?HEIGHT:568
+        
+        processHandle = {[unowned self] (timeInterVal) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.getIDButton.backgroundColor = UIColor.lightGrayColor()
+                self.getIDButton.userInteractionEnabled = false
+                let btnTitle = String(timeInterVal) + "秒后重新获取"
+                self.getIDButton.setTitle(btnTitle, forState: .Normal)
+            })
+        }
+        finishHandle = {[unowned self] (timeInterVal) in
+            dispatch_async(dispatch_get_main_queue(), {
+                self.getIDButton.userInteractionEnabled = true
+                self.getIDButton.backgroundColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1)
+                self.getIDButton.setTitle("获取验证码", forState: .Normal)
+            })
+        }
+        TimeManager.shareManager.taskDic[GET_ID_KEY]?.FHandle = finishHandle
+        TimeManager.shareManager.taskDic[GET_ID_KEY]?.PHandle = processHandle
         
         myActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         myActionSheet?.addAction(UIAlertAction(title: "拍照", style: .Default, handler: {[unowned self] (UIAlertAction) in
@@ -50,7 +73,14 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
                 self.LocalPhoto()
             })
             }))
+        
         myActionSheet?.addAction(UIAlertAction(title: "取消", style: .Cancel, handler:nil))
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        TimeManager.shareManager.taskDic[GET_ID_KEY]?.FHandle = nil
+        TimeManager.shareManager.taskDic[GET_ID_KEY]?.PHandle = nil
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
@@ -59,15 +89,6 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
             return
         }
         //裁剪后图片
-        /* 此处info 有六个值
-         * UIImagePickerControllerMediaType; // an NSString UTTypeImage)
-         * UIImagePickerControllerOriginalImage;  // a UIImage 原始图片
-         * UIImagePickerControllerEditedImage;    // a UIImage 裁剪后图片
-         * UIImagePickerControllerCropRect;       // an NSValue (CGRect)
-         * UIImagePickerControllerMediaURL;       // an NSURL
-         * UIImagePickerControllerReferenceURL    // an NSURL that references an asset in the AssetsLibrary framework
-         * UIImagePickerControllerMediaMetadata    // an NSDictionary containing metadata from a captured photo
-         */
         let image = info[UIImagePickerControllerEditedImage] as! UIImage
         avatarBtn.setImage(image, forState: .Normal)
         let data = UIImageJPEGRepresentation(image, 0.1)!
@@ -82,8 +103,8 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
                     if result.status! == "success"{
                         let imageName = (result.data?.string)!
                         self.avatarImageName = imageName
-                        print(imageName)
                         self.hasAvatar = true
+                        print(imageName)
                     }else{
                         SVProgressHUD.showErrorWithStatus("图片上传失败")
                     }
@@ -155,18 +176,29 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
         self.navigationController?.popViewControllerAnimated(true)
     }
     
+    //获取验证码
     @IBAction func getIdentifyingAction(sender: AnyObject) {
         if phoneNumber.text!.isEmpty {
             SVProgressHUD.showErrorWithStatus("请输入手机号！")
             return
         }
-        logVM?.sendMobileCodeWithPhoneNumber(phoneNumber.text!)
+        logVM?.comfirmPhoneHasRegister(phoneNumber.text!, handle: {[unowned self](success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+            if success {
+                    SVProgressHUD.showErrorWithStatus("手机已注册")
+            }else{
+                TimeManager.shareManager.begainTimerWithKey(self.GET_ID_KEY, timeInterval: 30, process: self.processHandle!, finish: self.finishHandle!)
+                self.logVM?.sendMobileCodeWithPhoneNumber(self.phoneNumber.text!)
+            }
+            })
+            
+        })
         print("get identify")
     }
     
     @IBAction func completeButtonAction(sender: AnyObject) {
         
-        if !hasAvatar {
+        if avatarImageName.isEmpty {
             SVProgressHUD.showErrorWithStatus("请选择头像！")
             return
         }
@@ -176,8 +208,14 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
             return
         }
         
-        if phoneNumber.text!.isEmpty {
+        if personCardID.text!.isEmpty {
             SVProgressHUD.showErrorWithStatus("请输入身份证")
+            return
+        }
+        
+        let flag = RegularExpression.validateIdentityCard(personCardID.text!)
+        if !flag {
+            SVProgressHUD.showErrorWithStatus("请输入有效身份证号码")
             return
         }
         
@@ -201,8 +239,7 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
             return
         }
         
-        
-        logVM?.register(phoneNumber.text!, password: passwordNumber.text!, code: identifyNumber.text!, avatar: avatarImageName!, name: realName.text!, devicestate: "", sex: String(sex), cardid: personCardID.text!, addr: address.text!, handle: { [unowned self] (success, response) in
+        logVM?.register(phoneNumber.text!, password: passwordNumber.text!, code: identifyNumber.text!, avatar: avatarImageName, name: realName.text!,sex: String(sex), cardid: personCardID.text!, addr: address.text!, handle: { [unowned self] (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success {
                     SVProgressHUD.showSuccessWithStatus("注册成功")
@@ -213,17 +250,25 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
             })
         })
     }
-    
+    //男是1，女是0
     @IBAction func manBtnClicked(sender: AnyObject) {
         manBtn.setImage(UIImage(named: "ic_tongyixuanzhong"), forState: .Normal)
         womenBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
         sex = 1
+        if !hasAvatar {
+            avatarBtn.setImage(UIImage(named:"avatar_nan"), forState: .Normal)
+            avatarImageName = "avatar_man.png"
+        }
     }
     
     @IBAction func womenBtnClicked(sender: AnyObject) {
         manBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
         womenBtn.setImage(UIImage(named: "ic_tongyixuanzhong"), forState: .Normal)
         sex = 0
+        if  !hasAvatar {
+            avatarBtn.setImage(UIImage(named:"avatar_nv"), forState: .Normal)
+            avatarImageName = "avatar_woman.png"
+        }
     }
     
     @IBAction func avatarBtnClicked(sender: AnyObject) {
@@ -232,6 +277,14 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
     }
     
     @IBAction func passwordSecretBtnAction(sender: AnyObject) {
-        
+        if showMM == false {
+            showMM = true
+            secretBtn.setImage(UIImage(named: "ic_zhengyan"), forState: .Normal)
+            passwordNumber.secureTextEntry = false
+        }else{
+            showMM = false
+            secretBtn.setImage(UIImage(named: "ic_biyan"), forState: .Normal)
+            passwordNumber.secureTextEntry = true
+        }
     }
 }

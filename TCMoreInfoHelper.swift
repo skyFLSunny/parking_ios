@@ -52,4 +52,28 @@ class TCMoreInfoHelper: NSObject {
                handle(success: false,response: "网络错误")
         })
     }
+    //修改密码
+    func changePwdWithNewPwd(pwd:String,handle:ResponseBlock){
+    let paraDic = ["a":"UpdatePass","phone":TCUserInfo.currentInfo.phoneNumber,"password":pwd]
+        requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
+            let result = Http(JSONDecoder(response!))
+            let responseStr = result.status == "success" ? nil : result.errorData
+            handle(success: result.status == "success",response: responseStr)
+            }, failure: { (task, error) in
+             handle(success: false,response: "网络错误")
+        })
+    }
+    //资料编辑
+    func editPersonalInfoWithUserName(name:String,sex:String,cardid:String,
+                                      addr:String,handle:ResponseBlock){
+        let paraDic = ["a":"updatemember","userid":TCUserInfo.currentInfo.userid,
+                       "name":name,"addr":addr,"cardid":cardid,"sex":sex]
+        requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
+            let result = Http(JSONDecoder(response!))
+            let responseStr = result.status == "success" ? nil : result.errorData
+            handle(success: result.status == "success",response: responseStr)
+            }, failure: { (task, error) in
+               handle(success: false,response: "网络错误")
+        })
+    }
 }

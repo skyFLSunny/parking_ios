@@ -47,4 +47,18 @@ class TCHomePageHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
+    //查询用户当前车辆
+    func getCurrentCarInfo(handle:ResponseBlock){
+        let paramDic = ["a":"getMemberCurrentCar","userid":TCUserInfo.currentInfo.userid]
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+            let result = CarCellInfoModel(JSONDecoder(response!))
+                if result.status == "success"{
+                    handle(success: true, response: result)
+                }else{
+                    handle(success: false,response: "查询失败")
+                }
+            }, failure: { (task, error) in
+                handle(success: false, response: "网络错误")
+        })
+    }
 }

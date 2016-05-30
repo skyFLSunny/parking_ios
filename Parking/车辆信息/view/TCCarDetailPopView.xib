@@ -21,11 +21,11 @@
                                 <constraint firstAttribute="height" constant="1" id="pLP-Gh-fST"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFT-ub-mUe">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FFT-ub-mUe">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="34"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="编辑信息" image="ic_xiugai-1"/>
+                            <state key="normal" title="编辑车辆信息" image="ic_xiugai-1"/>
                             <connections>
                                 <action selector="editCarInfo:" destination="iN0-l3-epB" eventType="touchUpInside" id="uR1-yE-Ph1"/>
                             </connections>
@@ -33,12 +33,16 @@
                     </subviews>
                     <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
+                        <constraint firstItem="vnj-qs-uHq" firstAttribute="top" secondItem="FFT-ub-mUe" secondAttribute="bottom" id="5So-bU-vP3"/>
                         <constraint firstItem="vnj-qs-uHq" firstAttribute="leading" secondItem="yIG-dm-lMw" secondAttribute="leading" id="6H5-oE-h5z"/>
                         <constraint firstAttribute="trailing" secondItem="vnj-qs-uHq" secondAttribute="trailing" id="B6P-mU-TsH"/>
+                        <constraint firstAttribute="trailing" secondItem="FFT-ub-mUe" secondAttribute="trailing" id="d2v-ey-h7L"/>
                         <constraint firstAttribute="bottom" secondItem="vnj-qs-uHq" secondAttribute="bottom" id="h5b-cu-1jg"/>
+                        <constraint firstItem="FFT-ub-mUe" firstAttribute="leading" secondItem="yIG-dm-lMw" secondAttribute="leading" id="jxZ-Nv-ic3"/>
+                        <constraint firstItem="FFT-ub-mUe" firstAttribute="top" secondItem="yIG-dm-lMw" secondAttribute="top" id="kcD-Pf-vVi"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCi-xp-ZUU">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61I-9o-nuh">
                     <rect key="frame" x="0.0" y="45" width="100" height="35"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aLD-6P-dqE">
@@ -48,11 +52,35 @@
                                 <constraint firstAttribute="height" constant="1" id="Fr7-tG-oln"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8I-WL-PeW">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xug-HO-hL2">
                             <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="车辆解绑" image="ic_shanchu"/>
+                            <state key="normal" title="设为驾驶车辆" image="ic_set"/>
+                            <connections>
+                                <action selector="setCarToPresent:" destination="iN0-l3-epB" eventType="touchUpInside" id="v6j-lC-rJT"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="Xug-HO-hL2" firstAttribute="top" secondItem="61I-9o-nuh" secondAttribute="top" id="9v7-O4-O47"/>
+                        <constraint firstAttribute="bottom" secondItem="Xug-HO-hL2" secondAttribute="bottom" id="EKF-Lx-sc9"/>
+                        <constraint firstAttribute="trailing" secondItem="Xug-HO-hL2" secondAttribute="trailing" id="LWG-GG-Iya"/>
+                        <constraint firstAttribute="bottom" secondItem="aLD-6P-dqE" secondAttribute="bottom" id="UUM-K2-QUF"/>
+                        <constraint firstItem="aLD-6P-dqE" firstAttribute="leading" secondItem="61I-9o-nuh" secondAttribute="leading" id="dfk-Wv-Fi7"/>
+                        <constraint firstItem="Xug-HO-hL2" firstAttribute="leading" secondItem="61I-9o-nuh" secondAttribute="leading" id="fgm-QN-Ruw"/>
+                        <constraint firstAttribute="trailing" secondItem="aLD-6P-dqE" secondAttribute="trailing" id="n46-fL-Mga"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCi-xp-ZUU">
+                    <rect key="frame" x="0.0" y="80" width="100" height="35"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8I-WL-PeW">
+                            <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="删除此部车辆" image="ic_shanchu"/>
                             <connections>
                                 <action selector="deleteCarInfo:" destination="iN0-l3-epB" eventType="touchUpInside" id="eXE-ac-hlM"/>
                             </connections>
@@ -60,50 +88,39 @@
                     </subviews>
                     <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="aLD-6P-dqE" firstAttribute="leading" secondItem="UCi-xp-ZUU" secondAttribute="leading" id="H0X-IP-KUS"/>
-                        <constraint firstAttribute="trailing" secondItem="aLD-6P-dqE" secondAttribute="trailing" id="ge6-Id-Rbi"/>
-                        <constraint firstAttribute="bottom" secondItem="aLD-6P-dqE" secondAttribute="bottom" id="wGr-sb-2Md"/>
+                        <constraint firstAttribute="trailing" secondItem="j8I-WL-PeW" secondAttribute="trailing" id="3Iv-PD-zEy"/>
+                        <constraint firstAttribute="bottom" secondItem="j8I-WL-PeW" secondAttribute="bottom" id="RNO-eL-3ou"/>
+                        <constraint firstItem="j8I-WL-PeW" firstAttribute="top" secondItem="UCi-xp-ZUU" secondAttribute="top" id="YBI-Dd-JSf"/>
+                        <constraint firstItem="j8I-WL-PeW" firstAttribute="leading" secondItem="UCi-xp-ZUU" secondAttribute="leading" id="biD-OT-48s"/>
                     </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61I-9o-nuh">
-                    <rect key="frame" x="0.0" y="80" width="100" height="35"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xug-HO-hL2">
-                            <rect key="frame" x="0.0" y="0.0" width="100" height="35"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="设为当前" image="ic_tianjiacheliang"/>
-                            <connections>
-                                <action selector="setCarToPresent:" destination="iN0-l3-epB" eventType="touchUpInside" id="v6j-lC-rJT"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="61I-9o-nuh" firstAttribute="top" secondItem="UCi-xp-ZUU" secondAttribute="bottom" id="Ctf-S5-VYx"/>
+                <constraint firstItem="UCi-xp-ZUU" firstAttribute="top" secondItem="61I-9o-nuh" secondAttribute="bottom" id="15h-Zo-TaT"/>
+                <constraint firstItem="61I-9o-nuh" firstAttribute="top" secondItem="yIG-dm-lMw" secondAttribute="bottom" id="70k-Ob-ndc"/>
+                <constraint firstAttribute="bottom" secondItem="UCi-xp-ZUU" secondAttribute="bottom" id="E3Z-Mw-7AT"/>
+                <constraint firstItem="UCi-xp-ZUU" firstAttribute="height" secondItem="yIG-dm-lMw" secondAttribute="height" id="G6Y-ca-RlY"/>
                 <constraint firstAttribute="trailing" secondItem="yIG-dm-lMw" secondAttribute="trailing" id="KGS-Il-vR8"/>
                 <constraint firstItem="yIG-dm-lMw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KW6-lR-B0y"/>
                 <constraint firstItem="yIG-dm-lMw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="P6g-yc-R82"/>
-                <constraint firstAttribute="bottom" secondItem="61I-9o-nuh" secondAttribute="bottom" id="PUh-h8-uKW"/>
-                <constraint firstAttribute="trailing" secondItem="UCi-xp-ZUU" secondAttribute="trailing" id="PvZ-th-6gV"/>
-                <constraint firstItem="61I-9o-nuh" firstAttribute="height" secondItem="yIG-dm-lMw" secondAttribute="height" id="aPB-B9-W7c"/>
-                <constraint firstItem="61I-9o-nuh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cEo-h3-JMe"/>
-                <constraint firstItem="UCi-xp-ZUU" firstAttribute="height" secondItem="yIG-dm-lMw" secondAttribute="height" id="mSO-DH-gfd"/>
-                <constraint firstAttribute="trailing" secondItem="61I-9o-nuh" secondAttribute="trailing" id="t3W-mw-F4o"/>
-                <constraint firstItem="UCi-xp-ZUU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="yYK-VP-kb3"/>
-                <constraint firstItem="UCi-xp-ZUU" firstAttribute="top" secondItem="yIG-dm-lMw" secondAttribute="bottom" id="zTO-zo-Md0"/>
+                <constraint firstItem="UCi-xp-ZUU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RhK-ZW-6mS"/>
+                <constraint firstItem="61I-9o-nuh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="d6B-cW-BnZ"/>
+                <constraint firstAttribute="trailing" secondItem="61I-9o-nuh" secondAttribute="trailing" id="gcH-dZ-bF6"/>
+                <constraint firstItem="61I-9o-nuh" firstAttribute="height" secondItem="yIG-dm-lMw" secondAttribute="height" id="rLy-Nr-AfX"/>
+                <constraint firstAttribute="trailing" secondItem="UCi-xp-ZUU" secondAttribute="trailing" id="t5k-lI-Phb"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="CurrentBtn" destination="Xug-HO-hL2" id="YEC-Dw-jQx"/>
+            </connections>
             <point key="canvasLocation" x="343" y="272.5"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_set" width="17" height="17"/>
         <image name="ic_shanchu" width="14" height="15"/>
-        <image name="ic_tianjiacheliang" width="23" height="19"/>
         <image name="ic_xiugai-1" width="15" height="15"/>
     </resources>
 </document>

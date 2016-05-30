@@ -15,19 +15,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
+        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         SVProgressHUD.setBackgroundColor(UIColor.blackColor())
         SVProgressHUD.setForegroundColor(UIColor.whiteColor())
-        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let loginVC = TCLoginViewController(nibName: "TCLoginViewController",bundle: nil)
-        loginVC.title = "停车缴费"
-        let loginNav = UINavigationController(rootViewController:loginVC)
-        loginNav.navigationBar.barTintColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1)
-        loginNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        self.window?.rootViewController = loginNav
+        var showguide = NSUserDefaults.standardUserDefaults().boolForKey(SHOW_GUIDE)
+        //TODO:每次都显示
+        showguide = false
+        if showguide {
+            let loginVC = TCLoginViewController(nibName: "TCLoginViewController",bundle: nil)
+            loginVC.title = "停车缴费"
+            let loginNav = UINavigationController(rootViewController:loginVC)
+            loginNav.navigationBar.barTintColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1)
+            loginNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+            self.window?.rootViewController = loginNav
+        }else{
+            let welcomeVC = WelcomeColler()
+            window?.rootViewController = welcomeVC
+        }
         self.window?.makeKeyAndVisible()
-        UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         return true
     }
     func applicationWillResignActive(application: UIApplication) {

@@ -20,7 +20,6 @@
 		F6169EFF1CE1C58300609A11 /* TCRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169EF81CE1C58300609A11 /* TCRegisterViewController.swift */; };
 		F6169F001CE1C58300609A11 /* TCRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6169EF91CE1C58300609A11 /* TCRegisterViewController.xib */; };
 		F6169F011CE1C58300609A11 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169EFA1CE1C58300609A11 /* WelcomeController.swift */; };
-		F6169F061CE1CF6300609A11 /* TCWebToolFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */; };
 		F6169F0A1CE1D11200609A11 /* TCVMLogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6169F091CE1D11200609A11 /* TCVMLogModel.swift */; };
 		F62580CE1CE6C44F00D13ABF /* ConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F62580CD1CE6C44F00D13ABF /* ConnectModel.m */; };
 		F62593A61CE470BD000BC840 /* TCPayDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62593A41CE470BD000BC840 /* TCPayDetailController.swift */; };
@@ -59,6 +58,8 @@
 		F62C5B251CE5DD93001DAD1E /* TCMoreInfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B241CE5DD93001DAD1E /* TCMoreInfoHelper.swift */; };
 		F62C5B281CE6088B001DAD1E /* TCEditPhoneNumberController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62C5B261CE6088B001DAD1E /* TCEditPhoneNumberController.swift */; };
 		F62C5B291CE6088B001DAD1E /* TCEditPhoneNumberController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62C5B271CE6088B001DAD1E /* TCEditPhoneNumberController.xib */; };
+		F62F2ABE1CF2FA6700FB5A51 /* TCChangePwdController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F62F2ABC1CF2FA6700FB5A51 /* TCChangePwdController.swift */; };
+		F62F2ABF1CF2FA6700FB5A51 /* TCChangePwdController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F62F2ABD1CF2FA6700FB5A51 /* TCChangePwdController.xib */; };
 		F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635621A1CCDB77D00308264 /* AppDelegate.swift */; };
 		F635624B1CCDB77D00308264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F635621B1CCDB77D00308264 /* Assets.xcassets */; };
 		F635624D1CCDB77D00308264 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F635621E1CCDB77D00308264 /* Info.plist */; };
@@ -75,6 +76,8 @@
 		F63562591CCDB77D00308264 /* CarInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63562371CCDB77D00308264 /* CarInfoCell.xib */; };
 		F64F7F421CEAB913005348D3 /* TCCarUnpayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64F7F411CEAB913005348D3 /* TCCarUnpayModel.swift */; };
 		F66603511CEEF6B8009228CC /* TCUserUnpayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66603501CEEF6B8009228CC /* TCUserUnpayModel.swift */; };
+		F66D510A1CF42AB7004AB1E7 /* TCGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66D51091CF42AB7004AB1E7 /* TCGuideView.swift */; };
+		F66D510C1CF42ACD004AB1E7 /* TCGuideView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F66D510B1CF42ACD004AB1E7 /* TCGuideView.xib */; };
 		F67C15D71CE2BD69004E1C9E /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D31CE2BD69004E1C9E /* Http.swift */; };
 		F67C15D81CE2BD69004E1C9E /* TCUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D41CE2BD69004E1C9E /* TCUserInfoModel.swift */; };
 		F67C15D91CE2BD69004E1C9E /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F67C15D51CE2BD69004E1C9E /* JSONJoy.swift */; };
@@ -122,7 +125,6 @@
 		F6169EF91CE1C58300609A11 /* TCRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCRegisterViewController.xib; sourceTree = "<group>"; };
 		F6169EFA1CE1C58300609A11 /* WelcomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
 		F6169F031CE1C65700609A11 /* Parking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Parking-Bridging-Header.h"; sourceTree = "<group>"; };
-		F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCWebToolFile.swift; sourceTree = "<group>"; };
 		F6169F091CE1D11200609A11 /* TCVMLogModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCVMLogModel.swift; sourceTree = "<group>"; };
 		F619A42C1CC081CC00BF6E52 /* Parking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F62580CC1CE6C44F00D13ABF /* ConnectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectModel.h; sourceTree = "<group>"; };
@@ -163,6 +165,8 @@
 		F62C5B241CE5DD93001DAD1E /* TCMoreInfoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCMoreInfoHelper.swift; sourceTree = SOURCE_ROOT; };
 		F62C5B261CE6088B001DAD1E /* TCEditPhoneNumberController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCEditPhoneNumberController.swift; sourceTree = "<group>"; };
 		F62C5B271CE6088B001DAD1E /* TCEditPhoneNumberController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCEditPhoneNumberController.xib; sourceTree = "<group>"; };
+		F62F2ABC1CF2FA6700FB5A51 /* TCChangePwdController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCChangePwdController.swift; sourceTree = "<group>"; };
+		F62F2ABD1CF2FA6700FB5A51 /* TCChangePwdController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCChangePwdController.xib; sourceTree = "<group>"; };
 		F635621A1CCDB77D00308264 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F635621B1CCDB77D00308264 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F635621E1CCDB77D00308264 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 		F63562371CCDB77D00308264 /* CarInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarInfoCell.xib; sourceTree = "<group>"; };
 		F64F7F411CEAB913005348D3 /* TCCarUnpayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCCarUnpayModel.swift; sourceTree = "<group>"; };
 		F66603501CEEF6B8009228CC /* TCUserUnpayModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCUserUnpayModel.swift; sourceTree = "<group>"; };
+		F66D51091CF42AB7004AB1E7 /* TCGuideView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TCGuideView.swift; sourceTree = "<group>"; };
+		F66D510B1CF42ACD004AB1E7 /* TCGuideView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCGuideView.xib; sourceTree = "<group>"; };
 		F67C15D31CE2BD69004E1C9E /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		F67C15D41CE2BD69004E1C9E /* TCUserInfoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TCUserInfoModel.swift; path = ../../CustomTool/Jsonjoy/TCUserInfoModel.swift; sourceTree = "<group>"; };
 		F67C15D51CE2BD69004E1C9E /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
@@ -273,6 +279,8 @@
 			isa = PBXGroup;
 			children = (
 				F6169F091CE1D11200609A11 /* TCVMLogModel.swift */,
+				F66D51091CF42AB7004AB1E7 /* TCGuideView.swift */,
+				F66D510B1CF42ACD004AB1E7 /* TCGuideView.xib */,
 			);
 			name = ViewModel;
 			path = View;
@@ -296,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				F67C15D21CE2BD69004E1C9E /* Jsonjoy */,
-				F6169F051CE1CF6300609A11 /* TCWebToolFile.swift */,
 				F62580CC1CE6C44F00D13ABF /* ConnectModel.h */,
 				F62580CD1CE6C44F00D13ABF /* ConnectModel.m */,
 				F6F1F0F71CEAF2A00036C04E /* Util.swift */,
@@ -446,6 +453,8 @@
 				F60E750A1CF040BA0065724A /* TCBankCardController.xib */,
 				F60E75111CF059C50065724A /* TCEditCardController.swift */,
 				F60E75121CF059C50065724A /* TCEditCardController.xib */,
+				F62F2ABC1CF2FA6700FB5A51 /* TCChangePwdController.swift */,
+				F62F2ABD1CF2FA6700FB5A51 /* TCChangePwdController.xib */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -664,6 +673,8 @@
 				F62C5B1C1CE5A4B8001DAD1E /* TCHomeAlertTableCell.xib in Resources */,
 				F62C5B1E1CE5A4B8001DAD1E /* TCInvitationAlertView.xib in Resources */,
 				F635624D1CCDB77D00308264 /* Info.plist in Resources */,
+				F66D510C1CF42ACD004AB1E7 /* TCGuideView.xib in Resources */,
+				F62F2ABF1CF2FA6700FB5A51 /* TCChangePwdController.xib in Resources */,
 				F62C5B0E1CE5A4B8001DAD1E /* TCInvitationController.xib in Resources */,
 				F62C5AE01CE565F3001DAD1E /* AddCarViewController.xib in Resources */,
 				F63562551CCDB77D00308264 /* TCPaymentCell.xib in Resources */,
@@ -729,6 +740,7 @@
 				F62C5AE71CE579F1001DAD1E /* TCCarInfoHelper.swift in Sources */,
 				F6169EFB1CE1C58300609A11 /* TCForgetPasswordController.swift in Sources */,
 				F68C97901CCF5E97001616CF /* TCCarDetailController.swift in Sources */,
+				F66D510A1CF42AB7004AB1E7 /* TCGuideView.swift in Sources */,
 				F62C5B161CE5A4B8001DAD1E /* TCContactorInfo.swift in Sources */,
 				F63562511CCDB77D00308264 /* TCPaymentViewController.swift in Sources */,
 				F67C15DD1CE30A5D004E1C9E /* TCEditUserInfoController.swift in Sources */,
@@ -749,13 +761,13 @@
 				F60E75131CF059C50065724A /* TCEditCardController.swift in Sources */,
 				F635624A1CCDB77D00308264 /* AppDelegate.swift in Sources */,
 				F6169EFD1CE1C58300609A11 /* TCLoginViewController.swift in Sources */,
-				F6169F061CE1CF6300609A11 /* TCWebToolFile.swift in Sources */,
 				F60681051CE999DA00584A3B /* TCHomePageHelper.swift in Sources */,
 				F635624F1CCDB77D00308264 /* TCMoreFunctionController.swift in Sources */,
 				F6169EFF1CE1C58300609A11 /* TCRegisterViewController.swift in Sources */,
 				F6169F011CE1C58300609A11 /* WelcomeController.swift in Sources */,
 				F63562541CCDB77D00308264 /* TCPaymentCell.swift in Sources */,
 				F63562581CCDB77D00308264 /* CarInfoCell.swift in Sources */,
+				F62F2ABE1CF2FA6700FB5A51 /* TCChangePwdController.swift in Sources */,
 				F62C5B251CE5DD93001DAD1E /* TCMoreInfoHelper.swift in Sources */,
 				F62C5B1F1CE5A4B8001DAD1E /* TCMessageCell.swift in Sources */,
 				F62C5B0A1CE5A4B8001DAD1E /* TCChangeWord.swift in Sources */,
@@ -828,7 +840,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "7e0740ca-ef5b-473d-903e-2cde973922df";
+				PROVISIONING_PROFILE = "b8781bd6-3a99-4f46-96b2-6817dc39fdb1";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -869,7 +881,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "7e0740ca-ef5b-473d-903e-2cde973922df";
+				PROVISIONING_PROFILE = "b8781bd6-3a99-4f46-96b2-6817dc39fdb1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -880,6 +892,7 @@
 			baseConfigurationReference = 7073B74C29140B7BC6A8619F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
@@ -889,7 +902,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.hbie.parking;
 				PRODUCT_NAME = Parking;
-				PROVISIONING_PROFILE = "7e0740ca-ef5b-473d-903e-2cde973922df";
+				PROVISIONING_PROFILE = "b8781bd6-3a99-4f46-96b2-6817dc39fdb1";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xiaocool/parking_ios/Parking/Parking-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -902,6 +915,7 @@
 			baseConfigurationReference = E2C64636ADACC60F907214FF /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
@@ -911,7 +925,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = net.hbie.parking;
 				PRODUCT_NAME = Parking;
-				PROVISIONING_PROFILE = "7e0740ca-ef5b-473d-903e-2cde973922df";
+				PROVISIONING_PROFILE = "b8781bd6-3a99-4f46-96b2-6817dc39fdb1";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/xiaocool/parking_ios/Parking/Parking-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;

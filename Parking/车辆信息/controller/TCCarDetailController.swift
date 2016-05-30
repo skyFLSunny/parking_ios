@@ -5,15 +5,15 @@
 //  Created by xiaocool on 16/4/26.
 //  Copyright © 2016年 北京校酷网络科技有限公司. All rights reserved.
 //
-
 import UIKit
 
-class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
+class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate,AddCarViewControllerDelegate {
     var showPopMenu:Bool?
     var popMenu:TCCarDetailPopView?
     var carid:String?
     var carModel:CarCellInfoModel?
-    var carHelper:TCCarInfoHelper?
+    var carHelper = TCCarInfoHelper()
+    var paymentHelper = TCPaymentHelper()
     
     @IBOutlet weak var carBrand: UILabel!
     @IBOutlet weak var carNumber: UILabel!
@@ -23,17 +23,10 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         showPopMenu = false
-        carHelper = TCCarInfoHelper()
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
-        if carModel != nil {            
-            carBrand.text = carModel!.brand
-            carNumber.text = carModel!.carnumber
-            carType.text = carModel!.cartype
-            engineNumber.text = carModel!.enginenumber
-            carid = String(carModel!.carid!)
-        }
         //nav
+        showforModel(carModel)
         self.title = "车辆信息"
         let navBtn = UIButton(type: .Custom)
         navBtn.frame = CGRectMake(0, 0, 30, 30)
@@ -47,9 +40,26 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
         rightButton.addTarget(self, action: #selector(rightNavBtnClicked), forControlEvents: .TouchUpInside)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        showforModel(carModel)
+    }
+    
+    func showforModel(model:CarCellInfoModel?){
+        if carModel != nil {
+            carBrand.text = carModel!.brand
+            carNumber.text = carModel!.carnumber
+            carType.text = carModel!.cartype
+            engineNumber.text = carModel!.enginenumber
+            carid = String(carModel!.carid!)
+        }
+    }
+    
     func rightNavBtnClicked(){
         if showPopMenu == false {
             popMenu = NSBundle.mainBundle().loadNibNamed("TCCarDetailPopView", owner: nil, options: nil).first as? TCCarDetailPopView
+            popMenu?.isCurrentCar = carModel?.isCurrentCar == 1
             let popX = self.view.frame.width-130
             popMenu!.frame = CGRectMake(popX, 0, 125, 120)
             popMenu!.backgroundColor = UIColor.clearColor()
@@ -70,38 +80,154 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate {
     func backToHome(){
         self.navigationController?.popViewControllerAnimated(true)
     }
+    
+    func backToHomeWithReload(){
+        self.navigationController?.popViewControllerAnimated(true)
+        NSNotificationCenter.defaultCenter().postNotificationName(LOAD_CARINFO, object: nil)
+    }
+    
+    func changedModel(model: CarCellInfoModel) {
+        showforModel(model)
+    }
+    
     // MARK:----popViewDelegate----
     func selectPopView(popView: TCCarDetailPopView, index: Int) {
         rightNavBtnClicked()
         if index == 0 {
             let editVC = AddCarViewController(nibName: "AddCarViewController",bundle: nil)
             editVC.viewType = .edit
-            editVC.configureWithbrand(carBrand.text, myCarNumber: carNumber.text, myCarType:carType.text, myEngineNum: engineNumber.text,myCarid:carid)
+            editVC.configureWithcarModel(carModel!)
+            editVC.delegate = self
             navigationController?.pushViewController(editVC, animated: true)
         }else if index == 1{
             print("车辆信息页面删除")
-            carHelper?.unBindCarWithCarNumber(carNumber.text!, handle: { (success, response) in
+            carHelper.unBindCarWithCarNumber(carNumber.text!, handle: { (success, response) in
                 dispatch_async(dispatch_get_main_queue(), {
                     if success {
-                        SVProgressHUD.showSuccessWithStatus("解绑成功")
-                        self.navigationController?.popViewControllerAnimated(true)
+                        SVProgressHUD.showSuccessWithStatus("删除成功")
+                        if self.carModel?.isCurrentCar == 1{
+                        TCUserInfo.currentInfo.currentCarBrand = ""
+                        TCUserInfo.currentInfo.currentCar = ""
+                        }
+                        self.backToHomeWithReload()
                     }else {
                         SVProgressHUD.showErrorWithStatus(response as? String)
                     }
                 })
             })
         } else{
-            print("设为当前车辆")
-            carHelper?.upDateCurrentCarWithCarNumber(carNumber.text!, handle: {[unowned self] (success, response) in
-                dispatch_async(dispatch_get_main_queue(), {
-                    if success {
-                        SVProgressHUD.showSuccessWithStatus("修改成功")
-                        self.navigationController?.popViewControllerAnimated(true)
-                    }else {
-                        SVProgressHUD.showErrorWithStatus(response as? String)
+            if carModel?.isCurrentCar == 0 {
+                print("设为当前车辆")
+                if !TCUserInfo.currentInfo.currentCar.isEmpty {
+                    paymentHelper.getUnpayInfoListWithCarNum(TCUserInfo.currentInfo.currentCar) {[unowned self] (success, response) in
+                        if (response != nil&&(response as! CarUnpayModel).money != nil){
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let res = response as! CarUnpayModel
+                                SVProgressHUD.showErrorWithStatus("当前驾驶车辆欠"+String(res.money!)+"元")
+                            })
+                        }else{
+                            self.carHelper.getCurrentInfoWithCarNumber(self.carNumber.text!, handle: { (success, response) in
+                                if success {
+                                    dispatch_async(dispatch_get_main_queue(), {
+                                        SVProgressHUD.showErrorWithStatus("该车正在被他人驾驶")
+                                    })
+                                }else{
+                                    self.paymentHelper.getUnpayInfoListWithCarNum(self.carNumber.text!) { (success, response) in
+                                        if success{
+                                            if (response != nil&&(response as! CarUnpayModel).money != nil){
+                                                dispatch_async(dispatch_get_main_queue(), {
+                                                    let res = response as! CarUnpayModel
+                                                    SVProgressHUD.showErrorWithStatus("该车欠"+String(res.money!)+"元")
+                                                })
+                                            }else{
+                                                print("没有")
+                                                self.carHelper.upDateCurrentCarWithCarNumber(self.carNumber.text!, handle: {[unowned self] (success, response) in
+                                                    dispatch_async(dispatch_get_main_queue(), {
+                                                        if success {
+                                                            SVProgressHUD.showSuccessWithStatus("修改成功")
+                                                            self.backToHomeWithReload()
+                                                        }else {
+                                                            SVProgressHUD.showErrorWithStatus("修改失败")
+                                                        }
+                                                    })
+                                                })
+                                            }
+                                        }else{
+                                            dispatch_async(dispatch_get_main_queue(), {
+                                                SVProgressHUD.showErrorWithStatus("获取车辆未缴费信息失败")
+                                            })
+                                        }
+                                    }
+                                }
+                            })
+                        }
                     }
-                })
-            })
+                }else{
+                    carHelper.getCurrentInfoWithCarNumber(carNumber.text!, handle: { (success, response) in
+                        if success {
+                            dispatch_async(dispatch_get_main_queue(), {
+                                SVProgressHUD.showErrorWithStatus("该车正在被他人驾驶")
+                            })
+                        }else{
+                            self.paymentHelper.getUnpayInfoListWithCarNum(self.carNumber.text!) { (success, response) in
+                                if success{
+                                    if (response != nil&&(response as! CarUnpayModel).money != nil){
+                                        dispatch_async(dispatch_get_main_queue(), {
+                                            let res = response as! CarUnpayModel
+                                            SVProgressHUD.showErrorWithStatus("该车欠"+String(res.money!)+"元")
+                                        })
+                                    }else{
+                                        print("没有")
+                                        self.carHelper.upDateCurrentCarWithCarNumber(self.carNumber.text!, handle: {[unowned self] (success, response) in
+                                            dispatch_async(dispatch_get_main_queue(), {
+                                                if success {
+                                                    SVProgressHUD.showSuccessWithStatus("修改成功")
+                                                    self.backToHomeWithReload()
+                                                }else {
+                                                    SVProgressHUD.showErrorWithStatus("修改失败")
+                                                }
+                                            })
+                                            })
+                                    }
+                                }else{
+                                    dispatch_async(dispatch_get_main_queue(), {
+                                        SVProgressHUD.showErrorWithStatus("获取车辆未缴费信息失败")
+                                    })
+                                }
+                            }
+                        }
+                    })
+                }
+            }else{
+                self.paymentHelper.getUnpayInfoListWithCarNum(self.carNumber.text!) { (success, response) in
+                    if success{
+                        if (response != nil&&(response as! CarUnpayModel).money != nil){
+                            dispatch_async(dispatch_get_main_queue(), {
+                                let res = response as! CarUnpayModel
+                                SVProgressHUD.showErrorWithStatus("欠"+String(res.money!)+"元")
+                            })
+                        }else{
+                            print("没有")
+                            self.carHelper.upDateCurrentCarWithCarNumber("", handle: { (success, response) in
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if success {
+                                        SVProgressHUD.showSuccessWithStatus("修改成功")
+                                        self.backToHomeWithReload()
+                                    }else {
+                                        SVProgressHUD.showErrorWithStatus(response as? String)
+                                    }
+                                })
+                            })
+                        }
+                    }else{
+                        dispatch_async(dispatch_get_main_queue(), {
+                            SVProgressHUD.showErrorWithStatus("获取车辆未缴费信息失败")
+                        })
+                    }
+
+                }
+                print("设为常用车辆")
+            }
         }
     }
 }

@@ -37,7 +37,7 @@
                                         <constraint firstAttribute="width" constant="70" id="Mqn-5T-6f0"/>
                                         <constraint firstAttribute="height" constant="70" id="PCA-VG-lcy"/>
                                     </constraints>
-                                    <state key="normal" image="temp_avatar"/>
+                                    <state key="normal" image="avatar_nan"/>
                                     <connections>
                                         <action selector="avatarClicked:" destination="-1" eventType="touchUpInside" id="U48-Dq-rS1"/>
                                     </connections>
@@ -230,11 +230,11 @@
         </view>
     </objects>
     <resources>
+        <image name="avatar_nan" width="171" height="171"/>
         <image name="ic_shenfenrenzheng" width="17" height="17"/>
         <image name="ic_weizhi" width="18" height="18"/>
         <image name="ic_xiugai" width="20" height="20"/>
         <image name="ic_yonghu" width="18" height="18"/>
         <image name="shouji" width="18" height="18"/>
-        <image name="temp_avatar" width="300" height="300"/>
     </resources>
 </document>

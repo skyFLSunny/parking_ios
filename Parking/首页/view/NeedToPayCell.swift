@@ -37,9 +37,11 @@ class NeedToPayCell: UITableViewCell {
     }
     override func layoutSubviews() {
         if  myModel != nil {
-            moneyLabel.text = "¥" + String((myModel?.money)!)
-            stopTimeLabel.text = myModel?.date
-            stopInfoLabel.text = "停车 " + myModel!.time! + "   " + myModel!.price!
+            if myModel?.money != nil {                
+                moneyLabel.text = "¥" + String((myModel?.money)!)
+                stopTimeLabel.text = myModel?.date
+                stopInfoLabel.text = "停车 " + myModel!.time! + "   " + myModel!.price!
+            }
         }
     }
 }

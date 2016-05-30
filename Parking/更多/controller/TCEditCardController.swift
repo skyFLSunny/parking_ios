@@ -21,30 +21,7 @@ class TCEditCardController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(hiddenKeyBoard))
-        self.view.addGestureRecognizer(gesture)
-        bankName.layer.borderColor = UIColor.whiteColor().CGColor
-        bankName.layer.borderWidth = 2
-        bankBranchName.layer.borderColor = UIColor.whiteColor().CGColor
-        bankBranchName.layer.borderWidth = 2
-        accountName.layer.borderColor = UIColor.whiteColor().CGColor
-        accountName.layer.borderWidth = 2
-        cardNumber.layer.borderColor = UIColor.whiteColor().CGColor
-        cardNumber.layer.borderWidth = 2
-        
-        completeBtn.layer.cornerRadius = 8
-        completeBtn.clipsToBounds = true
-        
-        self.edgesForExtendedLayout = UIRectEdge.None
-        self.automaticallyAdjustsScrollViewInsets = false
-        
-        self.title = "银行卡信息"
-        let navBtn = UIButton(type: .Custom)
-        navBtn.frame = CGRectMake(0, 0, 30, 30)
-        navBtn.setImage(UIImage(named: "ic_fanhui-left"), forState: .Normal)
-        navBtn.addTarget(self, action: #selector(backToHome), forControlEvents: .TouchUpInside)
-        let navItem = UIBarButtonItem(customView: navBtn)
-        self.navigationItem.leftBarButtonItem = navItem
+        configureUI()
     }
     func configureUI(){
         let gesture = UITapGestureRecognizer(target: self, action: #selector(hiddenKeyBoard))
@@ -103,7 +80,7 @@ class TCEditCardController: UIViewController {
         }
         helper.sendCardInfoWithBankName(bankName.text!, branchName: bankBranchName.text!, accountName: accountName.text!, cardNum: cardNumber.text!) { [unowned self](success, response) in
             dispatch_async(dispatch_get_main_queue(), {
-                if success {
+                if success { 
                     SVProgressHUD.showSuccessWithStatus("修改成功")
                     //TODO: userinfo
                     TCUserInfo.currentInfo.bankNo = self.cardNumber.text!

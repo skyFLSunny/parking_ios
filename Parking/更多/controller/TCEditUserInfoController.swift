@@ -15,7 +15,11 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     @IBOutlet weak var keyboardScrollView: TPKeyboardAvoidingScrollView!
     @IBOutlet weak var address: UITextField!
     @IBOutlet weak var phoneNumber: UILabel!
+    @IBOutlet weak var manBtn: UIButton!
+    @IBOutlet weak var womenBtn: UIButton!
+    @IBOutlet weak var cardNum: UITextField!
     
+    var sex = TCUserInfo.currentInfo.sex
     var nameStr:String?
     var phoneNumStr:String?
     var myActionSheet:UIAlertController?
@@ -28,6 +32,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         phoneNumber.text = TCUserInfo.currentInfo.phoneNumber
         name.text = TCUserInfo.currentInfo.userName
         address.text = TCUserInfo.currentInfo.address
+        cardNum.text = TCUserInfo.currentInfo.cardid
         myActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         myActionSheet?.addAction(UIAlertAction(title: "拍照", style: .Default, handler: {[unowned self] (UIAlertAction) in
             dispatch_async(dispatch_get_main_queue(), {
@@ -39,6 +44,9 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
             let imageUrlStr = PARK_SHOW_IMAGE_HEADER + TCUserInfo.currentInfo.avatar
             let url = NSURL(string: imageUrlStr)
             avatarBtn.sd_setImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "temp_avatar"))
+        }
+        if sex == "0"{
+            womenButtonAction()
         }
         myActionSheet?.addAction(UIAlertAction(title: "从相册获取", style: .Default, handler: { [unowned self] (UIAlertAction) in
             dispatch_async(dispatch_get_main_queue(), {
@@ -52,8 +60,10 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         //set layer
         name.layer.borderWidth = 2
         name.layer.borderColor = UIColor.whiteColor().CGColor
-        address.layer.borderColor = UIColor.whiteColor().CGColor
         address.layer.borderWidth = 2
+        address.layer.borderColor = UIColor.whiteColor().CGColor
+        cardNum.layer.borderWidth = 2
+        cardNum.layer.borderColor = UIColor.whiteColor().CGColor
         avatarBtn.layer.cornerRadius = 40
         avatarBtn.clipsToBounds = true
         // set nav
@@ -79,7 +89,21 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     }
     
     func submit(){
-        
+        moreHelper?.editPersonalInfoWithUserName(name.text!, sex: sex, cardid: cardNum.text!, addr: address.text!, handle: { (success, response) in
+            dispatch_async(dispatch_get_main_queue(), { 
+                if success{
+                    SVProgressHUD.showSuccessWithStatus("修改成功")
+                    TCUserInfo.currentInfo.sex = self.sex
+                    TCUserInfo.currentInfo.address = self.address.text!
+                    TCUserInfo.currentInfo.cardid = self.cardNum.text!
+                    TCUserInfo.currentInfo.userName = self.name.text!
+                    self.navigationController?.popViewControllerAnimated(true)
+                }else{
+                    print(response)
+                    SVProgressHUD.showErrorWithStatus("修改失败")
+                }
+            })
+        })
     }
     
     func tapBackView(){
@@ -139,7 +163,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     }
     
     func changeAvatar(){
-        self.moreHelper?.changeAvatar({[unowned self] (success, response) in
+        self.moreHelper?.changeAvatar({(success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success{
                     SVProgressHUD.showSuccessWithStatus("头像修改成功")
@@ -157,8 +181,17 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         self.navigationController?.popViewControllerAnimated(true)
     }
     
-    @IBAction func selectedEditPassword(sender: AnyObject) {
-        print("pwd")
+    @IBAction func menButtonAction() {
+        sex = "1"
+        manBtn.setImage(UIImage(named: "ic_tongyixuanzhong"), forState: .Normal)
+        womenBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
+    }
+    
+    @IBAction func womenButtonAction() {
+        sex = "0"
+        manBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
+        womenBtn.setImage(UIImage(named: "ic_tongyixuanzhong"), forState: .Normal)
+        
     }
     
     @IBAction func selectAvatarAction(sender: AnyObject) {
