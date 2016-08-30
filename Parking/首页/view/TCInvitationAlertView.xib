@@ -15,15 +15,15 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发送到" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IuB-n1-0oi">
-                            <rect key="frame" x="8" y="8" width="48" height="20"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <rect key="frame" x="8" y="8" width="42" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="阿姨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6u7-8v-WzM">
-                            <rect key="frame" x="64" y="8" width="32" height="20"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="阿姨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6u7-8v-WzM">
+                            <rect key="frame" x="58" y="8" width="260" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -32,6 +32,7 @@
                         <constraint firstItem="6u7-8v-WzM" firstAttribute="leading" secondItem="IuB-n1-0oi" secondAttribute="trailing" constant="8" id="Gnu-WZ-7lH"/>
                         <constraint firstItem="IuB-n1-0oi" firstAttribute="leading" secondItem="5tf-Ga-OMf" secondAttribute="leading" constant="8" id="IDF-un-QLi"/>
                         <constraint firstAttribute="height" constant="30" id="bz7-i7-bqv"/>
+                        <constraint firstAttribute="trailing" secondItem="6u7-8v-WzM" secondAttribute="trailing" constant="2" id="lgL-am-53X"/>
                         <constraint firstItem="IuB-n1-0oi" firstAttribute="top" secondItem="5tf-Ga-OMf" secondAttribute="top" constant="8" id="mfD-T0-E9L"/>
                     </constraints>
                 </view>
@@ -39,8 +40,8 @@
                     <rect key="frame" x="0.0" y="30" width="320" height="75"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="停车缴费App真的很好用 我邀请您下载" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQx-vB-UuU">
-                            <rect key="frame" x="8" y="8" width="304" height="41"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="8" y="8" width="304" height="32"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.023529411764705882" green="0.6705882352941176" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>

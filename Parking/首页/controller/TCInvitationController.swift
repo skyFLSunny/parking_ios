@@ -10,7 +10,7 @@ import UIKit
 import AddressBook
 import AddressBookUI
 
-class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,TCInvitationAlertViewDelegate {
+class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate,TCInvitationAlertViewDelegate,UISearchBarDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var personTableView: UITableView!
@@ -20,6 +20,10 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
     var alertBackGroundView:UIButton?
     var alertView:TCInvitationAlertView?
     var hasRight:Bool = true
+    var search = false
+    var homeHelper:TCHomePageHelper = TCHomePageHelper()
+    var models = Array<TCContactorInfo>()
+    var searchDatas = Array<TCContactorInfo>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +46,7 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         personTableView.tableFooterView = UIView()
         //searchbar
         searchBar.setImage(UIImage(named: "ic_sousuo"), forSearchBarIcon: UISearchBarIcon.Search, state: UIControlState.Normal)
+        searchBar.delegate = self
         let  textFieldInsideSearchBar=searchBar.valueForKey("searchField")as?UITextField
         
         textFieldInsideSearchBar?.textColor = UIColor(red: 61/255.0, green: 186/255.0, blue: 124/255.0, alpha: 1)
@@ -58,7 +63,20 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         let navItem = UIBarButtonItem(customView: navBtn)
         self.navigationItem.leftBarButtonItem = navItem
     }
-    
+    //MARK:----searchDelegate-----
+    func searchBarSearchButtonClicked(searchBar: UISearchBar){
+        searchDatas = models.filter { (contactorInfo) -> Bool in
+            return contactorInfo.userName.containsString(searchBar.text!)
+        }
+        search = true
+        personTableView.reloadData()
+    }
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
+        if searchText.isEmpty {
+            search = false
+            personTableView.reloadData()
+        }
+    }
     func addAlertViewForModel(model:TCContactorInfo){
         //alert
         let keywin = UIApplication.sharedApplication().keyWindow
@@ -89,20 +107,24 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         //处理通讯录信息
         let userInfoDics = getSysContacts()
         dataSource = [:]
-        var models:[TCContactorInfo] = []
+        
         //获取全名
         for userInfo in userInfoDics {
             let contactor = TCContactorInfo()
-            let username = userInfo["FirstName"]! + userInfo["LastName"]!
+            let username = userInfo["LastName"]! + userInfo["FirstName"]!
             let phoneNum = userInfo["PhoneNumber"]
-            contactor.phoneNumber = phoneNum
-            contactor.userName = username
+            if username.isEmpty {
+                contactor.userName = phoneNum!
+            }else{
+                contactor.userName = username
+            }
+            contactor.phoneNumber = phoneNum!
             models.append(contactor)
         }
         keyChars = []
         for person in models {
             //获取首字母
-            let firstChar = TCChangeWord().firstCharactor(person.userName!)
+            let firstChar = TCChangeWord().firstCharactor(person.userName)
             //生成source字典
             if keyChars!.contains(firstChar) {
                 dataSource?[firstChar]?.append(person)
@@ -145,6 +167,7 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         }
         return analyzeSysContacts( ABAddressBookCopyArrayOfAllPeople(addressBook).takeRetainedValue() as NSArray )
     }
+    
     func analyzeSysContacts(sysContacts:NSArray) -> [[String:String]] {
         var allContacts:Array = [[String:String]]()
         for contact in sysContacts {
@@ -161,17 +184,9 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
                 var phoneNums:[String] = []
                 print("电话：")
                 for i in 0 ..< ABMultiValueGetCount(phoneValues){
-                    // 获得标签名
-                    let phoneLabel = ABMultiValueCopyLabelAtIndex(phoneValues, i).takeRetainedValue()
-                        as CFStringRef;
-                    // 转为本地标签名（能看得懂的标签名，比如work、home）
-                    let localizedPhoneLabel = ABAddressBookCopyLocalizedLabel(phoneLabel)
-                        .takeRetainedValue() as String
-                    
                     let value = ABMultiValueCopyValueAtIndex(phoneValues, i)
                     let phone = value.takeRetainedValue() as! String
                     phoneNums.append(phone)
-                    print("\(localizedPhoneLabel):\(phone)")
                 }
                 currentContact["PhoneNumber"] = phoneNums.first
             }
@@ -181,37 +196,58 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if search {
+            return searchDatas.count
+        }
         return dataSource![keyChars![section]]!.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = tableView.dequeueReusableCellWithIdentifier("mailCell")
-        let names = dataSource![keyChars![indexPath.section]]
-        cell?.textLabel?.text = names![indexPath.row].userName
+        if search {
+            cell?.textLabel?.text = searchDatas[indexPath.row].userName
+        }else{
+            let names = dataSource![keyChars![indexPath.section]]
+            cell?.textLabel?.text = names![indexPath.row].userName
+        }
         
         return cell!
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        addAlertViewForModel(dataSource![keyChars![indexPath.section]]![indexPath.row])
+        
+        let viewModel = search ? searchDatas[indexPath.row] : dataSource![keyChars![indexPath.section]]![indexPath.row]
+        
+        addAlertViewForModel(viewModel)
     }
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?{
+        if search {
+            return nil
+        }
         return keyChars![section]
     }
+    
     func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]?{
         return keyChars
     }
+    
     func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         return index
     }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+        if search  {
+            return 1
+        }
         return dataSource!.keys.count
     }
+    
     func scrollViewDidScroll(scrollView: UIScrollView){
         self.view.endEditing(true)
     }
+    
     // MARK:--TCInvitationAlertViewDelegate---
     func invitationAlertSelectedButtonAtIndex(index:Int,_ model:TCContactorInfo?){
         //cancel
@@ -219,8 +255,14 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
             print("取消")
             BackgroundBtnClicked()
         }else{ //confirm
-            print("确认,发送短信给"+String(model!.phoneNumber!))
+            if model?.phoneNumber == nil {
+                SVProgressHUD.showErrorWithStatus("手机号异常")
+                return
+            }
+            print("确认,发送短信给"+model!.phoneNumber)
+            homeHelper.sendMessageWithPhoneNum(model!.phoneNumber)
             BackgroundBtnClicked()
+            SVProgressHUD.showSuccessWithStatus("发送短信成功")
         }
     }
 }

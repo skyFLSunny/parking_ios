@@ -19,7 +19,6 @@ let PARK_SEND_IMAGE_HEADER = "WriteMicroblog_upload"
 let PARK_SHOW_IMAGE_HEADER = "http://parking.xiaocool.net/uploads/microblog/"
 let LOAD_CARINFO = "loadCarInfo"
 
-
 typealias TimerHandle = (timeInterVal:Int)->Void
 
 //计时器类

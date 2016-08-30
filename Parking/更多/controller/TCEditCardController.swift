@@ -54,12 +54,33 @@ class TCEditCardController: UIViewController {
         let navItem = UIBarButtonItem(customView: navBtn)
         self.navigationItem.leftBarButtonItem = navItem
         
+        if !TCUserInfo.currentInfo.bankNo.isEmpty {
+            let rightBtn = UIButton(type: .Custom)
+            rightBtn.frame = CGRectMake(0, 0, 50, 30)
+            rightBtn.setTitle("删除", forState: .Normal)
+            rightBtn.addTarget(self, action: #selector(deleteBankCard), forControlEvents: .TouchUpInside)
+            let rightItem = UIBarButtonItem(customView: rightBtn)
+            self.navigationItem.rightBarButtonItem = rightItem
+        }
     }
     func backToHome(){
         navigationController?.popViewControllerAnimated(true)
     }
     func hiddenKeyBoard(){
         self.view.endEditing(true)
+    }
+    func deleteBankCard(){
+        helper.sendCardInfoWithBankName("", branchName: "", accountName: "", cardNum: "") { (success, response) in
+            if success {
+                SVProgressHUD.showSuccessWithStatus("删除成功")
+                //TODO: userinfo
+                TCUserInfo.currentInfo.bankNo = ""
+                TCUserInfo.currentInfo.bankBranch = ""
+                TCUserInfo.currentInfo.banktype = ""
+                TCUserInfo.currentInfo.bankUserName = ""
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        }
     }
     @IBAction func completeAction(sender: AnyObject) {
         if bankName.text!.isEmpty {

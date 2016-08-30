@@ -13,7 +13,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     @IBOutlet weak var avatarBtn: UIButton!
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var keyboardScrollView: TPKeyboardAvoidingScrollView!
-    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var addressBtn: UIButton!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var manBtn: UIButton!
     @IBOutlet weak var womenBtn: UIButton!
@@ -31,7 +31,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         moreHelper = TCMoreInfoHelper()
         phoneNumber.text = TCUserInfo.currentInfo.phoneNumber
         name.text = TCUserInfo.currentInfo.userName
-        address.text = TCUserInfo.currentInfo.address
+        addressBtn.setTitle(TCUserInfo.currentInfo.address, forState: .Normal)
         cardNum.text = TCUserInfo.currentInfo.cardid
         myActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         myActionSheet?.addAction(UIAlertAction(title: "拍照", style: .Default, handler: {[unowned self] (UIAlertAction) in
@@ -43,7 +43,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         if TCUserInfo.currentInfo.avatar != "" {
             let imageUrlStr = PARK_SHOW_IMAGE_HEADER + TCUserInfo.currentInfo.avatar
             let url = NSURL(string: imageUrlStr)
-            avatarBtn.sd_setImageWithURL(url, forState: .Normal, placeholderImage: UIImage(named: "temp_avatar"))
+            avatarBtn.sd_setImageWithURL(url, forState: .Normal)
         }
         if sex == "0"{
             womenButtonAction()
@@ -60,11 +60,11 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         //set layer
         name.layer.borderWidth = 2
         name.layer.borderColor = UIColor.whiteColor().CGColor
-        address.layer.borderWidth = 2
-        address.layer.borderColor = UIColor.whiteColor().CGColor
         cardNum.layer.borderWidth = 2
         cardNum.layer.borderColor = UIColor.whiteColor().CGColor
         avatarBtn.layer.cornerRadius = 40
+        avatarBtn.layer.borderWidth = 2
+        avatarBtn.layer.borderColor = UIColor.whiteColor().CGColor
         avatarBtn.clipsToBounds = true
         // set nav
         self.title = "修改个人信息"
@@ -89,12 +89,12 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     }
     
     func submit(){
-        moreHelper?.editPersonalInfoWithUserName(name.text!, sex: sex, cardid: cardNum.text!, addr: address.text!, handle: { (success, response) in
-            dispatch_async(dispatch_get_main_queue(), { 
+        moreHelper?.editPersonalInfoWithUserName(name.text!, sex: sex, cardid: cardNum.text!, addr: (addressBtn.titleLabel?.text)!, handle: { (success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
                 if success{
                     SVProgressHUD.showSuccessWithStatus("修改成功")
                     TCUserInfo.currentInfo.sex = self.sex
-                    TCUserInfo.currentInfo.address = self.address.text!
+                    TCUserInfo.currentInfo.address = self.addressBtn.titleLabel!.text!
                     TCUserInfo.currentInfo.cardid = self.cardNum.text!
                     TCUserInfo.currentInfo.userName = self.name.text!
                     self.navigationController?.popViewControllerAnimated(true)
@@ -170,6 +170,24 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
                 }
             })
         })
+    }
+    
+    @IBAction func editAddress(sender: AnyObject) {
+        let pick = AdressPickerView.shareInstance
+        // 设置是否显示区县等，默认为false不显示
+        pick.showTown=true
+
+        pick.show((UIApplication.sharedApplication().keyWindow)!)
+        
+        // 选择完成之后回调
+        pick.selectAdress { (addressArray) in
+            print("选择的地区是: \(addressArray)")
+            let areaStr = addressArray.componentsJoinedByString(" ")
+            dispatch_async(dispatch_get_main_queue(), {
+                 self.addressBtn.setTitle(areaStr, forState: .Normal)
+            })
+        }
+
     }
     
     @IBAction func editPhoneNumber(sender: AnyObject) {

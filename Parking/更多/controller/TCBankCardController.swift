@@ -18,18 +18,6 @@ class TCBankCardController: UIViewController {
     var hasBankCard:Bool = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        if TCUserInfo.currentInfo.bankNo.isEmpty {
-            hasBankCard = false
-            backView.hidden = true
-            emptyInfo.hidden = false
-        }else{
-            hasBankCard = true
-            backView.hidden = false
-            emptyInfo.hidden = true
-            bankName.text = TCUserInfo.currentInfo.banktype
-            cardType.text = TCUserInfo.currentInfo.bankBranch
-            cardNum.text = TCUserInfo.currentInfo.bankNo
-        }
         // Do any additional setup after loading the view.
         self.title = "银行卡"
         self.edgesForExtendedLayout = UIRectEdge.None
@@ -42,23 +30,13 @@ class TCBankCardController: UIViewController {
         let navItem = UIBarButtonItem(customView: navBtn)
         self.navigationItem.leftBarButtonItem = navItem
         
-        let rightNavBtn = UIButton(type: .Custom)
-        rightNavBtn.frame = CGRectMake(0, 0, 60, 30)
-        if hasBankCard {
-            rightNavBtn.setTitle("修改", forState: .Normal)
-            rightNavBtn.addTarget(self, action: #selector(modifyBankCard), forControlEvents: .TouchUpInside)
-        }else{
-            rightNavBtn.setTitle("添加", forState: .Normal)
-            rightNavBtn.addTarget(self, action: #selector(addBankCard), forControlEvents: .TouchUpInside)
-        }
-        let rightItem = UIBarButtonItem(customView: rightNavBtn)
-        self.navigationItem.rightBarButtonItem = rightItem
-        
         backView.layer.cornerRadius = 6
         backView.clipsToBounds = true
     }
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
         if TCUserInfo.currentInfo.bankNo.isEmpty {
             hasBankCard = false
             backView.hidden = true
@@ -71,7 +49,20 @@ class TCBankCardController: UIViewController {
             cardType.text = TCUserInfo.currentInfo.bankBranch
             cardNum.text = TCUserInfo.currentInfo.bankNo
         }
+        
+        let rightNavBtn = UIButton(type: .Custom)
+        rightNavBtn.frame = CGRectMake(0, 0, 60, 30)
+        if hasBankCard {
+            rightNavBtn.setTitle("修改", forState: .Normal)
+            rightNavBtn.addTarget(self, action: #selector(modifyBankCard), forControlEvents: .TouchUpInside)
+        }else{
+            rightNavBtn.setTitle("添加", forState: .Normal)
+            rightNavBtn.addTarget(self, action: #selector(addBankCard), forControlEvents: .TouchUpInside)
+        }
+        let rightItem = UIBarButtonItem(customView: rightNavBtn)
+        self.navigationItem.rightBarButtonItem = rightItem
     }
+    
     func modifyBankCard(){
         print("修改")
         let vc = TCEditCardController(nibName: "TCEditCardController", bundle: nil)

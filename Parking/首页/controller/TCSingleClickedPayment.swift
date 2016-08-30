@@ -59,7 +59,43 @@ class TCSingleClickedPayment: UIViewController,UITableViewDelegate,UITableViewDa
         self.navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func paymentButtonClicked(sender: AnyObject) {
-        SVProgressHUD.showInfoWithStatus("功能建设中")
+        if selectIndex == 0 {
+            FZJWeiXinPayMainController().testStart("0.01", orderName: "测试")
+        }else{
+            let partner = "2088002084967422"
+            let seller = "aqian2001@163.com"
+            let privateKey = "MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAK4a3fO2l5Jn82ywtsBmWCKUDz/J0KKqmEXgu2VjO98dMjN7C+eO48kmhEe7JFpwVYZ9+tuO3TsSDonJ1DOsxVY/341/zYr8tV3SPjhChPTObAswUXznQ8qChIP8sCLdakw/YnlxnOvJneztmg++bIlMIGZUZy17rMKCgHTloJ7LAgMBAAECgYBv/RIlUJ7AaqL2l9iFe49Xdps0cbEE4OyfjgWcGq+JPTNsT8qBgLTeTyspJKQmlDk/EEvK7GM7OsslMDCRqKEpYGqgMJDZGYwanUc/gP4PNarsYY9J7yckRNMoUL2X8ROatiHLv2gHhaQ8zqQf0xG9/9uz+RG9KBiOhQzhEb7DmQJBAN40brXMEJdqqAxQ/de80M1vhgSu5nG+d/ztF2JHG/00DlUGu4AWypPL/6Xys5/GaWWCX3/XawZSHeias9NHdS0CQQDIlalKdsuFKSmrtH24hc/fYOp2VsWFUmMSDBzcizytT+zVKs1CBUbk5R7Pg/PS5iyeqYR6fbvs0HuArkD/f87XAkAQPLqeVEQeHHAdPkneWvDTIkQj0XgLdcSk2dpslw+niAdIFU7cRE4XUL/kq4COu1v2S/mYiPBMLPH8jll3pfAdAkAwhGLKbCmWL/qwWZv/Qf6h3WNY9Gwab28fMmbYwaUPlsGGXi//xB79xp3JO/WCEcLBLeepaThHc7YrzfpS0qtJAkEArxp4t06xxjWRKHpZdDFdtzpEdYg0sIDRhfepVCKxI496HRlrlo+7WipncI4Pm5fJIvm0IXbTlmlIVJx8EYKPPA==";
+            
+            let order = Order()
+            order.partner = partner;
+            order.sellerID = seller;
+            order.outTradeNO = "a512312312"; //订单ID（由商家自行制定）
+            order.subject = "测试"; //商品标题
+            order.body = "这是测试商品"; //商品描述
+            order.totalFee = "0.2"; //商品价格
+            order.notifyURL = "http://www.xxx.com"; //回调URL，这个URL是在支付之后，支付宝通知后台服务器，使数据同步更新，必须填，不然支付无法成功
+            //下面的参数是固定的，不需要改变
+            order.service = "mobile.securitypay.pay";
+            order.paymentType = "1";
+            order.inputCharset = "utf-8";
+            order.itBPay = "30m";
+            order.showURL = "m.alipay.com";
+            
+            //应用注册scheme,在AlixPayDemo-Info.plist定义URL types
+            let appScheme = "Parking";
+            
+            let orderSpec = order.description;
+            
+            let signer = CreateRSADataSigner(privateKey);
+            let signedString = signer.signString(orderSpec);
+            if signedString != nil {
+                let orderString = "\(orderSpec)&sign=\"\(signedString)\"&sign_type=\"RSA\"";
+                
+                AlipaySDK.defaultService().payOrder(orderString, fromScheme: appScheme) { (dic)-> Void in
+                    print(dic)
+                }
+            }
+        }
     }
     //MARK:----UITableViewDataSource----
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

@@ -20,29 +20,20 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     var unpaidDataSource:Array<Dictionary<String,TCCarStopInfo>>?
     var paidDataSource:Array<Dictionary<String,TCCarStopInfo>>?
     var hasNavBtn:Bool = true
+    var isAll = false
     var carNumber:String?
     var payHelper:TCPaymentHelper = TCPaymentHelper()
-    var carUnPayments:Array<CarUnpayModel> = []
-    
+    var carUnPayments = Array<UserUnpayModel>()
+    var carPayments = Array<UserUnpayModel>()
+    var carUnpayModel:CarUnpayModel?
     let leftTag = 666
     let rightTag = 888
     let scrollTag = 2333
+    var lab = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
-        let getCarNum = carNumber == nil ?
-            TCUserInfo.currentInfo.currentCar : carNumber
-        payHelper.getUnpayInfoListWithCarNum(getCarNum!, handle: { [unowned self](success, response) in
-            dispatch_async(dispatch_get_main_queue(), {
-                if success{
-                    self.carUnPayments = [response as! CarUnpayModel]
-                    self.leftTableView?.reloadData()
-                }else{
-                    SVProgressHUD.showErrorWithStatus("加载失败")
-                }
-            })
-        })
     }
     
     func configureUI(){
@@ -68,7 +59,6 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
             let navItem = UIBarButtonItem(customView: navBtn)
             self.navigationItem.leftBarButtonItem = navItem
         }
-        
     }
     
     func pushConfigureWithHasNav(hasNav:Bool,carNum:String){
@@ -95,7 +85,7 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
         vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
-
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let tableViewHeight = self.bottomScrollView.frame.size.height
@@ -119,17 +109,39 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
             rightTableView!.dataSource = self
             rightTableView!.delegate = self
             
-            //        let foot = NSBundle.mainBundle().loadNibNamed("TCSinglePayFootView", owner: nil, options: nil).first as! TCSinglePayFootView
-            //        foot.frame = CGRectMake(0,0,20,100)
-            //        foot.configureFootViewWithCost("100元") {
-            //            print("点了一键支付")
-            //        }
-            //        leftTableView.tableFooterView = foot
-            
             bottomScrollView.addSubview(leftTableView!)
             bottomScrollView.addSubview(rightTableView!)
         }
         
+        if hasNavBtn || isAll {
+            payHelper.getAllUnpayInfo( { [unowned self](success, response) in
+                dispatch_async(dispatch_get_main_queue(), {
+                    if success{
+                        self.carUnPayments = response as! [UserUnpayModel]
+                        self.leftTableView?.reloadData()
+                    }else{
+                        SVProgressHUD.showErrorWithStatus("加载失败")
+                    }
+                })
+                })
+            payHelper.getAllUserHistroyOrder({ [unowned self](success, response) in
+                self.carPayments = response as! [UserUnpayModel]
+                self.rightTableView!.reloadData()
+                })
+        }else{
+            let getCarNum = carNumber == nil ?
+                TCUserInfo.currentInfo.currentCar : carNumber
+            
+            payHelper.getUnpayInfoListWithCarNum(getCarNum!, handle: { [unowned self] (success, response) in
+                self.carUnpayModel = response as? CarUnpayModel
+                self.leftTableView?.reloadData()
+            })
+            
+            payHelper.getHistoryPaymentListWithCarNumber(getCarNum!) { [unowned self](success, response) in
+                self.carPayments = response as! [UserUnpayModel]
+                self.rightTableView!.reloadData()
+            }
+        }
         
     }
 
@@ -169,12 +181,23 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if hasNavBtn || isAll {
+            return 0
+        }
         return 30
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        if !hasNavBtn {
+            return
+        }
         let VC = TCPayDetailController(nibName: "TCPayDetailController",bundle: nil)
+        if tableView.tag == leftTag {
+            VC.paymentModel = carUnPayments[indexPath.row]
+        }else{
+            VC.userPayModel = carPayments[indexPath.row]
+        }
         VC.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(VC, animated: true)
     }
@@ -185,15 +208,24 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if tableView.tag == leftTag {
-            return carUnPayments.count
+            if hasNavBtn||isAll {
+                return carUnPayments.count
+            }
+            return carUnpayModel == nil ? 0 : 1
         }else{
             let height = tableView.frame.height
-            let lab = UILabel(frame: CGRectMake(WIDTH*1.2,height*0.45,WIDTH*0.6,height*0.1))
-            lab.text = "当前没有未缴费信息"
+            lab.frame = CGRectMake(WIDTH*1.2,height*0.45,WIDTH*0.6,height*0.1)
+            lab.text = "当前没有已缴费信息"
             lab.font = UIFont.systemFontOfSize(22)
             lab.adjustsFontSizeToFitWidth = true
             lab.textColor = UIColor.lightGrayColor()
             bottomScrollView.addSubview(lab)
+            if carPayments.count == 0 {
+                lab.hidden = false
+            }else{
+                lab.hidden = true
+                return carPayments.count
+            }
             return 0
         }
     }
@@ -201,22 +233,33 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         if tableView.tag == leftTag {
             let cell = tableView.dequeueReusableCellWithIdentifier("paycell") as! TCPaymentCell
-            cell.showForModel(carUnPayments[indexPath.row])
+            cell.payButton.addTarget(self, action: #selector(touchListPayBtn), forControlEvents: .TouchUpInside)
+            cell.payButton.tag = indexPath.row
+            if hasNavBtn || isAll {
+                cell.showForModel(carUnPayments[indexPath.row])
+            }else{
+                cell.showForCarModel(carUnpayModel!)
+            }
             return cell
-            
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TCHasPaiedCell
+            cell.showforModel(carPayments[indexPath.row])
             return cell
         }
+    }
+    
+    func touchListPayBtn(btn:UIButton){
+        let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
+        let costStr = hasNavBtn||isAll ? "¥"+String(carUnPayments[btn.tag].money) : String(carUnpayModel?.money)
+        vc.showVCWithPayCars(TCUserInfo.currentInfo.currentCar,cost: costStr)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){
         if scrollView.tag != scrollTag {
             return
         }
-        
         print(scrollView.contentOffset.x)
-        
         if scrollView.contentOffset.x == 0 {
             leftButtonClicked(0)
         }else{

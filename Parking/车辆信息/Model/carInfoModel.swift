@@ -54,6 +54,22 @@ class CarInfoList: JSONJoy {
     }
 }
 
+class HomeCarStopInfo: JSONJoy {
+    var status:String?
+    var data:CarCellInfoModel?
+    var errorData:String?
+    var datastring:String?
+    
+    required init(_ decoder:JSONDecoder){
+        status = decoder["status"].string
+        if status == "success"{
+            data = CarCellInfoModel(decoder["data"])
+        }else{
+            errorData = decoder["data"].string
+        }
+    }
+}
+
 class CarCellInfoModel:JSONJoy{
     
     var carnumber:String?
@@ -64,11 +80,9 @@ class CarCellInfoModel:JSONJoy{
     var carid:Int?
     var opt_time:Int?
     var isCurrentCar:Int?
-    var status:String?
     
     
     required init(_ decoder:JSONDecoder){
-        status = decoder["status"].string
         carnumber = decoder["car_number"].string
         brand = decoder["brand"].string
         userid = decoder["owner_id"].integer

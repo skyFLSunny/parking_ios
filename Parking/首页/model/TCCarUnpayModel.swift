@@ -28,22 +28,22 @@ class TCCarUnpayModel: JSONJoy{
 }
 
 class CarUnpayModel: JSONJoy {
-    var date:String?
-    var time:String?
-    var price:String?
-    var money:Int?
-    var pay_type:Int?
-    var status:Int?
-    var pay_status:Int?
+    var date:String
+    var time:String
+    var price:String
+    var money:Int
+    var pay_type:Int
+    var status:Int
+    var pay_status:Int
     
     
     required init(_ decoder:JSONDecoder){
-        date = decoder["date"].string
-        time = decoder["time"].string
-        price = decoder["price"].string
-        money = decoder["money"].integer
-        pay_type = decoder["pay_type"].integer
-        status = decoder["status"].integer
-        pay_status = decoder["pay_status"].integer
+        date = decoder["date"].string ?? ""
+        time = decoder["time"].string ?? ""
+        price = decoder["price"].string ?? ""
+        money = decoder["money"].integer ?? 0
+        pay_type = decoder["pay_type"].integer ?? 0
+        status = decoder["status"].integer ?? 0
+        pay_status = decoder["pay_status"].integer ?? 0
     }
 }

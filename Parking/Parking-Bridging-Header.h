@@ -11,3 +11,8 @@
 #import "TPKeyboardAvoidingScrollView.h"
 #import "TPKeyboardAvoidingTableView.h"
 #import "ConnectModel.h"
+#import <AlipaySDK/AlipaySDK.h>
+#import "Order.h"
+#import "DataSigner.h"
+#import "FZJWeiXinPayMainController.h"
+#import "WXApi.h"

@@ -30,6 +30,23 @@ class TCHomePageHelper: NSObject {
                 handle(success: false,response: "网络错误")
         })
     }
+    //获取选取车牌号的未缴费信息
+    func getUnpayInfoListWithCarNum(carNum:String,handle:ResponseBlock){
+        let paramDic = ["a":"getExpenseInfo",
+                        "carnumber":carNum,
+                        "userid":TCUserInfo.currentInfo.userid]
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+            let result = TCCarUnpayModel(JSONDecoder(response!))
+            if result.status == "success"{
+                //TODO:未缴费帐单返回数组
+                handle(success: true,response: result.data)
+            }else{
+                handle(success: false,response: result.errorData)
+            }
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
+        })
+    }
     //获取未缴费帐单
     func getUnpayedInfoList(handle:ResponseBlock){
         let paramDic = ["a":"getExpenseInfo",
@@ -51,14 +68,58 @@ class TCHomePageHelper: NSObject {
     func getCurrentCarInfo(handle:ResponseBlock){
         let paramDic = ["a":"getMemberCurrentCar","userid":TCUserInfo.currentInfo.userid]
         requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
-            let result = CarCellInfoModel(JSONDecoder(response!))
+            let result = HomeCarStopInfo(JSONDecoder(response!))
                 if result.status == "success"{
-                    handle(success: true, response: result)
+                    handle(success: true, response: result.data)
                 }else{
                     handle(success: false,response: "查询失败")
                 }
             }, failure: { (task, error) in
                 handle(success: false, response: "网络错误")
+        })
+    }
+    //查询用户所有车辆未缴费信息
+    func getAllUnpayInfo(handle:ResponseBlock){
+        let paramDic = ["a":"getUnpayOrderListByOwner","userid":TCUserInfo.currentInfo.userid]
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+            let result = TCUserUnpayModel(JSONDecoder(response!))
+            
+                if result.status == "success"{
+                    //TODO:未缴费帐单返回数组
+                    handle(success: true,response: result.datas)
+                }else{
+                    handle(success: false,response: result.errorData)
+                }
+            
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
+        })
+    }
+    //发送短信
+    func sendMessageWithPhoneNum(phone:String){
+        let paramDic = ["a":"Send","phone":phone,"content":"我在使用智慧停车app，快来下载www.pgyer.com/fq12"]
+        
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+            
+            }, failure: { (task, error) in
+            
+        })
+    }
+    //获取车辆所有订单
+    func getCarAllOrder(carNum:String, handle:ResponseBlock){
+        let paramDic = ["a":"getAllOrderByCarNumber","carnumber":carNum,"userid":TCUserInfo.currentInfo.userid]
+        
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, progress: nil, success: { (task, response) in
+            let result = TCUserUnpayModel(JSONDecoder(response!))
+            if result.status == "success"{
+                //TODO:未缴费帐单返回数组
+                handle(success: true,response: result.datas)
+            }else{
+                handle(success: false,response: result.errorData)
+            }
+            
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
         })
     }
 }

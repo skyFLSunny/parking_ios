@@ -14,7 +14,7 @@ class TCPayWithHodingController: UIViewController,UITableViewDelegate,UITableVie
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var paymentHelper:TCPaymentHelper = TCPaymentHelper()
-    var carUnPayments:Array<CarUnpayModel> = []
+    var carUnPayment:CarUnpayModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,8 +43,8 @@ class TCPayWithHodingController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if !carUnPayments.isEmpty {
-            return carUnPayments.count
+        if carUnPayment != nil {
+            return 1
         }
         return 0
     }
@@ -52,26 +52,38 @@ class TCPayWithHodingController: UIViewController,UITableViewDelegate,UITableVie
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return 85
     }
+    
     @IBAction func searchBtnClicked(sender: AnyObject) {
+        
+        if searchBar.text!.isEmpty {
+            return
+        }
+        
         paymentHelper.getUnpayInfoListWithCarNum(searchBar.text!) { (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success{
                     if response == nil{
-                        self.carUnPayments.removeAll()
+                        self.carUnPayment = nil
                         self.tableView.reloadData()
                     }else{
-                        self.carUnPayments = [response as! CarUnpayModel]
+                        self.carUnPayment = response as? CarUnpayModel
                         self.tableView.reloadData()
                     }
+                }else{
+                    SVProgressHUD.showErrorWithStatus(response as! String)
                 }
             })
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        
         let cell = tableView.dequeueReusableCellWithIdentifier("paycell") as! TCPaymentCell
-        cell.showForModel(carUnPayments[indexPath.row])
+        cell.showForCarModel(carUnPayment!)
         
         return cell
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
     }
 }

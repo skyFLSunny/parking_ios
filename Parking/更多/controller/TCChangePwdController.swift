@@ -9,7 +9,8 @@
 import UIKit
 
 class TCChangePwdController: UIViewController {
-
+    
+    @IBOutlet weak var oldPwd: UITextField!
     @IBOutlet weak var newPwd: UITextField!
     @IBOutlet weak var confirmPwd: UITextField!
     
@@ -20,7 +21,6 @@ class TCChangePwdController: UIViewController {
         
         let gesture = UITapGestureRecognizer(target: self, action: #selector(hiddenKeyBoard))
         self.view.addGestureRecognizer(gesture)
-        
         self.title = "修改密码"
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
@@ -40,6 +40,10 @@ class TCChangePwdController: UIViewController {
         navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func completeAction(sender: AnyObject) {
+        if oldPwd.text!.isEmpty {
+            SVProgressHUD.showErrorWithStatus("请输入旧密码")
+            return
+        }
         if newPwd.text!.isEmpty {
             SVProgressHUD.showErrorWithStatus("请输入新密码")
             return
@@ -50,8 +54,18 @@ class TCChangePwdController: UIViewController {
         if confirmPwd.text! != newPwd.text! {
             SVProgressHUD.showErrorWithStatus("两次输入密码不一致")
         }
-        
-        helper.changePwdWithNewPwd(newPwd.text!) { (success, response) in
+//        
+//        helper.changePwdWithNewPwd(newPwd.text!) { (success, response) in
+//            dispatch_async(dispatch_get_main_queue(), {
+//                if success {
+//                    SVProgressHUD.showSuccessWithStatus("修改成功")
+//                    self.navigationController?.popViewControllerAnimated(true)
+//                }else{
+//                    SVProgressHUD.showErrorWithStatus(response as! String)
+//                }
+//            })
+//        }
+        helper.changePasswordByPhone(oldPwd.text!, new_password: newPwd.text!) { (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success {
                     SVProgressHUD.showSuccessWithStatus("修改成功")

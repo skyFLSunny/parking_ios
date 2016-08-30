@@ -1,7 +1,6 @@
 //
 //  TCHomePageController.swift
 //  ASwiftProduct
-//
 //  Created by xiaocool on 16/4/15.
 //  Copyright © 2016年 北京校酷网络科技有限公司. All rights reserved.
 //
@@ -29,51 +28,61 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     var backgroundBtn:UIButton?
     var alertSheet:TCAlertSelectView?
     var homeHelper:TCHomePageHelper = TCHomePageHelper()
-    var carUnPayments:Array<CarUnpayModel>?
+    var carUnPayments = Array<UserUnpayModel>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
         self.needPayTableView.tableFooterView = UIView()
-        self.needPayTableView.hidden = true
         self.empTipView.hidden = false
-        carUnPayments = []
         self.pagmentButton.layer.cornerRadius = 8
         keyboardScrollView.bounces = false
         self.hidesBottomBarWhenPushed = false
-        homeHelper.getUnpayedInfoList({[unowned self] (success, response) in
-            dispatch_async(dispatch_get_main_queue(), { 
-                if success && response != nil{
-                    self.carUnPayments = [response as! CarUnpayModel]
-                    self.needPayTableView.reloadData()
-                }
-            })
-        })
         addNavigationItem()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        homeHelper.getCurrentCarInfo { (success, response) in
-            if success {
-                dispatch_async(dispatch_get_main_queue(), {
+        homeHelper.getCurrentCarInfo {[unowned self] (success, response) in
+            dispatch_async(dispatch_get_main_queue(), {
+                if success {
                     let car = response as! CarCellInfoModel
                     if car.carnumber != nil && car.brand != nil{
                         TCUserInfo.currentInfo.currentCar = car.carnumber!
-                        TCUserInfo.currentInfo.currentCar = car.brand!
+                        TCUserInfo.currentInfo.currentCarBrand = car.brand!
+                        //未缴费
+                        self.homeHelper.getCarAllOrder(car.carnumber!,handle: {[unowned self] (success, response) in
+                            dispatch_async(dispatch_get_main_queue(), {
+                                if success && response != nil{
+                                    self.carUnPayments = response as! Array<UserUnpayModel>
+                                    self.needPayTableView.reloadData()
+                                }
+                            })
+                        })
+                        self.ShowCarInfo()
+                        self.getStopInfo()
                     }
-                })
-            }
+                }else {
+                    TCUserInfo.currentInfo.currentCar = ""
+                    TCUserInfo.currentInfo.currentCarBrand = ""
+                    self.ShowCarInfo()
+                    self.getStopInfo()
+                }
+            })
         }
-        getStopInfo()
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+
         let tabHeight = view.frame.height - 368
         tableHeightConstraint.constant = tabHeight >= 160 ? tabHeight :160
         print(TCUserInfo.currentInfo.userid)
+    }
+    
+    func ShowCarInfo(){
         if !TCUserInfo.currentInfo.currentCar.isEmpty {
             carImage.image = UIImage(named: "汽车")
             carNumLabel.hidden = false
@@ -104,17 +113,36 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         }else{
             homeHelper.getParkingInfo({ [unowned self](success, response) in
                 dispatch_async(dispatch_get_main_queue(), {
-                    let res = response as! ParkingInfoModel
+                    if response == nil {
+                        self.locationLabel.text = "暂无"
+                        self.startTimeLabel.text = "暂无"
+                        self.totalTimeLabel.text = "暂无"
+                        self.costLabel.text = "暂无"
+                        self.locationLabel.textColor = UIColor.lightGrayColor()
+                        self.startTimeLabel.textColor = UIColor.lightGrayColor()
+                        self.totalTimeLabel.textColor = UIColor.lightGrayColor()
+                        self.costLabel.textColor = UIColor.lightGrayColor()
+                        return
+                    }
                     if success {
-                        self.locationLabel.text = res.position
+                        let res = response as! ParkingInfoModel
+                        self.locationLabel.text = res.park
                         self.startTimeLabel.text = res.start_time
-                        self.totalTimeLabel.text = "2小时"
-                        self.costLabel.text = "¥12"
+                        self.totalTimeLabel.text = res.time
+                        self.costLabel.text = "¥"+String(res.money)
                         self.locationLabel.textColor = UIColor.darkGrayColor()
                         self.startTimeLabel.textColor = UIColor.darkGrayColor()
                         self.totalTimeLabel.textColor = UIColor.darkGrayColor()
                         self.costLabel.textColor = UIColor.orangeColor()
                     } else {
+                        self.locationLabel.text = "暂无"
+                        self.startTimeLabel.text = "暂无"
+                        self.totalTimeLabel.text = "暂无"
+                        self.costLabel.text = "暂无"
+                        self.locationLabel.textColor = UIColor.lightGrayColor()
+                        self.startTimeLabel.textColor = UIColor.lightGrayColor()
+                        self.totalTimeLabel.textColor = UIColor.lightGrayColor()
+                        self.costLabel.textColor = UIColor.lightGrayColor()
                     }
                 })
             })
@@ -125,14 +153,14 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         let leftButton = UIButton(type: .Custom)
         leftButton.frame = CGRectMake(0, 0, 30, 30)
         leftButton.setImage(UIImage(named: "ic_jiahaoyou"), forState:.Normal)
-        let rightButton = UIButton(type: .Custom)
-        rightButton.frame = CGRectMake(0, 0, 30, 30)
-        rightButton.setImage(UIImage(named: "ic_xiaoxi"), forState: .Normal)
         leftButton.addTarget(self, action: #selector(leftNavBtnClicked), forControlEvents: .TouchUpInside)
-        rightButton.addTarget(self, action: #selector(rightNavBtnClicked), forControlEvents: .TouchUpInside)
+//        let rightButton = UIButton(type: .Custom)
+//        rightButton.frame = CGRectMake(0, 0, 30, 30)
+//        rightButton.setImage(UIImage(named: "ic_xiaoxi"), forState: .Normal)
+//        rightButton.addTarget(self, action: #selector(rightNavBtnClicked), forControlEvents: .TouchUpInside)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
+//        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
@@ -140,10 +168,10 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if carUnPayments != nil {
-            return carUnPayments!.count
+        if carUnPayments.count != 0 {
+            self.empTipView.hidden = true
         }
-        return 0
+        return carUnPayments.count
     }
     // 加好友
     func leftNavBtnClicked(){
@@ -171,7 +199,8 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         cell?.payButton.tag = indexPath.row
         cell?.payButton.addTarget(self, action: #selector(selectedPayButton),
                                   forControlEvents: .TouchUpInside)
-        cell?.showForModel(carUnPayments![indexPath.row])
+        let model = carUnPayments[indexPath.row]
+        cell?.showForModel(model)
         
         //选中cell不改变颜色
         cell!.selectionStyle = UITableViewCellSelectionStyle.None;
@@ -180,32 +209,19 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     
     func selectedPayButton(sender:UIButton){
         print(sender.tag)
-        let cost = "¥" + String((carUnPayments![sender.tag].money)!)
-        pushToPaymentController("888888",cost: cost)
+        let cost = "¥" + String((carUnPayments[sender.tag].money))
+        pushToPaymentController(TCUserInfo.currentInfo.currentCar,cost: cost)
     }
     
     @IBAction func paymentButtonClicked(sender: UIButton) {
-        
-        pushToPaymentController("666666",cost:"¥12")
-//        let keywin = UIApplication.sharedApplication().keyWindow
-//        backgroundBtn = UIButton(type: UIButtonType.Custom)
-//        backgroundBtn!.backgroundColor = UIColor.blackColor()
-//        backgroundBtn!.alpha = 0.4
-//        backgroundBtn!.frame = keywin!.bounds
-//        backgroundBtn!.addTarget(self, action:#selector(homeBackgroundBtnClicked), forControlEvents: UIControlEvents.TouchUpInside)
-//        keywin?.addSubview(backgroundBtn!)
-//        let viewWidth = keywin!.bounds.width*0.6
-//        let viewHeight = keywin!.bounds.height*0.3
-//        let viewX = keywin!.bounds.width*0.2
-//        let viewY = keywin!.bounds.height*0.35
-//        alertSheet = TCAlertSelectView(frame: CGRectMake(viewX,viewY,viewWidth,viewHeight))
-//        alertSheet?.delegate = self
-//        keywin?.addSubview(alertSheet!)
+        pushToPaymentController(TCUserInfo.currentInfo.currentCar,cost:costLabel.text!)
     }
+    
     func homeBackgroundBtnClicked(){
         backgroundBtn!.removeFromSuperview()
         alertSheet!.removeFromSuperview()
     }
+    
     func pushToPaymentController(carNum:String,cost:String){
         let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
         vc.showVCWithPayCars(carNum,cost: cost)
@@ -217,6 +233,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         print("取消")
         homeBackgroundBtnClicked()
     }
+    
     func tureButtonClicked(carinfos:Array<TCCarInfoModel>?){
         homeBackgroundBtnClicked()
         print("选择的车辆是：")

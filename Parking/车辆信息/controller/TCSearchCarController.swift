@@ -11,7 +11,6 @@ import UIKit
 class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    
     var carHelper:TCCarInfoHelper = TCCarInfoHelper()
     var dataSource:Array<CarCellInfoModel>?
     
@@ -29,6 +28,7 @@ class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDat
             })
         }
     }
+    
     func configureUI(){
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
@@ -41,6 +41,7 @@ class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDat
         self.navigationItem.leftBarButtonItem = navItem
         tableView.tableFooterView = UIView()
     }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if dataSource != nil {
             return dataSource!.count
@@ -50,7 +51,6 @@ class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDat
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier("cell")!
         cell.textLabel?.text = dataSource![indexPath.row].carnumber
         cell.accessoryType = UITableViewCellAccessoryType.DisclosureIndicator
@@ -64,6 +64,8 @@ class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDat
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let vc = TCPaymentViewController(nibName:"TCPaymentViewController",bundle: nil)
+        vc.carNumber = dataSource![indexPath.row].carnumber!
+        vc.hasNavBtn = false
         vc.pushConfigureWithHasNav(false, carNum: dataSource![indexPath.row].carnumber!)
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -75,6 +77,7 @@ class TCSearchCarController: UIViewController,UITableViewDelegate,UITableViewDat
     @IBAction func allCarInfoButtonAction(sender: AnyObject) {
         let vc = TCPaymentViewController(nibName:"TCPaymentViewController",bundle: nil)
         vc.hasNavBtn = false
+        vc.isAll = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }

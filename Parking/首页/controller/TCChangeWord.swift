@@ -11,17 +11,19 @@ import UIKit
 class TCChangeWord: NSObject {
     
     func charactorType(textString:String) -> Int{
-        
-        let char = textString.substringToIndex(textString.startIndex.advancedBy(1))
-        let eRegex: String = "^[a-zA-z]+$"
-        let eTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", eRegex)
-        if eTest.evaluateWithObject(char){
-            return 1
-        }
-        let zRegex: String = "^[\\u4e00-\\u9fa5]"
-        let zTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", zRegex)
-        if zTest.evaluateWithObject(char){
-            return 2
+        if !textString.isEmpty{
+            let char = textString.substringToIndex(textString.startIndex.advancedBy(1))
+            let eRegex: String = "^[a-zA-z]+$"
+            let eTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", eRegex)
+            if eTest.evaluateWithObject(char){
+                return 1
+            }
+            let zRegex: String = "^[\\u4e00-\\u9fa5]"
+            let zTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", zRegex)
+            
+            if zTest.evaluateWithObject(char){
+                return 2
+            }
         }
         return 0
     }
@@ -41,7 +43,7 @@ class TCChangeWord: NSObject {
         //获取并返回首字母
             return pinYin.substringToIndex(pinYin.startIndex.advancedBy(1))
         }
-        return " "
+        return "~"
         
     }
 }

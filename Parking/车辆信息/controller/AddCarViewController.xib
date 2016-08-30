@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddCarViewController" customModule="Parking" customModuleProvider="target">
             <connections>
                 <outlet property="carNumber" destination="bfz-h1-1KU" id="Oon-0l-ct0"/>
-                <outlet property="carType" destination="ANr-RW-ufB" id="JaH-AV-gfc"/>
+                <outlet property="carType" destination="aVd-27-MbJ" id="9R7-Xq-rhv"/>
                 <outlet property="engineNum" destination="9vf-jo-Mhl" id="01K-jn-ScZ"/>
                 <outlet property="ownerName" destination="Cec-V9-P1y" id="MeQ-de-Xvg"/>
                 <outlet property="tpScrollView" destination="dP3-0E-qYB" id="FZg-O0-UpT"/>
@@ -47,7 +47,6 @@
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入车牌号" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bfz-h1-1KU">
                                                     <rect key="frame" x="75" y="10" width="240" height="30"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -114,17 +113,23 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入车型" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ANr-RW-ufB">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVd-27-MbJ">
                                                     <rect key="frame" x="75" y="10" width="240" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="7H3-Xk-TdO"/>
+                                                        <constraint firstAttribute="width" constant="240" id="mDz-Ax-hcM"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
+                                                    <state key="normal" title="小型车">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    </state>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ANr-RW-ufB" firstAttribute="leading" secondItem="bx4-7P-66B" secondAttribute="trailing" constant="37" id="12T-TL-abc"/>
+                                                <constraint firstItem="aVd-27-MbJ" firstAttribute="centerY" secondItem="QAZ-az-kab" secondAttribute="centerY" id="01q-yu-cXI"/>
                                                 <constraint firstAttribute="trailing" secondItem="LQA-PQ-0qk" secondAttribute="trailing" id="7PZ-T5-G8K"/>
-                                                <constraint firstAttribute="trailing" secondItem="ANr-RW-ufB" secondAttribute="trailing" constant="5" id="BEv-ws-oFJ"/>
-                                                <constraint firstItem="ANr-RW-ufB" firstAttribute="centerY" secondItem="bx4-7P-66B" secondAttribute="centerY" id="Jao-46-vHh"/>
+                                                <constraint firstAttribute="trailing" secondItem="aVd-27-MbJ" secondAttribute="trailing" constant="5" id="AA4-LV-QRr"/>
                                                 <constraint firstItem="LQA-PQ-0qk" firstAttribute="leading" secondItem="QAZ-az-kab" secondAttribute="leading" id="Mbg-VC-Rdc"/>
                                                 <constraint firstAttribute="bottom" secondItem="LQA-PQ-0qk" secondAttribute="bottom" id="RGy-lb-MT5"/>
                                                 <constraint firstItem="bx4-7P-66B" firstAttribute="leading" secondItem="QAZ-az-kab" secondAttribute="leading" constant="8" id="gTX-wv-7Bt"/>

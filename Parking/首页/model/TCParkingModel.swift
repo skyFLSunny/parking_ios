@@ -27,16 +27,20 @@ class TCParkingInfoParser: JSONJoy{
 }
 
 class ParkingInfoModel: JSONJoy {
-    var park:String?
-    var position:String?
-    var start_time:String?
-    var end_time:String?
     
+    var park:String
+    var position:String
+    var start_time:String
+    var end_time:String
+    var time:String
+    var money:Int
     
     required init(_ decoder:JSONDecoder){
-        park = decoder["park"].string
-        position = decoder["position"].string
-        start_time = decoder["start_time"].string
-        end_time = decoder["end_time"].string
+        park = decoder["park"].string ?? ""
+        position = decoder["position"].string ?? ""
+        start_time = decoder["start_time"].string ?? ""
+        end_time = decoder["end_time"].string ?? ""
+        time = decoder["time"].string ?? ""
+        money = decoder["money"].integer ?? 0
     }
 }

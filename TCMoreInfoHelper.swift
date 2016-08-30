@@ -54,13 +54,13 @@ class TCMoreInfoHelper: NSObject {
     }
     //修改密码
     func changePwdWithNewPwd(pwd:String,handle:ResponseBlock){
-    let paraDic = ["a":"UpdatePass","phone":TCUserInfo.currentInfo.phoneNumber,"password":pwd]
+        let paraDic = ["a":"UpdatePass","phone":TCUserInfo.currentInfo.phoneNumber,"password":pwd]
         requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData
             handle(success: result.status == "success",response: responseStr)
             }, failure: { (task, error) in
-             handle(success: false,response: "网络错误")
+                handle(success: false,response: "网络错误")
         })
     }
     //资料编辑
@@ -74,6 +74,17 @@ class TCMoreInfoHelper: NSObject {
             handle(success: result.status == "success",response: responseStr)
             }, failure: { (task, error) in
                handle(success: false,response: "网络错误")
+        })
+    }
+    //通过手机号码修改密码
+    func changePasswordByPhone(old_password:String, new_password:String,handle:ResponseBlock){
+        let paraDic = ["a":"changePasswordByPhone","phone":TCUserInfo.currentInfo.phoneNumber,"old_password":old_password,"new_password":new_password]
+        requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
+            let result = Http(JSONDecoder(response!))
+            let responseStr = result.status == "success" ? nil : result.errorData
+            handle(success: result.status == "success",response: responseStr)
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
         })
     }
 }

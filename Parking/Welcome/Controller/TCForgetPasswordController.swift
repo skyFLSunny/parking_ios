@@ -18,6 +18,7 @@ class TCForgetPasswordController: UIViewController {
     @IBOutlet weak var secretBtn: UIButton!
     @IBOutlet weak var confirmScrtBtn: UIButton!
     @IBOutlet weak var completeBtn: UIButton!
+    
     var processHandle:TimerHandle?
     var finishHandle:TimerHandle?
     var logVM:TCVMLogModel?
@@ -37,6 +38,7 @@ class TCForgetPasswordController: UIViewController {
                 self.getIDNumBtn.setTitle(btnTitle, forState: .Normal)
             })
         }
+        
         finishHandle = {[unowned self] (timeInterVal) in
             dispatch_async(dispatch_get_main_queue(), {
                 self.getIDNumBtn.userInteractionEnabled = true
@@ -90,7 +92,7 @@ class TCForgetPasswordController: UIViewController {
         logVM?.comfirmPhoneHasRegister(phoneNumber.text!, handle: { [unowned self](success, response) in
             dispatch_async(dispatch_get_main_queue(), {
             if success {
-                TimeManager.shareManager.begainTimerWithKey("forget", timeInterval: 30, process: self.processHandle!, finish: self.finishHandle!)
+                TimeManager.shareManager.begainTimerWithKey("forget", timeInterval: 60, process: self.processHandle!, finish: self.finishHandle!)
                 self.logVM?.sendMobileCodeWithPhoneNumber(self.phoneNumber.text!)
             }else{
                     SVProgressHUD.showErrorWithStatus("手机没有注册")
@@ -99,11 +101,13 @@ class TCForgetPasswordController: UIViewController {
         })
         print("获取验证码")
     }
+    
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         TimeManager.shareManager.taskDic["forget"]?.FHandle = nil
         TimeManager.shareManager.taskDic["forget"]?.PHandle = nil
     }
+    
     @IBAction func setSecretButtonAction(sender: AnyObject) {
         if showMM == false {
             showMM = true
@@ -127,6 +131,7 @@ class TCForgetPasswordController: UIViewController {
             confirmScrtBtn.setImage(UIImage(named: "ic_biyan"), forState: .Normal)
             confirm.secureTextEntry = true
         }
+        
         print("qurenmima")
     }
     
@@ -153,12 +158,14 @@ class TCForgetPasswordController: UIViewController {
         }
         logVM?.forgetPassword(phoneNumber.text!, code: identifyNumber.text!, password: passWordNum.text!, handle: { [unowned self] (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
+                
                 if success {
                     SVProgressHUD.showSuccessWithStatus("修改成功")
                     self.navigationController?.popViewControllerAnimated(true)
                 }else{
                     SVProgressHUD.showErrorWithStatus(response as! String)
                 }
+                
             })
         })
     }

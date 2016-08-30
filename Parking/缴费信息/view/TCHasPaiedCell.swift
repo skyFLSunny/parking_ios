@@ -13,7 +13,8 @@ class TCHasPaiedCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
-
+    var myModel:UserUnpayModel?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +24,19 @@ class TCHasPaiedCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func showforModel(model:UserUnpayModel){
+        myModel = model
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if myModel != nil {
+            addressLabel.text = myModel!.park
+            timeLabel.text = myModel!.date
+            priceLabel.text = "停车"+myModel!.time+"小时"
+            costLabel.text = "¥"+String(myModel!.money)
+        }
     }
     
 }

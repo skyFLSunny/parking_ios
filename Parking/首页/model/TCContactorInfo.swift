@@ -9,6 +9,6 @@
 import UIKit
 
 class TCContactorInfo: NSObject {
-    var userName:String?
-    var phoneNumber:NSString?
+    var userName = ""
+    var phoneNumber = ""
 }

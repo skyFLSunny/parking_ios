@@ -187,8 +187,11 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
             if success {
                     SVProgressHUD.showErrorWithStatus("手机已注册")
             }else{
-                TimeManager.shareManager.begainTimerWithKey(self.GET_ID_KEY, timeInterval: 30, process: self.processHandle!, finish: self.finishHandle!)
+                TimeManager.shareManager.begainTimerWithKey(self.GET_ID_KEY, timeInterval: 60, process: self.processHandle!, finish: self.finishHandle!)
                 self.logVM?.sendMobileCodeWithPhoneNumber(self.phoneNumber.text!)
+                dispatch_async(dispatch_get_main_queue(), { 
+                    SVProgressHUD.showSuccessWithStatus("发送验证码成功")
+                })
             }
             })
             
@@ -272,7 +275,6 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
     }
     
     @IBAction func avatarBtnClicked(sender: AnyObject) {
-        
         presentViewController(myActionSheet!, animated: true, completion:nil)
     }
     

@@ -20,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SVProgressHUD.setForegroundColor(UIColor.whiteColor())
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         var showguide = NSUserDefaults.standardUserDefaults().boolForKey(SHOW_GUIDE)
+        WXApi.registerApp("wx765b8c5e082532b4")
         //TODO:每次都显示
         showguide = false
         if showguide {
@@ -56,6 +57,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        if url.host == "safepay" {
+            AlipaySDK.defaultService().processOrderWithPaymentResult(url, standbyCallback: { (dic) in
+                print(dic)
+            })
+        }
+        return true
+    }
+    func application(application: UIApplication, handleOpenURL url: NSURL) -> Bool {
+        if url.host == "safepay" {
+            AlipaySDK.defaultService().processOrderWithPaymentResult(url, standbyCallback: { (dic) in
+                print(dic)
+            })
+        }
+        return true
     }
 
 

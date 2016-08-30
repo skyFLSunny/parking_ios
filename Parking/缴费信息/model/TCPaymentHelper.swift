@@ -22,10 +22,10 @@ class TCPaymentHelper: NSObject {
                         "carnumber":carNum,
                         "userid":TCUserInfo.currentInfo.userid]
         requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
-            let result = Http(JSONDecoder(response!))
+            let result = TCUserUnpayModel(JSONDecoder(response!))
             if result.status == "success"{
                 //TODO:缴费帐单返回数组
-                handle(success: true,response: result.data)
+                handle(success: true,response: result.datas)
             }else{
                 handle(success: false,response: result.errorData)
             }
@@ -50,15 +50,35 @@ class TCPaymentHelper: NSObject {
             }, failure: { (task, error) in
                 handle(success: false,response: "网络错误")
         })
-
     }
     //查询用户所有车辆未缴费信息
     func getAllUnpayInfo(handle:ResponseBlock){
         let paramDic = ["a":"getUnpayOrderListByOwner","userid":TCUserInfo.currentInfo.userid]
         requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
-            
+            let result = TCUserUnpayModel(JSONDecoder(response!))
+            if result.status == "success"{
+                //TODO:未缴费帐单返回数组
+                handle(success: true,response: result.datas)
+            }else{
+                handle(success: false,response: result.errorData)
+            }
             }, failure: { (task, error) in
-                
+                handle(success: false,response: "网络错误")
+        })
+    }
+    //查询用户所有缴费历史纪录
+    func getAllUserHistroyOrder(handle:ResponseBlock){
+        let paramDic = ["a":"getCarHistoryOrderByPayUserId","userid":TCUserInfo.currentInfo.userid]
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+            let result = TCUserUnpayModel(JSONDecoder(response!))
+            if result.status == "success"{
+                //TODO:未缴费帐单返回数组
+                handle(success: true,response: result.datas)
+            }else{
+                handle(success: false,response: result.errorData)
+            }
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
         })
     }
 }
