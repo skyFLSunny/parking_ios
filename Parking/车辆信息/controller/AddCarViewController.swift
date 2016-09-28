@@ -137,16 +137,17 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate,UIAlertViewDel
         }
         
         if viewType == .add {
+            SVProgressHUD.show()
             carInfoHelper?.addCarWithOnwerID(ownerName.text!, carNumber: carNumber.text!, carType: carType.titleLabel!.text!, engineNum: engineNum.text!, handle: { [unowned self] (success, response) in
                 dispatch_async(dispatch_get_main_queue(), {
+                    SVProgressHUD.showSuccessWithStatus("添加成功")
                     if success {
                         self.presentViewController(self.alertControl!, animated: true, completion: nil)
                     }else{
                         SVProgressHUD.showErrorWithStatus(response as? String)
                     }
                 })
-                })
-            
+            })
         }else{
             carInfoHelper?.editCarInfoWithCarID(String((carModel?.carid)!), carNumber:carNumber.text!, brand:  ownerName.text!, userid:TCUserInfo.currentInfo.userid, cartype:carType.titleLabel!.text!, engineNum: engineNum.text!, handle: { (success, response) in
                 dispatch_async(dispatch_get_main_queue(), {
@@ -175,7 +176,6 @@ class AddCarViewController: UIViewController,UIScrollViewDelegate,UIAlertViewDel
             return
         }
         carType.setTitle(alertView.buttonTitleAtIndex(buttonIndex), forState: .Normal)
-        
     }
     
     func backToHomeWithReload(){

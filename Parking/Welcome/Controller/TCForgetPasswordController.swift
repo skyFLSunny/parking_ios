@@ -131,43 +131,45 @@ class TCForgetPasswordController: UIViewController {
             confirmScrtBtn.setImage(UIImage(named: "ic_biyan"), forState: .Normal)
             confirm.secureTextEntry = true
         }
-        
         print("qurenmima")
     }
     
     @IBAction func completeButtonAction(sender: AnyObject) {
+        
         if phoneNumber.text!.isEmpty {
             SVProgressHUD.showErrorWithStatus("请输入手机号")
             return
         }
+        
         if identifyNumber.text!.isEmpty {
             SVProgressHUD.showErrorWithStatus("请输入验证码")
             return
         }
+        
         if passWordNum.text!.isEmpty {
             SVProgressHUD.showErrorWithStatus("请输入密码")
             return
         }
+        
         if confirm.text!.isEmpty {
             SVProgressHUD.showErrorWithStatus("请确认密码")
             return
         }
+        
         if passWordNum.text != confirm.text {
             SVProgressHUD.showErrorWithStatus("两次输入密码不一致")
             return
         }
+        
         logVM?.forgetPassword(phoneNumber.text!, code: identifyNumber.text!, password: passWordNum.text!, handle: { [unowned self] (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
-                
                 if success {
                     SVProgressHUD.showSuccessWithStatus("修改成功")
                     self.navigationController?.popViewControllerAnimated(true)
                 }else{
                     SVProgressHUD.showErrorWithStatus(response as! String)
                 }
-                
             })
         })
     }
-    
 }

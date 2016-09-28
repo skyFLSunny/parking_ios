@@ -22,9 +22,9 @@
 
 #import "ApiXml.h"
 
-#define APP_KEY @"wx765b8c5e082532b4" //微信支付的appid(不是微信分享的appid)
-#define MCH_ID @"1364047302"//商户号
-#define API_KEY @"risF2owP8yAdmZgfVYnmqZoElIpD5Bz1"//密钥
+#define APP_KEY @"wx7663b4812a60b7f6" //微信支付的appid(不是微信分享的appid)
+#define MCH_ID @"1354316002"//商户号
+#define API_KEY @"fujianhanbangxinxigongcheng2016A"//密钥
 #define HTTP @"https://api.mch.weixin.qq.com/pay/unifiedorder"//
 
 @interface FZJWeiXinPayMainController()
@@ -34,7 +34,7 @@
     [super viewDidLoad];
 }
 
--(void)testStart:(NSString*)price orderName:(NSString*)orderName{
+-(void)testStart:(NSString*)price orderName:(NSString*)orderName payOrder:(NSString*)payOrder{
     //    https://pay.weixin.qq.com/wiki/doc/api/app.php?chapter=9_1
     
 /**************************************************** 订单信息 *******************************************************************/
@@ -53,7 +53,8 @@
     //随机数串
     srand( (unsigned)time(0) );
     NSString *noncestr  = [NSString stringWithFormat:@"%d", rand()];
-    NSString *orderNO   = [self timeStamp];//订单号。(随机的可以直接用时间戳)
+    NSString *orderNO   = payOrder;//订单号。(随机的可以直接用时间戳)
+//    NSString *orderNO   = [self timeStamp];//订单号。(随机的可以直接用时间戳)
     NSLog(@"orderNO===%@",orderNO);
     
     //================================
@@ -67,7 +68,7 @@
     [packageParams setObject: noncestr     forKey:@"nonce_str"];   //随机串
     [packageParams setObject: orderType    forKey:@"trade_type"];  //支付类型，固定为APP
     [packageParams setObject: orderName    forKey:@"body"];        //订单描述，展示给用户
-    NSString * str = @"www.baidu.com";//[NSString stringWithFormat:@"%@",[payDic objectForKey:@"notify_url"]];
+    NSString * str = @"http://parking.xiaocool.net/index.php?g=apps&m=index&a=WeixinNotify";//[NSString stringWithFormat:@"%@",[payDic objectForKey:@"notify_url"]];
     [packageParams setObject: str  forKey:@"notify_url"];  //支付结果异步通知
     [packageParams setObject: orderNO      forKey:@"out_trade_no"];//商户订单号
     [packageParams setObject: orderIP      forKey:@"spbill_create_ip"];//发器支付的机器ip

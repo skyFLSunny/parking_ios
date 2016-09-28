@@ -54,17 +54,6 @@ class TCChangePwdController: UIViewController {
         if confirmPwd.text! != newPwd.text! {
             SVProgressHUD.showErrorWithStatus("两次输入密码不一致")
         }
-//        
-//        helper.changePwdWithNewPwd(newPwd.text!) { (success, response) in
-//            dispatch_async(dispatch_get_main_queue(), {
-//                if success {
-//                    SVProgressHUD.showSuccessWithStatus("修改成功")
-//                    self.navigationController?.popViewControllerAnimated(true)
-//                }else{
-//                    SVProgressHUD.showErrorWithStatus(response as! String)
-//                }
-//            })
-//        }
         helper.changePasswordByPhone(oldPwd.text!, new_password: newPwd.text!) { (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success {

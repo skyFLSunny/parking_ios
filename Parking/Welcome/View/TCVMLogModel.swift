@@ -23,7 +23,7 @@ class TCVMLogModel: NSObject {
         
         let paramDic = ["a":"applogin","phone":phoneNum,"password":password]
         
-        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, progress: nil,success: { (task, response) in
             let result = TCUserInfoModel(JSONDecoder(response!))
             if result.status == "success"{
                 TCUserInfo.currentInfo.phoneNumber = (result.data?.user_phone)!
@@ -50,7 +50,7 @@ class TCVMLogModel: NSObject {
     //发送验证码
     func sendMobileCodeWithPhoneNumber(phoneNumber:String){
         let paramDic = ["a":"SendMobileCode","phone":phoneNumber]
-        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, obj) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, progress: nil,success: { (task, obj) in
             }, failure: { (task, error) in})
     }
     //注册
@@ -60,7 +60,7 @@ class TCVMLogModel: NSObject {
         let paramDic = ["a":"AppRegister","phone":phone,"password":password,
                         "code":code,"avatar":avatar,"name":name,
                         "sex":sex,"addr":addr,"cardid":cardid]
-        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic,progress: nil, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData
             handle(success: result.status == "success",response: responseStr)
@@ -71,7 +71,7 @@ class TCVMLogModel: NSObject {
     //忘记密码
     func forgetPassword(phone:String,code:String,password:String,handle:ResponseBlock){
         let paramDic = ["a":"forgetpwd","phone":phone,"code":code,"password":password]
-        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic,progress: nil, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? "成功" : result.errorData
             if responseStr != nil {
@@ -84,7 +84,7 @@ class TCVMLogModel: NSObject {
     //验证手机是否已经注册
     func comfirmPhoneHasRegister(phoneNum:String,handle:ResponseBlock){
         let paraDic = ["a":"isregphone","phone":phoneNum]
-        requestManager?.GET(PARK_URL_Header, parameters: paraDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paraDic,progress: nil, success: { (task, response) in
             let result = Http(JSONDecoder(response!))
             let responseStr = result.status == "success" ? nil : result.errorData
             handle(success: result.status == "success",response: responseStr)

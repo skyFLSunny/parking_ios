@@ -79,7 +79,7 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
         print("点退出")
         NSUserDefaults.standardUserDefaults().removeObjectForKey(LOGINFO_KEY)
         let loginVC = TCLoginViewController(nibName: "TCLoginViewController",bundle: nil)
-        loginVC.title = "停车缴费"
+        loginVC.title = "智能停车"
         let loginNav = UINavigationController(rootViewController:loginVC)
         loginNav.navigationBar.barTintColor = UIColor(red: 54/255, green: 190/255, blue: 100/255, alpha: 1)
         loginNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
@@ -88,28 +88,32 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 4
+        return 3
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         switch indexPath.row {
+//        case 0:
+////            cell.textLabel?.text = "银行卡信息"
+//           print("银行卡信息")
+//           let vc = TCBankCardController(nibName: "TCBankCardController", bundle: nil)
+//           vc.hidesBottomBarWhenPushed = true
+//            navigationController?.pushViewController(vc, animated: true)
         case 0:
-//            cell.textLabel?.text = "银行卡信息"
-           print("银行卡信息")
-           let vc = TCBankCardController(nibName: "TCBankCardController", bundle: nil)
-           vc.hidesBottomBarWhenPushed = true
-            navigationController?.pushViewController(vc, animated: true)
-        case 1:
 //            cell.textLabel?.text = "账户安全"
             let vc = TCChangePwdController(nibName: "TCChangePwdController", bundle: nil)
             vc.hidesBottomBarWhenPushed = true
             navigationController?.pushViewController(vc, animated: true)
             print("安全")
         case 2:
-//            cell.textLabel?.text = "通知信息"
-            print("通知")
-        case 3:
+//            cell.textLabel?.text = "关于我们"
+            let vc = TCAboutUsController()
+            vc.hidesBottomBarWhenPushed = true
+            navigationController?.pushViewController(vc, animated: true)
+            print("关于我们")
+
+        case 1:
 //            cell.textLabel?.text = "清理缓存"
             // 取出cache文件夹路径
             let cachePath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first
@@ -147,7 +151,7 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
                     // 判断是否可以删除
                     if(NSFileManager.defaultManager().fileExistsAtPath(path)){
                         // 删除
-                        try? NSFileManager.defaultManager().removeItemAtPath(path)
+                        _ = try? NSFileManager.defaultManager().removeItemAtPath(path)
                     }
                 }
             }
@@ -172,16 +176,16 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = UITableViewCell()
         switch indexPath.row {
+//        case 0:
+//            cell.textLabel?.text = "银行卡信息"
+//            cell.imageView?.image = UIImage(named: "ic_yinhangka")
         case 0:
-            cell.textLabel?.text = "银行卡信息"
-            cell.imageView?.image = UIImage(named: "ic_yinhangka")
-        case 1:
             cell.textLabel?.text = "账户安全"
             cell.imageView?.image = UIImage(named: "ic_zhanghu")
         case 2:
-            cell.textLabel?.text = "通知信息"
+            cell.textLabel?.text = "关于我们"
             cell.imageView?.image = UIImage(named: "ic_tongzhi")
-        case 3:
+        case 1:
             cell.textLabel?.text = "清理缓存"
             cell.imageView?.image = UIImage(named: "ic_qingli")
         case 4:
@@ -193,6 +197,6 @@ class TCMoreFunctionController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat{
-        return menuTableView.frame.height/4
+        return menuTableView.frame.height/3
     }
 }

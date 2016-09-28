@@ -124,7 +124,7 @@ class TCLoginViewController: UIViewController,UIScrollViewDelegate {
         let carInfo:UIViewController = TCCarInfoController(nibName: "TCCarInfoController", bundle:nil)
         carInfo.title = "车辆信息"
         setTabbarItemAttribute(carInfo, normalImageName: "ic_qiche-0", selectedImageName: "ic_qiche")
-        let payment:UIViewController = TCPaymentViewController(nibName: "TCPaymentViewController", bundle:nil)
+        let payment:UIViewController = TCPayHomeController(nibName: "TCPayHomeController", bundle:nil)
         payment.title = "缴费信息"
         setTabbarItemAttribute(payment, normalImageName: "ic_jiaofei", selectedImageName: "ic_jiaofei-0")
         let more:UIViewController = TCMoreFunctionController(nibName: "TCMoreFunctionController", bundle:nil)

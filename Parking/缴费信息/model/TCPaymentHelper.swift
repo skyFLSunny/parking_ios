@@ -21,7 +21,7 @@ class TCPaymentHelper: NSObject {
         let paramDic = ["a":"getCarHistoryOrder",
                         "carnumber":carNum,
                         "userid":TCUserInfo.currentInfo.userid]
-        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic,progress: nil, success: { (task, response) in
             let result = TCUserUnpayModel(JSONDecoder(response!))
             if result.status == "success"{
                 //TODO:缴费帐单返回数组
@@ -39,7 +39,7 @@ class TCPaymentHelper: NSObject {
         let paramDic = ["a":"getExpenseInfo",
                         "carnumber":carNum,
                         "userid":TCUserInfo.currentInfo.userid]
-        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic,progress: nil, success: { (task, response) in
             let result = TCCarUnpayModel(JSONDecoder(response!))
             if result.status == "success"{
                 //TODO:未缴费帐单返回数组
@@ -54,7 +54,7 @@ class TCPaymentHelper: NSObject {
     //查询用户所有车辆未缴费信息
     func getAllUnpayInfo(handle:ResponseBlock){
         let paramDic = ["a":"getUnpayOrderListByOwner","userid":TCUserInfo.currentInfo.userid]
-        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic,progress: nil, success: { (task, response) in
             let result = TCUserUnpayModel(JSONDecoder(response!))
             if result.status == "success"{
                 //TODO:未缴费帐单返回数组
@@ -68,8 +68,10 @@ class TCPaymentHelper: NSObject {
     }
     //查询用户所有缴费历史纪录
     func getAllUserHistroyOrder(handle:ResponseBlock){
+        print("zcq")
+        print(TCUserInfo.currentInfo.userid)
         let paramDic = ["a":"getCarHistoryOrderByPayUserId","userid":TCUserInfo.currentInfo.userid]
-        requestManager?.GET(PARK_URL_Header, parameters: paramDic, success: { (task, response) in
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, progress: nil, success: { (task, response) in
             let result = TCUserUnpayModel(JSONDecoder(response!))
             if result.status == "success"{
                 //TODO:未缴费帐单返回数组
@@ -80,5 +82,21 @@ class TCPaymentHelper: NSObject {
             }, failure: { (task, error) in
                 handle(success: false,response: "网络错误")
         })
+    }
+    //获取车辆所有订单 MLGBD
+    func getAllOrderByCarNumber(carNum:String, handle:ResponseBlock){
+        let paramDic = ["a":"getAllOrderByCarNumber","userid":TCUserInfo.currentInfo.userid, "carnumber":carNum]
+        requestManager?.GET(PARK_URL_Header, parameters: paramDic, progress: nil, success: { (task, response) in
+            let result = TCUserUnpayModel(JSONDecoder(response!))
+            if result.status == "success"{
+                //TODO:未缴费帐单返回数组
+                handle(success: true,response: result.datas)
+            }else{
+                handle(success: false,response: result.errorData)
+            }
+            }, failure: { (task, error) in
+                handle(success: false,response: "网络错误")
+        })
+
     }
 }

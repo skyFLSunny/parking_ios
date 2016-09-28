@@ -16,6 +16,7 @@ class TCBankCardController: UIViewController {
     @IBOutlet weak var cardType: UILabel!
     @IBOutlet weak var cardNum: UILabel!
     var hasBankCard:Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

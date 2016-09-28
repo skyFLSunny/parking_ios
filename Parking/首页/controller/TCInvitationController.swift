@@ -71,13 +71,16 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
         search = true
         personTableView.reloadData()
     }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String){
         if searchText.isEmpty {
             search = false
             personTableView.reloadData()
         }
     }
+    
     func addAlertViewForModel(model:TCContactorInfo){
+        self.view.endEditing(true)
         //alert
         let keywin = UIApplication.sharedApplication().keyWindow
         alertBackGroundView = UIButton(type: UIButtonType.Custom)
@@ -118,7 +121,7 @@ class TCInvitationController: UIViewController,UITableViewDelegate,UITableViewDa
             }else{
                 contactor.userName = username
             }
-            contactor.phoneNumber = phoneNum!
+            contactor.phoneNumber = phoneNum ?? ""
             models.append(contactor)
         }
         keyChars = []

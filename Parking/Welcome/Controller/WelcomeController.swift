@@ -44,7 +44,7 @@ class WelcomeColler: UIViewController {
     func enterAppAction(){
         let window = UIApplication.sharedApplication().keyWindow
         let loginVC = TCLoginViewController(nibName: "TCLoginViewController",bundle: nil)
-        loginVC.title = "智慧停车"
+        loginVC.title = "智能停车"
         let loginNav = UINavigationController(rootViewController:loginVC)
         loginNav.navigationBar.barTintColor = UIColor(red: 53/255, green: 188/255, blue: 123/255, alpha: 1)
         loginNav.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]

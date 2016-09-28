@@ -61,7 +61,7 @@ class TCCarDetailController: UIViewController,TCCarDetailPopViewDelegate,AddCarV
             popMenu = NSBundle.mainBundle().loadNibNamed("TCCarDetailPopView", owner: nil, options: nil).first as? TCCarDetailPopView
             popMenu?.isCurrentCar = carModel?.isCurrentCar == 1
             let popX = self.view.frame.width-130
-            popMenu!.frame = CGRectMake(popX, 0, 125, 120)
+            popMenu!.frame = CGRectMake(popX, 0, 125, 160)
             popMenu!.backgroundColor = UIColor.clearColor()
             popMenu!.delegate = self
             self.view.addSubview(popMenu!)

@@ -9,6 +9,7 @@
 import UIKit
 
 class TCUserInfo {
+    
     var avatar:String = ""
     var address:String = ""
     var phoneNumber:String = ""
@@ -23,6 +24,8 @@ class TCUserInfo {
     var bankUserName:String = ""
     var cardNumber:String = ""
     var currentCarBrand = ""
+    var payOrder = ""
+    var payFree = ""
     
     static let currentInfo = TCUserInfo()
     private init() {

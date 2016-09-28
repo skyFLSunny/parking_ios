@@ -17,7 +17,6 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var manBtn: UIButton!
     @IBOutlet weak var womenBtn: UIButton!
-    @IBOutlet weak var cardNum: UITextField!
     
     var sex = TCUserInfo.currentInfo.sex
     var nameStr:String?
@@ -32,7 +31,6 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         phoneNumber.text = TCUserInfo.currentInfo.phoneNumber
         name.text = TCUserInfo.currentInfo.userName
         addressBtn.setTitle(TCUserInfo.currentInfo.address, forState: .Normal)
-        cardNum.text = TCUserInfo.currentInfo.cardid
         myActionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         myActionSheet?.addAction(UIAlertAction(title: "拍照", style: .Default, handler: {[unowned self] (UIAlertAction) in
             dispatch_async(dispatch_get_main_queue(), {
@@ -60,8 +58,6 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         //set layer
         name.layer.borderWidth = 2
         name.layer.borderColor = UIColor.whiteColor().CGColor
-        cardNum.layer.borderWidth = 2
-        cardNum.layer.borderColor = UIColor.whiteColor().CGColor
         avatarBtn.layer.cornerRadius = 40
         avatarBtn.layer.borderWidth = 2
         avatarBtn.layer.borderColor = UIColor.whiteColor().CGColor
@@ -89,13 +85,12 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
     }
     
     func submit(){
-        moreHelper?.editPersonalInfoWithUserName(name.text!, sex: sex, cardid: cardNum.text!, addr: (addressBtn.titleLabel?.text)!, handle: { (success, response) in
+        moreHelper?.editPersonalInfoWithUserName(name.text!, sex: sex, cardid: "", addr: (addressBtn.titleLabel?.text)!, handle: { (success, response) in
             dispatch_async(dispatch_get_main_queue(), {
                 if success{
                     SVProgressHUD.showSuccessWithStatus("修改成功")
                     TCUserInfo.currentInfo.sex = self.sex
                     TCUserInfo.currentInfo.address = self.addressBtn.titleLabel!.text!
-                    TCUserInfo.currentInfo.cardid = self.cardNum.text!
                     TCUserInfo.currentInfo.userName = self.name.text!
                     self.navigationController?.popViewControllerAnimated(true)
                 }else{
@@ -130,6 +125,7 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         picker.allowsEditing = true
         presentViewController(picker, animated: true, completion: nil)
     }
+    
     // MARK: ------imagepickerDelegate-------
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let type = info[UIImagePickerControllerMediaType] as! String
@@ -209,7 +205,6 @@ class TCEditUserInfoController: UIViewController,UIScrollViewDelegate,UIActionSh
         sex = "0"
         manBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
         womenBtn.setImage(UIImage(named: "ic_tongyixuanzhong"), forState: .Normal)
-        
     }
     
     @IBAction func selectAvatarAction(sender: AnyObject) {

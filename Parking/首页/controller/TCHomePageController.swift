@@ -22,11 +22,12 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     @IBOutlet weak var startTimeLabel: UILabel!
     @IBOutlet weak var totalTimeLabel: UILabel!
     @IBOutlet weak var costLabel:UILabel!
-    @IBOutlet weak var empTipView: UIImageView!
     @IBOutlet weak var carImage:UIImageView!
     
     var backgroundBtn:UIButton?
     var alertSheet:TCAlertSelectView?
+//    var res:ParkingInfoModel?
+    var currentcar:UserUnpayModel?
     var homeHelper:TCHomePageHelper = TCHomePageHelper()
     var carUnPayments = Array<UserUnpayModel>()
     
@@ -35,7 +36,6 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         self.edgesForExtendedLayout = UIRectEdge.None
         self.automaticallyAdjustsScrollViewInsets = false
         self.needPayTableView.tableFooterView = UIView()
-        self.empTipView.hidden = false
         self.pagmentButton.layer.cornerRadius = 8
         keyboardScrollView.bounces = false
         self.hidesBottomBarWhenPushed = false
@@ -63,7 +63,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
                         self.ShowCarInfo()
                         self.getStopInfo()
                     }
-                }else {
+                } else {
                     TCUserInfo.currentInfo.currentCar = ""
                     TCUserInfo.currentInfo.currentCarBrand = ""
                     self.ShowCarInfo()
@@ -77,8 +77,8 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         super.viewDidAppear(animated)
         
 
-        let tabHeight = view.frame.height - 368
-        tableHeightConstraint.constant = tabHeight >= 160 ? tabHeight :160
+//        let tabHeight = view.frame.height - 368
+//        tableHeightConstraint.constant = tabHeight >= 160 ? tabHeight :160
         print(TCUserInfo.currentInfo.userid)
     }
     
@@ -101,6 +101,7 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func getStopInfo(){
+        self.currentcar = nil
         if TCUserInfo.currentInfo.currentCar.isEmpty {
             self.locationLabel.text = "无"
             self.startTimeLabel.text = "无"
@@ -125,15 +126,41 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
                         return
                     }
                     if success {
-                        let res = response as! ParkingInfoModel
-                        self.locationLabel.text = res.park
-                        self.startTimeLabel.text = res.start_time
-                        self.totalTimeLabel.text = res.time
-                        self.costLabel.text = "¥"+String(res.money)
+                        let cars = response as! Array<UserUnpayModel>
+                        for car in cars {
+                            if ((car.pay_status == 0)&&(car.status==0)) {//
+//                                self.dataSource![1].append(car)
+                                self.currentcar = car
+                                
+                            }
+//                            else{
+//                                TCUserInfo.currentInfo.currentCar = car.carnumber!
+//                                TCUserInfo.currentInfo.currentCarBrand = car.brand!
+//                                self.dataSource![0].append(car)
+//                            }
+                        }
+//                        self.res = response as? ParkingInfoModel
+                        if(self.currentcar == nil){
+                            self.locationLabel.text = "暂无"
+                            self.startTimeLabel.text = "暂无"
+                            self.totalTimeLabel.text = "暂无"
+                            self.costLabel.text = "暂无"
+                            self.locationLabel.textColor = UIColor.lightGrayColor()
+                            self.startTimeLabel.textColor = UIColor.lightGrayColor()
+                            self.totalTimeLabel.textColor = UIColor.lightGrayColor()
+                            self.costLabel.textColor = UIColor.lightGrayColor()
+                        }else{
+                            print("zcq")
+                            print(self.currentcar!.start_time_str)
+                        self.locationLabel.text = self.currentcar!.park
+                        self.startTimeLabel.text = self.currentcar!.start_time_str
+                        self.totalTimeLabel.text = self.currentcar!.time
+                        self.costLabel.text = "¥"+String(self.currentcar!.money)
                         self.locationLabel.textColor = UIColor.darkGrayColor()
                         self.startTimeLabel.textColor = UIColor.darkGrayColor()
                         self.totalTimeLabel.textColor = UIColor.darkGrayColor()
                         self.costLabel.textColor = UIColor.orangeColor()
+                        }
                     } else {
                         self.locationLabel.text = "暂无"
                         self.startTimeLabel.text = "暂无"
@@ -154,11 +181,6 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         leftButton.frame = CGRectMake(0, 0, 30, 30)
         leftButton.setImage(UIImage(named: "ic_jiahaoyou"), forState:.Normal)
         leftButton.addTarget(self, action: #selector(leftNavBtnClicked), forControlEvents: .TouchUpInside)
-//        let rightButton = UIButton(type: .Custom)
-//        rightButton.frame = CGRectMake(0, 0, 30, 30)
-//        rightButton.setImage(UIImage(named: "ic_xiaoxi"), forState: .Normal)
-//        rightButton.addTarget(self, action: #selector(rightNavBtnClicked), forControlEvents: .TouchUpInside)
-        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: leftButton)
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: rightButton)
     }
@@ -168,9 +190,6 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if carUnPayments.count != 0 {
-            self.empTipView.hidden = true
-        }
         return carUnPayments.count
     }
     // 加好友
@@ -201,7 +220,6 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
                                   forControlEvents: .TouchUpInside)
         let model = carUnPayments[indexPath.row]
         cell?.showForModel(model)
-        
         //选中cell不改变颜色
         cell!.selectionStyle = UITableViewCellSelectionStyle.None;
         return cell!
@@ -210,11 +228,16 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
     func selectedPayButton(sender:UIButton){
         print(sender.tag)
         let cost = "¥" + String((carUnPayments[sender.tag].money))
-        pushToPaymentController(TCUserInfo.currentInfo.currentCar,cost: cost)
+        
+        pushToPaymentController(TCUserInfo.currentInfo.currentCar,cost: cost,payOrder:carUnPayments[sender.tag].order_no )
     }
     
     @IBAction func paymentButtonClicked(sender: UIButton) {
-        pushToPaymentController(TCUserInfo.currentInfo.currentCar,cost:costLabel.text!)
+        if ((currentcar == nil)||(self.currentcar?.pay_status == 1)) {
+            SVProgressHUD.showErrorWithStatus("没有待支付的停车信息")
+            return
+        }
+        pushToPaymentController(TCUserInfo.currentInfo.currentCar,cost:costLabel.text!,payOrder:carUnPayments[sender.tag].order_no)
     }
     
     func homeBackgroundBtnClicked(){
@@ -222,9 +245,9 @@ class TCHomePageController: UIViewController,UITableViewDelegate,UITableViewData
         alertSheet!.removeFromSuperview()
     }
     
-    func pushToPaymentController(carNum:String,cost:String){
+    func pushToPaymentController(carNum:String,cost:String,payOrder:String){
         let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
-        vc.showVCWithPayCars(carNum,cost: cost)
+        vc.showVCWithPayCars(carNum, cost: cost, myPayOrder: payOrder)
         navigationController?.pushViewController(vc, animated: true)
     }
     //MARK:---TCAlertSelectViewDelegate----

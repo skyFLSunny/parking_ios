@@ -184,18 +184,18 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
         }
         logVM?.comfirmPhoneHasRegister(phoneNumber.text!, handle: {[unowned self](success, response) in
             dispatch_async(dispatch_get_main_queue(), {
-            if success {
-                    SVProgressHUD.showErrorWithStatus("手机已注册")
-            }else{
-                TimeManager.shareManager.begainTimerWithKey(self.GET_ID_KEY, timeInterval: 60, process: self.processHandle!, finish: self.finishHandle!)
-                self.logVM?.sendMobileCodeWithPhoneNumber(self.phoneNumber.text!)
-                dispatch_async(dispatch_get_main_queue(), { 
-                    SVProgressHUD.showSuccessWithStatus("发送验证码成功")
-                })
-            }
+                if success {
+                        SVProgressHUD.showErrorWithStatus("手机已注册")
+                }else{
+                    TimeManager.shareManager.begainTimerWithKey(self.GET_ID_KEY, timeInterval: 60, process: self.processHandle!, finish: self.finishHandle!)
+                    self.logVM?.sendMobileCodeWithPhoneNumber(self.phoneNumber.text!)
+                    dispatch_async(dispatch_get_main_queue(), { 
+                        SVProgressHUD.showSuccessWithStatus("发送验证码成功")
+                    })
+                }
             })
-            
         })
+        
         print("get identify")
     }
     

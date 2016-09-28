@@ -103,6 +103,6 @@ class RegularExpression{
         let predicate = NSPredicate.init(format: "SELF MATCHES %@",regex!)
         
         return predicate.evaluateWithObject(string)
-    }}
+}}
 
 

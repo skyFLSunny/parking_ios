@@ -9,7 +9,6 @@
 import UIKit
 
 class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UIScrollViewDelegate{
-    
     @IBOutlet weak var bottomScrollView: UIScrollView!
     @IBOutlet weak var slideView: UIView!
     @IBOutlet weak var leftPayButton: UIButton!
@@ -25,7 +24,6 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     var payHelper:TCPaymentHelper = TCPaymentHelper()
     var carUnPayments = Array<UserUnpayModel>()
     var carPayments = Array<UserUnpayModel>()
-    var carUnpayModel:CarUnpayModel?
     let leftTag = 666
     let rightTag = 888
     let scrollTag = 2333
@@ -108,45 +106,56 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
             leftTableView!.delegate = self
             rightTableView!.dataSource = self
             rightTableView!.delegate = self
-            
             bottomScrollView.addSubview(leftTableView!)
             bottomScrollView.addSubview(rightTableView!)
         }
         
-        if hasNavBtn || isAll {
+        if isAll {
+            SVProgressHUD.showWithStatus("数据加载中...")
             payHelper.getAllUnpayInfo( { [unowned self](success, response) in
                 dispatch_async(dispatch_get_main_queue(), {
                     if success{
-                        self.carUnPayments = response as! [UserUnpayModel]
+                        self.carUnPayments = (response as! [UserUnpayModel]).filter({ (model) -> Bool in
+                            return model.status == 1
+                        })
                         self.leftTableView?.reloadData()
+                        SVProgressHUD.dismiss()
                     }else{
                         SVProgressHUD.showErrorWithStatus("加载失败")
                     }
                 })
-                })
+            })
+            
             payHelper.getAllUserHistroyOrder({ [unowned self](success, response) in
-                self.carPayments = response as! [UserUnpayModel]
-                self.rightTableView!.reloadData()
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.carPayments = (response as! [UserUnpayModel]).filter({ (model) -> Bool in
+                        return String(model.pay_user_id) == TCUserInfo.currentInfo.userid
+                    })
+                    self.rightTableView!.reloadData()
                 })
+            })
         }else{
             let getCarNum = carNumber == nil ?
                 TCUserInfo.currentInfo.currentCar : carNumber
             
-            payHelper.getUnpayInfoListWithCarNum(getCarNum!, handle: { [unowned self] (success, response) in
-                self.carUnpayModel = response as? CarUnpayModel
-                self.leftTableView?.reloadData()
+            payHelper.getAllOrderByCarNumber(getCarNum!, handle: { (success, response) in
+                self.carUnPayments = (response as! Array<UserUnpayModel>).filter({ (model) -> Bool in
+                    return  model.pay_status == 0 && model.status == 1
+                })
+                self.carPayments = (response as! [UserUnpayModel]).filter({ (model) -> Bool in
+                    return model.pay_status == 1 && (String(model.pay_user_id)==TCUserInfo.currentInfo.userid)
+                })
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.leftTableView!.reloadData()
+                    self.rightTableView!.reloadData()
+                })
             })
-            
-            payHelper.getHistoryPaymentListWithCarNumber(getCarNum!) { [unowned self](success, response) in
-                self.carPayments = response as! [UserUnpayModel]
-                self.rightTableView!.reloadData()
-            }
         }
         
     }
 
     @IBAction func leftButtonClicked(sender: AnyObject) {
-        print("左边")
+        print("all-左边")
         UIView.animateWithDuration(0.3) {
             self.slideView.frame = CGRectMake(0, self.slideView.frame.origin.y, self.slideView.frame.size.width, self.slideView.frame.size.height)
             self.bottomScrollView.contentOffset = CGPointMake(0, 0)
@@ -154,7 +163,7 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     }
     
     @IBAction func rightButtonClicked(sender: AnyObject) {
-        print("右边")
+        print("all-右边")
         UIView.animateWithDuration(0.3) {
             let viewWidth = self.view.frame.size.width/2
             self.slideView.frame = CGRectMake(viewWidth, self.slideView.frame.origin.y, self.slideView.frame.size.width, self.slideView.frame.size.height)
@@ -189,12 +198,9 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-        if !hasNavBtn {
-            return
-        }
         let VC = TCPayDetailController(nibName: "TCPayDetailController",bundle: nil)
-        if tableView.tag == leftTag {
-            VC.paymentModel = carUnPayments[indexPath.row]
+        if tableView == leftTableView {
+            VC.userPayModel = carUnPayments[indexPath.row]
         }else{
             VC.userPayModel = carPayments[indexPath.row]
         }
@@ -208,10 +214,7 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if tableView.tag == leftTag {
-            if hasNavBtn||isAll {
                 return carUnPayments.count
-            }
-            return carUnpayModel == nil ? 0 : 1
         }else{
             let height = tableView.frame.height
             lab.frame = CGRectMake(WIDTH*1.2,height*0.45,WIDTH*0.6,height*0.1)
@@ -235,11 +238,7 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
             let cell = tableView.dequeueReusableCellWithIdentifier("paycell") as! TCPaymentCell
             cell.payButton.addTarget(self, action: #selector(touchListPayBtn), forControlEvents: .TouchUpInside)
             cell.payButton.tag = indexPath.row
-            if hasNavBtn || isAll {
-                cell.showForModel(carUnPayments[indexPath.row])
-            }else{
-                cell.showForCarModel(carUnpayModel!)
-            }
+            cell.showForModel(carUnPayments[indexPath.row])
             return cell
         }else{
             let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! TCHasPaiedCell
@@ -250,15 +249,17 @@ class TCPaymentViewController: UIViewController,UITableViewDelegate,UITableViewD
     
     func touchListPayBtn(btn:UIButton){
         let vc = TCSingleClickedPayment(nibName: "TCSingleClickedPayment", bundle: nil)
-        let costStr = hasNavBtn||isAll ? "¥"+String(carUnPayments[btn.tag].money) : String(carUnpayModel?.money)
-        vc.showVCWithPayCars(TCUserInfo.currentInfo.currentCar,cost: costStr)
+        let costStr = "¥" + String(carUnPayments[btn.tag].money)
+        vc.showVCWithPayCars(TCUserInfo.currentInfo.currentCar,cost: costStr,myPayOrder: carUnPayments[btn.tag].order_no)
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func scrollViewDidEndDecelerating(scrollView: UIScrollView){
+        
         if scrollView.tag != scrollTag {
             return
         }
+        
         print(scrollView.contentOffset.x)
         if scrollView.contentOffset.x == 0 {
             leftButtonClicked(0)

@@ -32,9 +32,9 @@ class TCHasPaiedCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         if myModel != nil {
-            addressLabel.text = myModel!.park
+            addressLabel.text = myModel!.car_number
             timeLabel.text = myModel!.date
-            priceLabel.text = "停车"+myModel!.time+"小时"
+            priceLabel.text = "停车"+myModel!.time
             costLabel.text = "¥"+String(myModel!.money)
         }
     }
