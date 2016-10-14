@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -20,6 +20,7 @@
                 <outlet property="phoneNumber" destination="htS-kA-S0l" id="CqU-17-VI1"/>
                 <outlet property="realName" destination="Lx1-Ja-xmF" id="wkd-2w-u48"/>
                 <outlet property="secretBtn" destination="qBB-Rb-Qre" id="05W-DK-3hP"/>
+                <outlet property="secretSexBtn" destination="gon-7b-lEn" id="LTj-sw-xvC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="womenBtn" destination="9Eg-G8-QNn" id="zm8-Ac-XYy"/>
             </connections>
@@ -256,7 +257,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Eg-G8-QNn">
-                                                    <rect key="frame" x="131" y="14" width="71" height="22"/>
+                                                    <rect key="frame" x="119" y="14" width="71" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="71" id="dIg-nf-8nB"/>
                                                     </constraints>
@@ -267,12 +268,26 @@
                                                         <action selector="womenBtnClicked:" destination="-1" eventType="touchUpInside" id="oRK-k9-21R"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gon-7b-lEn">
+                                                    <rect key="frame" x="222" y="14" width="80" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="80" id="L9Y-z7-xQq"/>
+                                                    </constraints>
+                                                    <state key="normal" title="  保密" image="ic_weixuanzhong">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="SecretBtnClicked:" destination="-1" eventType="touchUpInside" id="EkL-OH-Gaa"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="gon-7b-lEn" firstAttribute="centerY" secondItem="dvZ-m0-nqw" secondAttribute="centerY" id="84r-BR-0i2"/>
                                                 <constraint firstAttribute="trailing" secondItem="QcE-8F-1ea" secondAttribute="trailing" id="D1m-BV-wD9"/>
-                                                <constraint firstItem="9Eg-G8-QNn" firstAttribute="leading" secondItem="as7-pc-miH" secondAttribute="trailing" constant="42" id="Gby-JC-Sl5"/>
+                                                <constraint firstItem="9Eg-G8-QNn" firstAttribute="leading" secondItem="as7-pc-miH" secondAttribute="trailing" constant="30" id="Gby-JC-Sl5"/>
                                                 <constraint firstItem="9Eg-G8-QNn" firstAttribute="centerY" secondItem="dvZ-m0-nqw" secondAttribute="centerY" id="Q0m-Jf-nid"/>
                                                 <constraint firstItem="QcE-8F-1ea" firstAttribute="leading" secondItem="dvZ-m0-nqw" secondAttribute="leading" id="QQa-9j-NcW"/>
+                                                <constraint firstItem="gon-7b-lEn" firstAttribute="leading" secondItem="9Eg-G8-QNn" secondAttribute="trailing" constant="32" id="bF0-RE-XMw"/>
                                                 <constraint firstItem="as7-pc-miH" firstAttribute="centerY" secondItem="dvZ-m0-nqw" secondAttribute="centerY" id="fT9-Hl-WHU"/>
                                                 <constraint firstItem="as7-pc-miH" firstAttribute="leading" secondItem="dvZ-m0-nqw" secondAttribute="leading" constant="18" id="fh9-yD-7aE"/>
                                                 <constraint firstAttribute="height" constant="50" id="pWa-kr-SPa"/>

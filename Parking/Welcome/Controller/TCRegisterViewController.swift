@@ -23,6 +23,7 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
     @IBOutlet weak var avatarBtn: UIButton!
     @IBOutlet weak var manBtn: UIButton!
     @IBOutlet weak var womenBtn: UIButton!
+    @IBOutlet weak var secretSexBtn: UIButton!
     @IBOutlet weak var realName: UITextField!
     @IBOutlet weak var personCardID: UITextField!
     @IBOutlet weak var address: UITextField!
@@ -257,6 +258,7 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
     @IBAction func manBtnClicked(sender: AnyObject) {
         manBtn.setImage(UIImage(named: "ic_tongyixuanzhong"), forState: .Normal)
         womenBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
+        secretSexBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
         sex = 1
         if !hasAvatar {
             avatarBtn.setImage(UIImage(named:"avatar_nan"), forState: .Normal)
@@ -266,12 +268,20 @@ class TCRegisterViewController: UIViewController,UIActionSheetDelegate,UIImagePi
     
     @IBAction func womenBtnClicked(sender: AnyObject) {
         manBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
+        secretSexBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
         womenBtn.setImage(UIImage(named: "ic_tongyixuanzhong"), forState: .Normal)
         sex = 0
         if  !hasAvatar {
             avatarBtn.setImage(UIImage(named:"avatar_nv"), forState: .Normal)
             avatarImageName = "avatar_woman.png"
         }
+    }
+    
+    @IBAction func SecretBtnClicked(sender: UIButton){
+        manBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
+        womenBtn.setImage(UIImage(named: "ic_weixuanzhong"), forState: .Normal)
+        sex = 0
+        secretSexBtn.setImage(UIImage(named: "ic_tongyixuanzhong"), forState: .Normal)
     }
     
     @IBAction func avatarBtnClicked(sender: AnyObject) {
